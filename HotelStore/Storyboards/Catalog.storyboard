@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vad-6d-Jo3">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Catalog-->
+        <scene sceneID="udG-5m-Y0G">
+            <objects>
+                <navigationController id="Vad-6d-Jo3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Catalog" image="icons8-посмотреть-детали-100 1-2" id="786-5P-zUx"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jqy-cS-fXf">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="W0S-7C-CqL" kind="relationship" relationship="rootViewController" id="y1T-WB-m2k"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gty-NN-SPW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-780" y="98"/>
+        </scene>
+        <!--Catalog View Controller-->
+        <scene sceneID="HzD-xG-9E3">
+            <objects>
+                <viewController id="W0S-7C-CqL" customClass="CatalogViewController" customModule="HotelStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Fl-uB-s5t">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Ijx-9d-qrP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Zo7-Is-Ima"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Plg-YX-aiB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="81" y="98"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icons8-посмотреть-детали-100 1-2" width="25" height="26"/>
+    </resources>
+</document>
