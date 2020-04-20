@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB87E80E2441E84C00D79D26 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87E80D2441E84C00D79D26 /* AgreementViewController.swift */; };
+		EB4D6C23244D604D00AB321C /* GetCategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4D6C22244D604D00AB321C /* GetCategoryService.swift */; };
 		EB87E8102443179C00D79D26 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87E80F2443179C00D79D26 /* UserInfoViewController.swift */; };
 		EB87E8252444B01600D79D26 /* LastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87E8242444B01600D79D26 /* LastViewController.swift */; };
 		EB87E8282444B91B00D79D26 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87E8272444B91B00D79D26 /* OrderModel.swift */; };
@@ -26,11 +26,10 @@
 		EBCDBBD72441B2D0008129A5 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBCDBBD62441B2D0008129A5 /* Profile.storyboard */; };
 		EBCDBBD92441B301008129A5 /* ShoppingCart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBCDBBD82441B301008129A5 /* ShoppingCart.storyboard */; };
 		EBCDBBDB2441B30C008129A5 /* Catalog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBCDBBDA2441B30C008129A5 /* Catalog.storyboard */; };
-		EBCDBBE22441BB64008129A5 /* DevelopInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCDBBE12441BB64008129A5 /* DevelopInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EB87E80D2441E84C00D79D26 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
+		EB4D6C22244D604D00AB321C /* GetCategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCategoryService.swift; sourceTree = "<group>"; };
 		EB87E80F2443179C00D79D26 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		EB87E8242444B01600D79D26 /* LastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastViewController.swift; sourceTree = "<group>"; };
 		EB87E8272444B91B00D79D26 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
@@ -51,7 +50,6 @@
 		EBCDBBD62441B2D0008129A5 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		EBCDBBD82441B301008129A5 /* ShoppingCart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShoppingCart.storyboard; sourceTree = "<group>"; };
 		EBCDBBDA2441B30C008129A5 /* Catalog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Catalog.storyboard; sourceTree = "<group>"; };
-		EBCDBBE12441BB64008129A5 /* DevelopInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +85,7 @@
 		EBADC45C2449738C006E60DB /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				EB4D6C22244D604D00AB321C /* GetCategoryService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -150,8 +149,6 @@
 			children = (
 				EBCDBBCD2440B9CD008129A5 /* ProfileViewController.swift */,
 				EB87E8242444B01600D79D26 /* LastViewController.swift */,
-				EBCDBBE12441BB64008129A5 /* DevelopInfoViewController.swift */,
-				EB87E80D2441E84C00D79D26 /* AgreementViewController.swift */,
 				EB87E80F2443179C00D79D26 /* UserInfoViewController.swift */,
 			);
 			path = Profile;
@@ -257,9 +254,8 @@
 				EBCDBBCE2440B9CD008129A5 /* ProfileViewController.swift in Sources */,
 				EB87E830244575DD00D79D26 /* ProfileLastOrderCells.swift in Sources */,
 				EBADC45A24489E49006E60DB /* ShoppingCartCell.swift in Sources */,
+				EB4D6C23244D604D00AB321C /* GetCategoryService.swift in Sources */,
 				EBCDBBB52440A76C008129A5 /* AppDelegate.swift in Sources */,
-				EBCDBBE22441BB64008129A5 /* DevelopInfoViewController.swift in Sources */,
-				EB87E80E2441E84C00D79D26 /* AgreementViewController.swift in Sources */,
 				EBCDBBB72440A76C008129A5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
