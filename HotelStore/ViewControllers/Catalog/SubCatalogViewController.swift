@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class SubCatalogViewController: UIViewController{
-    let model = OrderModel.sharedData
+    let model = DataModel.sharedData
     var number = 0
     
     @IBOutlet weak var catalogTable: UITableView!
@@ -39,6 +39,14 @@ extension SubCatalogViewController: UITableViewDelegate, UITableViewDataSource{
         cell.textLabel?.text = model.categories[number].sub_categoryes[indexPath.row].name
             cell.accessoryType = .disclosureIndicator
             return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if #available(iOS 13.0, *) {
+            let vc = storyboard?.instantiateViewController(identifier: "ProductsVC") as! ProductsViewController
+            vc.category_id = model.categories[number].sub_categoryes[indexPath.row].id
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 

@@ -11,7 +11,7 @@ import UIKit
 
 class CatalogViewController: UIViewController{
     let network = GetProductsService()
-    let model = OrderModel.sharedData
+    let model = DataModel.sharedData
 
     @IBOutlet weak var catalogTable: UITableView!
     
@@ -46,6 +46,7 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate{
         if #available(iOS 13.0, *) {
             if model.categories[indexPath.item].sub_categoryes.isEmpty{
                 let vc = storyboard?.instantiateViewController(identifier: "ProductsVC") as! ProductsViewController
+                vc.category_id = model.categories[indexPath.row].id
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 let vc = storyboard?.instantiateViewController(identifier: "SubCatalogVC") as! SubCatalogViewController

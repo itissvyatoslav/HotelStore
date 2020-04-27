@@ -9,7 +9,7 @@
 import UIKit
 
 class ShoppingCartCell: UITableViewCell {
-    let cart = OrderModel.sharedData
+    let cart = DataModel.sharedData
     
     @IBOutlet weak var imageProduct: UIImageView!
     @IBOutlet weak var nameProduct: UILabel!

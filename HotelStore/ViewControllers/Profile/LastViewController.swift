@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class LastViewController: UIViewController {
-    let order = OrderModel.sharedData
+    let order = DataModel.sharedData
     
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var orderNumberLabel: UILabel!

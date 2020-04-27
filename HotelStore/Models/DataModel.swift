@@ -8,25 +8,29 @@
 
 import Foundation
 
-class OrderModel {
+class DataModel {
     
     struct OrderDescription {
         var id: Int
         var hotel: String
         var totalPrice: Int
-        var goods: [Goods]
+        var goods: [GoodsType]
     }
     
-    struct Goods {
-        var image: String
+    struct GoodsType {
+        var images: [imagesType]
         var name: String
         var count: Int
         var price: Int
+        var short_description: String
     }
     
-    var lastOrder = [OrderDescription(id: 23, hotel: "Current hotel", totalPrice: 49, goods: [Goods(image: "", name: "Oral-B, electric toothbrush Vitality 3D White", count: 1, price: 5)])]
+    struct imagesType{
+        var front: Bool
+        var url: String
+    }
     
-    var shoppingCart = [Goods(image: "", name: "Oral-B, electric toothbrush Vitality 3D White", count: 1, price: 23), Goods(image: "", name: "Pillow", count: 3, price: 14)]
+    var products = [GoodsType]()
     
     struct Category{
         var id: Int
@@ -38,5 +42,5 @@ class OrderModel {
     var addCategory = Category(id: 0, name: "", sub_categoryes: [])
     var addSubcategory = Category(id: 0, name: "", sub_categoryes: [])
     
-    static let sharedData = OrderModel()
+    static let sharedData = DataModel()
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileLastOrderCells: UITableViewCell {
-    let order = OrderModel.sharedData
+    let order = DataModel.sharedData
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!

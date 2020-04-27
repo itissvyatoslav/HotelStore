@@ -9,7 +9,7 @@
 import Foundation
 
 class GetProductsService {
-    let model = OrderModel.sharedData
+    let model = DataModel.sharedData
     
     func getCategories(){
         
@@ -60,14 +60,43 @@ class GetProductsService {
         semaphore.wait()
     }
     
-    func getProducts(hotel_id: String, category_id: String?, limit: String?, page: String?, brand: String?){
+    func getProducts(hotel_id: Int, category_id: Int, limit: String?, page: Int, brand: String?){
         struct answerReceive: Codable{
+            var data: [dataReceive]
+            var message: String?
+            var success: Bool
         }
         
         struct dataReceive: Codable{
+            var hotel: hotelType
+            var id: Int
+            var product: productType
+            var quantity: Int
+        }
+        
+        struct hotelType: Codable{
+            var address: String
+            var id: Int
+            var name: String
+        }
+        
+        struct productType: Codable{
+            var brand: String
+            var category_id: Int
+            var id: Int
+            var images: [imagesType]
+            var price: Int
+            var quantity: Int
+            var short_description: String
+            var title: String
+        }
+        
+        struct imagesType: Codable{
+            var front: Bool
+            var url: String
         }
         let semaphore = DispatchSemaphore (value: 0)
-        var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/product?hotel_id=\(hotel_id)&category_id=\(category_id ?? "")&limit=\(limit ?? "")&page=\(page ?? "")&brand=\(brand ?? "")")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/product?hotel_id=\(hotel_id)&category_id=\(category_id)&limit=\(limit ?? "")&page=\(page)&brand=\(brand ?? "")")!,timeoutInterval: Double.infinity)
         
         request.httpMethod = "GET"
         
@@ -77,7 +106,7 @@ class GetProductsService {
                 return
             }
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                let json = try JSONDecoder().decode(answerReceive.self, from: data)
                 print(json)
             } catch {
                 print(error)
