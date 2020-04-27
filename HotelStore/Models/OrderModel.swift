@@ -28,5 +28,15 @@ class OrderModel {
     
     var shoppingCart = [Goods(image: "", name: "Oral-B, electric toothbrush Vitality 3D White", count: 1, price: 23), Goods(image: "", name: "Pillow", count: 3, price: 14)]
     
+    struct Category{
+        var id: Int
+        var name: String
+        var sub_categoryes: [Category]
+    }
+    
+    var categories = [Category]()
+    var addCategory = Category(id: 0, name: "", sub_categoryes: [])
+    var addSubcategory = Category(id: 0, name: "", sub_categoryes: [])
+    
     static let sharedData = OrderModel()
 }

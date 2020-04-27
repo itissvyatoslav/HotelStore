@@ -1,5 +1,5 @@
 //
-//  GetCategoryService.swift
+//  getHotelsService.swift
 //  HotelStore
 //
 //  Created by Svyatoslav Vladimirovich on 20.04.2020.
@@ -8,27 +8,16 @@
 
 import Foundation
 
-class GetCategoryService {
-    func getGer(){
+class GetHotelsService{
+    func getHotels(){
         
         struct answerReceive: Codable{
-            var status: Int
-            var data: [dataReceive]
         }
         
         struct dataReceive: Codable{
-            var id: String
-            var device_name: String
-            var description: String
-            var cost: String
-            var installment_plan: String?
-            var installment_cost: String?
-            var device_img: String
-            var order_descr: String
-            var order_descr_installment: String
         }
         let semaphore = DispatchSemaphore (value: 0)
-        var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/category")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/hotel?sort=name&page=1&limit=50")!,timeoutInterval: Double.infinity)
         
         request.httpMethod = "GET"
         

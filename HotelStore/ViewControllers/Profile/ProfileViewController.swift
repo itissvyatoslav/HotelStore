@@ -11,6 +11,7 @@ import UIKit
 import MessageUI
 
 class ProfileViewController: UIViewController{
+    let network = GetProductsService()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -19,6 +20,11 @@ class ProfileViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setViews()
+        network.getCategories()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     private func setViews(){

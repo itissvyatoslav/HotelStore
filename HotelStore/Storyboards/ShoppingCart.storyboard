@@ -94,6 +94,9 @@
                         <viewLayoutGuide key="safeArea" id="vkv-pi-qWW"/>
                     </view>
                     <navigationItem key="navigationItem" id="Acc-Eo-9O4"/>
+                    <connections>
+                        <outlet property="shoppingCartTable" destination="s6m-Bh-D1B" id="IxJ-1n-Hds"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMd-BA-z9V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
