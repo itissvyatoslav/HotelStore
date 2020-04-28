@@ -98,8 +98,8 @@
                             <action selector="plusAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pe3-rY-duP"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Gs-us-OIk">
-                        <rect key="frame" x="174" y="68" width="146" height="42"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Gs-us-OIk">
+                        <rect key="frame" x="139" y="151" width="146" height="42"/>
                         <color key="backgroundColor" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="42" id="UhP-VN-bid"/>

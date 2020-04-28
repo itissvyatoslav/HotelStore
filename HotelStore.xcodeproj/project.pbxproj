@@ -34,6 +34,7 @@
 		EBCDBBDB2441B30C008129A5 /* Catalog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBCDBBDA2441B30C008129A5 /* Catalog.storyboard */; };
 		EBF19C2224582E5400F174CE /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF19C2024582E5400F174CE /* ProductTableViewCell.swift */; };
 		EBF19C2324582E5400F174CE /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */; };
+		EBF19C2524587ACF00F174CE /* ProductPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF19C2424587ACF00F174CE /* ProductPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		EBCDBBDA2441B30C008129A5 /* Catalog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Catalog.storyboard; sourceTree = "<group>"; };
 		EBF19C2024582E5400F174CE /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
+		EBF19C2424587ACF00F174CE /* ProductPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				EBCDBBC92440B995008129A5 /* CatalogViewController.swift */,
 				EB12C6B92455CF4D000C3301 /* SubCatalogViewController.swift */,
 				EB12C6BB24569EC7000C3301 /* ProductsViewController.swift */,
+				EBF19C2424587ACF00F174CE /* ProductPageViewController.swift */,
 			);
 			path = Catalog;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBCDBBCC2440B9B9008129A5 /* ShoppingCartViewController.swift in Sources */,
+				EBF19C2524587ACF00F174CE /* ProductPageViewController.swift in Sources */,
 				EB12C6BC24569EC7000C3301 /* ProductsViewController.swift in Sources */,
 				EB87E8252444B01600D79D26 /* LastViewController.swift in Sources */,
 				EB87E8282444B91B00D79D26 /* DataModel.swift in Sources */,

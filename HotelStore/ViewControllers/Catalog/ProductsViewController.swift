@@ -20,8 +20,12 @@ class ProductsViewController: UIViewController{
     @IBOutlet weak var downButton: UIButton!
     
     @IBAction func upButtonAction(_ sender: Any) {
+        model.products.sort {$0.price < $1.price}
+        productsTable.reloadData()
     }
     @IBAction func downButtonAction(_ sender: Any) {
+        model.products.sort {$0.price > $1.price}
+        productsTable.reloadData()
     }
     
     
@@ -65,4 +69,11 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource{
         return 221
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if #available(iOS 13.0, *) {
+            let vc = storyboard?.instantiateViewController(identifier: "ProductPageVC") as! ProductPageViewController
+            vc.number = indexPath.row
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }

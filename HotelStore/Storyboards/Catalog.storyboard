@@ -152,7 +152,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1F-dH-eAQ">
-                                <rect key="frame" x="341" y="66" width="20" height="10"/>
+                                <rect key="frame" x="335" y="66" width="20" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="MSj-R2-IDP"/>
                                     <constraint firstAttribute="height" constant="10" id="XlM-X6-IHd"/>
@@ -184,8 +184,8 @@
                             <constraint firstItem="fhb-zx-bae" firstAttribute="top" secondItem="r2T-Y9-o7M" secondAttribute="top" constant="3" id="PUp-IA-Fk4"/>
                             <constraint firstItem="r2T-Y9-o7M" firstAttribute="bottom" secondItem="GQF-F6-NHt" secondAttribute="bottom" id="b5g-Tq-Nay"/>
                             <constraint firstItem="fhb-zx-bae" firstAttribute="leading" secondItem="r2T-Y9-o7M" secondAttribute="leading" constant="57" id="bLI-Io-kaq"/>
+                            <constraint firstItem="A1F-dH-eAQ" firstAttribute="leading" secondItem="e6p-fh-1jw" secondAttribute="trailing" constant="59" id="d9X-GU-EyD"/>
                             <constraint firstItem="XqO-us-3oR" firstAttribute="top" secondItem="kFc-qe-M4I" secondAttribute="topMargin" constant="4.5" id="gQL-2V-gbW"/>
-                            <constraint firstItem="r2T-Y9-o7M" firstAttribute="trailing" secondItem="A1F-dH-eAQ" secondAttribute="trailing" constant="53" id="lKN-PW-TXe"/>
                             <constraint firstItem="r2T-Y9-o7M" firstAttribute="trailing" secondItem="GQF-F6-NHt" secondAttribute="trailing" id="oyd-TB-v5g"/>
                             <constraint firstItem="e6p-fh-1jw" firstAttribute="top" secondItem="r2T-Y9-o7M" secondAttribute="top" constant="4.5" id="rMI-ca-0To"/>
                             <constraint firstItem="Yrt-fd-tHo" firstAttribute="leading" secondItem="XqO-us-3oR" secondAttribute="trailing" constant="59.5" id="zSY-u7-dKK"/>
@@ -201,6 +201,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDH-JY-QgT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1821.7391304347827" y="97.767857142857139"/>
+        </scene>
+        <!--Product Page View Controller-->
+        <scene sceneID="n9h-wn-7tH">
+            <objects>
+                <viewController restorationIdentifier="ProductPageVC" storyboardIdentifier="ProductPageVC" id="mMK-1I-XV4" customClass="ProductPageViewController" customModule="HotelStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lQK-ns-KdN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="iwD-3S-s3y"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oB9-0V-uoZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2622" y="96"/>
         </scene>
     </scenes>
     <resources>
