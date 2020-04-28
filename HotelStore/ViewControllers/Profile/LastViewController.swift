@@ -27,9 +27,9 @@ class LastViewController: UIViewController {
     
     private func setViews(){
         statusLabel.text = "Processing"
-        orderNumberLabel.text = "\(order.lastOrder[order.lastOrder.count - 1].id)"
-        hotelLabel.text = "\(order.lastOrder[order.lastOrder.count - 1].hotel)"
-        priceLabel.text = "\(order.lastOrder[order.lastOrder.count - 1].totalPrice) S$"
+        orderNumberLabel.text = ""
+        hotelLabel.text = ""
+        priceLabel.text = "S$"
         orderTable.delegate = self
         orderTable.dataSource = self
         self.orderTable.register(UINib(nibName: "ProfileLastOrderCells", bundle: nil), forCellReuseIdentifier: "ProfileLastOrderCells")
@@ -39,7 +39,7 @@ class LastViewController: UIViewController {
 
 extension LastViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return order.lastOrder[order.lastOrder.count - 1].goods.count
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

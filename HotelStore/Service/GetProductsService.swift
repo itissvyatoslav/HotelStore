@@ -107,7 +107,21 @@ class GetProductsService {
             }
             do {
                 let json = try JSONDecoder().decode(answerReceive.self, from: data)
-                print(json)
+                self.model.products.removeAll()
+                for number in 0..<json.data.count{
+                    self.model.addProduct.name = json.data[number].product.title
+                    self.model.addProduct.price = json.data[number].product.price
+                    self.model.addProduct.count = json.data[number].quantity
+                    self.model.addProduct.short_description = json.data[number].product.short_description
+                    self.model.addProduct.images.removeAll()
+                    for subNumber in 0..<json.data[number].product.images.count{
+                        self.model.addImage.front = json.data[number].product.images[subNumber].front
+                        self.model.addImage.url = json.data[number].product.images[subNumber].url
+                        self.model.addProduct.images.append(self.model.addImage)
+                    }
+                    self.model.products.append(self.model.addProduct)
+                }
+                
             } catch {
                 print(error)
             }

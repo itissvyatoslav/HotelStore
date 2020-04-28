@@ -27,6 +27,8 @@ class ProductsViewController: UIViewController{
     
     override func viewDidLoad() {
         network.getProducts(hotel_id: 5, category_id: category_id, limit: "50", page: 1, brand: "")
+        //productsTable.register(UINib(nibName: "ProductMiniCell", bundle: nil), forCellReuseIdentifier: "ProductMiniCell")
+        self.registerTableViewCells()
         setView()
     }
     
@@ -35,17 +37,32 @@ class ProductsViewController: UIViewController{
         productsTable.dataSource = self
         productsTable.tableFooterView = UIView(frame: .zero)
     }
+    
+    private func registerTableViewCells() {
+        let textFieldCell = UINib(nibName: "ProductTableViewCell",
+                                  bundle: nil)
+        self.productsTable.register(textFieldCell,
+                                forCellReuseIdentifier: "ProductTableViewCell")
+    }
 }
 
 extension ProductsViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return model.products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell1")
-        return cell
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "ProductMiniCell") as! ProductMiniCell
+        //cell.setView(indexPath.row)
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell") as? ProductTableViewCell {
+            cell.setView(indexPath.row)
+            return cell
+        }
+        return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 221
+    }
     
 }

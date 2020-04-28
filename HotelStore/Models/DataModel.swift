@@ -18,19 +18,21 @@ class DataModel {
     }
     
     struct GoodsType {
-        var images: [imagesType]
+        var images: [ImagesType]
         var name: String
         var count: Int
         var price: Int
         var short_description: String
     }
     
-    struct imagesType{
+    struct ImagesType{
         var front: Bool
         var url: String
     }
     
     var products = [GoodsType]()
+    var addProduct = GoodsType(images: [], name: "", count: 0, price: 0, short_description: "")
+    var addImage = ImagesType(front: false, url: "")
     
     struct Category{
         var id: Int

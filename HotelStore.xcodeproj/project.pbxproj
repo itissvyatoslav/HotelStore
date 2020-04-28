@@ -32,6 +32,8 @@
 		EBCDBBD72441B2D0008129A5 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBCDBBD62441B2D0008129A5 /* Profile.storyboard */; };
 		EBCDBBD92441B301008129A5 /* ShoppingCart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBCDBBD82441B301008129A5 /* ShoppingCart.storyboard */; };
 		EBCDBBDB2441B30C008129A5 /* Catalog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBCDBBDA2441B30C008129A5 /* Catalog.storyboard */; };
+		EBF19C2224582E5400F174CE /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF19C2024582E5400F174CE /* ProductTableViewCell.swift */; };
+		EBF19C2324582E5400F174CE /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		EBCDBBD62441B2D0008129A5 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		EBCDBBD82441B301008129A5 /* ShoppingCart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShoppingCart.storyboard; sourceTree = "<group>"; };
 		EBCDBBDA2441B30C008129A5 /* Catalog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Catalog.storyboard; sourceTree = "<group>"; };
+		EBF19C2024582E5400F174CE /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,8 @@
 				EB87E82F244575DD00D79D26 /* ProfileLastOrderCells.xib */,
 				EBADC45824489E49006E60DB /* ShoppingCartCell.swift */,
 				EBADC45924489E49006E60DB /* ShoppingCartCell.xib */,
+				EBF19C2024582E5400F174CE /* ProductTableViewCell.swift */,
+				EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -253,6 +259,7 @@
 				EBCDBBBE2440A774008129A5 /* Assets.xcassets in Resources */,
 				EBCDBBD72441B2D0008129A5 /* Profile.storyboard in Resources */,
 				EBCDBBBC2440A76C008129A5 /* Main.storyboard in Resources */,
+				EBF19C2324582E5400F174CE /* ProductTableViewCell.xib in Resources */,
 				EBADC45B24489E49006E60DB /* ShoppingCartCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +282,7 @@
 				EBCDBBCE2440B9CD008129A5 /* ProfileViewController.swift in Sources */,
 				EB87E830244575DD00D79D26 /* ProfileLastOrderCells.swift in Sources */,
 				EB4D6C29244DD55000AB321C /* DevelopInfoViewController.swift in Sources */,
+				EBF19C2224582E5400F174CE /* ProductTableViewCell.swift in Sources */,
 				EB4D6C2B244DED5B00AB321C /* GetHotelsService.swift in Sources */,
 				EBADC45A24489E49006E60DB /* ShoppingCartCell.swift in Sources */,
 				EB4D6C23244D604D00AB321C /* GetProductsService.swift in Sources */,

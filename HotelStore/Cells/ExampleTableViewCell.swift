@@ -1,18 +1,15 @@
 //
-//  ProfileLastOrderCells.swift
+//  ExampleTableViewCell.swift
 //  HotelStore
 //
-//  Created by Svyatoslav Vladimirovich on 14.04.2020.
+//  Created by Svyatoslav Vladimirovich on 28.04.2020.
 //  Copyright © 2020 Svyatoslav Vladimirovich. All rights reserved.
 //
 
 import UIKit
 
-class ProfileLastOrderCells: UITableViewCell {
-    let order = DataModel.sharedData
+class ExampleTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var countLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,12 +19,6 @@ class ProfileLastOrderCells: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    func setView(number: Int){
-        nameLabel.text = ""
-        nameLabel.sizeToFit()
-        countLabel.text = ""
     }
     
 }
