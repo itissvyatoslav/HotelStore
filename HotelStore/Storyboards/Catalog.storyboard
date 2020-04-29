@@ -250,7 +250,7 @@
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="414" height="263"/>
                                                         <connections>
-                                                            <outlet property="imageView" destination="tt8-0G-kHG" id="Bxv-os-fgv"/>
+                                                            <outlet property="imageView" destination="tt8-0G-kHG" id="tBU-ck-PDd"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
