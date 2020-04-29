@@ -32,7 +32,6 @@ class ProductsViewController: UIViewController{
     
     override func viewDidLoad() {
         network.getProducts(hotel_id: 5, category_id: category_id, limit: "50", page: 1, brand: "")
-        //productsTable.register(UINib(nibName: "ProductMiniCell", bundle: nil), forCellReuseIdentifier: "ProductMiniCell")
         self.registerTableViewCells()
         setView()
     }

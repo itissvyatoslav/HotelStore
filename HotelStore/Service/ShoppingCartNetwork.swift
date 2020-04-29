@@ -67,7 +67,7 @@ class ShoppingCartNetwork{
         semaphore.wait()
     }
     
-    func addProduct(product_id: String, hotel_id: String?) {
+    func addProduct(product_id: Int, hotel_id: Int?) {
         let semaphore = DispatchSemaphore (value: 0)
         guard let url = URL(string: "http://176.119.157.195:8080/app/cart") else {
             print("url error")
@@ -76,14 +76,6 @@ class ShoppingCartNetwork{
         let parametrs = ["product_id": product_id, "hotel_id": hotel_id]
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        
-     //   var postString = parametrs.compactMap{(key, value)-> String in
-     //   return "\"\(key)\":\"\(value ?? "")\""
-     //   }.joined(separator: ", ")
-     //   postString = "{\(postString)}"
-        
-     //   request.httpBody = postString.data(using: .utf8)
-     //   print(postString)
         
         guard let httpBody = try? JSONSerialization.data(withJSONObject: parametrs, options: []) else {
             print("JSON error")

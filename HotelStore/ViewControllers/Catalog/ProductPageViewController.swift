@@ -11,6 +11,7 @@ import UIKit
 
 class ProductPageViewController: UIViewController{
     let model = DataModel.sharedData
+    let network = ShoppingCartNetwork()
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -52,6 +53,8 @@ class ProductPageViewController: UIViewController{
         minusButton.isHidden = false
         plusButton.isHidden = false
         numberLabel.sizeToFit()
+        print(model.products[number].id)
+        network.addProduct(product_id: model.products[number].id, hotel_id: 5)
     }
     
     var currentIndex = 0

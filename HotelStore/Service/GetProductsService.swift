@@ -110,6 +110,7 @@ class GetProductsService {
                 let json = try JSONDecoder().decode(answerReceive.self, from: data)
                 self.model.products.removeAll()
                 for number in 0..<json.data.count{
+                    self.model.addProduct.id = json.data[number].product.id
                     self.model.addProduct.name = json.data[number].product.title
                     self.model.addProduct.price = json.data[number].product.price
                     self.model.addProduct.count = json.data[number].quantity

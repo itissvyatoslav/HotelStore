@@ -18,7 +18,7 @@ class ShoppingCartViewController: UIViewController{
         super.viewDidLoad()
         setViews()
         network.getCart()
-        network.addProduct(product_id: "2", hotel_id: "2")
+        //network.addProduct(product_id: "2", hotel_id: "2")
         network.getCart()
     }
     
