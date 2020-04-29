@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +32,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54T-xQ-wON">
-                        <rect key="frame" x="139" y="80" width="128" height="18"/>
+                        <rect key="frame" x="139" y="80" width="129" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="f5f-vd-cl1"/>
                         </constraints>
@@ -52,13 +50,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAl-pa-D49">
-                        <rect key="frame" x="40" y="153" width="35.5" height="17"/>
+                        <rect key="frame" x="39" y="153" width="35.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTf-pS-hG2">
-                        <rect key="frame" x="115.5" y="158" width="30" height="30"/>
+                        <rect key="frame" x="114.5" y="158" width="30" height="30"/>
                         <color key="backgroundColor" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="sB5-qU-Yh7"/>
@@ -73,7 +71,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrB-Co-JNe">
-                        <rect key="frame" x="152.5" y="159.5" width="25" height="27"/>
+                        <rect key="frame" x="151.5" y="159.5" width="25" height="27"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="BMM-j4-jUc"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27" id="GXM-bC-360"/>
@@ -84,7 +82,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcl-14-vb5">
-                        <rect key="frame" x="184.5" y="158" width="30" height="30"/>
+                        <rect key="frame" x="183.5" y="158" width="30" height="30"/>
                         <color key="backgroundColor" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="Y9f-GL-6E3"/>
@@ -99,7 +97,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Gs-us-OIk">
-                        <rect key="frame" x="139" y="151" width="146" height="42"/>
+                        <rect key="frame" x="139" y="151" width="147" height="42"/>
                         <color key="backgroundColor" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="42" id="UhP-VN-bid"/>
@@ -139,7 +137,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="addButon" destination="2Gs-us-OIk" id="8Op-Jd-bbj"/>
+                <outlet property="addButton" destination="2Gs-us-OIk" id="8Op-Jd-bbj"/>
                 <outlet property="countLabel" destination="GAl-pa-D49" id="O7C-8Z-yao"/>
                 <outlet property="descrLabel" destination="54T-xQ-wON" id="eea-0T-zNL"/>
                 <outlet property="imageProduct" destination="KJI-xh-Dq9" id="2WE-E9-DCz"/>

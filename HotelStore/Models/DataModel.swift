@@ -23,6 +23,7 @@ class DataModel {
         var count: Int
         var price: Int
         var short_description: String
+        var description: String
     }
     
     struct ImagesType{
@@ -31,7 +32,7 @@ class DataModel {
     }
     
     var products = [GoodsType]()
-    var addProduct = GoodsType(images: [], name: "", count: 0, price: 0, short_description: "")
+    var addProduct = GoodsType(images: [], name: "", count: 0, price: 0, short_description: "", description: "")
     var addImage = ImagesType(front: false, url: "")
     
     struct Category{

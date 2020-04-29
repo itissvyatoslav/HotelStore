@@ -21,7 +21,7 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
-    @IBOutlet weak var addButon: UIButton!
+    @IBOutlet weak var addButton: UIButton!
     
     
     @IBAction func minusAction(_ sender: Any) {
@@ -30,7 +30,7 @@ class ProductTableViewCell: UITableViewCell {
             numberLabel.isHidden = true
             minusButton.isHidden = true
             plusButton.isHidden = true
-            addButon.isHidden = false
+            addButton.isHidden = false
         } else {
             numberLabel.text = "\(count)"
             numberLabel.sizeToFit()
@@ -43,7 +43,7 @@ class ProductTableViewCell: UITableViewCell {
     }
     @IBAction func addAction(_ sender: Any) {
         count = 1
-        addButon.isHidden = true
+        addButton.isHidden = true
         numberLabel.isHidden = false
         numberLabel.text = "\(count)"
         minusButton.isHidden = false
@@ -75,13 +75,14 @@ class ProductTableViewCell: UITableViewCell {
             numberLabel.isHidden = true
             minusButton.isHidden = true
             plusButton.isHidden = true
+            addButton.isHidden = true
         } else {
             countLabel.textColor = UIColor(red: 21/255, green: 22/255, blue: 22/255, alpha: 0.5)
             countLabel.text = "\(model.products[number].count) in stock"
             numberLabel.isHidden = true
             minusButton.isHidden = true
             plusButton.isHidden = true
-            addButon.isHidden = false
+            addButton.isHidden = false
         }
         getImage(number)
     }

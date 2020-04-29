@@ -83,6 +83,7 @@ class GetProductsService {
         struct productType: Codable{
             var brand: String
             var category_id: Int
+            var description: String
             var id: Int
             var images: [imagesType]
             var price: Int
@@ -113,6 +114,7 @@ class GetProductsService {
                     self.model.addProduct.price = json.data[number].product.price
                     self.model.addProduct.count = json.data[number].quantity
                     self.model.addProduct.short_description = json.data[number].product.short_description
+                    self.model.addProduct.description = json.data[number].product.description
                     self.model.addProduct.images.removeAll()
                     for subNumber in 0..<json.data[number].product.images.count{
                         self.model.addImage.front = json.data[number].product.images[subNumber].front
@@ -121,7 +123,6 @@ class GetProductsService {
                     }
                     self.model.products.append(self.model.addProduct)
                 }
-                
             } catch {
                 print(error)
             }

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class ProductsViewController: UIViewController{
+    var images = [UIImage]()
     let model = DataModel.sharedData
     let network = GetProductsService()
     var category_id = 0
@@ -51,6 +52,24 @@ class ProductsViewController: UIViewController{
         self.productsTable.register(textFieldCell,
                                 forCellReuseIdentifier: "ProductTableViewCell")
     }
+    
+    private func getImages(_ number: Int){
+        let semaphore = DispatchSemaphore (value: 0)
+        for subNumber in 0..<model.products[number].images.count{
+            if let url = URL(string: "http://176.119.157.195:8080/\(model.products[number].images[subNumber].url)"){
+                do {
+                    print(subNumber)
+                    let data = try Data(contentsOf: url)
+                    images.append(UIImage(data: data)!)
+                } catch let err {
+                    print("Error: \(err.localizedDescription)")
+                }
+                
+            }
+            semaphore.signal()
+        }
+        semaphore.wait()
+    }
 }
 
 extension ProductsViewController: UITableViewDelegate, UITableViewDataSource{
@@ -75,7 +94,9 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if #available(iOS 13.0, *) {
             let vc = storyboard?.instantiateViewController(identifier: "ProductPageVC") as! ProductPageViewController
+            getImages(indexPath.item)
             vc.number = indexPath.row
+            vc.images = images
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
