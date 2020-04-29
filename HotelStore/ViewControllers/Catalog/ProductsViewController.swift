@@ -35,6 +35,9 @@ class ProductsViewController: UIViewController{
         self.registerTableViewCells()
         setView()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        productsTable.reloadData()
+    }
     
     private func setView(){
         productsTable.delegate = self

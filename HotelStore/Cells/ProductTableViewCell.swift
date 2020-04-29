@@ -81,6 +81,7 @@ class ProductTableViewCell: UITableViewCell {
             numberLabel.isHidden = true
             minusButton.isHidden = true
             plusButton.isHidden = true
+            addButon.isHidden = false
         }
         getImage(number)
     }
