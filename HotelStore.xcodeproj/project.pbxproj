@@ -35,7 +35,7 @@
 		EBF19C2224582E5400F174CE /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF19C2024582E5400F174CE /* ProductTableViewCell.swift */; };
 		EBF19C2324582E5400F174CE /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */; };
 		EBF19C2524587ACF00F174CE /* ProductPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF19C2424587ACF00F174CE /* ProductPageViewController.swift */; };
-		EBF19C6B2459C2A100F174CE /* SlideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF19C6A2459C2A100F174CE /* SlideCell.swift */; };
+		EBF19C6D245A978B00F174CE /* SlideImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF19C6C245A978B00F174CE /* SlideImageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,7 +69,7 @@
 		EBF19C2024582E5400F174CE /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
 		EBF19C2424587ACF00F174CE /* ProductPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPageViewController.swift; sourceTree = "<group>"; };
-		EBF19C6A2459C2A100F174CE /* SlideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideCell.swift; sourceTree = "<group>"; };
+		EBF19C6C245A978B00F174CE /* SlideImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideImageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 				EBADC45924489E49006E60DB /* ShoppingCartCell.xib */,
 				EBF19C2024582E5400F174CE /* ProductTableViewCell.swift */,
 				EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */,
-				EBF19C6A2459C2A100F174CE /* SlideCell.swift */,
+				EBF19C6C245A978B00F174CE /* SlideImageCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -280,11 +280,11 @@
 				EBCDBBCC2440B9B9008129A5 /* ShoppingCartViewController.swift in Sources */,
 				EBF19C2524587ACF00F174CE /* ProductPageViewController.swift in Sources */,
 				EB12C6BC24569EC7000C3301 /* ProductsViewController.swift in Sources */,
+				EBF19C6D245A978B00F174CE /* SlideImageCell.swift in Sources */,
 				EB87E8252444B01600D79D26 /* LastViewController.swift in Sources */,
 				EB87E8282444B91B00D79D26 /* DataModel.swift in Sources */,
 				EB4D6C27244DD47200AB321C /* AgreementViewController.swift in Sources */,
 				EB87E8102443179C00D79D26 /* UserInfoViewController.swift in Sources */,
-				EBF19C6B2459C2A100F174CE /* SlideCell.swift in Sources */,
 				EB4D6C2D244DEF2500AB321C /* ShoppingCartNetwork.swift in Sources */,
 				EBCDBBCA2440B995008129A5 /* CatalogViewController.swift in Sources */,
 				EBCDBBCE2440B9CD008129A5 /* ProfileViewController.swift in Sources */,

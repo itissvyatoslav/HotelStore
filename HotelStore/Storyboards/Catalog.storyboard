@@ -223,14 +223,14 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="250" id="3jS-On-VfF"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kum-Pz-ezg">
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Kum-Pz-ezg">
                                                     <size key="itemSize" width="414" height="263"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ifw-Fi-d6M" customClass="SlideCell" customModule="HotelStore" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="SlideImageCell" reuseIdentifier="SlideImageCell" id="Ifw-Fi-d6M" customClass="SlideImageCell" customModule="HotelStore" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="-6.5" width="414" height="263"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gbZ-0b-l7X">
@@ -242,15 +242,15 @@
                                                                 </imageView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="tt8-0G-kHG" firstAttribute="leading" secondItem="gbZ-0b-l7X" secondAttribute="leading" id="hkX-xn-mEn"/>
-                                                                <constraint firstAttribute="trailing" secondItem="tt8-0G-kHG" secondAttribute="trailing" id="iJ4-Tr-6wL"/>
-                                                                <constraint firstAttribute="bottom" secondItem="tt8-0G-kHG" secondAttribute="bottom" id="mdj-Rs-lMi"/>
-                                                                <constraint firstItem="tt8-0G-kHG" firstAttribute="top" secondItem="gbZ-0b-l7X" secondAttribute="top" id="s2E-YG-pm4"/>
+                                                                <constraint firstItem="tt8-0G-kHG" firstAttribute="leading" secondItem="gbZ-0b-l7X" secondAttribute="leading" constant="5" id="hkX-xn-mEn"/>
+                                                                <constraint firstAttribute="trailing" secondItem="tt8-0G-kHG" secondAttribute="trailing" constant="5" id="iJ4-Tr-6wL"/>
+                                                                <constraint firstAttribute="bottom" secondItem="tt8-0G-kHG" secondAttribute="bottom" constant="5" id="mdj-Rs-lMi"/>
+                                                                <constraint firstItem="tt8-0G-kHG" firstAttribute="top" secondItem="gbZ-0b-l7X" secondAttribute="top" constant="5" id="s2E-YG-pm4"/>
                                                             </constraints>
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="414" height="263"/>
                                                         <connections>
-                                                            <outlet property="imageView" destination="tt8-0G-kHG" id="SvR-qi-aMZ"/>
+                                                            <outlet property="imageView" destination="tt8-0G-kHG" id="1O7-ad-NF7"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>

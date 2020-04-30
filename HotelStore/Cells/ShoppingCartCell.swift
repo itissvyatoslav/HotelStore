@@ -9,7 +9,7 @@
 import UIKit
 
 class ShoppingCartCell: UITableViewCell {
-    let cart = DataModel.sharedData
+    let model = DataModel.sharedData
     
     @IBOutlet weak var imageProduct: UIImageView!
     @IBOutlet weak var nameProduct: UILabel!
@@ -38,6 +38,9 @@ class ShoppingCartCell: UITableViewCell {
     }
     
     func setCell(_ number: Int){
+        nameProduct.text = model.shopCart[number].name
+        countProduct.text = "\(model.shopCart[number].count)"
+        priceProduct.text = "\(model.shopCart[number].price)"
         
         
     }

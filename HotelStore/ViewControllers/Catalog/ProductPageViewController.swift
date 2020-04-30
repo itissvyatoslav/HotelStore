@@ -55,6 +55,7 @@ class ProductPageViewController: UIViewController{
         numberLabel.sizeToFit()
         print(model.products[number].id)
         network.addProduct(product_id: model.products[number].id, hotel_id: 5)
+        model.shopCart.append(model.products[number])
     }
     
     var currentIndex = 0
@@ -68,7 +69,7 @@ class ProductPageViewController: UIViewController{
     }
     
     private func setView(){
-        collectionView.register(SlideCell.self, forCellWithReuseIdentifier: "SlideCell")
+        collectionView.register(SlideImageCell.self, forCellWithReuseIdentifier: "SlideImageCell")
         collectionView.delegate = self
         collectionView.dataSource = self
         pageControl.numberOfPages = images.count
@@ -102,8 +103,9 @@ extension ProductPageViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SlideCell", for: indexPath) as! SlideCell
-        cell.setCell(images[indexPath.item])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SlideImageCell", for: indexPath) as! SlideImageCell
+        cell.setUp(number, indexPath.item)
+        cell.backgroundColor = .red
         return cell
     }
     

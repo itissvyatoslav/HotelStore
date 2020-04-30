@@ -36,6 +36,8 @@ class DataModel {
     var addProduct = GoodsType(id: 0, images: [], name: "", count: 0, price: 0, short_description: "", description: "")
     var addImage = ImagesType(front: false, url: "")
     
+    var shopCart = [GoodsType]()
+    
     struct Category{
         var id: Int
         var name: String
