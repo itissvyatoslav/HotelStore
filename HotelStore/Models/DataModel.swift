@@ -32,6 +32,11 @@ class DataModel {
         var url: String
     }
     
+    struct HotelType {
+        var name: String
+        var id: Int
+    }
+    
     var products = [GoodsType]()
     var addProduct = GoodsType(id: 0, images: [], name: "", count: 0, price: 0, short_description: "", description: "")
     var addImage = ImagesType(front: false, url: "")

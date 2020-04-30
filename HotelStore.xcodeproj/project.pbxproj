@@ -32,6 +32,9 @@
 		EBCDBBD72441B2D0008129A5 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBCDBBD62441B2D0008129A5 /* Profile.storyboard */; };
 		EBCDBBD92441B301008129A5 /* ShoppingCart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBCDBBD82441B301008129A5 /* ShoppingCart.storyboard */; };
 		EBCDBBDB2441B30C008129A5 /* Catalog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBCDBBDA2441B30C008129A5 /* Catalog.storyboard */; };
+		EBD96D5B245B1F4800C6BECF /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD96D59245B1F4800C6BECF /* ImageCell.swift */; };
+		EBD96D5C245B1F4800C6BECF /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBD96D5A245B1F4800C6BECF /* ImageCell.xib */; };
+		EBD96D5E245B418200C6BECF /* BuyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD96D5D245B418200C6BECF /* BuyInfoViewController.swift */; };
 		EBF19C2224582E5400F174CE /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF19C2024582E5400F174CE /* ProductTableViewCell.swift */; };
 		EBF19C2324582E5400F174CE /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */; };
 		EBF19C2524587ACF00F174CE /* ProductPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF19C2424587ACF00F174CE /* ProductPageViewController.swift */; };
@@ -66,6 +69,9 @@
 		EBCDBBD62441B2D0008129A5 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		EBCDBBD82441B301008129A5 /* ShoppingCart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShoppingCart.storyboard; sourceTree = "<group>"; };
 		EBCDBBDA2441B30C008129A5 /* Catalog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Catalog.storyboard; sourceTree = "<group>"; };
+		EBD96D59245B1F4800C6BECF /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		EBD96D5A245B1F4800C6BECF /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
+		EBD96D5D245B418200C6BECF /* BuyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyInfoViewController.swift; sourceTree = "<group>"; };
 		EBF19C2024582E5400F174CE /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
 		EBF19C2424587ACF00F174CE /* ProductPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPageViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +107,8 @@
 				EBF19C2024582E5400F174CE /* ProductTableViewCell.swift */,
 				EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */,
 				EBF19C6C245A978B00F174CE /* SlideImageCell.swift */,
+				EBD96D59245B1F4800C6BECF /* ImageCell.swift */,
+				EBD96D5A245B1F4800C6BECF /* ImageCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -185,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				EBCDBBCB2440B9B9008129A5 /* ShoppingCartViewController.swift */,
+				EBD96D5D245B418200C6BECF /* BuyInfoViewController.swift */,
 			);
 			path = "Shopping Cart";
 			sourceTree = "<group>";
@@ -261,6 +270,7 @@
 				EBCDBBDB2441B30C008129A5 /* Catalog.storyboard in Resources */,
 				EB87E831244575DD00D79D26 /* ProfileLastOrderCells.xib in Resources */,
 				EBCDBBD92441B301008129A5 /* ShoppingCart.storyboard in Resources */,
+				EBD96D5C245B1F4800C6BECF /* ImageCell.xib in Resources */,
 				EBCDBBC12440A774008129A5 /* LaunchScreen.storyboard in Resources */,
 				EBCDBBBE2440A774008129A5 /* Assets.xcassets in Resources */,
 				EBCDBBD72441B2D0008129A5 /* Profile.storyboard in Resources */,
@@ -282,6 +292,7 @@
 				EB12C6BC24569EC7000C3301 /* ProductsViewController.swift in Sources */,
 				EBF19C6D245A978B00F174CE /* SlideImageCell.swift in Sources */,
 				EB87E8252444B01600D79D26 /* LastViewController.swift in Sources */,
+				EBD96D5B245B1F4800C6BECF /* ImageCell.swift in Sources */,
 				EB87E8282444B91B00D79D26 /* DataModel.swift in Sources */,
 				EB4D6C27244DD47200AB321C /* AgreementViewController.swift in Sources */,
 				EB87E8102443179C00D79D26 /* UserInfoViewController.swift in Sources */,
@@ -297,6 +308,7 @@
 				EB12C6BA2455CF4D000C3301 /* SubCatalogViewController.swift in Sources */,
 				EBCDBBB52440A76C008129A5 /* AppDelegate.swift in Sources */,
 				EBCDBBB72440A76C008129A5 /* SceneDelegate.swift in Sources */,
+				EBD96D5E245B418200C6BECF /* BuyInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

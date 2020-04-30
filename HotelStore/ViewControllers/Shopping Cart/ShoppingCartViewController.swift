@@ -13,7 +13,9 @@ class ShoppingCartViewController: UIViewController{
     let network = ShoppingCartNetwork()
     let model = DataModel.sharedData
     
+    
     @IBOutlet weak var shoppingCartTable: UITableView!
+    @IBOutlet weak var priceLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,7 @@ class ShoppingCartViewController: UIViewController{
     }
     
     private func setViews(){
+        setGlobalPrice()
         shoppingCartTable.reloadData()
         self.navigationItem.title = "Shopping cart"
         self.tabBarItem.title = "Shopping cart"
@@ -37,6 +40,14 @@ class ShoppingCartViewController: UIViewController{
                                   bundle: nil)
         self.shoppingCartTable.register(shoppingCell,
                                 forCellReuseIdentifier: "ShoppingCartCell")
+    }
+    
+    private func setGlobalPrice(){
+        var summ = 0
+        for number in 0..<model.shopCart.count{
+            summ = summ + model.shopCart[number].price
+        }
+        priceLabel.text = "\(summ)S$"
     }
 }
 

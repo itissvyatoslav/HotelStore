@@ -830,6 +830,7 @@
                         <viewLayoutGuide key="safeArea" id="vWP-nw-U67"/>
                     </view>
                     <navigationItem key="navigationItem" id="eIm-qD-9Fc"/>
+                    <size key="freeformSize" width="414" height="896"/>
                     <connections>
                         <outlet property="infoLabel" destination="VOI-Z5-Jjg" id="Qav-o0-Ac7"/>
                     </connections>
