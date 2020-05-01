@@ -10,8 +10,10 @@ import Foundation
 import UIKit
 
 class DevelopInfoViewController: UIViewController{
+    @IBOutlet weak var SoftwareCompany: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     override func viewDidLoad() {
         infoLabel.text = "Create mobile apps on Android and iOS platforms, different web apps, websites.\nWe adapt to your tasks and deadlines."
+        SoftwareCompany.sizeToFit()
     }
 }

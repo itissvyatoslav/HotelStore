@@ -69,6 +69,7 @@ class ProductPageViewController: UIViewController{
     }
     
     private func setView(){
+        self.navigationItem.backBarButtonItem?.title = ""
         collectionView.register(SlideImageCell.self, forCellWithReuseIdentifier: SlideImageCell.reuseId)
         collectionView.delegate = self
         collectionView.dataSource = self
