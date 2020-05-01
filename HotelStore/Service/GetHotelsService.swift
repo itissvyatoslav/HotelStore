@@ -57,7 +57,6 @@ class GetHotelsService{
                     self.model.addHotel.lat = json.data[number].location.lat
                     self.model.hotels.append(self.model.addHotel)
                 }
-                print(json)
             } catch {
                 print(error)
             }

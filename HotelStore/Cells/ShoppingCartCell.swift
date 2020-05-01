@@ -41,8 +41,6 @@ class ShoppingCartCell: UITableViewCell {
         nameProduct.text = model.shopCart[number].name
         countProduct.text = "\(model.shopCart[number].count)"
         priceProduct.text = "\(model.shopCart[number].price)"
-        
-        
     }
     
 }

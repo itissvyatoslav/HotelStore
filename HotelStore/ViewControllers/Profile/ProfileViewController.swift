@@ -40,6 +40,7 @@ class ProfileViewController: UIViewController{
     }
     
     private func setViews(){
+        self.navigationItem.backBarButtonItem?.title = ""
         self.tabBarItem.image = UIImage(named: "Vector-10")
         self.tabBarItem.selectedImage = UIImage(named: "Vector-11")
         self.tabBarItem.title = "Profile"

@@ -21,7 +21,8 @@ class SubCatalogViewController: UIViewController{
     }
     
     private func setViews(){
-        //self.navigationItem.title = model.currentHotel.name
+        self.navigationItem.backBarButtonItem?.title = ""
+        self.navigationItem.title = model.currentHotel.name
         self.tabBarItem.title = "Catalog"
         catalogTable.delegate = self
         catalogTable.dataSource = self

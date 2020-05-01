@@ -40,6 +40,7 @@ class ProductsViewController: UIViewController{
     }
     
     private func setView(){
+        self.navigationItem.backBarButtonItem?.title = ""
         productsTable.delegate = self
         productsTable.dataSource = self
         productsTable.tableFooterView = UIView(frame: .zero)
