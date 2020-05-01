@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileLastOrderCells: UITableViewCell {
-    let order = DataModel.sharedData
+    let model = DataModel.sharedData
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
@@ -25,9 +25,9 @@ class ProfileLastOrderCells: UITableViewCell {
     }
     
     func setView(number: Int){
-        nameLabel.text = ""
+        nameLabel.text = model.lastOrder[number].name
         nameLabel.sizeToFit()
-        countLabel.text = ""
+        countLabel.text = "\(model.lastOrder[number].count)"
     }
     
 }

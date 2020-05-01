@@ -96,7 +96,7 @@ class ProductTableViewCell: UITableViewCell {
                 break
             }
         }
-        //let semaphore = DispatchSemaphore (value: 0)
+        let semaphore = DispatchSemaphore (value: 0)
         if let url = URL(string: "http://176.119.157.195:8080/\(model.products[number].images[subNumber].url)"){
             do {
                 let data = try Data(contentsOf: url)
@@ -104,8 +104,8 @@ class ProductTableViewCell: UITableViewCell {
             } catch let err {
                 print("Error: \(err.localizedDescription)")
             }
-            //semaphore.signal()
+            semaphore.signal()
         }
-        //semaphore.wait()
+        semaphore.wait()
     }
 }

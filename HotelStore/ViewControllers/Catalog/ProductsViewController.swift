@@ -77,8 +77,6 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "ProductMiniCell") as! ProductMiniCell
-        //cell.setView(indexPath.row)
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell") as? ProductTableViewCell {
             cell.setView(indexPath.row)
             return cell

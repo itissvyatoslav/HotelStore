@@ -19,11 +19,13 @@ class UserInfoViewController: UIViewController{
     }
     private func setViews(){
         infoLabel.text = "Choose, which data\nwill be available to the system"
-        nameTextField.text = "Name"
-        emailTextField.text = "Email"
+        nameTextField.text = DataModel.sharedData.name
+        emailTextField.text = DataModel.sharedData.email
     }
     
     @IBAction func saveAction(_ sender: Any) {
+        DataModel.sharedData.name = nameTextField.text ?? DataModel.sharedData.name
+        DataModel.sharedData.email = emailTextField.text ?? DataModel.sharedData.email
         navigationController?.popViewController(animated: true)
     }
     

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class LastViewController: UIViewController {
-    let order = DataModel.sharedData
+    let network = UserService()
     
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var orderNumberLabel: UILabel!
@@ -19,6 +19,7 @@ class LastViewController: UIViewController {
     @IBOutlet weak var orderTable: UITableView!
     
     override func viewDidLoad() {
+        network.getLastOrder()
         setViews()
     }
 
@@ -26,20 +27,28 @@ class LastViewController: UIViewController {
     }
     
     private func setViews(){
-        statusLabel.text = "Processing"
-        orderNumberLabel.text = ""
-        hotelLabel.text = ""
-        priceLabel.text = "S$"
+        statusLabel.text = DataModel.sharedData.status
+        orderNumberLabel.text = "\(DataModel.sharedData.orderNumber)"
+        hotelLabel.text = DataModel.sharedData.hotelLastOrder
+        setPriceLabel()
         orderTable.delegate = self
         orderTable.dataSource = self
         self.orderTable.register(UINib(nibName: "ProfileLastOrderCells", bundle: nil), forCellReuseIdentifier: "ProfileLastOrderCells")
         orderTable.tableFooterView = UIView()
     }
+    
+    private func setPriceLabel(){
+        var summ: Double = 0
+        for number in 0..<DataModel.sharedData.lastOrder.count{
+            summ = summ + DataModel.sharedData.lastOrder[number].price
+        }
+        priceLabel.text = "\(summ)S$"
+    }
 }
 
 extension LastViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return DataModel.sharedData.lastOrder.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

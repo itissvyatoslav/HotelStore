@@ -76,7 +76,7 @@ class ShoppingCartNetwork{
         let parametrs = ["product_id": product_id, "hotel_id": hotel_id]
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        
+        request.addValue("4b775da95b3f8538e0d87f29e038ec428384b81d", forHTTPHeaderField: "token")
         guard let httpBody = try? JSONSerialization.data(withJSONObject: parametrs, options: []) else {
             print("JSON error")
             return

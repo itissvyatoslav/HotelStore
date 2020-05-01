@@ -69,8 +69,7 @@ class ProductPageViewController: UIViewController{
     }
     
     private func setView(){
-       // collectionView.register(SlideImageCell.self, forCellWithReuseIdentifier: SlideImageCell.reuseId)
-        collectionView.register(ImageCell.self, forCellWithReuseIdentifier: "ImageCell")
+        collectionView.register(SlideImageCell.self, forCellWithReuseIdentifier: SlideImageCell.reuseId)
         collectionView.delegate = self
         collectionView.dataSource = self
         pageControl.numberOfPages = images.count
@@ -104,9 +103,8 @@ extension ProductPageViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell" /*SlideImageCell.reuseId*/, for: indexPath) as! ImageCell//SlideImageCell
-        cell.imageView.image = images[indexPath.item]
-        //cell.mainImageView.image = images[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SlideImageCell.reuseId, for: indexPath) as! SlideImageCell
+        cell.mainImageView.image = images[indexPath.row]
         return cell
     }
     

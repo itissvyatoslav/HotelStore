@@ -31,6 +31,7 @@ class GetProductsService {
         var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/category")!,timeoutInterval: Double.infinity)
         
         request.httpMethod = "GET"
+        request.addValue("4b775da95b3f8538e0d87f29e038ec428384b81d", forHTTPHeaderField: "token")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
@@ -100,6 +101,7 @@ class GetProductsService {
         var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/product?hotel_id=\(hotel_id)&category_id=\(category_id)&limit=\(limit ?? "")&page=\(page)&brand=\(brand ?? "")")!,timeoutInterval: Double.infinity)
         
         request.httpMethod = "GET"
+        request.addValue("4b775da95b3f8538e0d87f29e038ec428384b81d", forHTTPHeaderField: "token")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {

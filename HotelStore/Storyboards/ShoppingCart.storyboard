@@ -106,10 +106,10 @@
             </objects>
             <point key="canvasLocation" x="1372" y="-380"/>
         </scene>
-        <!--View Controller-->
+        <!--Buy Info View Controller-->
         <scene sceneID="Wet-61-Uax">
             <objects>
-                <viewController id="Rra-zu-uyU" sceneMemberID="viewController">
+                <viewController id="Rra-zu-uyU" customClass="BuyInfoViewController" customModule="HotelStore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C8f-kf-ItH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,6 +131,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="nameTextField:" destination="nMx-5k-cnX" eventType="editingDidEnd" id="7yE-J9-FcD"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOTEL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grB-uE-9jc">
                                 <rect key="frame" x="26" y="171" width="277" height="30"/>
@@ -203,6 +206,9 @@
                                 <state key="normal" title="Pay">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="payAction:" destination="Rra-zu-uyU" eventType="touchUpInside" id="61N-Mb-hqj"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -239,8 +245,15 @@
                         <viewLayoutGuide key="safeArea" id="N6a-cF-brd"/>
                     </view>
                     <navigationItem key="navigationItem" id="FEk-kj-fO0"/>
+                    <connections>
+                        <outlet property="commentTextView" destination="TiR-Vg-nUa" id="0Pz-mn-4lR"/>
+                        <outlet property="hotelLabel" destination="rqN-T7-9Hk" id="07q-tX-QM3"/>
+                        <outlet property="nameTextField" destination="qdj-17-hAV" id="XYM-it-PiM"/>
+                        <outlet property="roomNumberTextField" destination="Qy4-gu-Tg1" id="jK1-N5-uIt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgg-g4-aQr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="nMx-5k-cnX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2113" y="-384"/>
         </scene>

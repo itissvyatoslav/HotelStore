@@ -13,6 +13,14 @@ class CatalogViewController: UIViewController{
     let network = GetProductsService()
     let model = DataModel.sharedData
 
+    @IBAction func HotelListAction(_ sender: Any) {
+        if #available(iOS 13.0, *) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "HotelListVC") as! HotelListViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     @IBOutlet weak var catalogTable: UITableView!
     
     override func viewDidLoad() {
@@ -21,8 +29,11 @@ class CatalogViewController: UIViewController{
         setViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.title =  model.currentHotel.name
+    }
+    
     private func setViews(){
-        self.navigationItem.title = "Current Hotel"
         self.tabBarItem.title = "Catalog"
         catalogTable.delegate = self
         catalogTable.dataSource = self

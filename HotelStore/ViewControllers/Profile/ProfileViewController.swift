@@ -11,9 +11,19 @@ import UIKit
 import MessageUI
 
 class ProfileViewController: UIViewController{
+    let model = DataModel.sharedData
     let network = GetProductsService()
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBAction func HotelListAction(_ sender: Any) {
+        if #available(iOS 13.0, *) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "HotelListVC") as! HotelListViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     
     let labels = ["User info", "Last order", "User Agreement", "About the developer"]
     
@@ -24,13 +34,15 @@ class ProfileViewController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        nameLabel.text = DataModel.sharedData.name.uppercased()
+        self.navigationItem.title = model.currentHotel.name
         self.tabBarController?.tabBar.isHidden = false
     }
     
     private func setViews(){
-        self.navigationItem.title = "Current Hotel"
+        self.tabBarItem.image = UIImage(named: "Vector-10")
+        self.tabBarItem.selectedImage = UIImage(named: "Vector-11")
         self.tabBarItem.title = "Profile"
-        //tableView.tableFooterView = UIView()
         self.tabBarController?.tabBar.isHidden = false
         tableView.dataSource = self
         tableView.delegate = self
