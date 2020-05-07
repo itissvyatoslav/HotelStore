@@ -25,7 +25,8 @@ class BuyInfoViewController: UIViewController{
     }
     
     private func setView(){
-        nameTextField.placeholder = model.name
-        hotelLabel.text = model.currentHotel.name
+        nameTextField.text = model.user.firstName
+        hotelLabel.text = model.user.hotel.name
+        roomNumberTextField.text = model.user.roomNumber
     }
 }

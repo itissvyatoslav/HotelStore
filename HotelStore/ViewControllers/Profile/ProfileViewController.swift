@@ -34,15 +34,14 @@ class ProfileViewController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        nameLabel.text = DataModel.sharedData.name.uppercased()
-        self.navigationItem.title = model.currentHotel.name
+        nameLabel.text = DataModel.sharedData.user.firstName.uppercased()
+        self.navigationItem.title = model.user.hotel.name
         self.tabBarController?.tabBar.isHidden = false
     }
     
     private func setViews(){
+        self.tabBarItem.image = UIImage(named: "profileblack")
         self.navigationItem.backBarButtonItem?.title = ""
-        self.tabBarItem.image = UIImage(named: "Vector-10")
-        self.tabBarItem.selectedImage = UIImage(named: "Vector-11")
         self.tabBarItem.title = "Profile"
         self.tabBarController?.tabBar.isHidden = false
         tableView.dataSource = self

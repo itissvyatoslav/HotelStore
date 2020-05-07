@@ -12,7 +12,7 @@
         <scene sceneID="oGF-Ft-aZt">
             <objects>
                 <navigationController id="AUg-fH-3ck" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="Vector-10" selectedImage="Vector-10" id="op0-Td-rFz"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="op0-Td-rFz"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ukK-tx-SVE">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -197,7 +197,7 @@
                         <viewLayoutGuide key="safeArea" id="iOG-MK-kbD"/>
                     </view>
                     <navigationItem key="navigationItem" id="AvB-aa-BjN">
-                        <barButtonItem key="leftBarButtonItem" image="HotelLoc" style="plain" id="nZZ-1f-rH0">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="geo" style="plain" id="nZZ-1f-rH0">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="R2e-Be-lr0">
                                 <rect key="frame" x="20" y="11" width="16" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -861,6 +861,6 @@
     <resources>
         <image name="HotelLoc" width="16" height="21"/>
         <image name="Softweather-logo 1" width="272" height="122"/>
-        <image name="Vector-10" width="32" height="31"/>
+        <image name="geo" width="729" height="993"/>
     </resources>
 </document>

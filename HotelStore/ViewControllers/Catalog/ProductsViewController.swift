@@ -14,7 +14,7 @@ class ProductsViewController: UIViewController{
     let model = DataModel.sharedData
     let network = GetProductsService()
     var category_id = 0
-    
+
     @IBOutlet weak var productsTable: UITableView!
     
     @IBOutlet weak var upButton: UIButton!
@@ -29,9 +29,7 @@ class ProductsViewController: UIViewController{
         productsTable.reloadData()
     }
     
-    
     override func viewDidLoad() {
-        network.getProducts(hotel_id: 5, category_id: category_id, limit: "50", page: 1, brand: "")
         self.registerTableViewCells()
         setView()
     }

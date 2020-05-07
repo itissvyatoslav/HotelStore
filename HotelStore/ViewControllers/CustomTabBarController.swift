@@ -15,6 +15,7 @@ class CustomTabBarController:  UITabBarController, UITabBarControllerDelegate {
     var profileViewController: ProfileViewController!
     
     override func viewDidLoad(){
+        self.navigationController?.isNavigationBarHidden = true
         super.viewDidLoad()
         self.delegate = self
         catalogViewController = CatalogViewController()
@@ -24,7 +25,11 @@ class CustomTabBarController:  UITabBarController, UITabBarControllerDelegate {
     }
     
     private func setImages(){
-        profileViewController.tabBarItem.image = UIImage(named: "Vector-10")
-        profileViewController.tabBarItem.selectedImage = UIImage(named: "Vector-11")
+        profileViewController.tabBarItem.image = UIImage(named: "profileblack")
+        profileViewController.tabBarItem.selectedImage = UIImage(named: "profilered")
+        catalogViewController.tabBarItem.image = UIImage(named: "catalogblack")
+        catalogViewController.tabBarItem.selectedImage = UIImage(named: "catalogred")
+        shoppingCartViewController.tabBarItem.image = UIImage(named: "cartblack")
+        shoppingCartViewController.tabBarItem.selectedImage = UIImage(named: "cartred")
     }
 }

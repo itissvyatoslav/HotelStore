@@ -6,7 +6,7 @@
 //  Copyright © 2020 Svyatoslav Vladimirovich. All rights reserved.
 //
 
-import Foundation
+import CoreLocation
 import UIKit
 
 class HotelListViewController: UIViewController{
@@ -14,6 +14,7 @@ class HotelListViewController: UIViewController{
     let network = GetHotelsService()
     @IBOutlet weak var hotelsTable: UITableView!
     @IBOutlet weak var otherHotelsTable: UITableView!
+    var id = 0
     
     override func viewDidLoad() {
         network.getHotels()
@@ -56,12 +57,19 @@ extension HotelListViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == hotelsTable {
-            model.currentHotel = model.hotels[0]
+            model.user.hotel = model.hotels[0]
         } else {
-            model.currentHotel = model.hotels[indexPath.row + 1]
+            model.user.hotel = model.hotels[indexPath.row + 1]
         }
         
-        navigationController?.popViewController(animated: true)
+        if id == 0 {
+            navigationController?.popViewController(animated: true)
+        } else {
+            if #available(iOS 13.0, *) {
+                let vc = storyboard?.instantiateViewController(identifier: "RoomPickerVC") as! RoomPickerViewController
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
     
 }

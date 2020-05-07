@@ -18,6 +18,10 @@
 		EB60A13C245C274100DFE105 /* HotelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60A13B245C274100DFE105 /* HotelListViewController.swift */; };
 		EB60A13E245C3DAE00DFE105 /* LogUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60A13D245C3DAE00DFE105 /* LogUserService.swift */; };
 		EB60A140245C46FC00DFE105 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60A13F245C46FC00DFE105 /* CustomTabBarController.swift */; };
+		EB60A142245EAE5E00DFE105 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60A141245EAE5E00DFE105 /* ActivityIndicator.swift */; };
+		EB60A1452461786800DFE105 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60A1442461786800DFE105 /* LogInViewController.swift */; };
+		EB60A1472462829900DFE105 /* RoomPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60A1462462829900DFE105 /* RoomPickerViewController.swift */; };
+		EB60A1492462ABA300DFE105 /* FirstAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60A1482462ABA300DFE105 /* FirstAgreementViewController.swift */; };
 		EB87E8102443179C00D79D26 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87E80F2443179C00D79D26 /* UserInfoViewController.swift */; };
 		EB87E8252444B01600D79D26 /* LastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87E8242444B01600D79D26 /* LastViewController.swift */; };
 		EB87E8282444B91B00D79D26 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87E8272444B91B00D79D26 /* DataModel.swift */; };
@@ -55,6 +59,11 @@
 		EB60A13B245C274100DFE105 /* HotelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelListViewController.swift; sourceTree = "<group>"; };
 		EB60A13D245C3DAE00DFE105 /* LogUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogUserService.swift; sourceTree = "<group>"; };
 		EB60A13F245C46FC00DFE105 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		EB60A141245EAE5E00DFE105 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		EB60A1432461768F00DFE105 /* HotelStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HotelStore.entitlements; sourceTree = "<group>"; };
+		EB60A1442461786800DFE105 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		EB60A1462462829900DFE105 /* RoomPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomPickerViewController.swift; sourceTree = "<group>"; };
+		EB60A1482462ABA300DFE105 /* FirstAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAgreementViewController.swift; sourceTree = "<group>"; };
 		EB87E80F2443179C00D79D26 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		EB87E8242444B01600D79D26 /* LastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastViewController.swift; sourceTree = "<group>"; };
 		EB87E8272444B91B00D79D26 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
@@ -123,6 +132,7 @@
 				EB4D6C2C244DEF2500AB321C /* ShoppingCartNetwork.swift */,
 				EB60A139245BF04200DFE105 /* UserService.swift */,
 				EB60A13D245C3DAE00DFE105 /* LogUserService.swift */,
+				EB60A141245EAE5E00DFE105 /* ActivityIndicator.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -146,6 +156,7 @@
 		EBCDBBB32440A76C008129A5 /* HotelStore */ = {
 			isa = PBXGroup;
 			children = (
+				EB60A1432461768F00DFE105 /* HotelStore.entitlements */,
 				EBADC45C2449738C006E60DB /* Service */,
 				EB87E82D244574C800D79D26 /* Cells */,
 				EBCDBBCF244186E4008129A5 /* Storyboards */,
@@ -163,8 +174,11 @@
 		EBCDBBC82440B768008129A5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				EB60A13F245C46FC00DFE105 /* CustomTabBarController.swift */,
+				EB60A1442461786800DFE105 /* LogInViewController.swift */,
 				EB60A13B245C274100DFE105 /* HotelListViewController.swift */,
+				EB60A1462462829900DFE105 /* RoomPickerViewController.swift */,
+				EB60A1482462ABA300DFE105 /* FirstAgreementViewController.swift */,
+				EB60A13F245C46FC00DFE105 /* CustomTabBarController.swift */,
 				EBCDBBDE2441BA3F008129A5 /* Catalog */,
 				EBCDBBDD2441BA37008129A5 /* Shopping Cart */,
 				EBCDBBDC2441BA30008129A5 /* Profile */,
@@ -296,6 +310,8 @@
 				EBF19C2524587ACF00F174CE /* ProductPageViewController.swift in Sources */,
 				EB12C6BC24569EC7000C3301 /* ProductsViewController.swift in Sources */,
 				EBF19C6D245A978B00F174CE /* SlideImageCell.swift in Sources */,
+				EB60A1492462ABA300DFE105 /* FirstAgreementViewController.swift in Sources */,
+				EB60A142245EAE5E00DFE105 /* ActivityIndicator.swift in Sources */,
 				EB87E8252444B01600D79D26 /* LastViewController.swift in Sources */,
 				EB87E8282444B91B00D79D26 /* DataModel.swift in Sources */,
 				EB60A13A245BF04200DFE105 /* UserService.swift in Sources */,
@@ -306,11 +322,13 @@
 				EB60A13C245C274100DFE105 /* HotelListViewController.swift in Sources */,
 				EB60A140245C46FC00DFE105 /* CustomTabBarController.swift in Sources */,
 				EBCDBBCA2440B995008129A5 /* CatalogViewController.swift in Sources */,
+				EB60A1472462829900DFE105 /* RoomPickerViewController.swift in Sources */,
 				EBCDBBCE2440B9CD008129A5 /* ProfileViewController.swift in Sources */,
 				EB87E830244575DD00D79D26 /* ProfileLastOrderCells.swift in Sources */,
 				EB4D6C29244DD55000AB321C /* DevelopInfoViewController.swift in Sources */,
 				EBF19C2224582E5400F174CE /* ProductTableViewCell.swift in Sources */,
 				EB4D6C2B244DED5B00AB321C /* GetHotelsService.swift in Sources */,
+				EB60A1452461786800DFE105 /* LogInViewController.swift in Sources */,
 				EBADC45A24489E49006E60DB /* ShoppingCartCell.swift in Sources */,
 				EB4D6C23244D604D00AB321C /* GetProductsService.swift in Sources */,
 				EB12C6BA2455CF4D000C3301 /* SubCatalogViewController.swift in Sources */,
@@ -460,15 +478,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HotelStore/HotelStore.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NA6VF3HCZ5;
+				DEVELOPMENT_TEAM = 2UW772375M;
 				INFOPLIST_FILE = HotelStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ss.HotelStore;
+				PRODUCT_BUNDLE_IDENTIFIER = HotelStore.SoftWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -479,15 +498,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HotelStore/HotelStore.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NA6VF3HCZ5;
+				DEVELOPMENT_TEAM = 2UW772375M;
 				INFOPLIST_FILE = HotelStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ss.HotelStore;
+				PRODUCT_BUNDLE_IDENTIFIER = HotelStore.SoftWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

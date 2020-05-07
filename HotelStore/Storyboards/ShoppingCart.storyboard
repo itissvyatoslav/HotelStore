@@ -12,7 +12,7 @@
         <scene sceneID="eaQ-ed-jqE">
             <objects>
                 <navigationController id="8aU-ar-NWh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Shopping cart" image="icons8-корзина-100 (1) 1-2" id="jED-wN-Phx"/>
+                    <tabBarItem key="tabBarItem" title="Shopping cart" id="jED-wN-Phx"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RBA-8v-EXt">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -56,8 +56,12 @@
                                 <rect key="frame" x="371" y="95" width="24.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24.5" id="Xnj-lQ-YWm"/>
+                                    <constraint firstAttribute="height" constant="30" id="dvA-8b-IcE"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="Vector-5"/>
+                                <state key="normal" title="Button" image="bin"/>
+                                <connections>
+                                    <action selector="removeCartAction:" destination="7yb-q4-GKg" eventType="touchUpInside" id="mt7-O9-lbB"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s6m-Bh-D1B">
                                 <rect key="frame" x="0.0" y="154" width="414" height="570"/>
@@ -259,8 +263,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Vector-5" width="25" height="30"/>
         <image name="Vector-6" width="16" height="21"/>
-        <image name="icons8-корзина-100 (1) 1-2" width="25" height="26"/>
+        <image name="bin" width="817" height="1000"/>
     </resources>
 </document>

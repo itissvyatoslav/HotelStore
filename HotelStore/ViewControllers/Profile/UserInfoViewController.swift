@@ -14,19 +14,30 @@ class UserInfoViewController: UIViewController{
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
+    var id = 0
+    
     override func viewDidLoad() {
         setViews()
     }
+    
     private func setViews(){
         infoLabel.text = "Choose, which data\nwill be available to the system"
-        nameTextField.text = DataModel.sharedData.name
-        emailTextField.text = DataModel.sharedData.email
+        nameTextField.text = DataModel.sharedData.user.firstName
+        emailTextField.text = DataModel.sharedData.user.email
     }
     
+    @available(iOS 13.0, *)
     @IBAction func saveAction(_ sender: Any) {
-        DataModel.sharedData.name = nameTextField.text ?? DataModel.sharedData.name
-        DataModel.sharedData.email = emailTextField.text ?? DataModel.sharedData.email
-        navigationController?.popViewController(animated: true)
+        DataModel.sharedData.user.firstName = nameTextField.text ?? DataModel.sharedData.user.firstName
+        DataModel.sharedData.user.email = emailTextField.text ?? DataModel.sharedData.user.email
+        if id == 0 {
+            navigationController?.popViewController(animated: true)
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "FirstAgreementVC") as! FirstAgreementViewController
+            vc.navigationItem.hidesBackButton = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 }

@@ -89,4 +89,30 @@ class UserService {
         task.resume()
         semaphore.wait()
     }
+    
+    func getUserInfo(){
+        struct answerReceive: Codable{
+        }
+
+        let semaphore = DispatchSemaphore (value: 0)
+        var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/logined")!,timeoutInterval: Double.infinity)
+        request.httpMethod = "GET"
+        request.addValue("4b775da95b3f8538e0d87f29e038ec428384b81d", forHTTPHeaderField: "token")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                print(String(describing: error))
+                return
+            }
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+            } catch {
+                print(error)
+            }
+            semaphore.signal()
+        }
+        task.resume()
+        semaphore.wait()
+    }
 }

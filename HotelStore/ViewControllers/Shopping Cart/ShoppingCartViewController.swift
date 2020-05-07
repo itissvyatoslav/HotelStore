@@ -17,6 +17,12 @@ class ShoppingCartViewController: UIViewController{
     @IBOutlet weak var shoppingCartTable: UITableView!
     @IBOutlet weak var priceLabel: UILabel!
     
+    @IBAction func removeCartAction(_ sender: Any) {
+        network.removeCart()
+        model.shopCart.removeAll()
+        shoppingCartTable.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setViews()

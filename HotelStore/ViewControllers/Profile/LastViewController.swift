@@ -20,6 +20,7 @@ class LastViewController: UIViewController {
     
     override func viewDidLoad() {
         network.getLastOrder()
+        network.getUserInfo()
         setViews()
     }
 

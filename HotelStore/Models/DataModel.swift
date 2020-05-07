@@ -57,15 +57,23 @@ class DataModel {
         var sub_categoryes: [Category]
     }
     
+    struct User {
+        var id: String
+        var firstName: String
+        var lastName: String
+        var email: String
+        var hotel: HotelType
+        var roomNumber: String
+    }
+    
     var categories = [Category]()
     var addCategory = Category(id: 0, name: "", sub_categoryes: [])
     var addSubcategory = Category(id: 0, name: "", sub_categoryes: [])
     
     var hotels = [HotelType]()
     var addHotel = HotelType(name: "", id: 0, lat: 0, lon: 0)
-    var currentHotel = HotelType(name: "", id: 0, lat: 0, lon: 0)
-    var name: String = "Leyla"
-    var email: String = "@mail.ru"
+    
+    var user = User(id: "", firstName: "Leyla", lastName: "", email: "@mail.ru", hotel: HotelType(name: "", id: 0, lat: 0, lon: 0), roomNumber: "")
     
     
     var lastOrder = [LastOrderGood]()
