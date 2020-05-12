@@ -25,8 +25,10 @@ class ShoppingCartViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.registerTableViewCells()
         setViews()
         network.getCart()
+        print(model.shopCart)
     }
     
     private func setViews(){
@@ -36,7 +38,6 @@ class ShoppingCartViewController: UIViewController{
         self.tabBarItem.title = "Shopping cart"
         shoppingCartTable.tableFooterView = UIView(frame: .zero)
         tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
-        registerTableViewCells()
         shoppingCartTable.delegate = self
         shoppingCartTable.dataSource = self
     }
@@ -49,9 +50,9 @@ class ShoppingCartViewController: UIViewController{
     }
     
     private func setGlobalPrice(){
-        var summ = 0
+        var summ: Double = 0
         for number in 0..<model.shopCart.count{
-            summ = summ + model.shopCart[number].price
+            summ = summ + model.shopCart[number].price * Double(model.shopCart[number].count)
         }
         priceLabel.text = "\(summ)S$"
     }

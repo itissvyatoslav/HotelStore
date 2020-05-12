@@ -9,19 +9,61 @@
 import Foundation
 
 class ShoppingCartNetwork{
+    let model = DataModel.sharedData
+    
     func getCart(){
         
         struct answerReceive: Codable{
+            var data: dataReceive
+            var message: String?
+            var success: Bool
         }
         
         struct dataReceive: Codable{
+            var cart: [cartReceive]
+            var comment: String?
+            var date: String
+            var hotel: hotelReceive
+            var id: Int
+            var room: String
+            var status: String
+            var time: String
+        }
+        
+        struct cartReceive: Codable{
+            var cart_position_id: Int
+            var order: Int
+            var product: productReceive
+            var quantity_cart: Int
+            var quantity_stock: Int
+        }
+        
+        struct productReceive: Codable{
+            var brand: String
+            var category_id: Int
+            var id: Int
+            var images: [imageReceive]
+            var price: Double
+            var short_description: String
+            var title: String
+        }
+        
+        struct imageReceive: Codable{
+            var front: Bool
+            var url: String
+        }
+        
+        struct hotelReceive: Codable{
+            var address: String
+            var id: Int
+            var name: String
         }
         
         let semaphore = DispatchSemaphore (value: 0)
         var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/cart")!,timeoutInterval: Double.infinity)
         
         request.httpMethod = "GET"
-        request.addValue("4b775da95b3f8538e0d87f29e038ec428384b81d", forHTTPHeaderField: "token")
+        request.addValue(DataModel.sharedData.token, forHTTPHeaderField: "token")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
@@ -29,7 +71,22 @@ class ShoppingCartNetwork{
                 return
             }
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                let json = try JSONDecoder().decode(answerReceive.self, from: data)
+                self.model.shopCart.removeAll()
+                for number in 0..<json.data.cart.count{
+                    self.model.addProduct.id = json.data.cart[number].product.id
+                    self.model.addProduct.name = json.data.cart[number].product.title
+                    self.model.addProduct.price = json.data.cart[number].product.price
+                    self.model.addProduct.count = json.data.cart[number].quantity_cart
+                    self.model.addProduct.images.removeAll()
+                    for subNumber in 0..<json.data.cart[number].product.images.count{
+                        if json.data.cart[number].product.images[subNumber].front{
+                            self.model.addImage.url = json.data.cart[number].product.images[subNumber].url
+                            self.model.addProduct.images.append(self.model.addImage)
+                        }
+                    }
+                    self.model.shopCart.append(self.model.addProduct)
+                }
                 print(json)
             } catch {
                 print(error)
@@ -48,7 +105,7 @@ class ShoppingCartNetwork{
         }
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
-        request.addValue("4b775da95b3f8538e0d87f29e038ec428384b81d", forHTTPHeaderField: "token")
+        request.addValue(DataModel.sharedData.token, forHTTPHeaderField: "token")
         
         let session = URLSession.shared
         session.dataTask(with: request){(data, response, error)  in
@@ -79,7 +136,7 @@ class ShoppingCartNetwork{
         let parametrs = ["product_id": product_id, "hotel_id": hotel_id]
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.addValue("4b775da95b3f8538e0d87f29e038ec428384b81d", forHTTPHeaderField: "token")
+        request.addValue(DataModel.sharedData.token, forHTTPHeaderField: "token")
         
         guard let httpBody = try? JSONSerialization.data(withJSONObject: parametrs, options: []) else {
             print("JSON error")

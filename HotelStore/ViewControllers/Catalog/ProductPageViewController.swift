@@ -54,7 +54,7 @@ class ProductPageViewController: UIViewController{
         plusButton.isHidden = false
         numberLabel.sizeToFit()
         print(model.products[number].id)
-        network.addProduct(product_id: model.products[number].id, hotel_id: 5)
+        network.addProduct(product_id: model.products[number].id, hotel_id: model.user.hotel.id)
         model.shopCart.append(model.products[number])
     }
     

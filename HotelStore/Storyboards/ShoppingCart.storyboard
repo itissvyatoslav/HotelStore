@@ -148,15 +148,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Vector-6" translatesAutoresizingMaskIntoConstraints="NO" id="ola-y7-fFM">
-                                <rect key="frame" x="26" y="212" width="16" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="16" id="049-m2-qvf"/>
-                                    <constraint firstAttribute="height" constant="21" id="GnH-rw-XyJ"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqN-T7-9Hk">
-                                <rect key="frame" x="57" y="199" width="276" height="48"/>
+                                <rect key="frame" x="57" y="199" width="331" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="OxE-o3-mhf"/>
                                 </constraints>
@@ -214,6 +207,17 @@
                                     <action selector="payAction:" destination="Rra-zu-uyU" eventType="touchUpInside" id="61N-Mb-hqj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkW-4Q-rH9">
+                                <rect key="frame" x="26" y="212" width="15.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="15.300000000000001" id="L5z-tm-vT1"/>
+                                    <constraint firstAttribute="height" constant="21" id="nUi-M6-qH7"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="geo"/>
+                                <connections>
+                                    <action selector="hotelListAction:" destination="Rra-zu-uyU" eventType="touchUpInside" id="3T0-RA-Tbe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -225,12 +229,10 @@
                             <constraint firstItem="N6a-cF-brd" firstAttribute="bottom" secondItem="tPs-TT-2IM" secondAttribute="bottom" constant="24" id="EZS-NX-Fem"/>
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="grB-uE-9jc" secondAttribute="trailing" constant="111" id="FbS-ps-fQP"/>
                             <constraint firstItem="B0Z-LI-djX" firstAttribute="top" secondItem="rqN-T7-9Hk" secondAttribute="bottom" constant="3" id="Fhb-PU-LCx"/>
-                            <constraint firstItem="ola-y7-fFM" firstAttribute="top" secondItem="grB-uE-9jc" secondAttribute="bottom" constant="11" id="KdK-4w-1FE"/>
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="B0Z-LI-djX" secondAttribute="trailing" constant="111" id="LVF-hU-abY"/>
                             <constraint firstItem="tPs-TT-2IM" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="25" id="MLn-Ax-btO"/>
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="lUB-u2-1eS" secondAttribute="trailing" constant="111" id="Ps2-OG-VHr"/>
-                            <constraint firstItem="ola-y7-fFM" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="26" id="Sl2-uO-bMA"/>
-                            <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="rqN-T7-9Hk" secondAttribute="trailing" constant="81" id="TEv-Tz-Vz3"/>
+                            <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="rqN-T7-9Hk" secondAttribute="trailing" constant="26" id="TEv-Tz-Vz3"/>
                             <constraint firstItem="Qy4-gu-Tg1" firstAttribute="top" secondItem="B0Z-LI-djX" secondAttribute="bottom" constant="1" id="UTX-gs-5FF"/>
                             <constraint firstItem="rqN-T7-9Hk" firstAttribute="top" secondItem="qdj-17-hAV" secondAttribute="bottom" constant="31" id="WgX-Yg-aqX"/>
                             <constraint firstItem="I1m-fV-YTv" firstAttribute="top" secondItem="N6a-cF-brd" secondAttribute="top" constant="4" id="YCS-0c-ONv"/>
@@ -242,9 +244,11 @@
                             <constraint firstItem="grB-uE-9jc" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="26" id="grS-ww-Rgi"/>
                             <constraint firstItem="lUB-u2-1eS" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="26" id="lc1-O7-GYd"/>
                             <constraint firstItem="qdj-17-hAV" firstAttribute="top" secondItem="I1m-fV-YTv" secondAttribute="bottom" constant="1" id="pFj-qr-4oM"/>
+                            <constraint firstItem="jkW-4Q-rH9" firstAttribute="top" secondItem="grB-uE-9jc" secondAttribute="bottom" constant="11" id="scf-jd-SmA"/>
                             <constraint firstItem="qdj-17-hAV" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="26" id="stB-eh-5XO"/>
                             <constraint firstItem="Qy4-gu-Tg1" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="26" id="vI4-o6-pMj"/>
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="Qy4-gu-Tg1" secondAttribute="trailing" constant="26" id="xfb-6B-eO6"/>
+                            <constraint firstItem="jkW-4Q-rH9" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="26" id="yKJ-dX-V3L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N6a-cF-brd"/>
                     </view>
@@ -263,7 +267,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Vector-6" width="16" height="21"/>
         <image name="bin" width="817" height="1000"/>
+        <image name="geo" width="729" height="993"/>
     </resources>
 </document>

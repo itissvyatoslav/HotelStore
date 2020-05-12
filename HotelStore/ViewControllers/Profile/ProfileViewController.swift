@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var hotelListButton: UIBarButtonItem!
     
     @IBAction func HotelListAction(_ sender: Any) {
         if #available(iOS 13.0, *) {
@@ -25,7 +26,7 @@ class ProfileViewController: UIViewController{
         }
     }
     
-    let labels = ["User info", "Last order", "User Agreement", "About the developer"]
+    let labels = ["User info", "Last order", "User Agreement"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class ProfileViewController: UIViewController{
         nameLabel.text = DataModel.sharedData.user.firstName.uppercased()
         self.navigationItem.title = model.user.hotel.name
         self.tabBarController?.tabBar.isHidden = false
+        NSLayoutConstraint.activate([(hotelListButton.customView!.widthAnchor.constraint(equalToConstant: 15.3)),(hotelListButton.customView!.heightAnchor.constraint(equalToConstant: 21))])
     }
     
     private func setViews(){
@@ -46,8 +48,9 @@ class ProfileViewController: UIViewController{
         self.tabBarController?.tabBar.isHidden = false
         tableView.dataSource = self
         tableView.delegate = self
-
+        tableView.tableFooterView = UIView(frame: .zero)
     }
+    
     @IBAction func feedBackAction(_ sender: Any) {
         guard MFMailComposeViewController.canSendMail() else {
             return
@@ -62,7 +65,7 @@ class ProfileViewController: UIViewController{
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -88,12 +91,6 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
         if indexPath.item == 2{
             if #available(iOS 13.0, *) {
                 let vc = storyboard?.instantiateViewController(identifier: "AgreementVC") as! AgreementViewController
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-        }
-        if indexPath.item == 3{
-            if #available(iOS 13.0, *) {
-                let vc = storyboard?.instantiateViewController(identifier: "DevelopInfoVC") as! DevelopInfoViewController
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }

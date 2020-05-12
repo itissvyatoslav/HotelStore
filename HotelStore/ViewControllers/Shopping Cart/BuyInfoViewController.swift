@@ -18,15 +18,25 @@ class BuyInfoViewController: UIViewController{
     @IBOutlet weak var commentTextView: UITextView!
     @IBAction func payAction(_ sender: Any) {
     }
+    @IBAction func hotelListAction(_ sender: Any) {
+        if #available(iOS 13.0, *) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "HotelListVC") as! HotelListViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        hotelLabel.text = model.user.hotel.name
+    }
+    
     private func setView(){
         nameTextField.text = model.user.firstName
-        hotelLabel.text = model.user.hotel.name
         roomNumberTextField.text = model.user.roomNumber
     }
 }

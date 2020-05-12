@@ -22,7 +22,7 @@ class DataModel {
         var images: [ImagesType]
         var name: String
         var count: Int
-        var price: Int
+        var price: Double
         var short_description: String
         var description: String
     }
@@ -74,6 +74,7 @@ class DataModel {
     var addHotel = HotelType(name: "", id: 0, lat: 0, lon: 0)
     
     var user = User(id: "", firstName: "Leyla", lastName: "", email: "@mail.ru", hotel: HotelType(name: "", id: 0, lat: 0, lon: 0), roomNumber: "")
+    var token = "4c28cd9a411caf7af982bd7bedd95ddf46cbf2a7"
     
     
     var lastOrder = [LastOrderGood]()

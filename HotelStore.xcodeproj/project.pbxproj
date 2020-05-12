@@ -11,7 +11,6 @@
 		EB12C6BC24569EC7000C3301 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB12C6BB24569EC7000C3301 /* ProductsViewController.swift */; };
 		EB4D6C23244D604D00AB321C /* GetProductsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4D6C22244D604D00AB321C /* GetProductsService.swift */; };
 		EB4D6C27244DD47200AB321C /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4D6C26244DD47200AB321C /* AgreementViewController.swift */; };
-		EB4D6C29244DD55000AB321C /* DevelopInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4D6C28244DD55000AB321C /* DevelopInfoViewController.swift */; };
 		EB4D6C2B244DED5B00AB321C /* GetHotelsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4D6C2A244DED5B00AB321C /* GetHotelsService.swift */; };
 		EB4D6C2D244DEF2500AB321C /* ShoppingCartNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4D6C2C244DEF2500AB321C /* ShoppingCartNetwork.swift */; };
 		EB60A13A245BF04200DFE105 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60A139245BF04200DFE105 /* UserService.swift */; };
@@ -22,13 +21,13 @@
 		EB60A1452461786800DFE105 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60A1442461786800DFE105 /* LogInViewController.swift */; };
 		EB60A1472462829900DFE105 /* RoomPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60A1462462829900DFE105 /* RoomPickerViewController.swift */; };
 		EB60A1492462ABA300DFE105 /* FirstAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60A1482462ABA300DFE105 /* FirstAgreementViewController.swift */; };
+		EB60A14C246AB22D00DFE105 /* ShoppingCartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60A14A246AB22D00DFE105 /* ShoppingCartCell.swift */; };
+		EB60A14D246AB22D00DFE105 /* ShoppingCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB60A14B246AB22D00DFE105 /* ShoppingCartCell.xib */; };
 		EB87E8102443179C00D79D26 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87E80F2443179C00D79D26 /* UserInfoViewController.swift */; };
 		EB87E8252444B01600D79D26 /* LastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87E8242444B01600D79D26 /* LastViewController.swift */; };
 		EB87E8282444B91B00D79D26 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87E8272444B91B00D79D26 /* DataModel.swift */; };
 		EB87E830244575DD00D79D26 /* ProfileLastOrderCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87E82E244575DD00D79D26 /* ProfileLastOrderCells.swift */; };
 		EB87E831244575DD00D79D26 /* ProfileLastOrderCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB87E82F244575DD00D79D26 /* ProfileLastOrderCells.xib */; };
-		EBADC45A24489E49006E60DB /* ShoppingCartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADC45824489E49006E60DB /* ShoppingCartCell.swift */; };
-		EBADC45B24489E49006E60DB /* ShoppingCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBADC45924489E49006E60DB /* ShoppingCartCell.xib */; };
 		EBCDBBB52440A76C008129A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCDBBB42440A76C008129A5 /* AppDelegate.swift */; };
 		EBCDBBB72440A76C008129A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCDBBB62440A76C008129A5 /* SceneDelegate.swift */; };
 		EBCDBBBC2440A76C008129A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBCDBBBA2440A76C008129A5 /* Main.storyboard */; };
@@ -52,7 +51,6 @@
 		EB12C6BB24569EC7000C3301 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		EB4D6C22244D604D00AB321C /* GetProductsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProductsService.swift; sourceTree = "<group>"; };
 		EB4D6C26244DD47200AB321C /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
-		EB4D6C28244DD55000AB321C /* DevelopInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopInfoViewController.swift; sourceTree = "<group>"; };
 		EB4D6C2A244DED5B00AB321C /* GetHotelsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHotelsService.swift; sourceTree = "<group>"; };
 		EB4D6C2C244DEF2500AB321C /* ShoppingCartNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartNetwork.swift; sourceTree = "<group>"; };
 		EB60A139245BF04200DFE105 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -64,13 +62,13 @@
 		EB60A1442461786800DFE105 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		EB60A1462462829900DFE105 /* RoomPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomPickerViewController.swift; sourceTree = "<group>"; };
 		EB60A1482462ABA300DFE105 /* FirstAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAgreementViewController.swift; sourceTree = "<group>"; };
+		EB60A14A246AB22D00DFE105 /* ShoppingCartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartCell.swift; sourceTree = "<group>"; };
+		EB60A14B246AB22D00DFE105 /* ShoppingCartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartCell.xib; sourceTree = "<group>"; };
 		EB87E80F2443179C00D79D26 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		EB87E8242444B01600D79D26 /* LastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastViewController.swift; sourceTree = "<group>"; };
 		EB87E8272444B91B00D79D26 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		EB87E82E244575DD00D79D26 /* ProfileLastOrderCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLastOrderCells.swift; sourceTree = "<group>"; };
 		EB87E82F244575DD00D79D26 /* ProfileLastOrderCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileLastOrderCells.xib; sourceTree = "<group>"; };
-		EBADC45824489E49006E60DB /* ShoppingCartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartCell.swift; sourceTree = "<group>"; };
-		EBADC45924489E49006E60DB /* ShoppingCartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartCell.xib; sourceTree = "<group>"; };
 		EBCDBBB12440A76C008129A5 /* HotelStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotelStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBCDBBB42440A76C008129A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBCDBBB62440A76C008129A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,11 +113,11 @@
 			children = (
 				EB87E82E244575DD00D79D26 /* ProfileLastOrderCells.swift */,
 				EB87E82F244575DD00D79D26 /* ProfileLastOrderCells.xib */,
-				EBADC45824489E49006E60DB /* ShoppingCartCell.swift */,
-				EBADC45924489E49006E60DB /* ShoppingCartCell.xib */,
 				EBF19C2024582E5400F174CE /* ProductTableViewCell.swift */,
 				EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */,
 				EBF19C6C245A978B00F174CE /* SlideImageCell.swift */,
+				EB60A14A246AB22D00DFE105 /* ShoppingCartCell.swift */,
+				EB60A14B246AB22D00DFE105 /* ShoppingCartCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -204,7 +202,6 @@
 				EB87E8242444B01600D79D26 /* LastViewController.swift */,
 				EB87E80F2443179C00D79D26 /* UserInfoViewController.swift */,
 				EB4D6C26244DD47200AB321C /* AgreementViewController.swift */,
-				EB4D6C28244DD55000AB321C /* DevelopInfoViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -291,11 +288,11 @@
 				EB87E831244575DD00D79D26 /* ProfileLastOrderCells.xib in Resources */,
 				EBCDBBD92441B301008129A5 /* ShoppingCart.storyboard in Resources */,
 				EBCDBBC12440A774008129A5 /* LaunchScreen.storyboard in Resources */,
+				EB60A14D246AB22D00DFE105 /* ShoppingCartCell.xib in Resources */,
 				EBCDBBBE2440A774008129A5 /* Assets.xcassets in Resources */,
 				EBCDBBD72441B2D0008129A5 /* Profile.storyboard in Resources */,
 				EBCDBBBC2440A76C008129A5 /* Main.storyboard in Resources */,
 				EBF19C2324582E5400F174CE /* ProductTableViewCell.xib in Resources */,
-				EBADC45B24489E49006E60DB /* ShoppingCartCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +306,7 @@
 				EBCDBBCC2440B9B9008129A5 /* ShoppingCartViewController.swift in Sources */,
 				EBF19C2524587ACF00F174CE /* ProductPageViewController.swift in Sources */,
 				EB12C6BC24569EC7000C3301 /* ProductsViewController.swift in Sources */,
+				EB60A14C246AB22D00DFE105 /* ShoppingCartCell.swift in Sources */,
 				EBF19C6D245A978B00F174CE /* SlideImageCell.swift in Sources */,
 				EB60A1492462ABA300DFE105 /* FirstAgreementViewController.swift in Sources */,
 				EB60A142245EAE5E00DFE105 /* ActivityIndicator.swift in Sources */,
@@ -325,11 +323,9 @@
 				EB60A1472462829900DFE105 /* RoomPickerViewController.swift in Sources */,
 				EBCDBBCE2440B9CD008129A5 /* ProfileViewController.swift in Sources */,
 				EB87E830244575DD00D79D26 /* ProfileLastOrderCells.swift in Sources */,
-				EB4D6C29244DD55000AB321C /* DevelopInfoViewController.swift in Sources */,
 				EBF19C2224582E5400F174CE /* ProductTableViewCell.swift in Sources */,
 				EB4D6C2B244DED5B00AB321C /* GetHotelsService.swift in Sources */,
 				EB60A1452461786800DFE105 /* LogInViewController.swift in Sources */,
-				EBADC45A24489E49006E60DB /* ShoppingCartCell.swift in Sources */,
 				EB4D6C23244D604D00AB321C /* GetProductsService.swift in Sources */,
 				EB12C6BA2455CF4D000C3301 /* SubCatalogViewController.swift in Sources */,
 				EBCDBBB52440A76C008129A5 /* AppDelegate.swift in Sources */,

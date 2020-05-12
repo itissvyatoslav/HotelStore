@@ -72,12 +72,12 @@
                         <viewLayoutGuide key="safeArea" id="Ijx-9d-qrP"/>
                     </view>
                     <navigationItem key="navigationItem" id="Zo7-Is-Ima">
-                        <barButtonItem key="leftBarButtonItem" image="geo" style="plain" id="RgI-8E-irW">
+                        <barButtonItem key="leftBarButtonItem" image="geo" landscapeImage="geo" style="plain" id="RgI-8E-irW">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Z90-Fs-OXs">
-                                <rect key="frame" x="20" y="9" width="16" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="20" y="0.0" width="382" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" image="HotelLoc"/>
+                                <state key="normal" image="geo"/>
                                 <connections>
                                     <action selector="HotelListAction:" destination="W0S-7C-CqL" eventType="touchUpInside" id="Gnh-bf-ck9"/>
                                 </connections>
@@ -86,6 +86,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="catalogTable" destination="NUD-Xl-OUE" id="YRr-Vc-zaG"/>
+                        <outlet property="hotelListButton" destination="RgI-8E-irW" id="7y2-Zp-vhY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Plg-YX-aiB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -442,7 +443,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="HotelLoc" width="16" height="21"/>
         <image name="Vector 13" width="22" height="13"/>
         <image name="Vector 14" width="22" height="13"/>
         <image name="Vector 19" width="1" height="43"/>
