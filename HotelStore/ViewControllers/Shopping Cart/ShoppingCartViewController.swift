@@ -21,18 +21,26 @@ class ShoppingCartViewController: UIViewController{
         network.removeCart()
         model.shopCart.removeAll()
         shoppingCartTable.reloadData()
+        priceLabel.text = "0.0S$"
+        tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.registerTableViewCells()
         setViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         network.getCart()
+        shoppingCartTable.reloadData()
         print(model.shopCart)
+        tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
+        setGlobalPrice()
     }
     
     private func setViews(){
-        setGlobalPrice()
         shoppingCartTable.reloadData()
         self.navigationItem.title = "Shopping cart"
         self.tabBarItem.title = "Shopping cart"
@@ -52,9 +60,16 @@ class ShoppingCartViewController: UIViewController{
     private func setGlobalPrice(){
         var summ: Double = 0
         for number in 0..<model.shopCart.count{
-            summ = summ + model.shopCart[number].price * Double(model.shopCart[number].count)
+            summ = summ + model.shopCart[number].price * Double(model.shopCart[number].actualCount ?? 0)
         }
-        priceLabel.text = "\(summ)S$"
+        priceLabel.text = "\(Double(round(1000*summ)/1000))S$"
+    }
+    
+    private func removeFromShopCart(cellNumber: Int){
+        model.shopCart[cellNumber].actualCount = model.shopCart[cellNumber].actualCount! - 1
+        if model.shopCart[cellNumber].actualCount == 0 {
+            model.shopCart.remove(at: cellNumber)
+        }
     }
 }
 
@@ -67,8 +82,46 @@ extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingCartCell") as? ShoppingCartCell {
             cell.setCell(indexPath.row)
+            cell.delegate = self
             return cell
         }
         return UITableViewCell()
+    }
+}
+
+extension ShoppingCartViewController: ShoppingCartCellDelegate{
+    func addProduct(cell: ShoppingCartCell) -> Int {
+        let cellIndex = self.shoppingCartTable.indexPath(for: cell)!.row
+        if model.shopCart[cellIndex].count != 0 {
+            model.shopCart[cellIndex].actualCount = model.shopCart[cellIndex].actualCount! + 1
+            network.addProduct(product_id: model.shopCart[cellIndex].id, hotel_id: model.user.hotel.id)
+            tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
+            setGlobalPrice()
+        }
+            return cellIndex
+    }
+    
+    func minusProduct(cell: ShoppingCartCell) -> Int {
+        let cellIndex = self.shoppingCartTable.indexPath(for: cell)!.row
+        network.minusPosition(product_id: model.shopCart[cellIndex].id)
+        removeFromShopCart(cellNumber: cellIndex)
+        if model.shopCart.isEmpty {
+            shoppingCartTable.reloadData()
+            setGlobalPrice()
+            return -1
+        } else {
+            tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
+            setGlobalPrice()
+            return cellIndex
+        }
+    }
+    
+    func deleteProduct(cell: ShoppingCartCell){
+        let cellIndex = self.shoppingCartTable.indexPath(for: cell)!.row
+        network.removeProduct(product_id: model.shopCart[cellIndex].id)
+        model.shopCart.remove(at: cellIndex)
+        shoppingCartTable.reloadData()
+        setGlobalPrice()
+        tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
     }
 }

@@ -13,6 +13,7 @@ class ProductsViewController: UIViewController{
     var images = [UIImage]()
     let model = DataModel.sharedData
     let network = GetProductsService()
+    let productService = ShoppingCartNetwork()
     var category_id = 0
 
     @IBOutlet weak var productsTable: UITableView!
@@ -52,21 +53,49 @@ class ProductsViewController: UIViewController{
     }
     
     private func getImages(_ number: Int){
-        let semaphore = DispatchSemaphore (value: 0)
-        for subNumber in 0..<model.products[number].images.count{
-            if let url = URL(string: "http://176.119.157.195:8080/\(model.products[number].images[subNumber].url)"){
-                do {
-                    print(subNumber)
-                    let data = try Data(contentsOf: url)
-                    images.append(UIImage(data: data)!)
-                } catch let err {
-                    print("Error: \(err.localizedDescription)")
+        if !model.products[number].images.isEmpty{
+            let semaphore = DispatchSemaphore (value: 0)
+            for subNumber in 0..<model.products[number].images.count{
+                if let url = URL(string: "http://176.119.157.195:8080/\(model.products[number].images[subNumber].url)"){
+                    do {
+                        print(subNumber)
+                        let data = try Data(contentsOf: url)
+                        images.append(UIImage(data: data)!)
+                    } catch let err {
+                        print("Error: \(err.localizedDescription)")
+                    }
+                    
                 }
-                
+                semaphore.signal()
             }
-            semaphore.signal()
+            semaphore.wait()
         }
-        semaphore.wait()
+    }
+    
+    private func addToShopCart(product: DataModel.GoodsType){
+        var status = 0
+        for number in 0..<model.shopCart.count{
+            if product.id == model.shopCart[number].id {
+                print(model.shopCart[number])
+                model.shopCart[number].actualCount = model.shopCart[number].actualCount! + 1
+                status = 1
+                break
+            }
+        }
+        if status == 0 {
+            model.shopCart.append(product)
+            model.shopCart[model.shopCart.count - 1].actualCount = 1
+        }
+    }
+    
+    private func removeFromShopCart(product: DataModel.GoodsType){
+        for number in 0..<model.shopCart.count{
+            if product.id == model.shopCart[number].id {
+                model.shopCart[number].actualCount = model.shopCart[number].actualCount! - 1
+                print("removefromshopcart number: ", model.products[number].count)
+                break
+            }
+        }
     }
 }
 
@@ -78,6 +107,7 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell") as? ProductTableViewCell {
             cell.setView(indexPath.row)
+            cell.delegate = self
             return cell
         }
         return UITableViewCell()
@@ -95,5 +125,25 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource{
             vc.images = images
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+}
+
+extension ProductsViewController: ProductTableViewCellDelegate{
+    func addProduct(cell: ProductTableViewCell) -> Int {
+        let cellIndex = self.productsTable.indexPath(for: cell)!.row
+        productService.addProduct(product_id: model.products[cellIndex].id, hotel_id: model.user.hotel.id)
+        addToShopCart(product: model.products[cellIndex])
+        tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
+        return cellIndex
+    }
+    
+    func minusProduct(cell: ProductTableViewCell) -> Int {
+        let cellIndex = self.productsTable.indexPath(for: cell)!.row
+        productService.minusPosition(product_id: model.products[cellIndex].id)
+        //model.products[cellIndex].actualCount = model.products[cellIndex].actualCount! - 1
+        removeFromShopCart(product: model.products[cellIndex])
+        //model.shopCart.remove(at: model.shopCart.count - 1)
+        tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
+        return cellIndex
     }
 }

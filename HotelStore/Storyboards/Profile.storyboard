@@ -12,7 +12,7 @@
         <scene sceneID="oGF-Ft-aZt">
             <objects>
                 <navigationController id="AUg-fH-3ck" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="op0-Td-rFz"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile30" id="op0-Td-rFz"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ukK-tx-SVE">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -194,19 +194,18 @@
                         <viewLayoutGuide key="safeArea" id="iOG-MK-kbD"/>
                     </view>
                     <navigationItem key="navigationItem" id="AvB-aa-BjN">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="geo" landscapeImage="geo" style="plain" id="nZZ-1f-rH0">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="R2e-Be-lr0">
-                                <rect key="frame" x="20" y="0.0" width="382" height="44"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="Fni-id-hXU">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GiM-wM-8Dr">
+                                <rect key="frame" x="20" y="11" width="70" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="geo"/>
                                 <connections>
-                                    <action selector="HotelListAction:" destination="NhX-D1-DVt" eventType="touchUpInside" id="Xd6-tG-t1N"/>
+                                    <action selector="HotelListAction:" destination="NhX-D1-DVt" eventType="touchUpInside" id="pre-hU-LNZ"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="hotelListButton" destination="nZZ-1f-rH0" id="C0X-Tu-Fhe"/>
                         <outlet property="nameLabel" destination="GIl-AI-GEd" id="pmX-R1-1vS"/>
                         <outlet property="tableView" destination="yad-fi-PPM" id="rcn-CU-1Pn"/>
                     </connections>
@@ -566,6 +565,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="geo" width="729" height="993"/>
+        <image name="geo" width="16" height="21"/>
+        <image name="profile30" width="30" height="31"/>
     </resources>
 </document>

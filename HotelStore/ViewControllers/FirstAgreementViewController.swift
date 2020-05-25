@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class FirstAgreementViewController: UIViewController{
+    //let network = LogUserService()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,6 +20,8 @@ class FirstAgreementViewController: UIViewController{
     @IBAction func agreeAction(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(identifier: "CustomTabBarController") as! CustomTabBarController
         vc.navigationItem.hidesBackButton = true
+        print("user.id: ", DataModel.sharedData.user.id)
+       // network.registration(id: DataModel.sharedData.user.id)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

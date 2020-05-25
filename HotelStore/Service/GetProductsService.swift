@@ -28,7 +28,7 @@ class GetProductsService {
         
         
         let semaphore = DispatchSemaphore (value: 0)
-        var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/category")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/category?hotel_id=\(model.user.hotel.id)")!,timeoutInterval: Double.infinity)
         
         request.httpMethod = "GET"
         request.addValue(model.token, forHTTPHeaderField: "token")

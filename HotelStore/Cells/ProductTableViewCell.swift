@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol ProductTableViewCellDelegate {
+    func addProduct(cell: ProductTableViewCell) -> Int
+    func minusProduct(cell: ProductTableViewCell) -> Int
+}
+
 class ProductTableViewCell: UITableViewCell {
+    var delegate: ProductTableViewCellDelegate?
     let model = DataModel.sharedData
     
     var count = 1
@@ -26,6 +32,8 @@ class ProductTableViewCell: UITableViewCell {
     
     @IBAction func minusAction(_ sender: Any) {
         count = count - 1
+        let indexPath = self.delegate?.minusProduct(cell: self)
+        countLabel.text = "\(model.products[indexPath ?? 0].count) in stock"
         if count < 1 {
             numberLabel.isHidden = true
             minusButton.isHidden = true
@@ -38,10 +46,22 @@ class ProductTableViewCell: UITableViewCell {
     }
     @IBAction func plusAction(_ sender: Any) {
         count = count + 1
+        let indexPath = self.delegate?.addProduct(cell: self)
+        if model.products[indexPath ?? 0].count == 0{
+            zeroInStock()
+        } else {
+            countLabel.text = "\(model.products[indexPath ?? 0].count) in stock"
+        }
         numberLabel.text = "\(count)"
         numberLabel.sizeToFit()
     }
     @IBAction func addAction(_ sender: Any) {
+        let indexPath = self.delegate?.addProduct(cell: self)
+        if model.products[indexPath ?? 0].count == 0{
+            zeroInStock()
+        } else {
+            countLabel.text = "\(model.products[indexPath ?? 0].count) in stock"
+        }
         count = 1
         addButton.isHidden = true
         numberLabel.isHidden = false
@@ -68,14 +88,10 @@ class ProductTableViewCell: UITableViewCell {
         priceLabel.text = "\(model.products[number].price)S$"
         nameLabel.sizeToFit()
         descrLabel.sizeToFit()
+        //descrLabel.adjustsFontSizeToFitWidth = true
         priceLabel.sizeToFit()
         if model.products[number].count == 0 {
-            countLabel.textColor = UIColor(red: 182/255, green: 9/255, blue: 73/255, alpha: 1)
-            countLabel.text = "Out of stock"
-            numberLabel.isHidden = true
-            minusButton.isHidden = true
-            plusButton.isHidden = true
-            addButton.isHidden = true
+            zeroInStock()
         } else {
             countLabel.textColor = UIColor(red: 21/255, green: 22/255, blue: 22/255, alpha: 0.5)
             countLabel.text = "\(model.products[number].count) in stock"
@@ -84,7 +100,18 @@ class ProductTableViewCell: UITableViewCell {
             plusButton.isHidden = true
             addButton.isHidden = false
         }
-        getImage(number)
+        if !model.products[number].images.isEmpty{
+            getImage(number)
+        }
+    }
+    
+    private func zeroInStock(){
+        countLabel.textColor = UIColor(red: 182/255, green: 9/255, blue: 73/255, alpha: 1)
+        countLabel.text = "Out of stock"
+        numberLabel.isHidden = true
+        minusButton.isHidden = true
+        plusButton.isHidden = true
+        addButton.isHidden = true
     }
     
     private func getImage(_ number: Int){
@@ -97,6 +124,7 @@ class ProductTableViewCell: UITableViewCell {
             }
         }
         let semaphore = DispatchSemaphore (value: 0)
+        print(model.products)
         if let url = URL(string: "http://176.119.157.195:8080/\(model.products[number].images[subNumber].url)"){
             do {
                 let data = try Data(contentsOf: url)

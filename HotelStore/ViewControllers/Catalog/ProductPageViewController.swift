@@ -28,12 +28,18 @@ class ProductPageViewController: UIViewController{
     
     @IBAction func minusAction(_ sender: Any) {
         count = count - 1
+        network.minusPosition(product_id: model.products[number].id)
+        removeFromShopCart(product: model.products[number])
+        //model.shopCart.remove(at: model.shopCart.count - 1)
+        tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
         if count < 1 {
+            model.products[number].actualCount = 0
             numberLabel.isHidden = true
             minusButton.isHidden = true
             plusButton.isHidden = true
             addButton.isHidden = false
         } else {
+            model.products[number].actualCount = model.products[number].actualCount! - 1
             numberLabel.text = "\(count)"
             numberLabel.sizeToFit()
         }
@@ -43,6 +49,15 @@ class ProductPageViewController: UIViewController{
         count = count + 1
         numberLabel.text = "\(count)"
         numberLabel.sizeToFit()
+        model.products[number].actualCount = model.products[number].actualCount ?? 0 + 1
+        network.addProduct(product_id: model.products[number].id, hotel_id: model.user.hotel.id)
+        if model.products[number].count == 0{
+            zeroInStock()
+        } else {
+            countLabel.text = "\(model.products[number].count) in stock"
+        }
+        addToShopCart(product: model.products[number])
+        tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
     }
     
     @IBAction func addAction(_ sender: Any) {
@@ -53,9 +68,15 @@ class ProductPageViewController: UIViewController{
         minusButton.isHidden = false
         plusButton.isHidden = false
         numberLabel.sizeToFit()
-        print(model.products[number].id)
+        model.products[number].actualCount = 1
         network.addProduct(product_id: model.products[number].id, hotel_id: model.user.hotel.id)
-        model.shopCart.append(model.products[number])
+        addToShopCart(product: model.products[number])
+        if model.products[number].count == 0{
+            zeroInStock()
+        } else {
+            countLabel.text = "\(model.products[number].count) in stock"
+        }
+        tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
     }
     
     var currentIndex = 0
@@ -81,12 +102,7 @@ class ProductPageViewController: UIViewController{
         nameLabel.text = model.products[number].name
         descrTextView.text = model.products[number].description
         if model.products[number].count == 0 {
-            countLabel.textColor = UIColor(red: 182/255, green: 9/255, blue: 73/255, alpha: 1)
-            countLabel.text = "Out of stock"
-            numberLabel.isHidden = true
-            minusButton.isHidden = true
-            plusButton.isHidden = true
-            addButton.isHidden = true
+            zeroInStock()
         } else {
             countLabel.textColor = UIColor(red: 21/255, green: 22/255, blue: 22/255, alpha: 0.5)
             countLabel.text = "\(model.products[number].count) in stock"
@@ -94,6 +110,39 @@ class ProductPageViewController: UIViewController{
             minusButton.isHidden = true
             plusButton.isHidden = true
             addButton.isHidden = false
+        }
+    }
+    
+    private func zeroInStock(){
+        countLabel.textColor = UIColor(red: 182/255, green: 9/255, blue: 73/255, alpha: 1)
+        countLabel.text = "Out of stock"
+        numberLabel.isHidden = true
+        minusButton.isHidden = true
+        plusButton.isHidden = true
+        addButton.isHidden = true
+    }
+    
+    private func addToShopCart(product: DataModel.GoodsType){
+        var status = 0
+        for number in 0..<model.shopCart.count{
+            if product.id == model.shopCart[number].id {
+                model.shopCart[number].actualCount = model.shopCart[number].actualCount! + 1
+                status = 1
+                break
+            }
+        }
+        if status == 0 {
+            model.shopCart.append(product)
+            model.shopCart[model.shopCart.count - 1].actualCount = 1
+        }
+    }
+    
+    private func removeFromShopCart(product: DataModel.GoodsType){
+        for number in 0..<model.shopCart.count{
+            if product.id == model.shopCart[number].id {
+                model.shopCart[number].actualCount = model.shopCart[number].actualCount! - 1
+                break
+            }
         }
     }
 }

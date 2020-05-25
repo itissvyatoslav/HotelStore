@@ -13,7 +13,7 @@
         <scene sceneID="udG-5m-Y0G">
             <objects>
                 <navigationController id="Vad-6d-Jo3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Catalog" id="786-5P-zUx"/>
+                    <tabBarItem key="tabBarItem" title="Catalog" image="catalog30" selectedImage="catalog30" id="786-5P-zUx"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jqy-cS-fXf">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -72,21 +72,19 @@
                         <viewLayoutGuide key="safeArea" id="Ijx-9d-qrP"/>
                     </view>
                     <navigationItem key="navigationItem" id="Zo7-Is-Ima">
-                        <barButtonItem key="leftBarButtonItem" image="geo" landscapeImage="geo" style="plain" id="RgI-8E-irW">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Z90-Fs-OXs">
-                                <rect key="frame" x="20" y="0.0" width="382" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                        <barButtonItem key="leftBarButtonItem" image="geo" style="plain" id="1cT-1h-i3H">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wIe-7X-7ga">
+                                <rect key="frame" x="20" y="11" width="70" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="geo"/>
                                 <connections>
-                                    <action selector="HotelListAction:" destination="W0S-7C-CqL" eventType="touchUpInside" id="Gnh-bf-ck9"/>
+                                    <action selector="HotelListAction:" destination="W0S-7C-CqL" eventType="touchUpInside" id="HAb-o4-Kl5"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="catalogTable" destination="NUD-Xl-OUE" id="YRr-Vc-zaG"/>
-                        <outlet property="hotelListButton" destination="RgI-8E-irW" id="7y2-Zp-vhY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Plg-YX-aiB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -447,7 +445,8 @@
         <image name="Vector 14" width="22" height="13"/>
         <image name="Vector 19" width="1" height="43"/>
         <image name="Vector 4" width="411" height="2"/>
+        <image name="catalog30" width="26" height="30"/>
         <image name="filter" width="1050" height="1002"/>
-        <image name="geo" width="729" height="993"/>
+        <image name="geo" width="16" height="21"/>
     </resources>
 </document>

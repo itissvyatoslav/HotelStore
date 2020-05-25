@@ -25,6 +25,7 @@ class DataModel {
         var price: Double
         var short_description: String
         var description: String
+        var actualCount: Int?
     }
     
     struct ImagesType{
@@ -74,7 +75,7 @@ class DataModel {
     var addHotel = HotelType(name: "", id: 0, lat: 0, lon: 0)
     
     var user = User(id: "", firstName: "Leyla", lastName: "", email: "@mail.ru", hotel: HotelType(name: "", id: 0, lat: 0, lon: 0), roomNumber: "")
-    var token = "4c28cd9a411caf7af982bd7bedd95ddf46cbf2a7"
+    var token = "b8c48440ca23482c97feef3acf78b855a01fd197"
     
     
     var lastOrder = [LastOrderGood]()
@@ -82,7 +83,21 @@ class DataModel {
     var status = ""
     var hotelLastOrder = ""
     var orderNumber = 0
-    
-    
+
     static let sharedData = DataModel()
+    
+    func addToShopCart(product: GoodsType){
+        var status = 0
+        for number in 0..<DataModel.sharedData.shopCart.count{
+            if product.id == DataModel.sharedData.shopCart[number].id {
+                print(DataModel.sharedData.shopCart[number])
+                DataModel.sharedData.shopCart[number].actualCount = DataModel.sharedData.shopCart[number].actualCount ?? 0 + 1
+                status = 1
+                break
+            }
+        }
+        if status == 0 {
+            DataModel.sharedData.shopCart.append(product)
+        }
+    }
 }

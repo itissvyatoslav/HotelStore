@@ -22,17 +22,16 @@ class CatalogViewController: UIViewController{
     }
     
     @IBOutlet weak var catalogTable: UITableView!
-    @IBOutlet weak var hotelListButton: UIBarButtonItem!
     
     override func viewDidLoad() {
-        network.getCategories()
         super.viewDidLoad()
         setViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        network.getCategories()
+        catalogTable.reloadData()
         self.navigationItem.title =  model.user.hotel.name
-        NSLayoutConstraint.activate([(hotelListButton.customView!.widthAnchor.constraint(equalToConstant: 15.3)),(hotelListButton.customView!.heightAnchor.constraint(equalToConstant: 21))])
     }
     
     private func setViews(){

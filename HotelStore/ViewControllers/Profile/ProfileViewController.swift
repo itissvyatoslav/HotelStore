@@ -16,7 +16,6 @@ class ProfileViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var hotelListButton: UIBarButtonItem!
     
     @IBAction func HotelListAction(_ sender: Any) {
         if #available(iOS 13.0, *) {
@@ -38,7 +37,6 @@ class ProfileViewController: UIViewController{
         nameLabel.text = DataModel.sharedData.user.firstName.uppercased()
         self.navigationItem.title = model.user.hotel.name
         self.tabBarController?.tabBar.isHidden = false
-        NSLayoutConstraint.activate([(hotelListButton.customView!.widthAnchor.constraint(equalToConstant: 15.3)),(hotelListButton.customView!.heightAnchor.constraint(equalToConstant: 21))])
     }
     
     private func setViews(){

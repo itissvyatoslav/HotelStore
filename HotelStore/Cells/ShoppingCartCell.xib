@@ -68,11 +68,10 @@
                             <action selector="plusButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FDX-eo-7c0"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elU-aJ-rph">
-                        <rect key="frame" x="386" y="63" width="45" height="45"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elU-aJ-rph">
+                        <rect key="frame" x="258" y="63" width="173" height="45"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="45" id="dAZ-vr-na6"/>
-                            <constraint firstAttribute="width" constant="45" id="ogh-Na-o9N"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                         <nil key="textColor"/>
@@ -108,6 +107,7 @@
                     <constraint firstAttribute="trailing" secondItem="XIQ-Tb-Kyb" secondAttribute="trailing" constant="12" id="erf-C1-VQM"/>
                     <constraint firstAttribute="trailing" secondItem="nCs-Hh-9h1" secondAttribute="trailing" constant="296" id="fLe-I1-7eh"/>
                     <constraint firstAttribute="bottom" secondItem="nCs-Hh-9h1" secondAttribute="bottom" constant="25" id="i26-eL-5Ks"/>
+                    <constraint firstItem="elU-aJ-rph" firstAttribute="leading" secondItem="CgH-fp-L7z" secondAttribute="trailing" constant="5" id="lJY-mp-sic"/>
                     <constraint firstItem="elU-aJ-rph" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="18" id="rDB-iP-oC0"/>
                     <constraint firstAttribute="bottomMargin" secondItem="elU-aJ-rph" secondAttribute="bottom" constant="27" id="tg8-PF-asI"/>
                     <constraint firstItem="O8O-Yd-wu1" firstAttribute="top" secondItem="iQc-ER-G7J" secondAttribute="bottom" constant="13" id="twy-eH-btx"/>
