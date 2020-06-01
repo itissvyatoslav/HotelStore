@@ -40,4 +40,18 @@ extension UIViewController {
         }))
         present(alertController, animated: true, completion: nil)
     }
+    
+    func startIndicator(){
+        let modalViewController = ModalViewController()
+        modalViewController.modalPresentationStyle = .overCurrentContext
+        present(modalViewController, animated: false, completion: nil)
+    }
+}
+
+class ModalViewController: UIViewController {
+    override func viewDidLoad() {
+        self.showActivity()
+        view.backgroundColor = UIColor.clear
+        view.isOpaque = false
+    }
 }

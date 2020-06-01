@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		EB12C6BA2455CF4D000C3301 /* SubCatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB12C6B92455CF4D000C3301 /* SubCatalogViewController.swift */; };
 		EB12C6BC24569EC7000C3301 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB12C6BB24569EC7000C3301 /* ProductsViewController.swift */; };
-		EB38EE5C246C170500D2CB4E /* StripeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB38EE5B246C170500D2CB4E /* StripeViewController.swift */; };
 		EB38EE5E246C195200D2CB4E /* StripeClientAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB38EE5D246C195200D2CB4E /* StripeClientAPI.swift */; };
 		EB437BB62484C839001F54D2 /* RequestDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437BB52484C839001F54D2 /* RequestDelegate.swift */; };
 		EB437BB82484C871001F54D2 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437BB72484C871001F54D2 /* RequestManager.swift */; };
+		EB437BBA248528C4001F54D2 /* SuccessPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437BB9248528C4001F54D2 /* SuccessPaymentViewController.swift */; };
 		EB4D6C23244D604D00AB321C /* GetProductsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4D6C22244D604D00AB321C /* GetProductsService.swift */; };
 		EB4D6C27244DD47200AB321C /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4D6C26244DD47200AB321C /* AgreementViewController.swift */; };
 		EB4D6C2B244DED5B00AB321C /* GetHotelsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4D6C2A244DED5B00AB321C /* GetHotelsService.swift */; };
@@ -55,10 +55,10 @@
 		AAC5583E4007ADD964B90FE2 /* Pods_HotelStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HotelStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB12C6B92455CF4D000C3301 /* SubCatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCatalogViewController.swift; sourceTree = "<group>"; };
 		EB12C6BB24569EC7000C3301 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
-		EB38EE5B246C170500D2CB4E /* StripeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeViewController.swift; sourceTree = "<group>"; };
 		EB38EE5D246C195200D2CB4E /* StripeClientAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeClientAPI.swift; sourceTree = "<group>"; };
 		EB437BB52484C839001F54D2 /* RequestDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDelegate.swift; sourceTree = "<group>"; };
 		EB437BB72484C871001F54D2 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		EB437BB9248528C4001F54D2 /* SuccessPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPaymentViewController.swift; sourceTree = "<group>"; };
 		EB4D6C22244D604D00AB321C /* GetProductsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProductsService.swift; sourceTree = "<group>"; };
 		EB4D6C26244DD47200AB321C /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		EB4D6C2A244DED5B00AB321C /* GetHotelsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHotelsService.swift; sourceTree = "<group>"; };
@@ -246,7 +246,7 @@
 			children = (
 				EBCDBBCB2440B9B9008129A5 /* ShoppingCartViewController.swift */,
 				EBD96D5D245B418200C6BECF /* BuyInfoViewController.swift */,
-				EB38EE5B246C170500D2CB4E /* StripeViewController.swift */,
+				EB437BB9248528C4001F54D2 /* SuccessPaymentViewController.swift */,
 			);
 			path = "Shopping Cart";
 			sourceTree = "<group>";
@@ -411,7 +411,6 @@
 				EB60A140245C46FC00DFE105 /* CustomTabBarController.swift in Sources */,
 				EBCDBBCA2440B995008129A5 /* CatalogViewController.swift in Sources */,
 				EB437BB82484C871001F54D2 /* RequestManager.swift in Sources */,
-				EB38EE5C246C170500D2CB4E /* StripeViewController.swift in Sources */,
 				EB60A1472462829900DFE105 /* RoomPickerViewController.swift in Sources */,
 				EBCDBBCE2440B9CD008129A5 /* ProfileViewController.swift in Sources */,
 				EB87E830244575DD00D79D26 /* ProfileLastOrderCells.swift in Sources */,
@@ -423,6 +422,7 @@
 				EBCDBBB52440A76C008129A5 /* AppDelegate.swift in Sources */,
 				EBCDBBB72440A76C008129A5 /* SceneDelegate.swift in Sources */,
 				EBD96D5E245B418200C6BECF /* BuyInfoViewController.swift in Sources */,
+				EB437BBA248528C4001F54D2 /* SuccessPaymentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -90,7 +90,6 @@ class MyAPIClient: NSObject, STPCustomerEphemeralKeyProvider {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.get.rawValue
         request.addValue(DataModel.sharedData.token, forHTTPHeaderField: "token")
-        print("HElllo")
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             guard let response = response as? HTTPURLResponse,
                 response.statusCode == 200,
