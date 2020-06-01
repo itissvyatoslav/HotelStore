@@ -190,18 +190,22 @@ class ShoppingCartNetwork{
         
         let session = URLSession.shared
         session.dataTask(with: request){(data, response, error)  in
-            guard let httpResponse = response as? HTTPURLResponse, let _ = data
-                else {
-                    print("error: not a valid http response")
+            guard let data = data else {
+                    print("data error")
                     return
             }
-            switch (httpResponse.statusCode) {
-            case 200: //success response.
-                break
-            case 400:
-                break
-            default:
-                break
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+               // for number in 0..<self.model.products.count{
+               //     if self.model.products[number].id == product_id {
+               //         print("netwwooooork: ", json.data.cart[number].quantity_stock)
+               //         self.model.products[number].count = json.data.cart[number].quantity_stock
+               //         break
+               //     }
+               // }
+            } catch {
+                print(error)
             }
             semaphore.signal()
         }.resume()
@@ -226,11 +230,13 @@ class ShoppingCartNetwork{
                     return
             }
             do {
+            //   let json = try JSONSerialization.jsonObject(with: data, options: [])
+            //    print(json)
                 let json = try JSONDecoder().decode(answerReceive.self, from: data)
                 for number in 0..<self.model.products.count{
                     if self.model.products[number].id == product_id {
                         print("netwwooooork: ", json.data.cart[number].quantity_stock)
-                        self.model.products[number].count = json.data.cart[number].quantity_stock
+                        self.model.products[number].count =  json.data.cart[number].quantity_stock
                         break
                     }
                 }

@@ -9,18 +9,19 @@
 import UIKit
 import Stripe
 
+@available(iOS 13.0, *)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-         Stripe.setDefaultPublishableKey("pk_test_SKeNupXv4ofo3qjLvhlBQadF00odAJCX")
+        Stripe.setDefaultPublishableKey(StripeKeys.publishable_key)
         // Override point for customization after application launch.
         return true
     }
 
-    /*/ MARK: UISceneSession Lifecycle
+    // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
@@ -34,6 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-*/
+
 }
 

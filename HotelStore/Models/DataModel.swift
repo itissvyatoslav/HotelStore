@@ -75,7 +75,7 @@ class DataModel {
     var addHotel = HotelType(name: "", id: 0, lat: 0, lon: 0)
     
     var user = User(id: "", firstName: "Leyla", lastName: "", email: "@mail.ru", hotel: HotelType(name: "", id: 0, lat: 0, lon: 0), roomNumber: "")
-    var token = "b8c48440ca23482c97feef3acf78b855a01fd197"
+    var token = "b8c48440ca23482c97feef3acf78b855a01fd197"//"b8c48440ca23482c97feef3acf78b855a01fd197"
     
     
     var lastOrder = [LastOrderGood]()

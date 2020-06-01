@@ -11,6 +11,8 @@
 		EB12C6BC24569EC7000C3301 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB12C6BB24569EC7000C3301 /* ProductsViewController.swift */; };
 		EB38EE5C246C170500D2CB4E /* StripeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB38EE5B246C170500D2CB4E /* StripeViewController.swift */; };
 		EB38EE5E246C195200D2CB4E /* StripeClientAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB38EE5D246C195200D2CB4E /* StripeClientAPI.swift */; };
+		EB437BB62484C839001F54D2 /* RequestDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437BB52484C839001F54D2 /* RequestDelegate.swift */; };
+		EB437BB82484C871001F54D2 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437BB72484C871001F54D2 /* RequestManager.swift */; };
 		EB4D6C23244D604D00AB321C /* GetProductsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4D6C22244D604D00AB321C /* GetProductsService.swift */; };
 		EB4D6C27244DD47200AB321C /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4D6C26244DD47200AB321C /* AgreementViewController.swift */; };
 		EB4D6C2B244DED5B00AB321C /* GetHotelsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4D6C2A244DED5B00AB321C /* GetHotelsService.swift */; };
@@ -55,6 +57,8 @@
 		EB12C6BB24569EC7000C3301 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		EB38EE5B246C170500D2CB4E /* StripeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeViewController.swift; sourceTree = "<group>"; };
 		EB38EE5D246C195200D2CB4E /* StripeClientAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeClientAPI.swift; sourceTree = "<group>"; };
+		EB437BB52484C839001F54D2 /* RequestDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDelegate.swift; sourceTree = "<group>"; };
+		EB437BB72484C871001F54D2 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		EB4D6C22244D604D00AB321C /* GetProductsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProductsService.swift; sourceTree = "<group>"; };
 		EB4D6C26244DD47200AB321C /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		EB4D6C2A244DED5B00AB321C /* GetHotelsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHotelsService.swift; sourceTree = "<group>"; };
@@ -118,6 +122,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		EB437BB42484C7F1001F54D2 /* StripeClient */ = {
+			isa = PBXGroup;
+			children = (
+				EB38EE5D246C195200D2CB4E /* StripeClientAPI.swift */,
+				EB437BB52484C839001F54D2 /* RequestDelegate.swift */,
+				EB437BB72484C871001F54D2 /* RequestManager.swift */,
+			);
+			path = StripeClient;
+			sourceTree = "<group>";
+		};
 		EB87E8262444B7F700D79D26 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,7 +163,6 @@
 				EB60A13D245C3DAE00DFE105 /* LogUserService.swift */,
 				EB60A139245BF04200DFE105 /* UserService.swift */,
 				EB60A141245EAE5E00DFE105 /* ActivityIndicator.swift */,
-				EB38EE5D246C195200D2CB4E /* StripeClientAPI.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -175,6 +188,7 @@
 		EBCDBBB32440A76C008129A5 /* HotelStore */ = {
 			isa = PBXGroup;
 			children = (
+				EB437BB42484C7F1001F54D2 /* StripeClient */,
 				EB60A1432461768F00DFE105 /* HotelStore.entitlements */,
 				EBADC45C2449738C006E60DB /* Service */,
 				EB87E82D244574C800D79D26 /* Cells */,
@@ -390,11 +404,13 @@
 				EB38EE5E246C195200D2CB4E /* StripeClientAPI.swift in Sources */,
 				EB4D6C27244DD47200AB321C /* AgreementViewController.swift in Sources */,
 				EB87E8102443179C00D79D26 /* UserInfoViewController.swift in Sources */,
+				EB437BB62484C839001F54D2 /* RequestDelegate.swift in Sources */,
 				EB60A13E245C3DAE00DFE105 /* LogUserService.swift in Sources */,
 				EB4D6C2D244DEF2500AB321C /* ShoppingCartNetwork.swift in Sources */,
 				EB60A13C245C274100DFE105 /* HotelListViewController.swift in Sources */,
 				EB60A140245C46FC00DFE105 /* CustomTabBarController.swift in Sources */,
 				EBCDBBCA2440B995008129A5 /* CatalogViewController.swift in Sources */,
+				EB437BB82484C871001F54D2 /* RequestManager.swift in Sources */,
 				EB38EE5C246C170500D2CB4E /* StripeViewController.swift in Sources */,
 				EB60A1472462829900DFE105 /* RoomPickerViewController.swift in Sources */,
 				EBCDBBCE2440B9CD008129A5 /* ProfileViewController.swift in Sources */,

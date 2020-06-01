@@ -139,6 +139,7 @@ extension ProductsViewController: ProductTableViewCellDelegate{
     
     func minusProduct(cell: ProductTableViewCell) -> Int {
         let cellIndex = self.productsTable.indexPath(for: cell)!.row
+        //if model.products[cellIndex].actualCount == 1
         productService.minusPosition(product_id: model.products[cellIndex].id)
         //model.products[cellIndex].actualCount = model.products[cellIndex].actualCount! - 1
         removeFromShopCart(product: model.products[cellIndex])
