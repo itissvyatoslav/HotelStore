@@ -36,17 +36,17 @@ extension SubCatalogViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = UITableViewCell(style: .default, reuseIdentifier: "categoryCell")
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "categoryCell")
         cell.textLabel?.text = model.categories[number].sub_categoryes[indexPath.row].name
-            cell.accessoryType = .disclosureIndicator
-            return cell
+        cell.accessoryType = .disclosureIndicator
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if #available(iOS 13.0, *) {
             let vc = storyboard?.instantiateViewController(identifier: "ProductsVC") as! ProductsViewController
             vc.category_id = model.categories[number].sub_categoryes[indexPath.row].id
-            GetProductsService().getProducts(hotel_id: model.user.hotel.id, category_id: model.categories[indexPath.row].id, limit: "50", page: 1, brand: "")
+            GetProductsService().getProducts(hotel_id: model.user.hotel.id, category_id: model.categories[number].sub_categoryes[indexPath.row].id, limit: "50", page: 1, brand: "")
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

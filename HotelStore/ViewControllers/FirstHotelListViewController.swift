@@ -1,20 +1,19 @@
 //
-//  HotelListViewController.swift
+//  FirstHotelListViewController.swift
 //  HotelStore
 //
-//  Created by Svyatoslav Vladimirovich on 01.05.2020.
+//  Created by Svyatoslav Vladimirovich on 02.06.2020.
 //  Copyright © 2020 Svyatoslav Vladimirovich. All rights reserved.
 //
 
-import CoreLocation
+import Foundation
 import UIKit
 
-class HotelListViewController: UIViewController{
+class FirstHotelListViewController: UIViewController{
     let model = DataModel.sharedData
     let network = GetHotelsService()
     @IBOutlet weak var hotelsTable: UITableView!
     @IBOutlet weak var otherHotelsTable: UITableView!
-    var id = 2
     
     override func viewDidLoad() {
         network.getHotels()
@@ -33,7 +32,7 @@ class HotelListViewController: UIViewController{
     }
 }
 
-extension HotelListViewController: UITableViewDelegate, UITableViewDataSource{
+extension FirstHotelListViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == hotelsTable {
             return 1
@@ -61,22 +60,13 @@ extension HotelListViewController: UITableViewDelegate, UITableViewDataSource{
         } else {
             model.user.hotel = model.hotels[indexPath.row + 1]
         }
-        
-        if id == 0 {
-            navigationController?.popViewController(animated: true)
-        }
-        if id == 1 {
-            if #available(iOS 13.0, *) {
-                let vc = storyboard?.instantiateViewController(identifier: "RoomPickerVC") as! RoomPickerViewController
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-        }
-        if id == 2 {
-            if #available(iOS 13.0, *) {
-                let vc = storyboard?.instantiateViewController(identifier: "CustomTabBarController") as! CustomTabBarController
-                vc.navigationItem.hidesBackButton = true
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
+        if #available(iOS 13.0, *) {
+            print("fd")
+            let vc = storyboard?.instantiateViewController(identifier: "RoomPickerVC") as! RoomPickerViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+           // let vc = storyboard?.instantiateViewController(identifier: "CustomTabBarController") as! CustomTabBarController
+           // vc.navigationItem.hidesBackButton = true
+           // self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

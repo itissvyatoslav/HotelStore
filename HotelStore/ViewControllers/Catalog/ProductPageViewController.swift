@@ -28,7 +28,7 @@ class ProductPageViewController: UIViewController{
     
     @IBAction func minusAction(_ sender: Any) {
         count = count - 1
-        network.minusPosition(product_id: model.products[number].id)
+        network.minusPosition(product_id: model.products[number].id, indexPath: number)
         removeFromShopCart(product: model.products[number])
         //model.shopCart.remove(at: model.shopCart.count - 1)
         tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
@@ -50,7 +50,7 @@ class ProductPageViewController: UIViewController{
         numberLabel.text = "\(count)"
         numberLabel.sizeToFit()
         model.products[number].actualCount = model.products[number].actualCount ?? 0 + 1
-        network.addProduct(product_id: model.products[number].id, hotel_id: model.user.hotel.id)
+        network.addProduct(product_id: model.products[number].id, hotel_id: model.user.hotel.id, indexPath: number)
         if model.products[number].count == 0{
             zeroInStock()
         } else {
@@ -69,7 +69,7 @@ class ProductPageViewController: UIViewController{
         plusButton.isHidden = false
         numberLabel.sizeToFit()
         model.products[number].actualCount = 1
-        network.addProduct(product_id: model.products[number].id, hotel_id: model.user.hotel.id)
+        network.addProduct(product_id: model.products[number].id, hotel_id: model.user.hotel.id, indexPath: number)
         addToShopCart(product: model.products[number])
         if model.products[number].count == 0{
             zeroInStock()

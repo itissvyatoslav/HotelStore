@@ -10,10 +10,17 @@ import Foundation
 import UIKit
 
 class FirstAgreementViewController: UIViewController{
-    //let network = LogUserService()
+    override func viewWillAppear(_ animated: Bool) {
+        guard let url = URL(string: "http://127.0.0.1:5000/document/policy.pdf") else { return }
+        
+        let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
+        
+        let downloadTask = urlSession.downloadTask(with: url)
+        downloadTask.resume()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     @available(iOS 13.0, *)
@@ -27,5 +34,11 @@ class FirstAgreementViewController: UIViewController{
     
     private func setView(){
         self.navigationController?.title = "User agreement"
+    }
+}
+
+extension FirstAgreementViewController: URLSessionDownloadDelegate{
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        print("downloadLocation:", location)
     }
 }

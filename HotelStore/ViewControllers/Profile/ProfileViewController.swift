@@ -21,6 +21,7 @@ class ProfileViewController: UIViewController{
         if #available(iOS 13.0, *) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(identifier: "HotelListVC") as! HotelListViewController
+            vc.id = 0
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -31,6 +32,7 @@ class ProfileViewController: UIViewController{
         super.viewDidLoad()
         setViews()
         network.getCategories()
+        self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {

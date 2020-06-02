@@ -41,17 +41,17 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
         self.paymentContext?.presentPaymentOptionsViewController()
     }
     @IBAction func hotelListAction(_ sender: Any) {
-        if #available(iOS 13.0, *) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(identifier: "HotelListVC") as! HotelListViewController
             self.navigationController?.pushViewController(vc, animated: true)
-        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
         setStripe()
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {

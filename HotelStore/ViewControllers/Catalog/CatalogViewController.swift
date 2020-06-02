@@ -17,6 +17,7 @@ class CatalogViewController: UIViewController{
         if #available(iOS 13.0, *) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(identifier: "HotelListVC") as! HotelListViewController
+            vc.id = 0
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -26,6 +27,7 @@ class CatalogViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setViews()
+        self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,14 +61,9 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if #available(iOS 13.0, *) {
             if model.categories[indexPath.item].sub_categoryes.isEmpty{
-                self.showActivity()
-                Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false) { (t) in
-                    print("done")
-                }
                 let vc = storyboard?.instantiateViewController(identifier: "ProductsVC") as! ProductsViewController
                 vc.category_id = model.categories[indexPath.row].id
                 network.getProducts(hotel_id: model.user.hotel.id, category_id: model.categories[indexPath.row].id, limit: "50", page: 1, brand: "")
-                self.stopActivity()
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 let vc = storyboard?.instantiateViewController(identifier: "SubCatalogVC") as! SubCatalogViewController

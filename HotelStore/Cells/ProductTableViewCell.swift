@@ -33,13 +33,14 @@ class ProductTableViewCell: UITableViewCell {
     @IBAction func minusAction(_ sender: Any) {
         count = count - 1
         let indexPath = self.delegate?.minusProduct(cell: self)
-        countLabel.text = "\(model.products[indexPath ?? 0].count) in stock"
         if count < 1 {
+            countLabel.text = "\(model.products[indexPath ?? 0].count + 1) in stock"
             numberLabel.isHidden = true
             minusButton.isHidden = true
             plusButton.isHidden = true
             addButton.isHidden = false
         } else {
+            countLabel.text = "\(model.products[indexPath ?? 0].count) in stock"
             numberLabel.text = "\(count)"
             numberLabel.sizeToFit()
         }
@@ -88,7 +89,7 @@ class ProductTableViewCell: UITableViewCell {
         priceLabel.text = "\(model.products[number].price)S$"
         nameLabel.sizeToFit()
         descrLabel.sizeToFit()
-        //descrLabel.adjustsFontSizeToFitWidth = true
+        descrLabel.adjustsFontSizeToFitWidth = true
         priceLabel.sizeToFit()
         if model.products[number].count == 0 {
             zeroInStock()
@@ -124,7 +125,6 @@ class ProductTableViewCell: UITableViewCell {
             }
         }
         let semaphore = DispatchSemaphore (value: 0)
-        print(model.products)
         if let url = URL(string: "http://176.119.157.195:8080/\(model.products[number].images[subNumber].url)"){
             do {
                 let data = try Data(contentsOf: url)

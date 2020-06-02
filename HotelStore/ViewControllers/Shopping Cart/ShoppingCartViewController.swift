@@ -30,6 +30,7 @@ class ShoppingCartViewController: UIViewController{
         super.viewDidLoad()
         self.registerTableViewCells()
         setViews()
+        self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,7 +95,7 @@ extension ShoppingCartViewController: ShoppingCartCellDelegate{
         let cellIndex = self.shoppingCartTable.indexPath(for: cell)!.row
         if model.shopCart[cellIndex].count != 0 {
             model.shopCart[cellIndex].actualCount = model.shopCart[cellIndex].actualCount! + 1
-            network.addProduct(product_id: model.shopCart[cellIndex].id, hotel_id: model.user.hotel.id)
+            network.addProduct(product_id: model.shopCart[cellIndex].id, hotel_id: model.user.hotel.id, indexPath: cellIndex)
             tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
             setGlobalPrice()
         }
@@ -103,7 +104,7 @@ extension ShoppingCartViewController: ShoppingCartCellDelegate{
     
     func minusProduct(cell: ShoppingCartCell) -> Int {
         let cellIndex = self.shoppingCartTable.indexPath(for: cell)!.row
-        network.minusPosition(product_id: model.shopCart[cellIndex].id)
+        network.minusPosition(product_id: model.shopCart[cellIndex].id, indexPath: cellIndex)
         removeFromShopCart(cellNumber: cellIndex)
         if model.shopCart.isEmpty {
             shoppingCartTable.reloadData()

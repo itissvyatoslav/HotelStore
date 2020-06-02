@@ -131,7 +131,7 @@ class ShoppingCartNetwork{
         semaphore.wait()
     }
     
-    func addProduct(product_id: Int, hotel_id: Int) {
+    func addProduct(product_id: Int, hotel_id: Int, indexPath: Int) {
         let semaphore = DispatchSemaphore (value: 0)
         guard let url = URL(string: "http://176.119.157.195:8080/app/cart") else {
             print("url error")
@@ -165,11 +165,8 @@ class ShoppingCartNetwork{
                 let json = try JSONDecoder().decode(answerReceive.self, from: data)
                 print(json)
                 for number in 0..<self.model.products.count{
-                    
-                    if self.model.products[number].id == product_id {
-                        print(self.model.products[number].count, "|||")
-                        //print(json.data.cart[number].quantity_stock )
-                        self.model.products[number].count = json.data.cart[0].quantity_stock
+                    if json.data.cart[number].product.id == product_id {
+                        self.model.products[indexPath].count = json.data.cart[number].quantity_stock
                         break
                     }
                 }
@@ -201,13 +198,6 @@ class ShoppingCartNetwork{
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
                 print(json)
-               // for number in 0..<self.model.products.count{
-               //     if self.model.products[number].id == product_id {
-               //         print("netwwooooork: ", json.data.cart[number].quantity_stock)
-               //         self.model.products[number].count = json.data.cart[number].quantity_stock
-               //         break
-               //     }
-               // }
             } catch {
                 print(error)
             }
@@ -216,7 +206,7 @@ class ShoppingCartNetwork{
         semaphore.wait()
     }
     
-    func minusPosition(product_id: Int){
+    func minusPosition(product_id: Int, indexPath: Int){
         let semaphore = DispatchSemaphore (value: 0)
         guard let url = URL(string: "http://176.119.157.195:8080/app/cart?product_id=\(product_id)") else {
             print("url error")
@@ -234,13 +224,10 @@ class ShoppingCartNetwork{
                     return
             }
             do {
-            //   let json = try JSONSerialization.jsonObject(with: data, options: [])
-            //    print(json)
                 let json = try JSONDecoder().decode(answerReceive.self, from: data)
                 for number in 0..<self.model.products.count{
-                    if self.model.products[number].id == product_id {
-                        print("delete:", json)
-                        self.model.products[number].count =  json.data.cart[number].quantity_stock
+                    if json.data.cart[number].product.id == product_id {
+                        self.model.products[indexPath].count = json.data.cart[number].quantity_stock
                         break
                     }
                 }

@@ -58,7 +58,6 @@ class ProductsViewController: UIViewController{
             for subNumber in 0..<model.products[number].images.count{
                 if let url = URL(string: "http://176.119.157.195:8080/\(model.products[number].images[subNumber].url)"){
                     do {
-                        print(subNumber)
                         let data = try Data(contentsOf: url)
                         images.append(UIImage(data: data)!)
                     } catch let err {
@@ -76,7 +75,6 @@ class ProductsViewController: UIViewController{
         var status = 0
         for number in 0..<model.shopCart.count{
             if product.id == model.shopCart[number].id {
-                print(model.shopCart[number])
                 model.shopCart[number].actualCount = model.shopCart[number].actualCount! + 1
                 status = 1
                 break
@@ -131,7 +129,7 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource{
 extension ProductsViewController: ProductTableViewCellDelegate{
     func addProduct(cell: ProductTableViewCell) -> Int {
         let cellIndex = self.productsTable.indexPath(for: cell)!.row
-        productService.addProduct(product_id: model.products[cellIndex].id, hotel_id: model.user.hotel.id)
+        productService.addProduct(product_id: model.products[cellIndex].id, hotel_id: model.user.hotel.id, indexPath: cellIndex)
         addToShopCart(product: model.products[cellIndex])
         tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
         return cellIndex
@@ -140,10 +138,8 @@ extension ProductsViewController: ProductTableViewCellDelegate{
     func minusProduct(cell: ProductTableViewCell) -> Int {
         let cellIndex = self.productsTable.indexPath(for: cell)!.row
         //if model.products[cellIndex].actualCount == 1
-        productService.minusPosition(product_id: model.products[cellIndex].id)
-        //model.products[cellIndex].actualCount = model.products[cellIndex].actualCount! - 1
+        productService.minusPosition(product_id: model.products[cellIndex].id, indexPath: cellIndex)
         removeFromShopCart(product: model.products[cellIndex])
-        //model.shopCart.remove(at: model.shopCart.count - 1)
         tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
         return cellIndex
     }

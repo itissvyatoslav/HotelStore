@@ -40,6 +40,7 @@ class GetProductsService {
             }
             do {
                 let json = try JSONDecoder().decode(answerReceive.self, from: data)
+                print(json)
                 self.model.categories.removeAll()
                 for number in 0..<json.data.count{
                     self.model.addCategory.sub_categoryes.removeAll()
@@ -98,6 +99,7 @@ class GetProductsService {
             var url: String
         }
         let semaphore = DispatchSemaphore (value: 0)
+        print(hotel_id, "|||", category_id)
         var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/product?hotel_id=\(hotel_id)&category_id=\(category_id)&limit=\(limit ?? "")&page=\(page)&brand=\(brand ?? "")")!,timeoutInterval: Double.infinity)
         
         request.httpMethod = "GET"
@@ -112,19 +114,21 @@ class GetProductsService {
                 let json = try JSONDecoder().decode(answerReceive.self, from: data)
                 self.model.products.removeAll()
                 for number in 0..<json.data.count{
-                    self.model.addProduct.id = json.data[number].product.id
-                    self.model.addProduct.name = json.data[number].product.title
-                    self.model.addProduct.price = json.data[number].product.price
-                    self.model.addProduct.count = json.data[number].quantity
-                    self.model.addProduct.short_description = json.data[number].product.short_description
-                    self.model.addProduct.description = json.data[number].product.description
-                    self.model.addProduct.images.removeAll()
-                    for subNumber in 0..<json.data[number].product.images.count{
-                        self.model.addImage.front = json.data[number].product.images[subNumber].front
-                        self.model.addImage.url = json.data[number].product.images[subNumber].url
-                        self.model.addProduct.images.append(self.model.addImage)
+                    if json.data[number].quantity != 0 {
+                        self.model.addProduct.id = json.data[number].product.id
+                        self.model.addProduct.name = json.data[number].product.title
+                        self.model.addProduct.price = json.data[number].product.price
+                        self.model.addProduct.count = json.data[number].quantity
+                        self.model.addProduct.short_description = json.data[number].product.short_description
+                        self.model.addProduct.description = json.data[number].product.description
+                        self.model.addProduct.images.removeAll()
+                        for subNumber in 0..<json.data[number].product.images.count{
+                            self.model.addImage.front = json.data[number].product.images[subNumber].front
+                            self.model.addImage.url = json.data[number].product.images[subNumber].url
+                            self.model.addProduct.images.append(self.model.addImage)
+                        }
+                        self.model.products.append(self.model.addProduct)
                     }
-                    self.model.products.append(self.model.addProduct)
                 }
             } catch {
                 print(error)
