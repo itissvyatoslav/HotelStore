@@ -95,6 +95,7 @@ extension ShoppingCartViewController: ShoppingCartCellDelegate{
         let cellIndex = self.shoppingCartTable.indexPath(for: cell)!.row
         if model.shopCart[cellIndex].count != 0 {
             model.shopCart[cellIndex].actualCount = model.shopCart[cellIndex].actualCount! + 1
+            model.shopCart[cellIndex].count = model.shopCart[cellIndex].count - 1
             network.addProduct(product_id: model.shopCart[cellIndex].id, hotel_id: model.user.hotel.id, indexPath: cellIndex)
             tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
             setGlobalPrice()
@@ -109,9 +110,11 @@ extension ShoppingCartViewController: ShoppingCartCellDelegate{
         if model.shopCart.isEmpty {
             shoppingCartTable.reloadData()
             setGlobalPrice()
+            tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
             return -1
         } else {
             tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
+            model.shopCart[cellIndex].count = model.shopCart[cellIndex].count + 1
             setGlobalPrice()
             return cellIndex
         }

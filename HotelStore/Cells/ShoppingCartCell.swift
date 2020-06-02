@@ -22,9 +22,10 @@ class ShoppingCartCell: UITableViewCell {
     @IBOutlet weak var imageProduct: UIImageView!
     @IBOutlet weak var title: UILabel!
     @IBAction func minusButton(_ sender: Any) {
-        if (self.delegate?.minusProduct(cell: self))! == -1{
+        let indicator = self.delegate?.minusProduct(cell: self)
+        if indicator == -1{
         } else {
-            setCell((self.delegate?.minusProduct(cell: self))!)
+            setCell(indicator!)
         }
     }
     @IBAction func plusButton(_ sender: Any) {
@@ -58,17 +59,8 @@ class ShoppingCartCell: UITableViewCell {
     
     private func setImage(_ number: Int){
         if !model.shopCart[number].images.isEmpty{
-            var subNumber = 0
-            for imageNumber in 0..<model.products[number].images.count{
-                if model.products[number].images[imageNumber].front {
-                    
-                    subNumber = imageNumber
-                    break
-                }
-            }
-            
             let semaphore = DispatchSemaphore (value: 0)
-            if let url = URL(string: "http://176.119.157.195:8080/\(model.shopCart[number].images[subNumber].url)"){
+            if let url = URL(string: "http://176.119.157.195:8080/\(model.shopCart[number].images[0].url)"){
                 do {
                     let data = try Data(contentsOf: url)
                     self.imageProduct.image = UIImage(data: data)
