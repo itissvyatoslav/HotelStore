@@ -16,10 +16,13 @@ class ShoppingCartViewController: UIViewController{
     
     @IBOutlet weak var shoppingCartTable: UITableView!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var buyButton: UIButton!
+    @IBOutlet weak var emptyButton: UIButton!
     
     @IBAction func removeCartAction(_ sender: Any) {
         network.removeCart()
         model.shopCart.removeAll()
+        checkButton()
         shoppingCartTable.reloadData()
         priceLabel.text = "0.0S$"
         tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
@@ -30,13 +33,14 @@ class ShoppingCartViewController: UIViewController{
         super.viewDidLoad()
         self.registerTableViewCells()
         setViews()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         network.getCart()
         shoppingCartTable.reloadData()
-        print(model.shopCart)
+        checkButton()
         tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
         setGlobalPrice()
     }
@@ -49,6 +53,7 @@ class ShoppingCartViewController: UIViewController{
         tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
         shoppingCartTable.delegate = self
         shoppingCartTable.dataSource = self
+        checkButton()
     }
     
     private func registerTableViewCells() {
@@ -56,6 +61,16 @@ class ShoppingCartViewController: UIViewController{
                                   bundle: nil)
         self.shoppingCartTable.register(shoppingCell,
                                 forCellReuseIdentifier: "ShoppingCartCell")
+    }
+    
+    private func checkButton(){
+        if model.shopCart.isEmpty {
+            buyButton.isHidden = true
+            emptyButton.isHidden = false
+        } else {
+            buyButton.isHidden = false
+            emptyButton.isHidden = true
+        }
     }
     
     private func setGlobalPrice(){
@@ -108,6 +123,7 @@ extension ShoppingCartViewController: ShoppingCartCellDelegate{
         network.minusPosition(product_id: model.shopCart[cellIndex].id, indexPath: cellIndex)
         removeFromShopCart(cellNumber: cellIndex)
         if model.shopCart.isEmpty {
+            checkButton()
             shoppingCartTable.reloadData()
             setGlobalPrice()
             tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
@@ -127,5 +143,6 @@ extension ShoppingCartViewController: ShoppingCartCellDelegate{
         shoppingCartTable.reloadData()
         setGlobalPrice()
         tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
+        checkButton()
     }
 }

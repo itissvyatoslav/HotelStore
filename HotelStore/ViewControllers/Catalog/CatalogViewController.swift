@@ -28,6 +28,7 @@ class CatalogViewController: UIViewController{
         super.viewDidLoad()
         setViews()
         self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,11 +64,13 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate{
             if model.categories[indexPath.item].sub_categoryes.isEmpty{
                 let vc = storyboard?.instantiateViewController(identifier: "ProductsVC") as! ProductsViewController
                 vc.category_id = model.categories[indexPath.row].id
+                vc.navigationItem.title = model.categories[indexPath.row].name
                 network.getProducts(hotel_id: model.user.hotel.id, category_id: model.categories[indexPath.row].id, limit: "50", page: 1, brand: "")
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 let vc = storyboard?.instantiateViewController(identifier: "SubCatalogVC") as! SubCatalogViewController
                 vc.number = indexPath.row
+                vc.navigationItem.title = model.categories[indexPath.row].name
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }

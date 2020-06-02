@@ -62,6 +62,7 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
         nameTextField.text = model.user.firstName
         roomNumberTextField.text = model.user.roomNumber
         setGlobalPrice()
+        self.navigationItem.title = "Checkout"
     }
     
     private func setStripe(){

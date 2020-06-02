@@ -18,11 +18,12 @@ class SubCatalogViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setViews()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     private func setViews(){
         self.navigationItem.backBarButtonItem?.title = ""
-        self.navigationItem.title = model.user.hotel.name
+        //self.navigationItem.title = model.user.hotel.name
         self.tabBarItem.title = "Catalog"
         catalogTable.delegate = self
         catalogTable.dataSource = self
@@ -46,6 +47,7 @@ extension SubCatalogViewController: UITableViewDelegate, UITableViewDataSource{
         if #available(iOS 13.0, *) {
             let vc = storyboard?.instantiateViewController(identifier: "ProductsVC") as! ProductsViewController
             vc.category_id = model.categories[number].sub_categoryes[indexPath.row].id
+            vc.navigationItem.title = model.categories[number].sub_categoryes[indexPath.row].name
             GetProductsService().getProducts(hotel_id: model.user.hotel.id, category_id: model.categories[number].sub_categoryes[indexPath.row].id, limit: "50", page: 1, brand: "")
             self.navigationController?.pushViewController(vc, animated: true)
         }

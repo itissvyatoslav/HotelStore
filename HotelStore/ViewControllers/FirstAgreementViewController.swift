@@ -11,7 +11,7 @@ import UIKit
 
 class FirstAgreementViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
-        guard let url = URL(string: "http://127.0.0.1:5000/document/policy.pdf") else { return }
+        guard let url = URL(string: "http://176.119.157.195:8080/document/policy.pdf") else { return }
         
         let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
         

@@ -17,6 +17,8 @@ class LogInViewController: UIViewController{
     @IBOutlet weak var infoLabel: UILabel!
     
     override func viewDidLoad() {
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         super.viewDidLoad()
         infoLabel.text = "Please, sign in with your\nApple ID"
         setUpButton()

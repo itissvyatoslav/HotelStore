@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8aU-ar-NWh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8aU-ar-NWh">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -81,21 +81,35 @@
                                     <segue destination="Rra-zu-uyU" kind="show" id="rHL-sa-6P8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20C-O9-kza">
+                                <rect key="frame" x="26" y="744" width="363" height="45"/>
+                                <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="8xm-8D-P9h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Cart is empty">
+                                    <color key="titleColor" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="vkv-pi-qWW" firstAttribute="trailing" secondItem="u17-6C-HHO" secondAttribute="trailing" constant="18.5" id="4Fw-zy-oM9"/>
                             <constraint firstItem="vkv-pi-qWW" firstAttribute="bottom" secondItem="6jG-Ee-Uzd" secondAttribute="bottom" constant="24" id="8Aw-bv-FI4"/>
+                            <constraint firstItem="vkv-pi-qWW" firstAttribute="bottom" secondItem="20C-O9-kza" secondAttribute="bottom" constant="24" id="8Ms-dH-f8D"/>
                             <constraint firstItem="s6m-Bh-D1B" firstAttribute="leading" secondItem="vkv-pi-qWW" secondAttribute="leading" id="BIl-LE-2p6"/>
                             <constraint firstItem="s6m-Bh-D1B" firstAttribute="top" secondItem="1xY-Sc-A0X" secondAttribute="bottom" constant="21.5" id="EL0-G2-g2e"/>
                             <constraint firstItem="jOx-97-p0R" firstAttribute="top" secondItem="vkv-pi-qWW" secondAttribute="top" id="GeC-jG-S1B"/>
                             <constraint firstItem="jOx-97-p0R" firstAttribute="leading" secondItem="1xY-Sc-A0X" secondAttribute="trailing" constant="8" id="I46-vc-VEv"/>
                             <constraint firstItem="1xY-Sc-A0X" firstAttribute="leading" secondItem="vkv-pi-qWW" secondAttribute="leading" constant="24" id="LXt-dt-j8b"/>
+                            <constraint firstItem="20C-O9-kza" firstAttribute="leading" secondItem="vkv-pi-qWW" secondAttribute="leading" constant="26" id="QPq-gG-0TE"/>
                             <constraint firstItem="6jG-Ee-Uzd" firstAttribute="leading" secondItem="vkv-pi-qWW" secondAttribute="leading" constant="26" id="cUm-6y-Qce"/>
                             <constraint firstItem="vkv-pi-qWW" firstAttribute="trailing" secondItem="6jG-Ee-Uzd" secondAttribute="trailing" constant="25" id="dsZ-Uv-O1C"/>
                             <constraint firstItem="u17-6C-HHO" firstAttribute="top" secondItem="vkv-pi-qWW" secondAttribute="top" constant="7" id="mMk-QN-cNV"/>
                             <constraint firstItem="1xY-Sc-A0X" firstAttribute="top" secondItem="vkv-pi-qWW" secondAttribute="top" id="mw8-IX-wp4"/>
                             <constraint firstItem="vkv-pi-qWW" firstAttribute="trailing" secondItem="s6m-Bh-D1B" secondAttribute="trailing" id="nYY-F6-zQA"/>
+                            <constraint firstItem="vkv-pi-qWW" firstAttribute="trailing" secondItem="20C-O9-kza" secondAttribute="trailing" constant="25" id="w7Z-w5-pm5"/>
                             <constraint firstItem="u17-6C-HHO" firstAttribute="leading" secondItem="jOx-97-p0R" secondAttribute="trailing" constant="10" id="xIs-hF-qaq"/>
                             <constraint firstItem="6jG-Ee-Uzd" firstAttribute="top" secondItem="s6m-Bh-D1B" secondAttribute="bottom" constant="20" id="yYf-kj-m62"/>
                         </constraints>
@@ -103,6 +117,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Acc-Eo-9O4"/>
                     <connections>
+                        <outlet property="buyButton" destination="6jG-Ee-Uzd" id="pDS-fu-Hsr"/>
+                        <outlet property="emptyButton" destination="20C-O9-kza" id="CPv-Ny-1dH"/>
                         <outlet property="priceLabel" destination="jOx-97-p0R" id="8Yb-S6-2Lu"/>
                         <outlet property="shoppingCartTable" destination="s6m-Bh-D1B" id="IxJ-1n-Hds"/>
                     </connections>

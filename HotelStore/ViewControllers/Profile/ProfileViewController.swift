@@ -43,7 +43,7 @@ class ProfileViewController: UIViewController{
     
     private func setViews(){
         self.tabBarItem.image = UIImage(named: "profileblack")
-        self.navigationItem.backBarButtonItem?.title = ""
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.tabBarItem.title = "Profile"
         self.tabBarController?.tabBar.isHidden = false
         tableView.dataSource = self

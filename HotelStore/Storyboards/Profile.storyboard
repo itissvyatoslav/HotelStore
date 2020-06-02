@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AUg-fH-3ck">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AUg-fH-3ck">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -406,7 +406,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qEe-NK-1qy"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Last order" id="1GK-Ag-snc"/>
+                    <navigationItem key="navigationItem" title="Last order" id="1GK-Ag-snc">
+                        <barButtonItem key="backBarButtonItem" title=" " id="0RU-ZJ-u1Y"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="hotelLabel" destination="3fR-gR-NjN" id="19m-1j-Brv"/>
                         <outlet property="orderNumberLabel" destination="COI-9Z-BTg" id="6gL-YE-bMz"/>
@@ -507,7 +509,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bMb-HD-9MT"/>
                     </view>
-                    <navigationItem key="navigationItem" title="User info" id="BV6-jp-OhD"/>
+                    <navigationItem key="navigationItem" title="User info" id="BV6-jp-OhD">
+                        <barButtonItem key="backBarButtonItem" title=" " id="H2m-Jj-8cG"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="emailTextField" destination="Y0F-5X-qrf" id="Vv4-gE-kTw"/>
                         <outlet property="infoLabel" destination="qjc-fQ-Kak" id="zGw-BJ-5s3"/>
@@ -557,7 +561,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4ca-xi-Sdd"/>
                     </view>
-                    <navigationItem key="navigationItem" title="User agreement" id="0x1-2Z-yWB"/>
+                    <navigationItem key="navigationItem" title="User agreement" id="0x1-2Z-yWB">
+                        <barButtonItem key="backBarButtonItem" title=" " id="2bm-Ql-y8A"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TXg-Gj-Zrp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
