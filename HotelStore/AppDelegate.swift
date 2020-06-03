@@ -13,10 +13,11 @@ import Stripe
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    let network = UserService()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Stripe.setDefaultPublishableKey(StripeKeys.publishable_key)
+        network.getUserInfo()
         // Override point for customization after application launch.
         return true
     }

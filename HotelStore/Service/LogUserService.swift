@@ -30,7 +30,19 @@ class LogUserService {
         }
         request.httpBody = httpBody
         
-        let session = URLSession.shared
+        let config = URLSessionConfiguration.default
+        let additionalHeaders = [
+            "Accept": "application/json",
+            "cache-control": "no-cache"
+        ]
+        config.httpAdditionalHeaders = additionalHeaders
+        
+        let postString = parametrs.compactMap{(key, value) -> String in
+            return "\(key)=\(value)"
+        }.joined(separator: "&")
+        request.httpBody = postString.data(using: .utf8)
+
+        let session = URLSession.init(configuration: config)
         session.dataTask(with: request){(data, response, error)  in
             guard let data = data else {
                 print("data error")

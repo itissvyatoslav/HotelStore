@@ -40,7 +40,6 @@ class GetProductsService {
             }
             do {
                 let json = try JSONDecoder().decode(answerReceive.self, from: data)
-                print(json)
                 self.model.categories.removeAll()
                 for number in 0..<json.data.count{
                     self.model.addCategory.sub_categoryes.removeAll()
@@ -99,7 +98,6 @@ class GetProductsService {
             var url: String
         }
         let semaphore = DispatchSemaphore (value: 0)
-        print(hotel_id, "|||", category_id)
         var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/product?hotel_id=\(hotel_id)&category_id=\(category_id)&limit=\(limit ?? "")&page=\(page)&brand=\(brand ?? "")")!,timeoutInterval: Double.infinity)
         
         request.httpMethod = "GET"
@@ -112,6 +110,7 @@ class GetProductsService {
             }
             do {
                 let json = try JSONDecoder().decode(answerReceive.self, from: data)
+                print(json)
                 self.model.products.removeAll()
                 for number in 0..<json.data.count{
                     if json.data[number].quantity != 0 {

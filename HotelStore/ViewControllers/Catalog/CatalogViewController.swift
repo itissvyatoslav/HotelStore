@@ -25,6 +25,7 @@ class CatalogViewController: UIViewController{
     @IBOutlet weak var catalogTable: UITableView!
     
     override func viewDidLoad() {
+        print(DataModel.sharedData.orderNumber)
         super.viewDidLoad()
         setViews()
         self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
@@ -73,6 +74,7 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate{
                 vc.navigationItem.title = model.categories[indexPath.row].name
                 self.navigationController?.pushViewController(vc, animated: true)
             }
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
 }

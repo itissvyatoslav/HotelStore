@@ -91,7 +91,7 @@ class ShoppingCartNetwork{
                     self.model.shopCart.append(self.model.addProduct)
                 }
                 
-                //print(json)
+                print(json)
             } catch {
                 print(error)
             }

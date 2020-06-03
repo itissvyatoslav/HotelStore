@@ -11,52 +11,64 @@ import Foundation
 class UserService {
     let model = DataModel.sharedData
     
+    struct answerReceiveUser: Codable {
+        var data: dataReceiveUser
+    }
+    
+    struct dataReceiveUser: Codable {
+        var first_name: String?
+        var id: Int
+        var last_name: String?
+        var orders: [dataReceive]
+    }
+    
+    struct answerReceive: Codable{
+        var data: [dataReceive]
+        var message: String?
+        var success: Bool
+    }
+    
+    struct dataReceive: Codable{
+        var cart: [cartType]
+        var comment: String?
+        var date: String
+        var hotel: hotelType
+        var id: Int
+        var room: String?
+        var status: String
+        var time: String
+    }
+    
+    struct hotelType: Codable{
+        var address: String
+        var id: Int
+        var name: String
+    }
+    
+    struct cartType: Codable{
+        var cart_position_id: Int
+        var order: Int
+        var product: productType
+        var quantity_cart: Int
+        var quantity_stock: Int
+    }
+    
+    struct productType: Codable{
+        var brand: String
+        var category_id: Int
+        var id: Int
+        var images: [imagesType]
+        var price: Double
+        var short_description: String
+        var title: String
+    }
+    
+    struct imagesType: Codable{
+        var front: Bool
+        var url: String
+    }
+    
     func getLastOrder(){
-        struct answerReceive: Codable{
-            var data: [dataReceive]
-            var message: String?
-            var success: Bool
-        }
-        
-        struct dataReceive: Codable{
-            var cart: [cartType]
-            var comment: String
-            var date: String
-            var hotel: hotelType
-            var id: Int
-            var room: String
-            var status: String
-            var time: String
-        }
-        
-        struct hotelType: Codable{
-            var address: String
-            var id: Int
-            var name: String
-        }
-        
-        struct cartType: Codable{
-            var cart_position_id: Int
-            var order: Int
-            var product: productType
-            var quantity_cart: Int
-            var quantity_stock: Int
-        }
-        
-        struct productType: Codable{
-            var brand: String
-            var category_id: Int
-            var id: Int
-            var images: [imagesType]
-            var price: Double
-            var short_description: String
-            var title: String
-        }
-        
-        struct imagesType: Codable{
-            var front: Bool
-            var url: String
-        }
         let semaphore = DispatchSemaphore (value: 0)
         var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/order")!,timeoutInterval: Double.infinity)
         request.httpMethod = "GET"
@@ -73,7 +85,7 @@ class UserService {
                 if json.data.count != 0 {
                     self.model.status = json.data[json.data.count - 1].status
                     self.model.hotelLastOrder = json.data[json.data.count - 1].hotel.name
-                    self.model.orderNumber = json.data[json.data.count - 1].cart[0].order
+                    self.model.orderNumberLast = json.data[json.data.count - 1].cart[0].order
                     for number in 0..<json.data[json.data.count - 1].cart.count{
                         self.model.addToLastOrder.name = json.data[json.data.count - 1].cart[number].product.title
                         self.model.addToLastOrder.count = json.data[json.data.count - 1].cart[number].quantity_cart
@@ -91,9 +103,6 @@ class UserService {
     }
     
     func getUserInfo(){
-        struct answerReceive: Codable{
-        }
-
         let semaphore = DispatchSemaphore (value: 0)
         var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/logined")!,timeoutInterval: Double.infinity)
         request.httpMethod = "GET"
@@ -105,8 +114,9 @@ class UserService {
                 return
             }
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
+                let json = try JSONDecoder().decode(answerReceiveUser.self, from: data)
+                self.model.user.firstName = json.data.first_name ?? "Name"
+                self.model.user.lastName = json.data.last_name ?? "Surname"
             } catch {
                 print(error)
             }
@@ -117,6 +127,20 @@ class UserService {
     }
     
     func payOrder(roomNumber: String, comment: String){
+        struct answerReceivePay: Codable{
+            var data: dataReceivePay
+            var message: String?
+            var success: Bool
+        }
+        
+        struct dataReceivePay: Codable {
+            var comment: String?
+            var goods_list: [String]
+            var order_number: Int
+            var result: Bool
+            var room_number: String?
+        }
+        
         let semaphore = DispatchSemaphore (value: 0)
         guard let url = URL(string: "http://176.119.157.195:8080/app/orderdata") else {
             print("url error")
@@ -147,13 +171,36 @@ class UserService {
                 return
             }
             do {
+                let json = try JSONDecoder().decode(answerReceivePay.self, from: data)
+                DataModel.sharedData.orderNumber = json.data.order_number
+            } catch {
+                print(error)
+            }
+            semaphore.signal()
+        }.resume()
+        semaphore.wait()
+    }
+    
+    func cancelLastOrder(){
+        let semaphore = DispatchSemaphore (value: 0)
+        var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/cancelorder")!,timeoutInterval: Double.infinity)
+        request.httpMethod = "GET"
+        request.addValue(model.token, forHTTPHeaderField: "token")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                print(String(describing: error))
+                return
+            }
+            do {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
                 print(json)
             } catch {
                 print(error)
             }
             semaphore.signal()
-        }.resume()
+        }
+        task.resume()
         semaphore.wait()
     }
 }

@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class UserInfoViewController: UIViewController{
+    let network = UserService()
+    
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -17,6 +19,7 @@ class UserInfoViewController: UIViewController{
     var id = 0
     
     override func viewDidLoad() {
+        network.getUserInfo()
         setViews()
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
@@ -24,7 +27,7 @@ class UserInfoViewController: UIViewController{
     
     private func setViews(){
         infoLabel.text = "Choose, which data\nwill be available to the system"
-        nameTextField.text = DataModel.sharedData.user.firstName
+        nameTextField.text = "\(DataModel.sharedData.user.firstName) \(DataModel.sharedData.user.lastName)"
         emailTextField.text = DataModel.sharedData.user.email
     }
     

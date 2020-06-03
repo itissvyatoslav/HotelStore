@@ -30,6 +30,20 @@ class MyAPIClient: NSObject, STPCustomerEphemeralKeyProvider {
         case delete
     }
     
+    struct answerReceive: Codable{
+        var data: dataReceive
+        var message: String?
+        var success: Bool
+    }
+    
+    struct dataReceive: Codable {
+        var comment: String?
+        var goods_list: [String]
+        var order_number: Int
+        var result: Bool
+        var room_number: String?
+    }
+    
     private let build_main_url = { (method: String)-> URL in
         return URL(string: "\(StringValue.m_url)\(method)")!
     }
@@ -85,11 +99,12 @@ class MyAPIClient: NSObject, STPCustomerEphemeralKeyProvider {
         task.resume()
     }
     
-    func complitePayment(completion: @escaping (Bool) -> Void){
+    func complitePayment(completion: @escaping (Bool, Int) -> Void){
+        let semaphore = DispatchSemaphore (value: 0)
         let url = build_main_url(StringValue.sabmit_method)
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.get.rawValue
-        request.addValue(DataModel.sharedData.token, forHTTPHeaderField: "token")
+    request.addValue(DataModel.sharedData.token, forHTTPHeaderField: "token")
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             guard let response = response as? HTTPURLResponse,
                 response.statusCode == 200,
@@ -101,15 +116,15 @@ class MyAPIClient: NSObject, STPCustomerEphemeralKeyProvider {
             if let response_text = json{
                 let data = response_text["data"] as? [String: Any]
                 if let d = data{
-                    completion(d["result"] as! Bool)
+                    completion(d["result"] as! Bool, d["order_number"] as! Int)
                 }else{
-                    completion(false)
+                    completion(false, 0)
                 }
             }
-            
+            semaphore.signal()
         })
         task.resume()
+        semaphore.wait()
     }
-    
 }
 

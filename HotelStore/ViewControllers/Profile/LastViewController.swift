@@ -12,26 +12,34 @@ import UIKit
 class LastViewController: UIViewController {
     let network = UserService()
     
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var orderNumberLabel: UILabel!
     @IBOutlet weak var hotelLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var orderTable: UITableView!
     
+    
     override func viewDidLoad() {
         network.getLastOrder()
-        network.getUserInfo()
         setViews()
     }
 
     @IBAction func cancelOrderAction(_ sender: Any) {
+        network.cancelLastOrder()
+        navigationController?.popViewController(animated: true)
     }
     
     private func setViews(){
         statusLabel.text = DataModel.sharedData.status
-        orderNumberLabel.text = "\(DataModel.sharedData.orderNumber)"
+        orderNumberLabel.text = "\(DataModel.sharedData.orderNumberLast)"
         hotelLabel.text = DataModel.sharedData.hotelLastOrder
         setPriceLabel()
+        if statusLabel.text != "new order" {
+            cancelButton.isHidden = true
+        } else {
+            cancelButton.isHidden = false
+        }
         orderTable.delegate = self
         orderTable.dataSource = self
         self.orderTable.register(UINib(nibName: "ProfileLastOrderCells", bundle: nil), forCellReuseIdentifier: "ProfileLastOrderCells")

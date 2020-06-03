@@ -94,6 +94,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

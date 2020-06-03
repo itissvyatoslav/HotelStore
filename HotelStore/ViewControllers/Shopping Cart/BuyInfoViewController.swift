@@ -22,19 +22,10 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     @IBOutlet weak var roomNumberTextField: UITextField!
     @IBOutlet weak var commentTextView: UITextView!
     @IBAction func payAction(_ sender: Any) {
-        if summ == 0 {
-            print(summ)
-            let alert = UIAlertController(title: "Your cart is empty", message: "Try to add something to the cart", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
-            self.present(alert, animated: true)
-        } else {
-            self.paymentContext?.requestPayment()
-            network.payOrder(roomNumber: roomNumberTextField.text ?? "", comment: commentTextView.text ?? "")
-            let vc = self.storyboard?.instantiateViewController(identifier: "SuccessPaymentVC") as! SuccessPaymentViewController
-            vc.navigationItem.hidesBackButton = true
-            self.navigationController?.pushViewController(vc, animated: true)
-            
-        }
+        self.paymentContext?.requestPayment()
+        let vc = self.storyboard?.instantiateViewController(identifier: "SuccessPaymentVC") as! SuccessPaymentViewController
+        vc.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func selectCard(_ sender: Any) {
@@ -93,6 +84,7 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     }
     
     func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPPaymentStatusBlock) {
+        
         MyAPIClient().createPaymentIntent { (data) in
             if let clientSecret = data{
                 let paymentIntentParams = STPPaymentIntentParams(clientSecret: clientSecret)
@@ -100,15 +92,19 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
                 STPPaymentHandler.shared().confirmPayment(withParams: paymentIntentParams, authenticationContext: paymentContext) { status, paymentIntent, error in
                     switch status {
                     case .succeeded:
-                        MyAPIClient().complitePayment { (result) in
-                            if result == false {
-                                
-                            } else {
-
-                            }
-                            //some action true on false
+                            MyAPIClient().complitePayment { (result, number) in
+                                print(result)
+                                print(number)
+                                if result == false {
+                                    self.alertWindow()
+                                } else {
+                                    self.startIndicator()
+                                    sleep(5)
+                                    self.model.orderNumber = number
+                                }
+                                //some action true on false
+                            completion(.success, nil)
                         }
-                        completion(.success, nil)
                     case .failed:
                         completion(.error, error)
                     case .canceled:
@@ -125,11 +121,9 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     
     func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {
         print(status)
-        print("tapped payment8")
     }
     
     func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
-        print("tapped payment9")
     }
 }
 

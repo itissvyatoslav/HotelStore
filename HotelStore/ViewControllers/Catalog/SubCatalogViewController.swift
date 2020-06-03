@@ -50,6 +50,7 @@ extension SubCatalogViewController: UITableViewDelegate, UITableViewDataSource{
             vc.navigationItem.title = model.categories[number].sub_categoryes[indexPath.row].name
             GetProductsService().getProducts(hotel_id: model.user.hotel.id, category_id: model.categories[number].sub_categoryes[indexPath.row].id, limit: "50", page: 1, brand: "")
             self.navigationController?.pushViewController(vc, animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
 }

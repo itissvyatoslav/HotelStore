@@ -78,5 +78,6 @@ extension HotelListViewController: UITableViewDelegate, UITableViewDataSource{
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

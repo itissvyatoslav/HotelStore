@@ -118,10 +118,12 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if #available(iOS 13.0, *) {
             let vc = storyboard?.instantiateViewController(identifier: "ProductPageVC") as! ProductPageViewController
+            vc.navigationItem.title = " "
             getImages(indexPath.item)
             vc.number = indexPath.row
             vc.images = images
             self.navigationController?.pushViewController(vc, animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
 }

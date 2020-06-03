@@ -51,6 +51,7 @@ class ProductTableViewCell: UITableViewCell {
         if model.products[indexPath ?? 0].count == 0{
             zeroInStock()
         } else {
+            countLabel.textColor = UIColor(red: 21/255, green: 22/255, blue: 22/255, alpha: 0.5)
             countLabel.text = "\(model.products[indexPath ?? 0].count) in stock"
         }
         numberLabel.text = "\(count)"
@@ -61,6 +62,7 @@ class ProductTableViewCell: UITableViewCell {
         if model.products[indexPath ?? 0].count == 0{
             zeroInStock()
         } else {
+            countLabel.textColor = UIColor(red: 21/255, green: 22/255, blue: 22/255, alpha: 0.5)
             countLabel.text = "\(model.products[indexPath ?? 0].count) in stock"
         }
         count = 1

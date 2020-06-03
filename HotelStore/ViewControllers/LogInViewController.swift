@@ -12,7 +12,6 @@ import AuthenticationServices
 @available(iOS 13.0, *)
 class LogInViewController: UIViewController{
     let model = DataModel.sharedData
-    let network = LogUserService()
     
     @IBOutlet weak var infoLabel: UILabel!
     
@@ -81,7 +80,6 @@ extension LogInViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             model.user.lastName = credentials.fullName?.familyName ?? ""
             model.user.email = credentials.email ?? ""
             
-            network.registration(id: model.user.id)
             goToNextVC()
         default: break
         }

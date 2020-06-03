@@ -6,15 +6,31 @@
 //  Copyright © 2020 Svyatoslav Vladimirovich. All rights reserved.
 //
 
-import Foundation
+import WebKit
 import UIKit
 
-class AgreementViewController: UIViewController{
+class AgreementViewController: UIViewController, WKNavigationDelegate{
+    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         setView()
+        webView.navigationDelegate = self
     }
     
     private func setView(){
         self.tabBarController?.tabBar.isHidden = true
+        setPDF()
+    }
+    
+    private func setPDF(){
+        if let url = URL(string: "http://176.119.157.195:8080/document/policy"){
+            let request = URLRequest(url: url)
+            webView.load(request)
+        }
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        activityIndicator.stopAnimating()
     }
 }

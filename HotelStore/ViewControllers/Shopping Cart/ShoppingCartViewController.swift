@@ -38,6 +38,7 @@ class ShoppingCartViewController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        model.shopCart.removeAll()
         network.getCart()
         shoppingCartTable.reloadData()
         checkButton()

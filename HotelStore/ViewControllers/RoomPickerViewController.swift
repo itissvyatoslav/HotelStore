@@ -36,6 +36,7 @@ class RoomPickerViewController: UIViewController{
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "FirstAgreementVC") as! FirstAgreementViewController
         vc.navigationItem.hidesBackButton = true
+        vc.navigationController?.title = "User agreement"
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -410,6 +410,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="0RU-ZJ-u1Y"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="eHH-Iw-tRm" id="EDI-qT-fM2"/>
                         <outlet property="hotelLabel" destination="3fR-gR-NjN" id="19m-1j-Brv"/>
                         <outlet property="orderNumberLabel" destination="COI-9Z-BTg" id="6gL-YE-bMz"/>
                         <outlet property="orderTable" destination="Dsh-Jb-cTm" id="off-0W-YTF"/>
@@ -530,14 +531,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="41N-3k-G1r">
-                                <rect key="frame" x="26.5" y="92.5" width="357.5" height="720.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You agreed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahy-4v-6L8">
                                 <rect key="frame" x="26.5" y="816" width="363" height="45"/>
                                 <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -548,22 +541,39 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hwG-Pq-WPj">
+                                <rect key="frame" x="0.0" y="88" width="414" height="720"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="grM-Gc-B9k">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ahy-4v-6L8" firstAttribute="leading" secondItem="cZz-6f-c6y" secondAttribute="leading" constant="26.260000000000002" id="1Z8-rx-9Zn"/>
                             <constraint firstAttribute="trailing" secondItem="ahy-4v-6L8" secondAttribute="trailing" constant="24.739999999999998" id="6tj-ap-9Im"/>
-                            <constraint firstItem="41N-3k-G1r" firstAttribute="leading" secondItem="4ca-xi-Sdd" secondAttribute="leading" constant="26.260000000000002" id="JZL-2F-cUM"/>
-                            <constraint firstItem="4ca-xi-Sdd" firstAttribute="trailing" secondItem="41N-3k-G1r" secondAttribute="trailing" constant="30.059999999999999" id="NPi-QF-2Ko"/>
-                            <constraint firstItem="41N-3k-G1r" firstAttribute="top" secondItem="4ca-xi-Sdd" secondAttribute="top" constant="4.54" id="gFB-BE-BXP"/>
+                            <constraint firstItem="ahy-4v-6L8" firstAttribute="top" secondItem="hwG-Pq-WPj" secondAttribute="bottom" constant="8" id="FlD-Ly-PQA"/>
+                            <constraint firstItem="grM-Gc-B9k" firstAttribute="centerY" secondItem="cZz-6f-c6y" secondAttribute="centerY" id="Izq-Ot-Jta"/>
+                            <constraint firstItem="grM-Gc-B9k" firstAttribute="centerX" secondItem="cZz-6f-c6y" secondAttribute="centerX" id="J3O-Ml-6K0"/>
+                            <constraint firstItem="4ca-xi-Sdd" firstAttribute="trailing" secondItem="hwG-Pq-WPj" secondAttribute="trailing" id="PVI-Ei-u7f"/>
+                            <constraint firstItem="hwG-Pq-WPj" firstAttribute="leading" secondItem="4ca-xi-Sdd" secondAttribute="leading" id="Qu2-Om-qdf"/>
+                            <constraint firstItem="hwG-Pq-WPj" firstAttribute="top" secondItem="4ca-xi-Sdd" secondAttribute="top" id="mHa-gT-KgP"/>
                             <constraint firstAttribute="bottom" secondItem="ahy-4v-6L8" secondAttribute="bottom" constant="35" id="veC-a3-S1X"/>
-                            <constraint firstItem="4ca-xi-Sdd" firstAttribute="bottom" secondItem="41N-3k-G1r" secondAttribute="bottom" id="yXB-kb-QSR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4ca-xi-Sdd"/>
                     </view>
                     <navigationItem key="navigationItem" title="User agreement" id="0x1-2Z-yWB">
                         <barButtonItem key="backBarButtonItem" title=" " id="2bm-Ql-y8A"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="grM-Gc-B9k" id="4iy-VK-AWS"/>
+                        <outlet property="webView" destination="hwG-Pq-WPj" id="KgU-RU-UfW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TXg-Gj-Zrp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

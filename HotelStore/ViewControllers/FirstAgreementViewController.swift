@@ -6,25 +6,28 @@
 //  Copyright © 2020 Svyatoslav Vladimirovich. All rights reserved.
 //
 
-import Foundation
+import WebKit
 import UIKit
 
-class FirstAgreementViewController: UIViewController{
-    override func viewWillAppear(_ animated: Bool) {
-        guard let url = URL(string: "http://176.119.157.195:8080/document/policy.pdf") else { return }
-        
-        let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
-        
-        let downloadTask = urlSession.downloadTask(with: url)
-        downloadTask.resume()
-    }
+class FirstAgreementViewController: UIViewController, WKNavigationDelegate{
+    let network = LogUserService()
+    
+    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setView()
+        webView.navigationDelegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.title = "User agreement"
     }
     
     @available(iOS 13.0, *)
     @IBAction func agreeAction(_ sender: Any) {
+        network.registration(id: DataModel.sharedData.user.id)
         let vc = storyboard?.instantiateViewController(identifier: "CustomTabBarController") as! CustomTabBarController
         vc.navigationItem.hidesBackButton = true
         print("user.id: ", DataModel.sharedData.user.id)
@@ -34,11 +37,17 @@ class FirstAgreementViewController: UIViewController{
     
     private func setView(){
         self.navigationController?.title = "User agreement"
+        setPDF()
     }
-}
-
-extension FirstAgreementViewController: URLSessionDownloadDelegate{
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        print("downloadLocation:", location)
+    
+    private func setPDF(){
+        if let url = URL(string: "http://176.119.157.195:8080/document/policy"){
+            let request = URLRequest(url: url)
+            webView.load(request)
+        }
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        activityIndicator.stopAnimating()
     }
 }
