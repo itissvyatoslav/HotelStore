@@ -56,6 +56,7 @@ class ProductsViewController: UIViewController{
     
     private func getImages(_ number: Int){
         if !model.products[number].images.isEmpty{
+            images.removeAll()
             let semaphore = DispatchSemaphore (value: 0)
             for subNumber in 0..<model.products[number].images.count{
                 if let url = URL(string: "http://176.119.157.195:8080/\(model.products[number].images[subNumber].url)"){

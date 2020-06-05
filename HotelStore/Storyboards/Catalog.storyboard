@@ -313,6 +313,10 @@
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tt8-0G-kHG">
                                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="263"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="263" id="2gc-OL-Sp4"/>
+                                                                        <constraint firstAttribute="width" constant="414" id="YX8-l3-dze"/>
+                                                                    </constraints>
                                                                 </imageView>
                                                             </subviews>
                                                             <constraints>
