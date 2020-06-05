@@ -183,6 +183,22 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P2j-gf-V6J">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="BgE-kJ-wgQ">
+                                        <rect key="frame" x="15" y="15" width="20" height="20"/>
+                                        <color key="color" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2rN-GH-X47"/>
+                                    <constraint firstItem="BgE-kJ-wgQ" firstAttribute="centerY" secondItem="P2j-gf-V6J" secondAttribute="centerY" id="ArX-bF-mus"/>
+                                    <constraint firstAttribute="width" constant="50" id="TrS-IS-Krc"/>
+                                    <constraint firstItem="BgE-kJ-wgQ" firstAttribute="centerX" secondItem="P2j-gf-V6J" secondAttribute="centerX" id="pMb-OF-bED"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -190,9 +206,11 @@
                             <constraint firstItem="HF5-3f-4To" firstAttribute="top" secondItem="9dk-T0-5l1" secondAttribute="bottom" id="1w6-tO-xBB"/>
                             <constraint firstItem="aST-OH-NW7" firstAttribute="trailing" secondItem="ak4-FJ-FiI" secondAttribute="trailing" id="2ft-3P-d2t"/>
                             <constraint firstItem="HF5-3f-4To" firstAttribute="leading" secondItem="ak4-FJ-FiI" secondAttribute="leading" id="Cav-iZ-is6"/>
+                            <constraint firstItem="P2j-gf-V6J" firstAttribute="centerX" secondItem="7PS-AB-lhj" secondAttribute="centerX" id="K63-r5-qv9"/>
                             <constraint firstItem="9dk-T0-5l1" firstAttribute="top" secondItem="aST-OH-NW7" secondAttribute="bottom" id="TGk-ru-wH9"/>
                             <constraint firstItem="gk8-U6-M2X" firstAttribute="top" secondItem="ak4-FJ-FiI" secondAttribute="top" id="XLg-uP-7KM"/>
                             <constraint firstItem="aST-OH-NW7" firstAttribute="leading" secondItem="ak4-FJ-FiI" secondAttribute="leading" id="bqd-kC-Sw7"/>
+                            <constraint firstItem="P2j-gf-V6J" firstAttribute="centerY" secondItem="7PS-AB-lhj" secondAttribute="centerY" id="e1J-jk-czG"/>
                             <constraint firstItem="ak4-FJ-FiI" firstAttribute="bottom" secondItem="HF5-3f-4To" secondAttribute="bottom" id="hkc-LA-adW"/>
                             <constraint firstItem="aST-OH-NW7" firstAttribute="top" secondItem="gk8-U6-M2X" secondAttribute="bottom" id="kKE-kR-zg1"/>
                             <constraint firstItem="ak4-FJ-FiI" firstAttribute="trailing" secondItem="HF5-3f-4To" secondAttribute="trailing" id="kfE-kp-faF"/>
@@ -204,13 +222,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="3fZ-hm-DQp"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="BgE-kJ-wgQ" id="OBz-G1-aet"/>
                         <outlet property="hotelsTable" destination="aST-OH-NW7" id="cvs-Cl-eFi"/>
+                        <outlet property="indicatorView" destination="P2j-gf-V6J" id="xVe-od-VlH"/>
                         <outlet property="otherHotelsTable" destination="HF5-3f-4To" id="MKY-qK-gBM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="01y-Gn-dNk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="551" y="-378"/>
+            <point key="canvasLocation" x="550.72463768115949" y="-378.34821428571428"/>
         </scene>
         <!--Room number-->
         <scene sceneID="sPp-6s-Jgf">

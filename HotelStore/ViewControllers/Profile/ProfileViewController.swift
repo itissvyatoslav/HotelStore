@@ -12,8 +12,9 @@ import MessageUI
 
 class ProfileViewController: UIViewController{
     let model = DataModel.sharedData
-    let network = GetProductsService()
+    let network = UserService()
     
+    @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -31,17 +32,18 @@ class ProfileViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setViews()
-        network.getCategories()
         self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        indicatorView.isHidden = true
         nameLabel.text = DataModel.sharedData.user.firstName.uppercased()
         self.navigationItem.title = model.user.hotel.name
         self.tabBarController?.tabBar.isHidden = false
     }
     
     private func setViews(){
+        indicatorView.layer.cornerRadius = 5
         self.tabBarItem.image = UIImage(named: "profileblack")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.tabBarItem.title = "Profile"
@@ -78,14 +80,22 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.item == 0{
             if #available(iOS 13.0, *) {
-                let vc = storyboard?.instantiateViewController(identifier: "UserInfoVC") as! UserInfoViewController
-                self.navigationController?.pushViewController(vc, animated: true)
+                indicatorView.isHidden = false
+                DispatchQueue.main.async {
+                    self.network.getUserInfo()
+                    let vc = self.storyboard?.instantiateViewController(identifier: "UserInfoVC") as! UserInfoViewController
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
         }
         if indexPath.item == 1{
             if #available(iOS 13.0, *) {
-                let vc = storyboard?.instantiateViewController(identifier: "LastVC") as! LastViewController
-                self.navigationController?.pushViewController(vc, animated: true)
+                indicatorView.isHidden = false
+                DispatchQueue.main.async {
+                    self.network.getLastOrder()
+                    let vc = self.storyboard?.instantiateViewController(identifier: "LastVC") as! LastViewController
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
         }
         if indexPath.item == 2{

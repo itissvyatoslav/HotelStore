@@ -11,6 +11,7 @@ import UIKit
 
 class CatalogViewController: UIViewController{
     let network = GetProductsService()
+    let getHotels = GetHotelsService()
     let model = DataModel.sharedData
 
     @IBAction func HotelListAction(_ sender: Any) {
@@ -22,23 +23,26 @@ class CatalogViewController: UIViewController{
         }
     }
     
+    @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var catalogTable: UITableView!
     
     override func viewDidLoad() {
-        print(DataModel.sharedData.orderNumber)
         super.viewDidLoad()
+        getHotels.getHotels()
         setViews()
         self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        network.getCategories()
-        catalogTable.reloadData()
+        indicatorView.isHidden = true
         self.navigationItem.title =  model.user.hotel.name
+        catalogTable.reloadData()
     }
     
     private func setViews(){
+        indicatorView.isHidden = true
+        indicatorView.layer.cornerRadius = 5
         self.navigationItem.backBarButtonItem?.title = ""
         self.navigationItem.title = model.user.hotel.name
         self.tabBarItem.title = "Catalog"
@@ -63,11 +67,14 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if #available(iOS 13.0, *) {
             if model.categories[indexPath.item].sub_categoryes.isEmpty{
-                let vc = storyboard?.instantiateViewController(identifier: "ProductsVC") as! ProductsViewController
-                vc.category_id = model.categories[indexPath.row].id
-                vc.navigationItem.title = model.categories[indexPath.row].name
-                network.getProducts(hotel_id: model.user.hotel.id, category_id: model.categories[indexPath.row].id, limit: "50", page: 1, brand: "")
-                self.navigationController?.pushViewController(vc, animated: true)
+                indicatorView.isHidden = false
+                DispatchQueue.main.async {
+                    let vc = self.storyboard?.instantiateViewController(identifier: "ProductsVC") as! ProductsViewController
+                    vc.category_id = self.model.categories[indexPath.row].id
+                    vc.navigationItem.title = self.model.categories[indexPath.row].name
+                    self.network.getProducts(hotel_id: self.model.user.hotel.id, category_id: self.model.categories[indexPath.row].id, limit: "50", page: 1, brand: "")
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             } else {
                 let vc = storyboard?.instantiateViewController(identifier: "SubCatalogVC") as! SubCatalogViewController
                 vc.number = indexPath.row

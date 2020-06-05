@@ -17,15 +17,25 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     private var paymentContext: STPPaymentContext? = nil
     let model = DataModel.sharedData
     
+    @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var hotelLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var roomNumberTextField: UITextField!
     @IBOutlet weak var commentTextView: UITextView!
     @IBAction func payAction(_ sender: Any) {
+        indicatorView.isHidden = false
         self.paymentContext?.requestPayment()
-        let vc = self.storyboard?.instantiateViewController(identifier: "SuccessPaymentVC") as! SuccessPaymentViewController
-        vc.navigationItem.hidesBackButton = true
-        self.navigationController?.pushViewController(vc, animated: true)
+        DispatchQueue.main.async {
+            MyAPIClient().goood()
+            if self.model.resultOrder == true {
+                let vc = self.storyboard?.instantiateViewController(identifier: "SuccessPaymentVC") as! SuccessPaymentViewController
+                vc.navigationItem.hidesBackButton = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                self.alertWindow()
+            }
+        }
+        
     }
     
     @IBAction func selectCard(_ sender: Any) {
@@ -47,9 +57,11 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     
     override func viewWillAppear(_ animated: Bool) {
         hotelLabel.text = model.user.hotel.name
+        indicatorView.isHidden = true
     }
     
     private func setView(){
+        indicatorView.layer.cornerRadius = 5
         nameTextField.text = model.user.firstName
         roomNumberTextField.text = model.user.roomNumber
         setGlobalPrice()
@@ -62,7 +74,7 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
         self.paymentContext = STPPaymentContext(customerContext: customerContext)
         self.paymentContext?.delegate = self
         self.paymentContext?.hostViewController = self
-        self.paymentContext?.paymentAmount = 5000 //это для примера, вообще это на сервере устанавливается
+        self.paymentContext?.paymentAmount = Int(DataModel.sharedData.globalPrice * 100) //это для примера, вообще это на сервере устанавливается
         
     }
     
@@ -92,26 +104,13 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
                 STPPaymentHandler.shared().confirmPayment(withParams: paymentIntentParams, authenticationContext: paymentContext) { status, paymentIntent, error in
                     switch status {
                     case .succeeded:
-                            MyAPIClient().complitePayment { (result, number) in
-                                print(result)
-                                print(number)
-                                if result == false {
-                                    self.alertWindow()
-                                } else {
-                                    self.startIndicator()
-                                    sleep(5)
-                                    self.model.orderNumber = number
-                                }
-                                //some action true on false
-                            completion(.success, nil)
-                        }
+                        completion(.success, nil)
                     case .failed:
                         completion(.error, error)
                     case .canceled:
                         print("cancel")
                         completion(.userCancellation, nil)
                     @unknown default:
-                        print("tapped payment10")
                         completion(.error, nil)
                     }
                 }

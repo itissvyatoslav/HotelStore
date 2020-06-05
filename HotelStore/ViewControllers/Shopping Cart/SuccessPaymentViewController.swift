@@ -18,6 +18,7 @@ class SuccessPaymentViewController: UIViewController{
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
     override func viewDidLoad() {
+        ShoppingCartNetwork().removeCart()
         super.viewDidLoad()
         infoLabel.text = "Your order is accepted.\nOrder number is"
         numberLabel.text = "\(DataModel.sharedData.orderNumber)"

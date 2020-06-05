@@ -12,11 +12,11 @@ import UIKit
 class ProductsViewController: UIViewController{
     var images = [UIImage]()
     let model = DataModel.sharedData
-    let network = GetProductsService()
     let productService = ShoppingCartNetwork()
     var category_id = 0
 
     @IBOutlet weak var productsTable: UITableView!
+    @IBOutlet weak var indicatorView: UIView!
     
     @IBOutlet weak var upButton: UIButton!
     @IBOutlet weak var downButton: UIButton!
@@ -35,10 +35,12 @@ class ProductsViewController: UIViewController{
         setView()
     }
     override func viewWillAppear(_ animated: Bool) {
-        productsTable.reloadData()
+        indicatorView.isHidden = true
+        //productsTable.reloadData()
     }
     
     private func setView(){
+        indicatorView.layer.cornerRadius = 5
         self.navigationItem.backBarButtonItem?.title = ""
         productsTable.delegate = self
         productsTable.dataSource = self
@@ -90,7 +92,6 @@ class ProductsViewController: UIViewController{
         for number in 0..<model.shopCart.count{
             if product.id == model.shopCart[number].id {
                 model.shopCart[number].actualCount = model.shopCart[number].actualCount! - 1
-                print("removefromshopcart number: ", model.products[number].count)
                 break
             }
         }
@@ -117,13 +118,16 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if #available(iOS 13.0, *) {
-            let vc = storyboard?.instantiateViewController(identifier: "ProductPageVC") as! ProductPageViewController
-            vc.navigationItem.title = " "
-            getImages(indexPath.item)
-            vc.number = indexPath.row
-            vc.images = images
-            self.navigationController?.pushViewController(vc, animated: true)
-            tableView.deselectRow(at: indexPath, animated: true)
+            indicatorView.isHidden = false
+            DispatchQueue.main.async {
+                let vc = self.storyboard?.instantiateViewController(identifier: "ProductPageVC") as! ProductPageViewController
+                vc.navigationItem.title = " "
+                self.getImages(indexPath.item)
+                vc.number = indexPath.row
+                vc.images = self.images
+                self.navigationController?.pushViewController(vc, animated: true)
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
         }
     }
 }

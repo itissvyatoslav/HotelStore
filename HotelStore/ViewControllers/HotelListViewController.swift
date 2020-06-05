@@ -11,18 +11,23 @@ import UIKit
 
 class HotelListViewController: UIViewController{
     let model = DataModel.sharedData
-    let network = GetHotelsService()
+    let network = GetProductsService()
     @IBOutlet weak var hotelsTable: UITableView!
     @IBOutlet weak var otherHotelsTable: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var indicatorView: UIView!
+    
     var id = 2
     
     override func viewDidLoad() {
-        network.getHotels()
+        //network.getHotels()
         super.viewDidLoad()
         setView()
     }
     
     private func setView(){
+        indicatorView.isHidden = true
+        indicatorView.layer.cornerRadius = 5
         self.navigationItem.title = "Point to delivery"
         hotelsTable.tableFooterView = UIView(frame: .zero)
         otherHotelsTable.tableFooterView = UIView(frame: .zero)
@@ -63,7 +68,13 @@ extension HotelListViewController: UITableViewDelegate, UITableViewDataSource{
         }
         
         if id == 0 {
-            navigationController?.popViewController(animated: true)
+            indicatorView.isHidden = false
+            DispatchQueue.main.async {
+                self.network.getCategories()
+                ShoppingCartNetwork().removeCart()
+                self.navigationController?.popViewController(animated: true)
+            }
+            //activityIndicator.stopAnimating()
         }
         if id == 1 {
             if #available(iOS 13.0, *) {

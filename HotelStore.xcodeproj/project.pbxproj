@@ -151,7 +151,6 @@
 				EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */,
 				EBF19C6C245A978B00F174CE /* SlideImageCell.swift */,
 				EB60A14A246AB22D00DFE105 /* ShoppingCartCell.swift */,
-				EB60A14B246AB22D00DFE105 /* ShoppingCartCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -225,6 +224,7 @@
 		EBCDBBCF244186E4008129A5 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				EB60A14B246AB22D00DFE105 /* ShoppingCartCell.xib */,
 				EBCDBBBA2440A76C008129A5 /* Main.storyboard */,
 				EBCDBBDA2441B30C008129A5 /* Catalog.storyboard */,
 				EBCDBBD82441B301008129A5 /* ShoppingCart.storyboard */,
@@ -573,7 +573,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HotelStore/HotelStore.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 2UW772375M;
 				INFOPLIST_FILE = HotelStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -596,7 +596,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HotelStore/HotelStore.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 2UW772375M;
 				INFOPLIST_FILE = HotelStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

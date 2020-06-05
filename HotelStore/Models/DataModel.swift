@@ -82,8 +82,10 @@ class DataModel {
     var addToLastOrder = LastOrderGood(name: "", count: 0, price: 0)
     var status = ""
     var hotelLastOrder = ""
+    var resultOrder = false
     var orderNumberLast = 0
     var orderNumber = 0
+    var globalPrice: Double = 0
 
     static let sharedData = DataModel()
     

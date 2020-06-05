@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class UserInfoViewController: UIViewController{
-    let network = UserService()
     
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -19,7 +18,6 @@ class UserInfoViewController: UIViewController{
     var id = 0
     
     override func viewDidLoad() {
-        network.getUserInfo()
         setViews()
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)

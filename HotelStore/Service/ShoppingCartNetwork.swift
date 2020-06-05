@@ -34,7 +34,7 @@ class ShoppingCartNetwork{
         var order: Int
         var product: productReceive
         var quantity_cart: Int
-        var quantity_stock: Int
+        var quantity_stock: Int?
     }
     
     struct productReceive: Codable{
@@ -59,8 +59,6 @@ class ShoppingCartNetwork{
     }
     
     func getCart(){
-
-        
         let semaphore = DispatchSemaphore (value: 0)
         var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/cart")!,timeoutInterval: Double.infinity)
         
@@ -80,7 +78,7 @@ class ShoppingCartNetwork{
                     self.model.addProduct.name = json.data.cart[number].product.title
                     self.model.addProduct.price = json.data.cart[number].product.price
                     self.model.addProduct.actualCount = json.data.cart[number].quantity_cart
-                    self.model.addProduct.count = json.data.cart[number].quantity_stock
+                    self.model.addProduct.count = json.data.cart[number].quantity_stock ?? 0
                     self.model.addProduct.images.removeAll()
                     for subNumber in 0..<json.data.cart[number].product.images.count{
                         if json.data.cart[number].product.images[subNumber].front{
@@ -90,8 +88,6 @@ class ShoppingCartNetwork{
                     }
                     self.model.shopCart.append(self.model.addProduct)
                 }
-                
-                print(json)
             } catch {
                 print(error)
             }
@@ -102,7 +98,7 @@ class ShoppingCartNetwork{
     }
     
     func removeCart(){
-        let semaphore = DispatchSemaphore (value: 0)
+        //let semaphore = DispatchSemaphore (value: 0)
         guard let url = URL(string: "http://176.119.157.195:8080/app/cart") else {
             print("url error")
             return
@@ -126,9 +122,9 @@ class ShoppingCartNetwork{
             default:
                 break
             }
-            semaphore.signal()
+            //semaphore.signal()
         }.resume()
-        semaphore.wait()
+        //semaphore.wait()
     }
     
     func addProduct(product_id: Int, hotel_id: Int, indexPath: Int) {
@@ -163,10 +159,9 @@ class ShoppingCartNetwork{
             }
             do {
                 let json = try JSONDecoder().decode(answerReceive.self, from: data)
-                print(json)
                 for number in 0..<self.model.products.count{
                     if json.data.cart[number].product.id == product_id {
-                        self.model.products[indexPath].count = json.data.cart[number].quantity_stock
+                        self.model.products[indexPath].count = json.data.cart[number].quantity_stock ?? 0
                         break
                     }
                 }
@@ -179,7 +174,7 @@ class ShoppingCartNetwork{
     }
 
     func removeProduct(product_id: Int){
-        let semaphore = DispatchSemaphore (value: 0)
+        //let semaphore = DispatchSemaphore (value: 0)
         guard let url = URL(string: "http://176.119.157.195:8080/app/cart/remove?product_id=\(product_id)") else {
             print("url error")
             return
@@ -201,9 +196,9 @@ class ShoppingCartNetwork{
             } catch {
                 print(error)
             }
-            semaphore.signal()
+            //semaphore.signal()
         }.resume()
-        semaphore.wait()
+        //semaphore.wait()
     }
     
     func minusPosition(product_id: Int, indexPath: Int){
@@ -227,7 +222,7 @@ class ShoppingCartNetwork{
                 let json = try JSONDecoder().decode(answerReceive.self, from: data)
                 for number in 0..<self.model.products.count{
                     if json.data.cart[number].product.id == product_id {
-                        self.model.products[indexPath].count = json.data.cart[number].quantity_stock
+                        self.model.products[indexPath].count = json.data.cart[number].quantity_stock ?? 0
                         break
                     }
                 }

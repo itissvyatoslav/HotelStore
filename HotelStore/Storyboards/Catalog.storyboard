@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vad-6d-Jo3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vad-6d-Jo3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -58,6 +58,22 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="juJ-hh-Jsc">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Ljo-6v-9Wg">
+                                        <rect key="frame" x="15" y="15" width="20" height="20"/>
+                                        <color key="color" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="4rU-hb-hPn"/>
+                                    <constraint firstAttribute="height" constant="50" id="Jmg-d1-3sa"/>
+                                    <constraint firstItem="Ljo-6v-9Wg" firstAttribute="centerX" secondItem="juJ-hh-Jsc" secondAttribute="centerX" id="n4f-eq-wtu"/>
+                                    <constraint firstItem="Ljo-6v-9Wg" firstAttribute="centerY" secondItem="juJ-hh-Jsc" secondAttribute="centerY" id="q1y-rD-UWl"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -66,7 +82,9 @@
                             <constraint firstItem="Ijx-9d-qrP" firstAttribute="trailing" secondItem="NUD-Xl-OUE" secondAttribute="trailing" id="SyW-zQ-6Vt"/>
                             <constraint firstItem="Ijx-9d-qrP" firstAttribute="bottom" secondItem="NUD-Xl-OUE" secondAttribute="bottom" id="f59-Xv-OAE"/>
                             <constraint firstItem="6UJ-dY-eyd" firstAttribute="top" secondItem="Ijx-9d-qrP" secondAttribute="top" id="i4Q-OH-R2K"/>
+                            <constraint firstItem="juJ-hh-Jsc" firstAttribute="centerX" secondItem="6Fl-uB-s5t" secondAttribute="centerX" id="nnZ-r3-0M3"/>
                             <constraint firstItem="NUD-Xl-OUE" firstAttribute="leading" secondItem="Ijx-9d-qrP" secondAttribute="leading" id="ww6-dh-cO6"/>
+                            <constraint firstItem="juJ-hh-Jsc" firstAttribute="centerY" secondItem="6Fl-uB-s5t" secondAttribute="centerY" id="xun-IE-7xm"/>
                             <constraint firstItem="Ijx-9d-qrP" firstAttribute="trailing" secondItem="6UJ-dY-eyd" secondAttribute="trailing" id="yIc-DY-kfl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ijx-9d-qrP"/>
@@ -85,6 +103,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="catalogTable" destination="NUD-Xl-OUE" id="YRr-Vc-zaG"/>
+                        <outlet property="indicatorView" destination="juJ-hh-Jsc" id="TuP-y8-jRp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Plg-YX-aiB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -104,18 +123,37 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FrK-VJ-Cak">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="PoE-yO-GZD">
+                                        <rect key="frame" x="15" y="15" width="20" height="20"/>
+                                        <color key="color" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="BFh-j6-rq4"/>
+                                    <constraint firstItem="PoE-yO-GZD" firstAttribute="centerY" secondItem="FrK-VJ-Cak" secondAttribute="centerY" id="IJD-me-BrH"/>
+                                    <constraint firstAttribute="height" constant="50" id="KiS-jB-63x"/>
+                                    <constraint firstItem="PoE-yO-GZD" firstAttribute="centerX" secondItem="FrK-VJ-Cak" secondAttribute="centerX" id="M0f-Dy-O0J"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="FrK-VJ-Cak" firstAttribute="centerY" secondItem="Zo7-ve-vYw" secondAttribute="centerY" id="0F6-7R-JdI"/>
                             <constraint firstItem="jz5-T5-QVO" firstAttribute="leading" secondItem="2pg-kF-nhU" secondAttribute="leading" id="Iwc-Vt-V30"/>
                             <constraint firstItem="jz5-T5-QVO" firstAttribute="top" secondItem="2pg-kF-nhU" secondAttribute="top" id="Qy3-Qh-Y0h"/>
                             <constraint firstItem="2pg-kF-nhU" firstAttribute="bottom" secondItem="jz5-T5-QVO" secondAttribute="bottom" id="WMz-AJ-NiN"/>
+                            <constraint firstItem="FrK-VJ-Cak" firstAttribute="centerX" secondItem="Zo7-ve-vYw" secondAttribute="centerX" id="irR-0w-IIV"/>
                             <constraint firstItem="2pg-kF-nhU" firstAttribute="trailing" secondItem="jz5-T5-QVO" secondAttribute="trailing" id="rmd-RT-13I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2pg-kF-nhU"/>
                     </view>
                     <connections>
                         <outlet property="catalogTable" destination="jz5-T5-QVO" id="0wN-fK-ZHD"/>
+                        <outlet property="indicatorView" destination="FrK-VJ-Cak" id="lEm-uH-JDT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eLK-kb-bf2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -184,6 +222,21 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter" translatesAutoresizingMaskIntoConstraints="NO" id="F2b-38-jwe">
                                 <rect key="frame" x="21" y="58" width="22" height="21"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ejs-Aw-Rf9">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Otd-5c-aEf">
+                                        <rect key="frame" x="15" y="15" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="color" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="O3m-gh-t1V"/>
+                                    <constraint firstAttribute="height" constant="50" id="b8d-UV-Sjs"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -200,6 +253,7 @@
                             <constraint firstAttribute="trailing" secondItem="1t9-Us-LUN" secondAttribute="trailing" id="N2k-4Q-67v"/>
                             <constraint firstItem="e6p-fh-1jw" firstAttribute="leading" secondItem="Yrt-fd-tHo" secondAttribute="trailing" constant="59" id="OGW-dK-QiT"/>
                             <constraint firstItem="fhb-zx-bae" firstAttribute="top" secondItem="r2T-Y9-o7M" secondAttribute="top" constant="3" id="PUp-IA-Fk4"/>
+                            <constraint firstItem="Ejs-Aw-Rf9" firstAttribute="centerX" secondItem="kFc-qe-M4I" secondAttribute="centerX" id="SEC-tH-1Se"/>
                             <constraint firstItem="r2T-Y9-o7M" firstAttribute="bottom" secondItem="GQF-F6-NHt" secondAttribute="bottom" id="b5g-Tq-Nay"/>
                             <constraint firstItem="fhb-zx-bae" firstAttribute="leading" secondItem="r2T-Y9-o7M" secondAttribute="leading" constant="57" id="bLI-Io-kaq"/>
                             <constraint firstItem="A1F-dH-eAQ" firstAttribute="leading" secondItem="e6p-fh-1jw" secondAttribute="trailing" constant="59" id="d9X-GU-EyD"/>
@@ -207,12 +261,14 @@
                             <constraint firstItem="r2T-Y9-o7M" firstAttribute="trailing" secondItem="GQF-F6-NHt" secondAttribute="trailing" id="oyd-TB-v5g"/>
                             <constraint firstItem="e6p-fh-1jw" firstAttribute="top" secondItem="r2T-Y9-o7M" secondAttribute="top" constant="4.5" id="rMI-ca-0To"/>
                             <constraint firstItem="F2b-38-jwe" firstAttribute="top" secondItem="r2T-Y9-o7M" secondAttribute="top" constant="14" id="v4A-dx-1mU"/>
+                            <constraint firstItem="Ejs-Aw-Rf9" firstAttribute="centerY" secondItem="kFc-qe-M4I" secondAttribute="centerY" id="xce-2W-3zp"/>
                             <constraint firstItem="Yrt-fd-tHo" firstAttribute="leading" secondItem="XqO-us-3oR" secondAttribute="trailing" constant="59.5" id="zSY-u7-dKK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="r2T-Y9-o7M"/>
                     </view>
                     <connections>
                         <outlet property="downButton" destination="A1F-dH-eAQ" id="BGi-jC-Lbn"/>
+                        <outlet property="indicatorView" destination="Ejs-Aw-Rf9" id="OQt-SQ-ObD"/>
                         <outlet property="productsTable" destination="GQF-F6-NHt" id="Y6O-pa-j7h"/>
                         <outlet property="upButton" destination="Yrt-fd-tHo" id="fkq-md-BqP"/>
                     </connections>

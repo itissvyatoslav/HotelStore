@@ -249,6 +249,22 @@
                                     <action selector="selectCard:" destination="Rra-zu-uyU" eventType="touchUpInside" id="XOV-Rl-87w"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mA9-eZ-HCa">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="csp-ci-4O5">
+                                        <rect key="frame" x="15" y="15" width="20" height="20"/>
+                                        <color key="color" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="259-f1-pQT"/>
+                                    <constraint firstAttribute="width" constant="50" id="cqz-WP-Uhu"/>
+                                    <constraint firstItem="csp-ci-4O5" firstAttribute="centerX" secondItem="mA9-eZ-HCa" secondAttribute="centerX" id="p77-yQ-fbM"/>
+                                    <constraint firstItem="csp-ci-4O5" firstAttribute="centerY" secondItem="mA9-eZ-HCa" secondAttribute="centerY" id="uis-iX-udE"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -263,6 +279,7 @@
                             <constraint firstItem="B0Z-LI-djX" firstAttribute="top" secondItem="rqN-T7-9Hk" secondAttribute="bottom" constant="3" id="Fhb-PU-LCx"/>
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="B0Z-LI-djX" secondAttribute="trailing" constant="111" id="LVF-hU-abY"/>
                             <constraint firstItem="tPs-TT-2IM" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="25" id="MLn-Ax-btO"/>
+                            <constraint firstItem="mA9-eZ-HCa" firstAttribute="centerY" secondItem="C8f-kf-ItH" secondAttribute="centerY" id="Oiq-FI-qI2"/>
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="lUB-u2-1eS" secondAttribute="trailing" constant="111" id="Ps2-OG-VHr"/>
                             <constraint firstItem="tPs-TT-2IM" firstAttribute="top" secondItem="2FA-Wc-HqJ" secondAttribute="bottom" constant="8" id="RQ5-zf-f3b"/>
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="rqN-T7-9Hk" secondAttribute="trailing" constant="26" id="TEv-Tz-Vz3"/>
@@ -270,6 +287,7 @@
                             <constraint firstItem="rqN-T7-9Hk" firstAttribute="top" secondItem="qdj-17-hAV" secondAttribute="bottom" constant="31" id="WgX-Yg-aqX"/>
                             <constraint firstItem="I1m-fV-YTv" firstAttribute="top" secondItem="N6a-cF-brd" secondAttribute="top" constant="4" id="YCS-0c-ONv"/>
                             <constraint firstItem="TiR-Vg-nUa" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="26" id="YEL-W5-v3m"/>
+                            <constraint firstItem="mA9-eZ-HCa" firstAttribute="centerX" secondItem="C8f-kf-ItH" secondAttribute="centerX" id="ZKb-Gc-00Z"/>
                             <constraint firstItem="I1m-fV-YTv" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="26" id="b2w-EV-Guz"/>
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="tPs-TT-2IM" secondAttribute="trailing" constant="25" id="cJ7-ld-KbX"/>
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="TiR-Vg-nUa" secondAttribute="trailing" constant="26" id="d8c-XN-O9X"/>
@@ -290,6 +308,7 @@
                     <connections>
                         <outlet property="commentTextView" destination="TiR-Vg-nUa" id="0Pz-mn-4lR"/>
                         <outlet property="hotelLabel" destination="rqN-T7-9Hk" id="07q-tX-QM3"/>
+                        <outlet property="indicatorView" destination="mA9-eZ-HCa" id="MSo-ML-9rD"/>
                         <outlet property="nameTextField" destination="qdj-17-hAV" id="XYM-it-PiM"/>
                         <outlet property="roomNumberTextField" destination="Qy4-gu-Tg1" id="jK1-N5-uIt"/>
                     </connections>

@@ -178,16 +178,33 @@
                                     <action selector="feedBackAction:" destination="NhX-D1-DVt" eventType="touchUpInside" id="kQ9-mw-F3X"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1d-65-BiS">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="qUb-TW-ljc">
+                                        <rect key="frame" x="15" y="15" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="color" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="WYS-5h-q4u"/>
+                                    <constraint firstAttribute="height" constant="50" id="x6N-uo-UFj"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="iOG-MK-kbD" firstAttribute="trailing" secondItem="as2-Kt-las" secondAttribute="trailing" id="4XE-Ue-DcR"/>
                             <constraint firstItem="yad-fi-PPM" firstAttribute="top" secondItem="as2-Kt-las" secondAttribute="bottom" id="6xR-cR-ZtH"/>
                             <constraint firstItem="iOG-MK-kbD" firstAttribute="trailing" secondItem="yad-fi-PPM" secondAttribute="trailing" id="7Nm-93-2cW"/>
+                            <constraint firstItem="n1d-65-BiS" firstAttribute="centerX" secondItem="U1t-Js-jbY" secondAttribute="centerX" id="IE9-6G-CE9"/>
                             <constraint firstItem="yad-fi-PPM" firstAttribute="leading" secondItem="iOG-MK-kbD" secondAttribute="leading" id="MWO-e0-HeF"/>
                             <constraint firstItem="as2-Kt-las" firstAttribute="leading" secondItem="iOG-MK-kbD" secondAttribute="leading" id="aXw-pE-zA6"/>
                             <constraint firstItem="83e-eX-F15" firstAttribute="top" secondItem="yad-fi-PPM" secondAttribute="bottom" constant="41" id="dfM-Aw-IoC"/>
                             <constraint firstItem="iOG-MK-kbD" firstAttribute="trailing" secondItem="83e-eX-F15" secondAttribute="trailing" constant="25.5" id="iy8-Yv-LGn"/>
+                            <constraint firstItem="n1d-65-BiS" firstAttribute="centerY" secondItem="U1t-Js-jbY" secondAttribute="centerY" id="rTv-az-vlk"/>
                             <constraint firstItem="as2-Kt-las" firstAttribute="top" secondItem="iOG-MK-kbD" secondAttribute="top" id="syY-Ow-z9D"/>
                             <constraint firstItem="83e-eX-F15" firstAttribute="leading" secondItem="iOG-MK-kbD" secondAttribute="leading" constant="25.5" id="tJR-D2-PNi"/>
                         </constraints>
@@ -206,6 +223,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="indicatorView" destination="n1d-65-BiS" id="5Z0-zx-ENU"/>
                         <outlet property="nameLabel" destination="GIl-AI-GEd" id="pmX-R1-1vS"/>
                         <outlet property="tableView" destination="yad-fi-PPM" id="rcn-CU-1Pn"/>
                     </connections>

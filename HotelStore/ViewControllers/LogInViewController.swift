@@ -51,6 +51,7 @@ class LogInViewController: UIViewController{
     }
     
     private func goToNextVC(){
+        GetHotelsService().getHotelsSem()
         let vc = storyboard?.instantiateViewController(identifier: "HotelListVC") as! HotelListViewController
         vc.navigationItem.hidesBackButton = true
         vc.id = 1

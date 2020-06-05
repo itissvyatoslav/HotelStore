@@ -33,6 +33,7 @@ class ProductPageViewController: UIViewController{
         //model.shopCart.remove(at: model.shopCart.count - 1)
         tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
         if count < 1 {
+            model.products[number].count = model.products[number].count + 1
             model.products[number].actualCount = 0
             numberLabel.isHidden = true
             minusButton.isHidden = true
@@ -43,6 +44,7 @@ class ProductPageViewController: UIViewController{
             numberLabel.text = "\(count)"
             numberLabel.sizeToFit()
         }
+        countLabel.text = "\(model.products[number].count) in stock"
     }
     
     @IBAction func plusAction(_ sender: Any) {
@@ -140,6 +142,7 @@ class ProductPageViewController: UIViewController{
     private func removeFromShopCart(product: DataModel.GoodsType){
         for number in 0..<model.shopCart.count{
             if product.id == model.shopCart[number].id {
+                model.shopCart[number].count = model.shopCart[number].count + 1
                 model.shopCart[number].actualCount = model.shopCart[number].actualCount! - 1
                 break
             }

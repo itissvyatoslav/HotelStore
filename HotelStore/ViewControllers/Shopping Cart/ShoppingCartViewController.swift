@@ -79,7 +79,8 @@ class ShoppingCartViewController: UIViewController{
         for number in 0..<model.shopCart.count{
             summ = summ + model.shopCart[number].price * Double(model.shopCart[number].actualCount ?? 0)
         }
-        priceLabel.text = "\(Double(round(1000*summ)/1000))S$"
+        model.globalPrice = Double(round(1000*summ)/1000)
+        priceLabel.text = "\(model.globalPrice)S$"
     }
     
     private func removeFromShopCart(cellNumber: Int){
@@ -121,9 +122,11 @@ extension ShoppingCartViewController: ShoppingCartCellDelegate{
     
     func minusProduct(cell: ShoppingCartCell) -> Int {
         let cellIndex = self.shoppingCartTable.indexPath(for: cell)!.row
+        model.shopCart[cellIndex].count = model.shopCart[cellIndex].count + 1
+        let shopCount = model.shopCart.count
         network.minusPosition(product_id: model.shopCart[cellIndex].id, indexPath: cellIndex)
         removeFromShopCart(cellNumber: cellIndex)
-        if model.shopCart.isEmpty {
+        if model.shopCart.count != shopCount {
             checkButton()
             shoppingCartTable.reloadData()
             setGlobalPrice()
@@ -131,7 +134,6 @@ extension ShoppingCartViewController: ShoppingCartCellDelegate{
             return -1
         } else {
             tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
-            model.shopCart[cellIndex].count = model.shopCart[cellIndex].count + 1
             setGlobalPrice()
             return cellIndex
         }

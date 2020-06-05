@@ -110,7 +110,6 @@ class GetProductsService {
             }
             do {
                 let json = try JSONDecoder().decode(answerReceive.self, from: data)
-                print(json)
                 self.model.products.removeAll()
                 for number in 0..<json.data.count{
                     if json.data[number].quantity != 0 {

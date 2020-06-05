@@ -12,8 +12,12 @@ import UIKit
 class SubCatalogViewController: UIViewController{
     let model = DataModel.sharedData
     var number = 0
-    
+    @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var catalogTable: UITableView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        indicatorView.isHidden = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +26,7 @@ class SubCatalogViewController: UIViewController{
     }
     
     private func setViews(){
+        indicatorView.layer.cornerRadius = 5
         self.navigationItem.backBarButtonItem?.title = ""
         //self.navigationItem.title = model.user.hotel.name
         self.tabBarItem.title = "Catalog"
@@ -45,11 +50,14 @@ extension SubCatalogViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if #available(iOS 13.0, *) {
-            let vc = storyboard?.instantiateViewController(identifier: "ProductsVC") as! ProductsViewController
-            vc.category_id = model.categories[number].sub_categoryes[indexPath.row].id
-            vc.navigationItem.title = model.categories[number].sub_categoryes[indexPath.row].name
-            GetProductsService().getProducts(hotel_id: model.user.hotel.id, category_id: model.categories[number].sub_categoryes[indexPath.row].id, limit: "50", page: 1, brand: "")
-            self.navigationController?.pushViewController(vc, animated: true)
+            indicatorView.isHidden = false
+            DispatchQueue.main.async {
+                let vc = self.storyboard?.instantiateViewController(identifier: "ProductsVC") as! ProductsViewController
+                vc.category_id = self.model.categories[self.number].sub_categoryes[indexPath.row].id
+                vc.navigationItem.title = self.model.categories[self.number].sub_categoryes[indexPath.row].name
+                GetProductsService().getProducts(hotel_id: self.model.user.hotel.id, category_id: self.model.categories[self.number].sub_categoryes[indexPath.row].id, limit: "50", page: 1, brand: "")
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }

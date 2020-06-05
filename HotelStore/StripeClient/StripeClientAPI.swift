@@ -99,12 +99,40 @@ class MyAPIClient: NSObject, STPCustomerEphemeralKeyProvider {
         task.resume()
     }
     
+    func goood(){
+        let semaphore = DispatchSemaphore (value: 0)
+        let url = build_main_url(StringValue.sabmit_method)
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue(DataModel.sharedData.token, forHTTPHeaderField: "token")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                print(String(describing: error))
+                return
+            }
+            do {
+                let json2 = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json2)
+                
+                let json = try JSONDecoder().decode(answerReceive.self, from: data)
+                DataModel.sharedData.resultOrder = json.data.result
+                DataModel.sharedData.orderNumber = json.data.order_number
+            } catch {
+                print(error)
+            }
+            semaphore.signal()
+        }
+        task.resume()
+        semaphore.wait()
+    }
+    
     func complitePayment(completion: @escaping (Bool, Int) -> Void){
         let semaphore = DispatchSemaphore (value: 0)
         let url = build_main_url(StringValue.sabmit_method)
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.get.rawValue
-    request.addValue(DataModel.sharedData.token, forHTTPHeaderField: "token")
+        request.addValue(DataModel.sharedData.token, forHTTPHeaderField: "token")
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             guard let response = response as? HTTPURLResponse,
                 response.statusCode == 200,
