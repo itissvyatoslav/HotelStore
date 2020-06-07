@@ -59,19 +59,20 @@ class ProductTableViewCell: UITableViewCell {
     }
     @IBAction func addAction(_ sender: Any) {
         let indexPath = self.delegate?.addProduct(cell: self)
+        print(model.products[indexPath ?? 0].count)
         if model.products[indexPath ?? 0].count == 0{
             zeroInStock()
         } else {
+            numberLabel.isHidden = false
+            numberLabel.text = "\(count)"
+            minusButton.isHidden = false
+            plusButton.isHidden = false
+            numberLabel.sizeToFit()
             countLabel.textColor = UIColor(red: 21/255, green: 22/255, blue: 22/255, alpha: 0.5)
             countLabel.text = "\(model.products[indexPath ?? 0].count) in stock"
         }
         count = 1
         addButton.isHidden = true
-        numberLabel.isHidden = false
-        numberLabel.text = "\(count)"
-        minusButton.isHidden = false
-        plusButton.isHidden = false
-        numberLabel.sizeToFit()
     }
     
     override func awakeFromNib() {

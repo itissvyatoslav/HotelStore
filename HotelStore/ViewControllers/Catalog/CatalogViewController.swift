@@ -72,7 +72,7 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate{
                     let vc = self.storyboard?.instantiateViewController(identifier: "ProductsVC") as! ProductsViewController
                     vc.category_id = self.model.categories[indexPath.row].id
                     vc.navigationItem.title = self.model.categories[indexPath.row].name
-                    self.network.getProducts(hotel_id: self.model.user.hotel.id, category_id: self.model.categories[indexPath.row].id, limit: "50", page: 1, brand: "")
+                    //self.network.getProducts(hotel_id: self.model.user.hotel.id, category_id: self.model.categories[indexPath.row].id, limit: "50", page: 1, brand: "")
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             } else {

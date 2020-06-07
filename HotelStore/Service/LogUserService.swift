@@ -9,6 +9,7 @@
 import Foundation
 
 class LogUserService {
+    
     func logIn(){
         
     }
@@ -21,14 +22,9 @@ class LogUserService {
         }
         let parametrs = ["access_token": id]
 
-
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parametrs, options: []) else {
-            print("JSON error")
-            return
-        }
-        request.httpBody = httpBody
+        //request.addValue(DataModel.sharedData.token, forHTTPHeaderField: "token")
         
         let config = URLSessionConfiguration.default
         let additionalHeaders = [

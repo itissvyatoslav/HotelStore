@@ -55,7 +55,6 @@ extension SubCatalogViewController: UITableViewDelegate, UITableViewDataSource{
                 let vc = self.storyboard?.instantiateViewController(identifier: "ProductsVC") as! ProductsViewController
                 vc.category_id = self.model.categories[self.number].sub_categoryes[indexPath.row].id
                 vc.navigationItem.title = self.model.categories[self.number].sub_categoryes[indexPath.row].name
-                GetProductsService().getProducts(hotel_id: self.model.user.hotel.id, category_id: self.model.categories[self.number].sub_categoryes[indexPath.row].id, limit: "50", page: 1, brand: "")
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             tableView.deselectRow(at: indexPath, animated: true)

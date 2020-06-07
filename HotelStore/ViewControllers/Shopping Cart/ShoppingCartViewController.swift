@@ -85,8 +85,19 @@ class ShoppingCartViewController: UIViewController{
     
     private func removeFromShopCart(cellNumber: Int){
         model.shopCart[cellNumber].actualCount = model.shopCart[cellNumber].actualCount! - 1
+        changeProducts(product: model.shopCart[cellNumber])
         if model.shopCart[cellNumber].actualCount == 0 {
             model.shopCart.remove(at: cellNumber)
+        }
+    }
+    
+    private func changeProducts(product: DataModel.GoodsType){
+        for number in 0..<model.products.count {
+            if product.id == model.products[number].id {
+                print(product.id, "|||", model.products[number].id)
+                model.products[number] = product
+                break
+            }
         }
     }
 }
@@ -117,6 +128,7 @@ extension ShoppingCartViewController: ShoppingCartCellDelegate{
             tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
             setGlobalPrice()
         }
+        changeProducts(product: model.shopCart[cellIndex])
             return cellIndex
     }
     
@@ -142,6 +154,7 @@ extension ShoppingCartViewController: ShoppingCartCellDelegate{
     func deleteProduct(cell: ShoppingCartCell){
         let cellIndex = self.shoppingCartTable.indexPath(for: cell)!.row
         network.removeProduct(product_id: model.shopCart[cellIndex].id)
+        changeProducts(product: model.shopCart[cellIndex])
         model.shopCart.remove(at: cellIndex)
         shoppingCartTable.reloadData()
         setGlobalPrice()

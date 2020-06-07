@@ -36,7 +36,8 @@ class ProductsViewController: UIViewController{
     }
     override func viewWillAppear(_ animated: Bool) {
         indicatorView.isHidden = true
-        //productsTable.reloadData()
+        GetProductsService().getProducts(hotel_id: model.user.hotel.id, category_id: category_id, limit: "50", page: 1, brand: "")
+        productsTable.reloadData()
     }
     
     private func setView(){
@@ -124,6 +125,7 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource{
                 let vc = self.storyboard?.instantiateViewController(identifier: "ProductPageVC") as! ProductPageViewController
                 vc.navigationItem.title = " "
                 self.getImages(indexPath.item)
+                vc.category_id = self.category_id
                 vc.number = indexPath.row
                 vc.images = self.images
                 self.navigationController?.pushViewController(vc, animated: true)

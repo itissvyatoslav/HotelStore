@@ -85,10 +85,14 @@ class ProductPageViewController: UIViewController{
     var number = 0
     var count = 1
     var images = [UIImage]()
+    var category_id = 0
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setLabels()
+    }
     
     override func viewDidLoad() {
         setView()
-        setLabels()
     }
     
     private func setView(){

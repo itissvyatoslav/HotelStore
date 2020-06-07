@@ -97,6 +97,7 @@ class GetProductsService {
             var front: Bool
             var url: String
         }
+        print("loaded")
         let semaphore = DispatchSemaphore (value: 0)
         var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/product?hotel_id=\(hotel_id)&category_id=\(category_id)&limit=\(limit ?? "")&page=\(page)&brand=\(brand ?? "")")!,timeoutInterval: Double.infinity)
         
