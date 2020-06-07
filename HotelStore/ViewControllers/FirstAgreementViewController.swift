@@ -8,12 +8,15 @@
 
 import WebKit
 import UIKit
+import Locksmith
 
 class FirstAgreementViewController: UIViewController, WKNavigationDelegate{
-    let network = LogUserService()
+    let model = DataModel.sharedData
     
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,20 +25,41 @@ class FirstAgreementViewController: UIViewController, WKNavigationDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        activityView.isHidden = true
         self.navigationController?.title = "User agreement"
     }
     
     @available(iOS 13.0, *)
     @IBAction func agreeAction(_ sender: Any) {
-        network.registration(id: DataModel.sharedData.user.id)
-        let vc = storyboard?.instantiateViewController(identifier: "CustomTabBarController") as! CustomTabBarController
-        vc.navigationItem.hidesBackButton = true
+
+        model.token = "b8c48440ca23482c97feef3acf78b855a01fd197"
+        do {
+            try Locksmith.updateData(data: ["token" : model.token,
+                                          "firstName": model.user.firstName,
+                                          "lastName": model.user.lastName,
+                                          "roomNumber": model.user.roomNumber,
+                                          "email": model.user.email,
+                                          "hotelId": model.user.hotel.id,
+                                          "hotelName": model.user.hotel.name],
+                                   forUserAccount: "HotelStoreAccount")
+            print("saved!")
+        } catch {
+            print("Unable to save data")
+        }
+        activityView.isHidden = false
+        DispatchQueue.main.async {
+            GetProductsService().getCategories()
+            let vc = self.storyboard?.instantiateViewController(identifier: "CustomTabBarController") as! CustomTabBarController
+            vc.navigationItem.hidesBackButton = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
         print("user.id: ", DataModel.sharedData.user.id)
-       // network.registration(id: DataModel.sharedData.user.id)
-        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     private func setView(){
+        activityView.layer.cornerRadius = 5
         self.navigationController?.title = "User agreement"
         setPDF()
     }

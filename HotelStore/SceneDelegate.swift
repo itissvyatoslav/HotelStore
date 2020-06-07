@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Locksmith
 
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -18,7 +19,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        let loadedData = Locksmith.loadDataForUserAccount(userAccount: "HotelStoreAccount") ?? ["token" : "default token",
+                                                                                                "firstName": "name",
+                                                                                                "lastName": "lastname",
+                                                                                                "roomNumber": "000",
+                                                                                                "email": "@gmail.com",
+                                                                                                "hotelId": 0,
+                                                                                                "hotelName": "hotelName"]
+        print(loadedData)
+        GetProductsService().getCategories()
+        DataModel.sharedData.token = loadedData["token"] as! String? ?? "default token"
+        print("Loaded data: ", DataModel.sharedData.token)
+        let model = DataModel.sharedData
+        if model.token != "default token"{
+            model.user.firstName = loadedData["firstName"] as! String? ?? "Name"
+            model.user.roomNumber = loadedData["roomNumber"] as! String? ?? "000"
+            model.user.email = loadedData["email"] as! String? ?? "@gmail.com"
+            model.user.hotel.id = loadedData["hotelId"] as! Int? ?? 0
+            model.user.hotel.name = loadedData["hotelName"] as! String? ?? "hotelName"
+            GetProductsService().getCategories()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController (withIdentifier: "CustomTabBarController") as! CustomTabBarController
+            window = UIWindow(windowScene: windowScene)
+            window?.rootViewController = vc
+            window?.makeKeyAndVisible()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

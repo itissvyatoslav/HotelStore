@@ -340,14 +340,32 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="keU-05-3yQ">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Et-EW-mNx">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="PBJ-xM-gm4">
+                                        <rect key="frame" x="15" y="15" width="20" height="20"/>
+                                        <color key="color" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="PBJ-xM-gm4" firstAttribute="centerX" secondItem="0Et-EW-mNx" secondAttribute="centerX" id="Nrx-B4-fDy"/>
+                                    <constraint firstItem="PBJ-xM-gm4" firstAttribute="centerY" secondItem="0Et-EW-mNx" secondAttribute="centerY" id="Q7Q-Ye-Wri"/>
+                                    <constraint firstAttribute="width" constant="50" id="Z15-iD-Elc"/>
+                                    <constraint firstAttribute="height" constant="50" id="ykd-0k-zsa"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="alQ-8Q-CPH" firstAttribute="top" secondItem="RyK-qd-WBk" secondAttribute="bottom" constant="5" id="46m-G9-fdz"/>
                             <constraint firstItem="keU-05-3yQ" firstAttribute="centerY" secondItem="Upn-HK-5hI" secondAttribute="centerY" id="4VW-xT-qgM"/>
                             <constraint firstItem="keU-05-3yQ" firstAttribute="centerX" secondItem="Upn-HK-5hI" secondAttribute="centerX" id="AwX-Tt-apO"/>
+                            <constraint firstItem="0Et-EW-mNx" firstAttribute="centerY" secondItem="Upn-HK-5hI" secondAttribute="centerY" id="EsH-uk-8Ls"/>
                             <constraint firstItem="RyK-qd-WBk" firstAttribute="top" secondItem="HSx-d8-kkT" secondAttribute="top" constant="5" id="GyL-mL-2nt"/>
                             <constraint firstItem="HSx-d8-kkT" firstAttribute="trailing" secondItem="alQ-8Q-CPH" secondAttribute="trailing" constant="25" id="Ihi-Qi-Wr0"/>
+                            <constraint firstItem="0Et-EW-mNx" firstAttribute="centerX" secondItem="Upn-HK-5hI" secondAttribute="centerX" id="Jxx-bo-DQK"/>
                             <constraint firstItem="alQ-8Q-CPH" firstAttribute="bottom" secondItem="HSx-d8-kkT" secondAttribute="bottom" constant="-25" id="WtI-ae-01a"/>
                             <constraint firstItem="HSx-d8-kkT" firstAttribute="trailing" secondItem="RyK-qd-WBk" secondAttribute="trailing" id="Z29-eC-ecJ"/>
                             <constraint firstItem="RyK-qd-WBk" firstAttribute="leading" secondItem="HSx-d8-kkT" secondAttribute="leading" id="bg7-S4-hXL"/>
@@ -357,6 +375,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="keU-05-3yQ" id="5of-Sv-Bp7"/>
+                        <outlet property="activityView" destination="0Et-EW-mNx" id="idA-vP-f3V"/>
                         <outlet property="webView" destination="RyK-qd-WBk" id="0iV-gl-gZE"/>
                     </connections>
                 </viewController>

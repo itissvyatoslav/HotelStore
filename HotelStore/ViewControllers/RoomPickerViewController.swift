@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Locksmith
 
 @available(iOS 13.0, *)
 class RoomPickerViewController: UIViewController{

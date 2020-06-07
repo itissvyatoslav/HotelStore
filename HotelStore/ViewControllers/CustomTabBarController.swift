@@ -15,6 +15,7 @@ class CustomTabBarController:  UITabBarController, UITabBarControllerDelegate {
     var profileViewController: ProfileViewController!
     
     override func viewDidLoad(){
+        self.navigationItem.title =  DataModel.sharedData.user.hotel.name
         self.navigationController?.isNavigationBarHidden = true
         super.viewDidLoad()
         self.delegate = self

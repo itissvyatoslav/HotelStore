@@ -7,6 +7,7 @@
 //
 
 import CoreLocation
+import Locksmith
 import UIKit
 
 class HotelListViewController: UIViewController{
@@ -65,6 +66,19 @@ extension HotelListViewController: UITableViewDelegate, UITableViewDataSource{
             model.user.hotel = model.hotels[0]
         } else {
             model.user.hotel = model.hotels[indexPath.row + 1]
+        }
+        
+        do {
+            try Locksmith.updateData(data: ["token" : model.token,
+                   "firstName": model.user.firstName,
+                   "lastName": model.user.lastName,
+                   "roomNumber": model.user.roomNumber,
+                   "email": model.user.email,
+                   "hotelId": model.user.hotel.id,
+                   "hotelName": model.user.hotel.name],
+            forUserAccount: "HotelStoreAccount")
+        } catch {
+            print("Unable to update")
         }
         
         if id == 0 {

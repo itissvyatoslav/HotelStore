@@ -8,8 +8,10 @@
 
 import Foundation
 import UIKit
+import Locksmith
 
 class UserInfoViewController: UIViewController{
+    let model = DataModel.sharedData
     
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -25,14 +27,26 @@ class UserInfoViewController: UIViewController{
     
     private func setViews(){
         infoLabel.text = "Choose, which data\nwill be available to the system"
-        nameTextField.text = "\(DataModel.sharedData.user.firstName) \(DataModel.sharedData.user.lastName)"
+        nameTextField.text = "\(DataModel.sharedData.user.firstName)"
         emailTextField.text = DataModel.sharedData.user.email
     }
     
     @available(iOS 13.0, *)
     @IBAction func saveAction(_ sender: Any) {
-        DataModel.sharedData.user.firstName = nameTextField.text ?? DataModel.sharedData.user.firstName
-        DataModel.sharedData.user.email = emailTextField.text ?? DataModel.sharedData.user.email
+        DataModel.sharedData.user.firstName = nameTextField.text ?? "Name"
+        DataModel.sharedData.user.email = emailTextField.text ?? "@gmail.com"
+        do {
+            try Locksmith.updateData(data: ["token" : model.token,
+                   "firstName": model.user.firstName,
+                   "lastName": model.user.lastName,
+                   "roomNumber": model.user.roomNumber,
+                   "email": model.user.email,
+                   "hotelId": model.user.hotel.id,
+                   "hotelName": model.user.hotel.name],
+            forUserAccount: "HotelStoreAccount")
+        } catch {
+            print("Unable to update")
+        }
         if id == 0 {
             navigationController?.popViewController(animated: true)
         } else {

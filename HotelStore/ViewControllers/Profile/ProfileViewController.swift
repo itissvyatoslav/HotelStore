@@ -80,9 +80,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.item == 0{
             if #available(iOS 13.0, *) {
-                indicatorView.isHidden = false
+                //indicatorView.isHidden = false
                 DispatchQueue.main.async {
-                    self.network.getUserInfo()
                     let vc = self.storyboard?.instantiateViewController(identifier: "UserInfoVC") as! UserInfoViewController
                     self.navigationController?.pushViewController(vc, animated: true)
                 }

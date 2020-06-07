@@ -9,18 +9,19 @@
 import UIKit
 import Stripe
 import UserNotifications
+import Locksmith
 
 @available(iOS 13.0, *)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    let network = UserService()
+    
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         Stripe.setDefaultPublishableKey(StripeKeys.publishable_key)
         STPTheme.default().accentColor = UIColor(red: 182/255, green: 9/255, blue: 73/255, alpha: 1)
         STPPaymentConfiguration.shared().appleMerchantIdentifier = "merchant.com.HotelStore"
-        network.getUserInfo()
         registerForPushNotifications()
         // Override point for customization after application launch.
         return true
@@ -54,7 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             print("Notification settings: \(settings)")
             guard settings.authorizationStatus == .authorized else { return }
-            UIApplication.shared.registerForRemoteNotifications()
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
         }
     }
     

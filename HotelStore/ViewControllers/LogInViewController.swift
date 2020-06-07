@@ -12,10 +12,12 @@ import AuthenticationServices
 @available(iOS 13.0, *)
 class LogInViewController: UIViewController{
     let model = DataModel.sharedData
+    let network = LogUserService()
     
     @IBOutlet weak var infoLabel: UILabel!
     
     override func viewDidLoad() {
+        
         self.navigationController?.navigationBar.tintColor = UIColor.black
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         super.viewDidLoad()
@@ -80,7 +82,7 @@ extension LogInViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             model.user.firstName = credentials.fullName?.givenName ?? ""
             model.user.lastName = credentials.fullName?.familyName ?? ""
             model.user.email = credentials.email ?? ""
-            
+            network.registration(id: DataModel.sharedData.user.id)
             goToNextVC()
         default: break
         }
