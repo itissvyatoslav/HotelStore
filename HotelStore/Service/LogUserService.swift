@@ -31,7 +31,7 @@ class LogUserService {
             print("url error")
             return
         }
-        let parametrs = ["access_token": id]
+        let parametrs = ["access_token": id, "device_token": DataModel.sharedData.deviceToken]
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

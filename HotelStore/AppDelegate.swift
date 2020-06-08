@@ -69,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let token = tokenParts.joined()
+        DataModel.sharedData.deviceToken = token
         print("Device Token: \(token)")
     }
     
