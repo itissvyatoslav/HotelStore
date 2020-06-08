@@ -211,6 +211,7 @@
                         <viewLayoutGuide key="safeArea" id="iOG-MK-kbD"/>
                     </view>
                     <navigationItem key="navigationItem" id="AvB-aa-BjN">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="Fni-id-hXU">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GiM-wM-8Dr">
                                 <rect key="frame" x="20" y="11" width="70" height="22"/>
@@ -221,8 +222,20 @@
                                 </connections>
                             </button>
                         </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DGK-NT-m5r">
+                            <rect key="frame" x="97" y="7" width="220" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="tappedButtonHotel:" destination="NhX-D1-DVt" eventType="touchUpInside" id="bo6-XS-jqj"/>
+                            </connections>
+                        </button>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonHotel" destination="DGK-NT-m5r" id="bqf-dm-RBB"/>
                         <outlet property="indicatorView" destination="n1d-65-BiS" id="5Z0-zx-ENU"/>
                         <outlet property="nameLabel" destination="GIl-AI-GEd" id="pmX-R1-1vS"/>
                         <outlet property="tableView" destination="yad-fi-PPM" id="rcn-CU-1Pn"/>
@@ -230,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ajc-WJ-6z2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1363" y="316"/>
+            <point key="canvasLocation" x="1362.3188405797102" y="315.40178571428572"/>
         </scene>
         <!--Last order-->
         <scene sceneID="zBj-aJ-p2H">
@@ -504,10 +517,26 @@
                                     <action selector="saveAction:" destination="f2d-CD-vZI" eventType="touchUpInside" id="kAb-Zq-Stb"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qy6-XH-mzV">
+                                <rect key="frame" x="25" y="748" width="364" height="45"/>
+                                <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Zm7-xF-W2a"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Sign out">
+                                    <color key="titleColor" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signOutAction:" destination="f2d-CD-vZI" eventType="touchUpInside" id="FCW-UQ-1dU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Qy6-XH-mzV" firstAttribute="leading" secondItem="bMb-HD-9MT" secondAttribute="leading" constant="25" id="5me-oK-WZt"/>
                             <constraint firstItem="bMb-HD-9MT" firstAttribute="trailing" secondItem="Y0F-5X-qrf" secondAttribute="trailing" constant="25" id="6ca-ay-n7d"/>
+                            <constraint firstItem="bMb-HD-9MT" firstAttribute="bottom" secondItem="Qy6-XH-mzV" secondAttribute="bottom" constant="20" id="7uK-BE-GBI"/>
                             <constraint firstItem="VIx-eE-c0N" firstAttribute="top" secondItem="qjc-fQ-Kak" secondAttribute="bottom" constant="18" id="FfX-ZY-Wyt"/>
                             <constraint firstItem="bMb-HD-9MT" firstAttribute="trailing" secondItem="qjc-fQ-Kak" secondAttribute="trailing" constant="62" id="GCf-Sr-Yp9"/>
                             <constraint firstItem="FoD-sg-yvx" firstAttribute="leading" secondItem="bMb-HD-9MT" secondAttribute="leading" constant="26" id="GJ3-lX-R4I"/>
@@ -520,6 +549,7 @@
                             <constraint firstItem="bMb-HD-9MT" firstAttribute="trailing" secondItem="VIx-eE-c0N" secondAttribute="trailing" constant="111" id="Vd2-3s-sC3"/>
                             <constraint firstItem="Y0F-5X-qrf" firstAttribute="leading" secondItem="bMb-HD-9MT" secondAttribute="leading" constant="26" id="b7x-8q-FFL"/>
                             <constraint firstItem="qjc-fQ-Kak" firstAttribute="top" secondItem="bMb-HD-9MT" secondAttribute="top" constant="20" id="eZz-wR-53f"/>
+                            <constraint firstItem="bMb-HD-9MT" firstAttribute="trailing" secondItem="Qy6-XH-mzV" secondAttribute="trailing" constant="25" id="lGY-Ca-qkc"/>
                             <constraint firstItem="nFf-1B-lnq" firstAttribute="top" secondItem="VIx-eE-c0N" secondAttribute="bottom" constant="1" id="lug-Q5-mjp"/>
                             <constraint firstItem="bMb-HD-9MT" firstAttribute="trailing" secondItem="FoD-sg-yvx" secondAttribute="trailing" constant="111" id="sYJ-pK-KoV"/>
                             <constraint firstItem="qjc-fQ-Kak" firstAttribute="leading" secondItem="bMb-HD-9MT" secondAttribute="leading" constant="62" id="tCJ-U1-Eyx"/>
@@ -535,6 +565,7 @@
                         <outlet property="emailTextField" destination="Y0F-5X-qrf" id="Vv4-gE-kTw"/>
                         <outlet property="infoLabel" destination="qjc-fQ-Kak" id="zGw-BJ-5s3"/>
                         <outlet property="nameTextField" destination="nFf-1B-lnq" id="r2t-kP-rfk"/>
+                        <outlet property="signOutButton" destination="Qy6-XH-mzV" id="QoX-d9-hJr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dxl-3O-6fG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -98,6 +98,14 @@ class ProductsViewController: UIViewController{
             }
         }
     }
+    
+    private func badgeValue() -> Int{
+        var count: Int = 0
+        for number in 0..<model.shopCart.count{
+            count = count + model.shopCart[number].actualCount!
+        }
+        return count
+    }
 }
 
 extension ProductsViewController: UITableViewDelegate, UITableViewDataSource{
@@ -140,7 +148,7 @@ extension ProductsViewController: ProductTableViewCellDelegate{
         let cellIndex = self.productsTable.indexPath(for: cell)!.row
         productService.addProduct(product_id: model.products[cellIndex].id, hotel_id: model.user.hotel.id, indexPath: cellIndex)
         addToShopCart(product: model.products[cellIndex])
-        tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
+        tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
         return cellIndex
     }
     
@@ -149,7 +157,7 @@ extension ProductsViewController: ProductTableViewCellDelegate{
         //if model.products[cellIndex].actualCount == 1
         productService.minusPosition(product_id: model.products[cellIndex].id, indexPath: cellIndex)
         removeFromShopCart(product: model.products[cellIndex])
-        tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
+        tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
         return cellIndex
     }
 }

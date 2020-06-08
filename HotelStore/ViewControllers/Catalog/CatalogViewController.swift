@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Locksmith
 
 class CatalogViewController: UIViewController{
     let network = GetProductsService()
@@ -23,6 +24,16 @@ class CatalogViewController: UIViewController{
         }
     }
     
+    @IBAction func tappedButtonHotel(_ sender: Any) {
+        if #available(iOS 13.0, *) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "HotelListVC") as! HotelListViewController
+            vc.id = 0
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    @IBOutlet weak var buttonHotel: UIButton!
     @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var catalogTable: UITableView!
     
@@ -35,8 +46,9 @@ class CatalogViewController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        buttonHotel.setTitle(model.user.hotel.name, for: .normal)
         indicatorView.isHidden = true
-        self.navigationItem.title =  model.user.hotel.name
+        //self.navigationItem.title =  model.user.hotel.name
         catalogTable.reloadData()
     }
     

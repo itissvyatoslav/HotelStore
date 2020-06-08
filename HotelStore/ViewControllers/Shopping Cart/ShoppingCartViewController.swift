@@ -14,6 +14,7 @@ class ShoppingCartViewController: UIViewController{
     let model = DataModel.sharedData
     
     
+    @IBOutlet weak var activityView: UIView!
     @IBOutlet weak var shoppingCartTable: UITableView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var buyButton: UIButton!
@@ -25,7 +26,7 @@ class ShoppingCartViewController: UIViewController{
         checkButton()
         shoppingCartTable.reloadData()
         priceLabel.text = "0.0S$"
-        tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
+        tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
     }
     
     override func viewDidLoad() {
@@ -42,16 +43,26 @@ class ShoppingCartViewController: UIViewController{
         network.getCart()
         shoppingCartTable.reloadData()
         checkButton()
-        tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
+        tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
         setGlobalPrice()
     }
     
+    private func badgeValue() -> Int{
+        var count: Int = 0
+        for number in 0..<model.shopCart.count{
+            count = count + model.shopCart[number].actualCount!
+        }
+        return count
+    }
+    
     private func setViews(){
+        activityView.layer.cornerRadius = 5
+        activityView.isHidden = true
         shoppingCartTable.reloadData()
         self.navigationItem.title = "Shopping cart"
         self.tabBarItem.title = "Shopping cart"
         shoppingCartTable.tableFooterView = UIView(frame: .zero)
-        tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
+        tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
         shoppingCartTable.delegate = self
         shoppingCartTable.dataSource = self
         checkButton()
@@ -94,7 +105,6 @@ class ShoppingCartViewController: UIViewController{
     private func changeProducts(product: DataModel.GoodsType){
         for number in 0..<model.products.count {
             if product.id == model.products[number].id {
-                print(product.id, "|||", model.products[number].id)
                 model.products[number] = product
                 break
             }
@@ -124,28 +134,34 @@ extension ShoppingCartViewController: ShoppingCartCellDelegate{
         if model.shopCart[cellIndex].count != 0 {
             model.shopCart[cellIndex].actualCount = model.shopCart[cellIndex].actualCount! + 1
             model.shopCart[cellIndex].count = model.shopCart[cellIndex].count - 1
-            network.addProduct(product_id: model.shopCart[cellIndex].id, hotel_id: model.user.hotel.id, indexPath: cellIndex)
-            tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
-            setGlobalPrice()
+            activityView.isHidden = false
+            DispatchQueue.main.async {
+                self.network.addProduct(product_id: self.model.shopCart[cellIndex].id, hotel_id: self.model.user.hotel.id, indexPath: cellIndex)
+                self.tabBarController?.tabBar.items?[1].badgeValue = "\(self.badgeValue())"
+                self.setGlobalPrice()
+            }
+            activityView.isHidden = true
         }
         changeProducts(product: model.shopCart[cellIndex])
             return cellIndex
     }
     
     func minusProduct(cell: ShoppingCartCell) -> Int {
+        activityView.isHidden = false
         let cellIndex = self.shoppingCartTable.indexPath(for: cell)!.row
         model.shopCart[cellIndex].count = model.shopCart[cellIndex].count + 1
         let shopCount = model.shopCart.count
         network.minusPosition(product_id: model.shopCart[cellIndex].id, indexPath: cellIndex)
         removeFromShopCart(cellNumber: cellIndex)
+        activityView.isHidden = true
         if model.shopCart.count != shopCount {
             checkButton()
             shoppingCartTable.reloadData()
             setGlobalPrice()
-            tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
+            tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
             return -1
         } else {
-            tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
+            tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
             setGlobalPrice()
             return cellIndex
         }
@@ -158,7 +174,7 @@ extension ShoppingCartViewController: ShoppingCartCellDelegate{
         model.shopCart.remove(at: cellIndex)
         shoppingCartTable.reloadData()
         setGlobalPrice()
-        tabBarController?.tabBar.items?[1].badgeValue = "\(model.shopCart.count)"
+        tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
         checkButton()
     }
 }

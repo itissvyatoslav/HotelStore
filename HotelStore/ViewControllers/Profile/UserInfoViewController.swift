@@ -13,6 +13,7 @@ import Locksmith
 class UserInfoViewController: UIViewController{
     let model = DataModel.sharedData
     
+    @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -26,6 +27,9 @@ class UserInfoViewController: UIViewController{
     }
     
     private func setViews(){
+        if id == 1{
+            signOutButton.isHidden = true
+        }
         infoLabel.text = "Choose, which data\nwill be available to the system"
         nameTextField.text = "\(DataModel.sharedData.user.firstName)"
         emailTextField.text = DataModel.sharedData.user.email
@@ -57,4 +61,17 @@ class UserInfoViewController: UIViewController{
         }
     }
     
+    @available(iOS 13.0, *)
+    @IBAction func signOutAction(_ sender: Any) {
+        do {
+            try Locksmith.deleteDataForUserAccount(userAccount: "HotelStoreAccount")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "LogInViewController") as! LogInViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+            vc.navigationItem.hidesBackButton = true
+            self.tabBarController?.tabBar.isHidden = true
+        } catch {
+            print("can't delete :(")
+        }
+    }
 }

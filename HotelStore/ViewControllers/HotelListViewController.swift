@@ -44,16 +44,25 @@ extension HotelListViewController: UITableViewDelegate, UITableViewDataSource{
         if tableView == hotelsTable {
             return 1
         } else {
-            return model.hotels.count - 1
+            if !model.hotels.isEmpty{
+                return model.hotels.count - 1
+            } else {
+                return 0
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "tableCell")
         if tableView == hotelsTable {
-            cell.textLabel?.text = model.hotels[0].name
-            cell.accessoryType = .disclosureIndicator
-            return cell
+            if !model.hotels.isEmpty{
+                cell.textLabel?.text = model.hotels[0].name
+                cell.accessoryType = .disclosureIndicator
+                return cell
+            } else {
+                cell.textLabel?.text = "No hotels"
+                return cell
+            }
         } else {
             cell.textLabel?.text = model.hotels[indexPath.row + 1].name
             cell.accessoryType = .disclosureIndicator
@@ -62,25 +71,25 @@ extension HotelListViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == hotelsTable {
-            model.user.hotel = model.hotels[0]
-        } else {
-            model.user.hotel = model.hotels[indexPath.row + 1]
+        if !model.hotels.isEmpty{
+            if tableView == hotelsTable {
+                model.user.hotel = model.hotels[0]
+            } else {
+                model.user.hotel = model.hotels[indexPath.row + 1]
+            }
+            do {
+                try Locksmith.updateData(data: ["token" : model.token,
+                                                "firstName": model.user.firstName,
+                                                "lastName": model.user.lastName,
+                                                "roomNumber": model.user.roomNumber,
+                                                "email": model.user.email,
+                                                "hotelId": model.user.hotel.id,
+                                                "hotelName": model.user.hotel.name],
+                                         forUserAccount: "HotelStoreAccount")
+            } catch {
+                print("Unable to update")
+            }
         }
-        
-        do {
-            try Locksmith.updateData(data: ["token" : model.token,
-                   "firstName": model.user.firstName,
-                   "lastName": model.user.lastName,
-                   "roomNumber": model.user.roomNumber,
-                   "email": model.user.email,
-                   "hotelId": model.user.hotel.id,
-                   "hotelName": model.user.hotel.name],
-            forUserAccount: "HotelStoreAccount")
-        } catch {
-            print("Unable to update")
-        }
-        
         if id == 0 {
             indicatorView.isHidden = false
             DispatchQueue.main.async {

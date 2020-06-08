@@ -65,12 +65,10 @@ class GetHotelsService{
     
     func getHotelsSem(){
         let semaphore = DispatchSemaphore (value: 0)
-        
-        let token = "b8c48440ca23482c97feef3acf78b855a01fd197"
         var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/hotel?sort=name&page=1&limit=50")!,timeoutInterval: Double.infinity)
         
         request.httpMethod = "GET"
-        request.addValue(token, forHTTPHeaderField: "token")
+        request.addValue(model.token, forHTTPHeaderField: "token")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {

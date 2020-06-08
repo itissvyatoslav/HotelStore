@@ -81,6 +81,22 @@
                                     <segue destination="Rra-zu-uyU" kind="show" id="rHL-sa-6P8"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="30s-Xi-gh9">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="BWT-lH-Mu2">
+                                        <rect key="frame" x="15" y="15" width="20" height="20"/>
+                                        <color key="color" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3lD-O7-cNI"/>
+                                    <constraint firstAttribute="width" constant="50" id="Sh7-gL-XMo"/>
+                                    <constraint firstItem="BWT-lH-Mu2" firstAttribute="centerX" secondItem="30s-Xi-gh9" secondAttribute="centerX" id="edd-Zc-Dha"/>
+                                    <constraint firstItem="BWT-lH-Mu2" firstAttribute="centerY" secondItem="30s-Xi-gh9" secondAttribute="centerY" id="uBL-Nt-hae"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20C-O9-kza">
                                 <rect key="frame" x="26" y="744" width="363" height="45"/>
                                 <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -104,8 +120,10 @@
                             <constraint firstItem="jOx-97-p0R" firstAttribute="leading" secondItem="1xY-Sc-A0X" secondAttribute="trailing" constant="8" id="I46-vc-VEv"/>
                             <constraint firstItem="1xY-Sc-A0X" firstAttribute="leading" secondItem="vkv-pi-qWW" secondAttribute="leading" constant="24" id="LXt-dt-j8b"/>
                             <constraint firstItem="20C-O9-kza" firstAttribute="leading" secondItem="vkv-pi-qWW" secondAttribute="leading" constant="26" id="QPq-gG-0TE"/>
+                            <constraint firstItem="30s-Xi-gh9" firstAttribute="centerY" secondItem="eVR-fq-Nco" secondAttribute="centerY" id="TjV-rU-faK"/>
                             <constraint firstItem="6jG-Ee-Uzd" firstAttribute="leading" secondItem="vkv-pi-qWW" secondAttribute="leading" constant="26" id="cUm-6y-Qce"/>
                             <constraint firstItem="vkv-pi-qWW" firstAttribute="trailing" secondItem="6jG-Ee-Uzd" secondAttribute="trailing" constant="25" id="dsZ-Uv-O1C"/>
+                            <constraint firstItem="30s-Xi-gh9" firstAttribute="centerX" secondItem="eVR-fq-Nco" secondAttribute="centerX" id="fnX-2r-h55"/>
                             <constraint firstItem="u17-6C-HHO" firstAttribute="top" secondItem="vkv-pi-qWW" secondAttribute="top" constant="7" id="mMk-QN-cNV"/>
                             <constraint firstItem="1xY-Sc-A0X" firstAttribute="top" secondItem="vkv-pi-qWW" secondAttribute="top" id="mw8-IX-wp4"/>
                             <constraint firstItem="vkv-pi-qWW" firstAttribute="trailing" secondItem="s6m-Bh-D1B" secondAttribute="trailing" id="nYY-F6-zQA"/>
@@ -117,6 +135,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Acc-Eo-9O4"/>
                     <connections>
+                        <outlet property="activityView" destination="30s-Xi-gh9" id="CV3-ou-Cd8"/>
                         <outlet property="buyButton" destination="6jG-Ee-Uzd" id="pDS-fu-Hsr"/>
                         <outlet property="emptyButton" destination="20C-O9-kza" id="CPv-Ny-1dH"/>
                         <outlet property="priceLabel" destination="jOx-97-p0R" id="8Yb-S6-2Lu"/>

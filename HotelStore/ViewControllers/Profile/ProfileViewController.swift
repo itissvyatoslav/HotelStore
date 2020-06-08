@@ -13,7 +13,16 @@ import MessageUI
 class ProfileViewController: UIViewController{
     let model = DataModel.sharedData
     let network = UserService()
+    @IBAction func tappedButtonHotel(_ sender: Any) {
+        if #available(iOS 13.0, *) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "HotelListVC") as! HotelListViewController
+            vc.id = 0
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     
+    @IBOutlet weak var buttonHotel: UIButton!
     @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -38,7 +47,7 @@ class ProfileViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         indicatorView.isHidden = true
         nameLabel.text = DataModel.sharedData.user.firstName.uppercased()
-        self.navigationItem.title = model.user.hotel.name
+        buttonHotel.setTitle(model.user.hotel.name, for: .normal)
         self.tabBarController?.tabBar.isHidden = false
     }
     

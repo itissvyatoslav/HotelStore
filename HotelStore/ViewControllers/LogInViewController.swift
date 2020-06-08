@@ -78,11 +78,14 @@ extension LogInViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
         switch authorization.credential {
             
         case let credentials as ASAuthorizationAppleIDCredential:
-            model.user.id = credentials.user
+            
+            model.user.id = String(data: credentials.authorizationCode!, encoding: .utf8)!
+            //model.user.id = credentials.user
             model.user.firstName = credentials.fullName?.givenName ?? ""
             model.user.lastName = credentials.fullName?.familyName ?? ""
             model.user.email = credentials.email ?? ""
             network.registration(id: DataModel.sharedData.user.id)
+            print(model.user.id)
             goToNextVC()
         default: break
         }

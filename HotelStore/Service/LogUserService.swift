@@ -7,8 +7,19 @@
 //
 
 import Foundation
+import UIKit
 
 class LogUserService {
+    
+    struct answerReceive: Codable{
+        var data: dataReceive
+        var message: String?
+        var success: Bool
+    }
+    
+    struct dataReceive: Codable{
+        var token: String
+    }
     
     func logIn(){
         
@@ -45,7 +56,8 @@ class LogUserService {
                 return
             }
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                let json = try JSONDecoder().decode(answerReceive.self, from: data)
+                DataModel.sharedData.token = json.data.token
                 print(json)
             } catch {
                 print(error)

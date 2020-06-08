@@ -32,7 +32,6 @@ class FirstAgreementViewController: UIViewController, WKNavigationDelegate{
     @available(iOS 13.0, *)
     @IBAction func agreeAction(_ sender: Any) {
 
-        model.token = "b8c48440ca23482c97feef3acf78b855a01fd197"
         do {
             try Locksmith.updateData(data: ["token" : model.token,
                                           "firstName": model.user.firstName,
