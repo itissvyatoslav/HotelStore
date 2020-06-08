@@ -16,7 +16,15 @@ class SubCatalogViewController: UIViewController{
     @IBOutlet weak var catalogTable: UITableView!
     
     override func viewWillAppear(_ animated: Bool) {
-        indicatorView.isHidden = true
+        if model.catalogInd == 1 {
+            if #available(iOS 13.0, *) {
+                let vc = storyboard?.instantiateViewController(identifier: "CatalogVC") as! CatalogViewController
+                self.navigationController?.pushViewController(vc, animated: true)
+                model.catalogInd = 0
+            }
+        } else {
+            indicatorView.isHidden = true
+        }
     }
     
     override func viewDidLoad() {

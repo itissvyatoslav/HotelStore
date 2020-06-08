@@ -75,7 +75,7 @@ class DataModel {
     var addHotel = HotelType(name: "", id: 0, lat: 0, lon: 0)
     
     var user = User(id: "", firstName: "Leyla", lastName: "", email: "@gmail.com", hotel: HotelType(name: "", id: 0, lat: 0, lon: 0), roomNumber: "")
-    var token = "b8c48440ca23482c97feef3acf78b855a01fd197"
+    var token = "default token"
     var deviceToken = ""
     
     var lastOrder = [LastOrderGood]()
@@ -86,6 +86,7 @@ class DataModel {
     var orderNumberLast = 0
     var orderNumber = 0
     var globalPrice: Double = 0
+    var catalogInd = 0
 
     static let sharedData = DataModel()
     

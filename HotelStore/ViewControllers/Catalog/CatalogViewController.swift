@@ -16,15 +16,14 @@ class CatalogViewController: UIViewController{
     let model = DataModel.sharedData
 
     @IBAction func HotelListAction(_ sender: Any) {
-        if #available(iOS 13.0, *) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(identifier: "HotelListVC") as! HotelListViewController
-            vc.id = 0
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        goToHotelList()
     }
     
     @IBAction func tappedButtonHotel(_ sender: Any) {
+        goToHotelList()
+    }
+    
+    @objc private func goToHotelList(){
         if #available(iOS 13.0, *) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(identifier: "HotelListVC") as! HotelListViewController

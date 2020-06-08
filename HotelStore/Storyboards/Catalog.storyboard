@@ -91,18 +91,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="Zo7-Is-Ima">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" image="geo" style="plain" id="1cT-1h-i3H">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wIe-7X-7ga">
+                        <barButtonItem key="leftBarButtonItem" image="geo-2" style="plain" id="QIu-yr-SUh">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PoF-MV-rC6">
                                 <rect key="frame" x="20" y="11" width="70" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="geo"/>
+                                <state key="normal" image="geo-2"/>
                                 <connections>
-                                    <action selector="HotelListAction:" destination="W0S-7C-CqL" eventType="touchUpInside" id="HAb-o4-Kl5"/>
+                                    <action selector="HotelListAction:" destination="W0S-7C-CqL" eventType="touchUpInside" id="azF-cd-Pvw"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ygB-4n-Qlx">
-                            <rect key="frame" x="99.5" y="7" width="215" height="30"/>
+                            <rect key="frame" x="97" y="7" width="220" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" title="Button">
@@ -325,7 +325,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tt8-0G-kHG">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="263"/>
+                                                                    <rect key="frame" x="5" y="5" width="404" height="253"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="263" id="2gc-OL-Sp4"/>
                                                                         <constraint firstAttribute="width" constant="414" id="YX8-l3-dze"/>
@@ -518,8 +518,8 @@
         <image name="Vector 14" width="22" height="13"/>
         <image name="Vector 19" width="1" height="43"/>
         <image name="Vector 4" width="411" height="2"/>
-        <image name="catalog30" width="26" height="30"/>
+        <image name="catalog30" width="25.5" height="30"/>
         <image name="filter" width="1050" height="1002"/>
-        <image name="geo" width="16" height="21"/>
+        <image name="geo-2" width="22" height="30"/>
     </resources>
 </document>

@@ -88,7 +88,15 @@ class ProductPageViewController: UIViewController{
     var category_id = 0
     
     override func viewWillAppear(_ animated: Bool) {
-        setLabels()
+        if model.catalogInd == 1 {
+            if #available(iOS 13.0, *) {
+                let vc = storyboard?.instantiateViewController(identifier: "CatalogVC") as! CatalogViewController
+                self.navigationController?.pushViewController(vc, animated: true)
+                model.catalogInd = 0
+            }
+        } else {
+            setLabels()
+        }
     }
     
     override func viewDidLoad() {
@@ -106,8 +114,14 @@ class ProductPageViewController: UIViewController{
     private func setView(){
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         collectionView.register(SlideImageCell.self, forCellWithReuseIdentifier: SlideImageCell.reuseId)
+        //collectionView.register(ImageSliderCell.self, forCellWithReuseIdentifier: "ImageSliderCell")
         collectionView.delegate = self
         collectionView.dataSource = self
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        self.collectionView.collectionViewLayout = layout
+        
+        //collectionView.
         pageControl.numberOfPages = images.count
     }
     
@@ -168,13 +182,16 @@ extension ProductPageViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageSliderCell", for: indexPath) as! ImageSliderCell
+        //cell.setUpImage(url: URL(string: "http://176.119.157.195:8080/\(model.products[number].images[indexPath.item].url)")!)
+        //return cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SlideImageCell.reuseId, for: indexPath) as! SlideImageCell
         cell.mainImageView.image = images[indexPath.row]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width - 1, height: collectionView.frame.height - 1)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

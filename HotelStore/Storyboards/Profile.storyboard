@@ -212,18 +212,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="AvB-aa-BjN">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="Fni-id-hXU">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GiM-wM-8Dr">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="pum-y7-edh">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HTR-FO-eqz">
                                 <rect key="frame" x="20" y="11" width="70" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="geo"/>
+                                <state key="normal" image="geo-2"/>
                                 <connections>
-                                    <action selector="HotelListAction:" destination="NhX-D1-DVt" eventType="touchUpInside" id="pre-hU-LNZ"/>
+                                    <action selector="HotelListAction:" destination="NhX-D1-DVt" eventType="touchUpInside" id="iq4-69-3LR"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DGK-NT-m5r">
-                            <rect key="frame" x="97" y="7" width="220" height="30"/>
+                            <rect key="frame" x="99" y="7" width="216" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" title="Button">
@@ -630,7 +630,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="geo" width="16" height="21"/>
+        <image name="geo-2" width="16" height="21"/>
         <image name="profile30" width="30" height="31"/>
     </resources>
 </document>

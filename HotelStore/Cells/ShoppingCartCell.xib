@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -69,7 +69,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elU-aJ-rph">
-                        <rect key="frame" x="258" y="63" width="173" height="45"/>
+                        <rect key="frame" x="258" y="63" width="159" height="45"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="45" id="dAZ-vr-na6"/>
                         </constraints>
@@ -108,7 +108,7 @@
                     <constraint firstAttribute="trailing" secondItem="nCs-Hh-9h1" secondAttribute="trailing" constant="296" id="fLe-I1-7eh"/>
                     <constraint firstAttribute="bottom" secondItem="nCs-Hh-9h1" secondAttribute="bottom" constant="25" id="i26-eL-5Ks"/>
                     <constraint firstItem="elU-aJ-rph" firstAttribute="leading" secondItem="CgH-fp-L7z" secondAttribute="trailing" constant="5" id="lJY-mp-sic"/>
-                    <constraint firstItem="elU-aJ-rph" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="18" id="rDB-iP-oC0"/>
+                    <constraint firstItem="elU-aJ-rph" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="4" id="rDB-iP-oC0"/>
                     <constraint firstAttribute="bottomMargin" secondItem="elU-aJ-rph" secondAttribute="bottom" constant="27" id="tg8-PF-asI"/>
                     <constraint firstItem="O8O-Yd-wu1" firstAttribute="top" secondItem="iQc-ER-G7J" secondAttribute="bottom" constant="13" id="twy-eH-btx"/>
                     <constraint firstItem="Nae-mM-cQO" firstAttribute="leading" secondItem="nCs-Hh-9h1" secondAttribute="trailing" constant="24" id="v7c-Px-QbW"/>

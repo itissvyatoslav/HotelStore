@@ -35,17 +35,25 @@ class ProductsViewController: UIViewController{
         setView()
     }
     override func viewWillAppear(_ animated: Bool) {
-        indicatorView.isHidden = true
-        GetProductsService().getProducts(hotel_id: model.user.hotel.id, category_id: category_id, limit: "50", page: 1, brand: "")
-        productsTable.reloadData()
+        if model.catalogInd == 1 {
+            if #available(iOS 13.0, *) {
+                let vc = storyboard?.instantiateViewController(identifier: "CatalogVC") as! CatalogViewController
+                self.navigationController?.pushViewController(vc, animated: true)
+                model.catalogInd = 0
+            }
+        } else {
+            indicatorView.isHidden = true
+            GetProductsService().getProducts(hotel_id: model.user.hotel.id, category_id: category_id, limit: "50", page: 1, brand: "")
+            productsTable.reloadData()
+        }
     }
     
     private func setView(){
-        indicatorView.layer.cornerRadius = 5
-        self.navigationItem.backBarButtonItem?.title = ""
-        productsTable.delegate = self
-        productsTable.dataSource = self
-        productsTable.tableFooterView = UIView(frame: .zero)
+            indicatorView.layer.cornerRadius = 5
+            self.navigationItem.backBarButtonItem?.title = ""
+            productsTable.delegate = self
+            productsTable.dataSource = self
+            productsTable.tableFooterView = UIView(frame: .zero)
     }
     
     private func registerTableViewCells() {
@@ -56,9 +64,9 @@ class ProductsViewController: UIViewController{
     }
     
     private func getImages(_ number: Int){
+        let semaphore = DispatchSemaphore (value: 0)
         if !model.products[number].images.isEmpty{
             images.removeAll()
-            let semaphore = DispatchSemaphore (value: 0)
             for subNumber in 0..<model.products[number].images.count{
                 if let url = URL(string: "http://176.119.157.195:8080/\(model.products[number].images[subNumber].url)"){
                     do {
@@ -67,12 +75,11 @@ class ProductsViewController: UIViewController{
                     } catch let err {
                         print("Error: \(err.localizedDescription)")
                     }
-                    
                 }
-                semaphore.signal()
             }
-            semaphore.wait()
+            semaphore.signal()
         }
+        semaphore.wait()
     }
     
     private func addToShopCart(product: DataModel.GoodsType){

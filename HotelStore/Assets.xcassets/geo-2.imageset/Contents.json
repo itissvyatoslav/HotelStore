@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "cart 30x30.png",
+      "filename" : "geo 30x30.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "cart 60x60.png",
+      "filename" : "geo 60x60.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "cart 90x90.png",
+      "filename" : "geo 90x90.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

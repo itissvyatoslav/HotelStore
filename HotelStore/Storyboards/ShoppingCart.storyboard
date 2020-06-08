@@ -29,7 +29,7 @@
         <!--Shopping Cart View Controller-->
         <scene sceneID="4Hk-hz-P1n">
             <objects>
-                <viewController id="7yb-q4-GKg" customClass="ShoppingCartViewController" customModule="HotelStore" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShoppingCartViewController" id="7yb-q4-GKg" customClass="ShoppingCartViewController" customModule="HotelStore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eVR-fq-Nco">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -380,15 +380,33 @@
                                 <color key="textColor" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wkM-9U-eba">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="fdO-qK-lmT">
+                                        <rect key="frame" x="15" y="15" width="20" height="20"/>
+                                        <color key="color" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="EVu-FL-uOX"/>
+                                    <constraint firstItem="fdO-qK-lmT" firstAttribute="centerX" secondItem="wkM-9U-eba" secondAttribute="centerX" id="L3C-di-l4h"/>
+                                    <constraint firstAttribute="width" constant="50" id="Ubf-Wn-ehT"/>
+                                    <constraint firstItem="fdO-qK-lmT" firstAttribute="centerY" secondItem="wkM-9U-eba" secondAttribute="centerY" id="niD-Qk-SDf"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6l1-Vh-812" firstAttribute="centerX" secondItem="SHW-91-boV" secondAttribute="centerX" id="9FZ-DU-N2x"/>
+                            <constraint firstItem="wkM-9U-eba" firstAttribute="centerX" secondItem="SHW-91-boV" secondAttribute="centerX" id="MWj-0l-TXC"/>
                             <constraint firstItem="keW-8T-196" firstAttribute="trailing" secondItem="68Y-uu-oTu" secondAttribute="trailing" constant="25" id="TF8-hp-68e"/>
                             <constraint firstItem="keW-8T-196" firstAttribute="bottom" secondItem="68Y-uu-oTu" secondAttribute="bottom" constant="21" id="VDy-sE-oKl"/>
                             <constraint firstItem="5VK-Wa-tr5" firstAttribute="top" secondItem="6l1-Vh-812" secondAttribute="bottom" constant="8" id="YGw-Fd-zaf"/>
                             <constraint firstItem="5VK-Wa-tr5" firstAttribute="centerY" secondItem="SHW-91-boV" secondAttribute="centerY" id="c0g-rZ-dpw"/>
                             <constraint firstItem="68Y-uu-oTu" firstAttribute="leading" secondItem="keW-8T-196" secondAttribute="leading" constant="25" id="cxN-c2-wPm"/>
+                            <constraint firstItem="wkM-9U-eba" firstAttribute="centerY" secondItem="SHW-91-boV" secondAttribute="centerY" id="eFO-8h-uqn"/>
                             <constraint firstItem="jyU-oL-uqo" firstAttribute="centerX" secondItem="SHW-91-boV" secondAttribute="centerX" id="svh-b2-mLv"/>
                             <constraint firstItem="jyU-oL-uqo" firstAttribute="top" secondItem="5VK-Wa-tr5" secondAttribute="bottom" constant="15" id="xhM-jA-d9x"/>
                             <constraint firstItem="5VK-Wa-tr5" firstAttribute="centerX" secondItem="SHW-91-boV" secondAttribute="centerX" id="zDj-kr-RKn"/>
@@ -397,6 +415,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="gGG-PD-6bl"/>
                     <connections>
+                        <outlet property="activityView" destination="wkM-9U-eba" id="XIH-QH-716"/>
                         <outlet property="infoLabel" destination="5VK-Wa-tr5" id="vU6-nA-FAB"/>
                         <outlet property="numberLabel" destination="jyU-oL-uqo" id="g1o-wi-mrW"/>
                     </connections>
@@ -409,6 +428,6 @@
     <resources>
         <image name="bin" width="817" height="1000"/>
         <image name="cart30" width="38" height="31"/>
-        <image name="geo" width="16" height="21"/>
+        <image name="geo" width="729" height="993"/>
     </resources>
 </document>
