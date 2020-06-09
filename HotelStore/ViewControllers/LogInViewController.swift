@@ -8,9 +8,10 @@
 
 import UIKit
 import AuthenticationServices
+import CoreLocation
 
 @available(iOS 13.0, *)
-class LogInViewController: UIViewController{
+class LogInViewController: UIViewController, CLLocationManagerDelegate{
     let model = DataModel.sharedData
     let network = LogUserService()
     
@@ -18,7 +19,7 @@ class LogInViewController: UIViewController{
     
     override func viewDidLoad() {
         
-        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.tintColor = UIColor(named: "ColorSubText")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         super.viewDidLoad()
         infoLabel.text = "Please, sign in with your\nApple ID"
@@ -26,7 +27,7 @@ class LogInViewController: UIViewController{
     }
     
     private func setUpButton(){
-        let appleButton = ASAuthorizationAppleIDButton()
+        let appleButton = ASAuthorizationAppleIDButton(type: .default, style: .whiteOutline)
         appleButton.translatesAutoresizingMaskIntoConstraints = false
         appleButton.addTarget(self, action: #selector(tapAppleButton), for: .touchUpInside)
         
@@ -53,18 +54,55 @@ class LogInViewController: UIViewController{
     }
     
     private func goToNextVC(){
+        self.locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+            locationManager.startUpdatingLocation()
+        }
         GetHotelsService().getHotelsSem()
         let vc = storyboard?.instantiateViewController(identifier: "HotelListVC") as! HotelListViewController
         vc.navigationItem.hidesBackButton = true
         vc.id = 1
         vc.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Skip", style: .plain, target: self, action: #selector(goToRoomPicker))
         self.navigationController?.pushViewController(vc, animated: true)
+        print("buy buy")
     }
     
     @objc func goToRoomPicker(){
         let vc = storyboard?.instantiateViewController(identifier: "RoomPickerVC") as! RoomPickerViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    //MARK: - Location
+    var locationManager = CLLocationManager()
+    
+    func checkCoreLocationPermission(){
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func sortHotels(latUser: Double, lonUser: Double){
+        for number in 0..<model.hotels.count{
+            let lat = model.hotels[number].lat
+            let lon = model.hotels[number].lon
+            let distance = 2*6372795*asin(sqrt(sin((lon - lonUser)/2)*sin((lon - lonUser)/2) + cos(lonUser)*cos(lon)*sin((lat - latUser)/2)*sin((lat - latUser)/2)))
+            model.hotels[number].distance = distance
+        }
+        print("we are sorting!!!")
+        model.hotels.sort {$0.distance < $1.distance}
+        print(model.hotels)
+    }
+    
+    // DELEGATE:
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue: CLLocationCoordinate2D = manager.location!.coordinate
+        sortHotels(latUser: locValue.latitude, lonUser: locValue.longitude)
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        locationManager.stopUpdatingLocation()
+    }
+    
 }
 
 @available(iOS 13.0, *)
@@ -85,7 +123,6 @@ extension LogInViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             model.user.lastName = credentials.fullName?.familyName ?? ""
             model.user.email = credentials.email ?? ""
             network.registration(id: DataModel.sharedData.user.id)
-            print(model.user.id)
             goToNextVC()
         default: break
         }

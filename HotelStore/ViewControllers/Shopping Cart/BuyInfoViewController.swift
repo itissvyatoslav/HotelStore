@@ -17,6 +17,15 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     private var paymentContext: STPPaymentContext? = nil
     let model = DataModel.sharedData
     
+    @IBAction func hotelNameTapped(_ sender: Any) {
+        if #available(iOS 13.0, *) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "HotelListVC") as! HotelListViewController
+            vc.id = 0
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var hotelLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!

@@ -31,7 +31,11 @@ class ProductPageViewController: UIViewController{
         network.minusPosition(product_id: model.products[number].id, indexPath: number)
         removeFromShopCart(product: model.products[number])
         //model.shopCart.remove(at: model.shopCart.count - 1)
-        tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        if badgeValue() == 0 {
+            tabBarController?.tabBar.items?[1].badgeValue = nil
+        } else {
+            tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        }
         if count < 1 {
             model.products[number].count = model.products[number].count + 1
             model.products[number].actualCount = 0
@@ -59,7 +63,11 @@ class ProductPageViewController: UIViewController{
             countLabel.text = "\(model.products[number].count) in stock"
         }
         addToShopCart(product: model.products[number])
-        tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        if badgeValue() == 0 {
+            tabBarController?.tabBar.items?[1].badgeValue = nil
+        } else {
+            tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        }
     }
     
     @IBAction func addAction(_ sender: Any) {
@@ -78,7 +86,11 @@ class ProductPageViewController: UIViewController{
         } else {
             countLabel.text = "\(model.products[number].count) in stock"
         }
-        tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        if badgeValue() == 0 {
+            tabBarController?.tabBar.items?[1].badgeValue = nil
+        } else {
+            tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        }
     }
     
     var currentIndex = 0
@@ -132,7 +144,8 @@ class ProductPageViewController: UIViewController{
         if model.products[number].count == 0 {
             zeroInStock()
         } else {
-            countLabel.textColor = UIColor(red: 21/255, green: 22/255, blue: 22/255, alpha: 0.5)
+            countLabel.textColor = UIColor(named: "ColorSubText")
+            //countLabel.textColor = UIColor(red: 21/255, green: 22/255, blue: 22/255, alpha: 0.5)
             countLabel.text = "\(model.products[number].count) in stock"
             numberLabel.isHidden = true
             minusButton.isHidden = true

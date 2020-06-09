@@ -27,7 +27,7 @@ class SuccessPaymentViewController: UIViewController{
         activityView.layer.cornerRadius = 5
         activityView.isHidden = true
         DataModel.sharedData.shopCart.removeAll()
-        tabBarController?.tabBar.items?[1].badgeValue = "0"
+        tabBarController?.tabBar.items?[1].badgeValue = nil
         ShoppingCartNetwork().removeCart()
         super.viewDidLoad()
         infoLabel.text = "Your order is accepted.\nOrder number is"

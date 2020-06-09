@@ -17,7 +17,6 @@ class UserInfoViewController: UIViewController{
     @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
     
     var id = 0
     
@@ -33,14 +32,12 @@ class UserInfoViewController: UIViewController{
         }
         infoLabel.text = "Choose, which data\nwill be available to the system"
         nameTextField.text = "\(DataModel.sharedData.user.firstName)"
-        emailTextField.text = DataModel.sharedData.user.email
         roomNumberTextField.text = DataModel.sharedData.user.roomNumber
     }
     
     @available(iOS 13.0, *)
     @IBAction func saveAction(_ sender: Any) {
         DataModel.sharedData.user.firstName = nameTextField.text ?? "Name"
-        DataModel.sharedData.user.email = emailTextField.text ?? "@gmail.com"
         DataModel.sharedData.user.roomNumber = roomNumberTextField.text ?? "000"
         do {
             try Locksmith.updateData(data: ["token" : model.token,

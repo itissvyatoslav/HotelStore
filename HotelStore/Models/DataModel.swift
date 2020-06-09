@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class DataModel {
     
@@ -38,6 +39,7 @@ class DataModel {
         var id: Int
         var lat: Double
         var lon: Double
+        var distance: Double
     }
     
     struct LastOrderGood {
@@ -72,9 +74,9 @@ class DataModel {
     var addSubcategory = Category(id: 0, name: "", sub_categoryes: [])
     
     var hotels = [HotelType]()
-    var addHotel = HotelType(name: "", id: 0, lat: 0, lon: 0)
+    var addHotel = HotelType(name: "", id: 0, lat: 0, lon: 0, distance: 0)
     
-    var user = User(id: "", firstName: "Leyla", lastName: "", email: "@gmail.com", hotel: HotelType(name: "", id: 0, lat: 0, lon: 0), roomNumber: "")
+    var user = User(id: "", firstName: "Leyla", lastName: "", email: "@gmail.com", hotel: HotelType(name: "", id: 0, lat: 0, lon: 0, distance: 0), roomNumber: "")
     var token = "default token"
     var deviceToken = ""
     
@@ -104,4 +106,6 @@ class DataModel {
             DataModel.sharedData.shopCart.append(product)
         }
     }
+    
+    var imageCache = NSCache<NSString, UIImage>()
 }

@@ -27,12 +27,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                                                                                 "email": "@gmail.com",
                                                                                                 "hotelId": 0,
                                                                                                 "hotelName": "hotelName"]
-        print(loadedData)
         GetProductsService().getCategories()
         DataModel.sharedData.token = loadedData["token"] as! String? ?? "default token"
-        print("Loaded data: ", DataModel.sharedData.token)
         let model = DataModel.sharedData
         if model.token != "default token"{
+            GetHotelsService().getHotels()
             model.user.firstName = loadedData["firstName"] as! String? ?? "Name"
             model.user.roomNumber = loadedData["roomNumber"] as! String? ?? "000"
             model.user.email = loadedData["email"] as! String? ?? "@gmail.com"
@@ -44,6 +43,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window = UIWindow(windowScene: windowScene)
             window?.rootViewController = vc
             window?.makeKeyAndVisible()
+        } else {
+            
         }
     }
 

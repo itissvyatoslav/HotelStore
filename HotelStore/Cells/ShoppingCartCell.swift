@@ -58,18 +58,21 @@ class ShoppingCartCell: UITableViewCell {
     }
     
     private func setImage(_ number: Int){
+        print (model.shopCart[number].images)
         if !model.shopCart[number].images.isEmpty{
-            let semaphore = DispatchSemaphore (value: 0)
             if let url = URL(string: "http://176.119.157.195:8080/\(model.shopCart[number].images[0].url)"){
-                do {
-                    let data = try Data(contentsOf: url)
-                    self.imageProduct.image = UIImage(data: data)
-                } catch let err {
-                    print("Error: \(err.localizedDescription)")
+                if let cachedImage = model.imageCache.object(forKey: url.absoluteString as NSString){
+                    self.imageProduct.image = cachedImage
+                } else {
+                    do {
+                        let data = try Data(contentsOf: url)
+                        self.imageProduct.image = UIImage(data: data)
+                    } catch let err {
+                        print("Error: \(err.localizedDescription)")
+                    }
                 }
-                semaphore.signal()
             }
-            semaphore.wait()
         }
     }
 }
+

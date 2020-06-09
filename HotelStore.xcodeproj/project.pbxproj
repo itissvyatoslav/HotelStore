@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EB12C6BA2455CF4D000C3301 /* SubCatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB12C6B92455CF4D000C3301 /* SubCatalogViewController.swift */; };
 		EB12C6BC24569EC7000C3301 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB12C6BB24569EC7000C3301 /* ProductsViewController.swift */; };
+		EB1B7990248F914E00851EB6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB1B798F248F914E00851EB6 /* CoreLocation.framework */; };
 		EB38EE5E246C195200D2CB4E /* StripeClientAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB38EE5D246C195200D2CB4E /* StripeClientAPI.swift */; };
 		EB437BB62484C839001F54D2 /* RequestDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437BB52484C839001F54D2 /* RequestDelegate.swift */; };
 		EB437BB82484C871001F54D2 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437BB72484C871001F54D2 /* RequestManager.swift */; };
@@ -56,6 +57,7 @@
 		AAC5583E4007ADD964B90FE2 /* Pods_HotelStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HotelStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB12C6B92455CF4D000C3301 /* SubCatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCatalogViewController.swift; sourceTree = "<group>"; };
 		EB12C6BB24569EC7000C3301 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
+		EB1B798F248F914E00851EB6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		EB38EE5D246C195200D2CB4E /* StripeClientAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeClientAPI.swift; sourceTree = "<group>"; };
 		EB437BB52484C839001F54D2 /* RequestDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDelegate.swift; sourceTree = "<group>"; };
 		EB437BB72484C871001F54D2 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB1B7990248F914E00851EB6 /* CoreLocation.framework in Frameworks */,
 				F7B014CCAB1CEBA2ECA98B03 /* Pods_HotelStore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +271,7 @@
 		F32EE012E752DEC2F696C21E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EB1B798F248F914E00851EB6 /* CoreLocation.framework */,
 				AAC5583E4007ADD964B90FE2 /* Pods_HotelStore.framework */,
 			);
 			name = Frameworks;

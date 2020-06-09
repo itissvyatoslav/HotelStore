@@ -6,11 +6,11 @@
 //  Copyright © 2020 Svyatoslav Vladimirovich. All rights reserved.
 //
 
-import Foundation
+import CoreLocation
 import UIKit
 import Locksmith
 
-class CatalogViewController: UIViewController{
+class CatalogViewController: UIViewController, CLLocationManagerDelegate{
     let network = GetProductsService()
     let getHotels = GetHotelsService()
     let model = DataModel.sharedData
@@ -38,10 +38,15 @@ class CatalogViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getHotels.getHotels()
         setViews()
-        self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = UIColor(named: "ColorSubText")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+            locationManager.startUpdatingLocation()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +65,36 @@ class CatalogViewController: UIViewController{
         catalogTable.delegate = self
         catalogTable.dataSource = self
         catalogTable.tableFooterView = UIView(frame: .zero)
+    }
+    
+    //MARK: - Location
+    
+    var locationManager = CLLocationManager()
+    
+    func checkCoreLocationPermission(){
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func sortHotels(latUser: Double, lonUser: Double){
+        for number in 0..<model.hotels.count{
+            let lat = model.hotels[number].lat
+            let lon = model.hotels[number].lon
+            let distance = 2*6372795*asin(sqrt(sin((lon - lonUser)/2)*sin((lon - lonUser)/2) + cos(lonUser)*cos(lon)*sin((lat - latUser)/2)*sin((lat - latUser)/2)))
+            model.hotels[number].distance = distance
+        }
+        print("we are sorting!!!")
+        model.hotels.sort {$0.distance < $1.distance}
+        print(model.hotels)
+    }
+    
+    // DELEGATE:
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue: CLLocationCoordinate2D = manager.location!.coordinate
+        sortHotels(latUser: locValue.latitude, lonUser: locValue.longitude)
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        locationManager.stopUpdatingLocation()
     }
 }
 

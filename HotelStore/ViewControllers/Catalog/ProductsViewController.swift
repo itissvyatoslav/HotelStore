@@ -63,23 +63,27 @@ class ProductsViewController: UIViewController{
                                 forCellReuseIdentifier: "ProductTableViewCell")
     }
     
+    //MARK: - Images Cache
+    
     private func getImages(_ number: Int){
-        let semaphore = DispatchSemaphore (value: 0)
-        if !model.products[number].images.isEmpty{
-            images.removeAll()
-            for subNumber in 0..<model.products[number].images.count{
-                if let url = URL(string: "http://176.119.157.195:8080/\(model.products[number].images[subNumber].url)"){
-                    do {
-                        let data = try Data(contentsOf: url)
-                        images.append(UIImage(data: data)!)
-                    } catch let err {
-                        print("Error: \(err.localizedDescription)")
+        if !self.model.products[number].images.isEmpty{
+            self.images.removeAll()
+            for subNumber in 0..<self.model.products[number].images.count{
+                if let url = URL(string: "http://176.119.157.195:8080/\(self.model.products[number].images[subNumber].url)"){
+                    if let cachedImage = self.model.imageCache.object(forKey: url.absoluteString as NSString){
+                        self.images.append(cachedImage)
+                    } else {
+                        do {
+                            let data = try Data(contentsOf: url)
+                            self.images.append(UIImage(data: data)!)
+                            self.model.imageCache.setObject(UIImage(data: data)!, forKey: url.absoluteString as NSString)
+                        } catch let err {
+                            print("Error: \(err.localizedDescription)")
+                        }
                     }
                 }
             }
-            semaphore.signal()
         }
-        semaphore.wait()
     }
     
     private func addToShopCart(product: DataModel.GoodsType){
@@ -155,7 +159,11 @@ extension ProductsViewController: ProductTableViewCellDelegate{
         let cellIndex = self.productsTable.indexPath(for: cell)!.row
         productService.addProduct(product_id: model.products[cellIndex].id, hotel_id: model.user.hotel.id, indexPath: cellIndex)
         addToShopCart(product: model.products[cellIndex])
-        tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        if badgeValue() == 0 {
+            tabBarController?.tabBar.items?[1].badgeValue = nil
+        } else {
+            tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        }
         return cellIndex
     }
     
@@ -164,7 +172,11 @@ extension ProductsViewController: ProductTableViewCellDelegate{
         //if model.products[cellIndex].actualCount == 1
         productService.minusPosition(product_id: model.products[cellIndex].id, indexPath: cellIndex)
         removeFromShopCart(product: model.products[cellIndex])
-        tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        if badgeValue() == 0 {
+            tabBarController?.tabBar.items?[1].badgeValue = nil
+        } else {
+            tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        }
         return cellIndex
     }
 }

@@ -34,12 +34,14 @@ class ProductTableViewCell: UITableViewCell {
         count = count - 1
         let indexPath = self.delegate?.minusProduct(cell: self)
         if count < 1 {
+            countLabel.textColor = UIColor(named: "ColorSubText")
             countLabel.text = "\(model.products[indexPath ?? 0].count + 1) in stock"
             numberLabel.isHidden = true
             minusButton.isHidden = true
             plusButton.isHidden = true
             addButton.isHidden = false
         } else {
+            countLabel.textColor = UIColor(named: "ColorSubText")
             countLabel.text = "\(model.products[indexPath ?? 0].count) in stock"
             numberLabel.text = "\(count)"
             numberLabel.sizeToFit()
@@ -51,7 +53,7 @@ class ProductTableViewCell: UITableViewCell {
         if model.products[indexPath ?? 0].count == 0{
             zeroInStock()
         } else {
-            countLabel.textColor = UIColor(red: 21/255, green: 22/255, blue: 22/255, alpha: 0.5)
+            countLabel.textColor = UIColor(named: "ColorSubText")
             countLabel.text = "\(model.products[indexPath ?? 0].count) in stock"
         }
         numberLabel.text = "\(count)"
@@ -68,7 +70,7 @@ class ProductTableViewCell: UITableViewCell {
             minusButton.isHidden = false
             plusButton.isHidden = false
             numberLabel.sizeToFit()
-            countLabel.textColor = UIColor(red: 21/255, green: 22/255, blue: 22/255, alpha: 0.5)
+            countLabel.textColor = UIColor(named: "ColorSubText")
             countLabel.text = "\(model.products[indexPath ?? 0].count) in stock"
         }
         count = 1
@@ -97,7 +99,7 @@ class ProductTableViewCell: UITableViewCell {
         if model.products[number].count == 0 {
             zeroInStock()
         } else {
-            countLabel.textColor = UIColor(red: 21/255, green: 22/255, blue: 22/255, alpha: 0.5)
+            countLabel.textColor = UIColor(named: "ColorSubText")
             countLabel.text = "\(model.products[number].count) in stock"
             numberLabel.isHidden = true
             minusButton.isHidden = true
@@ -106,6 +108,7 @@ class ProductTableViewCell: UITableViewCell {
         }
         if !model.products[number].images.isEmpty{
             getImage(number)
+            imageProduct.layer.cornerRadius = 15
         }
     }
     
@@ -127,16 +130,18 @@ class ProductTableViewCell: UITableViewCell {
                 break
             }
         }
-        let semaphore = DispatchSemaphore (value: 0)
+        
         if let url = URL(string: "http://176.119.157.195:8080/\(model.products[number].images[subNumber].url)"){
-            do {
-                let data = try Data(contentsOf: url)
-                self.imageProduct.image = UIImage(data: data)
-            } catch let err {
-                print("Error: \(err.localizedDescription)")
+            if let cachedImage = model.imageCache.object(forKey: url.absoluteString as NSString){
+                self.imageProduct.image = cachedImage
+            } else {
+                do {
+                    let data = try Data(contentsOf: url)
+                    self.imageProduct.image = UIImage(data: data)
+                } catch let err {
+                    print("Error: \(err.localizedDescription)")
+                }
             }
-            semaphore.signal()
         }
-        semaphore.wait()
     }
 }

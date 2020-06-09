@@ -26,7 +26,11 @@ class ShoppingCartViewController: UIViewController{
         checkButton()
         shoppingCartTable.reloadData()
         priceLabel.text = "0.0S$"
-        tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        if badgeValue() == 0 {
+            tabBarController?.tabBar.items?[1].badgeValue = nil
+        } else {
+            tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        }
     }
     
     override func viewDidLoad() {
@@ -35,7 +39,7 @@ class ShoppingCartViewController: UIViewController{
         self.registerTableViewCells()
         setViews()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = UIColor(named: "ColorSubText")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +47,11 @@ class ShoppingCartViewController: UIViewController{
         network.getCart()
         shoppingCartTable.reloadData()
         checkButton()
-        tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        if badgeValue() == 0 {
+            tabBarController?.tabBar.items?[1].badgeValue = nil
+        } else {
+            tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        }
         setGlobalPrice()
     }
     
@@ -62,7 +70,11 @@ class ShoppingCartViewController: UIViewController{
         self.navigationItem.title = "Shopping cart"
         self.tabBarItem.title = "Shopping cart"
         shoppingCartTable.tableFooterView = UIView(frame: .zero)
-        tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        if badgeValue() == 0 {
+            tabBarController?.tabBar.items?[1].badgeValue = nil
+        } else {
+            tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        }
         shoppingCartTable.delegate = self
         shoppingCartTable.dataSource = self
         checkButton()
@@ -137,7 +149,11 @@ extension ShoppingCartViewController: ShoppingCartCellDelegate{
             activityView.isHidden = false
             DispatchQueue.main.async {
                 self.network.addProduct(product_id: self.model.shopCart[cellIndex].id, hotel_id: self.model.user.hotel.id, indexPath: cellIndex)
-                self.tabBarController?.tabBar.items?[1].badgeValue = "\(self.badgeValue())"
+                if self.badgeValue() == 0 {
+                    self.tabBarController?.tabBar.items?[1].badgeValue = nil
+                } else {
+                    self.tabBarController?.tabBar.items?[1].badgeValue = "\(self.badgeValue())"
+                }
                 self.setGlobalPrice()
             }
             activityView.isHidden = true
@@ -158,10 +174,18 @@ extension ShoppingCartViewController: ShoppingCartCellDelegate{
             checkButton()
             shoppingCartTable.reloadData()
             setGlobalPrice()
-            tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+            if badgeValue() == 0 {
+                tabBarController?.tabBar.items?[1].badgeValue = nil
+            } else {
+                tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+            }
             return -1
         } else {
-            tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+            if badgeValue() == 0 {
+                tabBarController?.tabBar.items?[1].badgeValue = nil
+            } else {
+                tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+            }
             setGlobalPrice()
             return cellIndex
         }
@@ -174,7 +198,11 @@ extension ShoppingCartViewController: ShoppingCartCellDelegate{
         model.shopCart.remove(at: cellIndex)
         shoppingCartTable.reloadData()
         setGlobalPrice()
-        tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        if badgeValue() == 0 {
+            tabBarController?.tabBar.items?[1].badgeValue = nil
+        } else {
+            tabBarController?.tabBar.items?[1].badgeValue = "\(badgeValue())"
+        }
         checkButton()
     }
 }

@@ -41,7 +41,7 @@ class ProfileViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setViews()
-        self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = UIColor(named: "ColorSubText")
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -10,7 +10,7 @@ import CoreLocation
 import Locksmith
 import UIKit
 
-class HotelListViewController: UIViewController{
+class HotelListViewController: UIViewController, CLLocationManagerDelegate{
     let model = DataModel.sharedData
     let network = GetProductsService()
     @IBOutlet weak var hotelsTable: UITableView!
@@ -20,10 +20,48 @@ class HotelListViewController: UIViewController{
     
     var id = 2
     
+    //MARK: - START LOCATION
+    
+    var locationManager = CLLocationManager()
+    
+    func checkCoreLocationPermission(){
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    //tels.sort {$0.distance < $1.distance}
+    
+    func sortHotels(latUser: Double, lonUser: Double){
+        for number in 0..<model.hotels.count{
+            let lat = model.hotels[number].lat
+            let lon = model.hotels[number].lon
+            let distance = 2*6372795*asin(sqrt(sin((lon - lonUser)/2)*sin((lon - lonUser)/2) + cos(lonUser)*cos(lon)*sin((lat - latUser)/2)*sin((lat - latUser)/2)))
+            model.hotels[number].distance = distance
+        }
+        model.hotels.sort {$0.distance < $1.distance}
+    }
+    
+    // DELEGATE:
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue: CLLocationCoordinate2D = manager.location!.coordinate
+        sortHotels(latUser: locValue.latitude, lonUser: locValue.longitude)
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        locationManager.stopUpdatingLocation()
+    }
+    //MARK: - END LOCATION
+    
     override func viewDidLoad() {
-        //network.getHotels()
         super.viewDidLoad()
         setView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+            locationManager.startUpdatingLocation()
+        }
     }
     
     private func setView(){

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -126,11 +127,11 @@
                                             <constraint firstAttribute="height" constant="30" id="JeH-zB-wQL"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="ColorSubText"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.82745098039215681" green="0.82745098039215681" blue="0.82745098039215681" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="ColorViewBack"/>
                                 <constraints>
                                     <constraint firstItem="NrA-VW-Fig" firstAttribute="leading" secondItem="gk8-U6-M2X" secondAttribute="leading" constant="24" id="9v6-kB-b3F"/>
                                     <constraint firstItem="NrA-VW-Fig" firstAttribute="top" secondItem="gk8-U6-M2X" secondAttribute="top" constant="12" id="AHD-Vv-7Uw"/>
@@ -166,11 +167,11 @@
                                             <constraint firstAttribute="height" constant="30" id="er9-UY-X8f"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="ColorSubText"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="ColorViewBack"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="1xE-2f-71d"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="l4p-eS-8Y9" secondAttribute="trailing" constant="20" symbolic="YES" id="AOx-uh-MEU"/>
@@ -491,5 +492,11 @@
     </scenes>
     <resources>
         <image name="Hotel store 1" width="226" height="77"/>
+        <namedColor name="ColorSubText">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.60109543800354004" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ColorViewBack">
+            <color red="0.81999999999999995" green="0.81999999999999995" blue="0.81999999999999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
