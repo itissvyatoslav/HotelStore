@@ -13,6 +13,7 @@ import Locksmith
 class UserInfoViewController: UIViewController{
     let model = DataModel.sharedData
     
+    @IBOutlet weak var roomNumberTextField: UITextField!
     @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -33,12 +34,14 @@ class UserInfoViewController: UIViewController{
         infoLabel.text = "Choose, which data\nwill be available to the system"
         nameTextField.text = "\(DataModel.sharedData.user.firstName)"
         emailTextField.text = DataModel.sharedData.user.email
+        roomNumberTextField.text = DataModel.sharedData.user.roomNumber
     }
     
     @available(iOS 13.0, *)
     @IBAction func saveAction(_ sender: Any) {
         DataModel.sharedData.user.firstName = nameTextField.text ?? "Name"
         DataModel.sharedData.user.email = emailTextField.text ?? "@gmail.com"
+        DataModel.sharedData.user.roomNumber = roomNumberTextField.text ?? "000"
         do {
             try Locksmith.updateData(data: ["token" : model.token,
                    "firstName": model.user.firstName,
@@ -63,8 +66,22 @@ class UserInfoViewController: UIViewController{
     
     @available(iOS 13.0, *)
     @IBAction func signOutAction(_ sender: Any) {
+        model.token = "default token"
+        model.user.firstName = ""
+        model.user.lastName = ""
+        model.user.roomNumber = ""
+        model.user.email = ""
+        model.user.hotel.id  = 0
+        model.user.hotel.name = ""
         do {
-            try Locksmith.deleteDataForUserAccount(userAccount: "HotelStoreAccount")
+            try Locksmith.updateData(data: ["token" : model.token,
+                   "firstName": model.user.firstName,
+                   "lastName": model.user.lastName,
+                   "roomNumber": model.user.roomNumber,
+                   "email": model.user.email,
+                   "hotelId": model.user.hotel.id,
+                   "hotelName": model.user.hotel.name],
+            forUserAccount: "HotelStoreAccount")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(identifier: "LogInViewController") as! LogInViewController
             self.navigationController?.pushViewController(vc, animated: true)

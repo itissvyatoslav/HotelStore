@@ -25,6 +25,7 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     @IBAction func payAction(_ sender: Any) {
         indicatorView.isHidden = false
         self.paymentContext?.requestPayment()
+        network.payOrder(roomNumber: roomNumberTextField.text ?? "", comment: commentTextView.text ?? "")
         DispatchQueue.main.async {
             MyAPIClient().goood()
             if self.model.resultOrder == true {

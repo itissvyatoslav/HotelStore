@@ -37,6 +37,15 @@ class HotelListViewController: UIViewController{
         hotelsTable.delegate = self
         hotelsTable.dataSource = self
     }
+    
+    @available(iOS 13.0, *)
+    @objc func goToAgreement(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "FirstAgreementVC") as! FirstAgreementViewController
+        vc.navigationItem.hidesBackButton = true
+        vc.navigationController?.title = "User agreement"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension HotelListViewController: UITableViewDelegate, UITableViewDataSource{
@@ -101,7 +110,11 @@ extension HotelListViewController: UITableViewDelegate, UITableViewDataSource{
         }
         if id == 1 {
             if #available(iOS 13.0, *) {
-                let vc = storyboard?.instantiateViewController(identifier: "RoomPickerVC") as! RoomPickerViewController
+                let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+                let vc = storyboard.instantiateViewController(identifier: "UserInfoVC") as! UserInfoViewController
+                vc.id = 1
+                vc.navigationItem.hidesBackButton = true
+                vc.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Skip", style: .plain, target: self, action: #selector(goToAgreement))
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
