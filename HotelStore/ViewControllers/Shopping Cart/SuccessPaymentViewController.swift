@@ -20,6 +20,7 @@ class SuccessPaymentViewController: UIViewController{
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @IBOutlet weak var successLabel: UILabel!
     @IBOutlet weak var activityView: UIView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
@@ -30,7 +31,6 @@ class SuccessPaymentViewController: UIViewController{
         tabBarController?.tabBar.items?[1].badgeValue = nil
         ShoppingCartNetwork().removeCart()
         super.viewDidLoad()
-        infoLabel.text = "Your order is accepted.\nOrder number is"
-        numberLabel.text = "\(DataModel.sharedData.orderNumber)"
+        
     }
 }

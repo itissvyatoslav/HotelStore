@@ -37,12 +37,17 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
         network.payOrder(roomNumber: roomNumberTextField.text ?? "", comment: commentTextView.text ?? "")
         DispatchQueue.main.async {
             MyAPIClient().goood()
+            let vc = self.storyboard?.instantiateViewController(identifier: "SuccessPaymentVC") as! SuccessPaymentViewController
+            vc.navigationItem.hidesBackButton = true
+            self.navigationController?.pushViewController(vc, animated: true)
             if self.model.resultOrder == true {
-                let vc = self.storyboard?.instantiateViewController(identifier: "SuccessPaymentVC") as! SuccessPaymentViewController
-                vc.navigationItem.hidesBackButton = true
-                self.navigationController?.pushViewController(vc, animated: true)
+                vc.successLabel.text = "Success"
+                vc.numberLabel.text = "\(DataModel.sharedData.orderNumber)"
+                vc.infoLabel.text = "Your order is accepted.\nOrder number is"
             } else {
-                self.alertWindow()
+                vc.successLabel.text = "Error"
+                vc.numberLabel.text = ":("
+                vc.infoLabel.text = "Sorry, we cant accept\nyour order."
             }
         }
         

@@ -6,12 +6,45 @@
       "scale" : "1x"
     },
     {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "binwhite 30х30.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
       "filename" : "bin 60x60.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "binwhite 60х60.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
       "filename" : "bin 90x90.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "binwhite 90х90.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

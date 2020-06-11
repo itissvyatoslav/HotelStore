@@ -22,11 +22,11 @@ class ProductsViewController: UIViewController{
     @IBOutlet weak var downButton: UIButton!
     
     @IBAction func upButtonAction(_ sender: Any) {
-        model.products.sort {$0.price < $1.price}
+        model.products.sort {$0.price > $1.price}
         productsTable.reloadData()
     }
     @IBAction func downButtonAction(_ sender: Any) {
-        model.products.sort {$0.price > $1.price}
+        model.products.sort {$0.price < $1.price}
         productsTable.reloadData()
     }
     

@@ -54,6 +54,7 @@ class GetProductsService {
             } catch {
                 print(error)
             }
+            self.model.categories.sort { $0.name.localizedCaseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending }
             semaphore.signal()
         }
         task.resume()
@@ -96,7 +97,6 @@ class GetProductsService {
             var front: Bool
             var url: String
         }
-        print("loaded")
         let semaphore = DispatchSemaphore (value: 0)
         var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/product?hotel_id=\(hotel_id)&category_id=\(category_id)&limit=\(limit ?? "")&page=\(page)&brand=\(brand ?? "")")!,timeoutInterval: Double.infinity)
         
@@ -131,6 +131,7 @@ class GetProductsService {
             } catch {
                 print(error)
             }
+            self.model.products.sort {$0.price > $1.price}
             semaphore.signal()
         }
         task.resume()

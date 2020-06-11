@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -119,7 +118,6 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="u17-6C-HHO">
                                 <rect key="frame" x="369.5" y="7" width="24.5" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="ColorCollectionView"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24.5" id="Xnj-lQ-YWm"/>
                                     <constraint firstAttribute="height" constant="30" id="dvA-8b-IcE"/>
@@ -383,8 +381,8 @@
                                     <action selector="backAction:" destination="a6g-89-mET" eventType="touchUpInside" id="cl8-ne-ugE"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Success!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6l1-Vh-812">
-                                <rect key="frame" x="158" y="296" width="99" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6l1-Vh-812">
+                                <rect key="frame" x="157.5" y="375" width="99" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -427,6 +425,7 @@
                         <outlet property="activityView" destination="wkM-9U-eba" id="XIH-QH-716"/>
                         <outlet property="infoLabel" destination="5VK-Wa-tr5" id="vU6-nA-FAB"/>
                         <outlet property="numberLabel" destination="jyU-oL-uqo" id="g1o-wi-mrW"/>
+                        <outlet property="successLabel" destination="6l1-Vh-812" id="6dL-4s-ukc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8en-aU-v3n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -438,8 +437,5 @@
         <image name="bin" width="24.5" height="30"/>
         <image name="cart30" width="37.5" height="30"/>
         <image name="geo-2" width="22" height="30"/>
-        <namedColor name="ColorCollectionView">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

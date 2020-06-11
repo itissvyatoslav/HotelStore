@@ -122,6 +122,7 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate{
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             } else {
+                model.categories[indexPath.row].sub_categoryes.sort { $0.name.localizedCaseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending }
                 let vc = storyboard?.instantiateViewController(identifier: "SubCatalogVC") as! SubCatalogViewController
                 vc.number = indexPath.row
                 vc.navigationItem.title = model.categories[indexPath.row].name
