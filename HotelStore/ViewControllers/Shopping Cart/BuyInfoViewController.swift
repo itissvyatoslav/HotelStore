@@ -41,13 +41,9 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
             vc.navigationItem.hidesBackButton = true
             self.navigationController?.pushViewController(vc, animated: true)
             if self.model.resultOrder == true {
-                vc.successLabel.text = "Success"
-                vc.numberLabel.text = "\(DataModel.sharedData.orderNumber)"
-                vc.infoLabel.text = "Your order is accepted.\nOrder number is"
+                vc.id = 0
             } else {
-                vc.successLabel.text = "Error"
-                vc.numberLabel.text = ":("
-                vc.infoLabel.text = "Sorry, we cant accept\nyour order."
+                vc.id = 1
             }
         }
         
@@ -117,6 +113,7 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
                 let paymentIntentParams = STPPaymentIntentParams(clientSecret: clientSecret)
                 paymentIntentParams.paymentMethodId = paymentResult.paymentMethod?.stripeId
                 STPPaymentHandler.shared().confirmPayment(withParams: paymentIntentParams, authenticationContext: paymentContext) { status, paymentIntent, error in
+                    print(status)
                     switch status {
                     case .succeeded:
                         completion(.success, nil)

@@ -20,6 +20,8 @@ class SuccessPaymentViewController: UIViewController{
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    var id = 0
+    
     @IBOutlet weak var successLabel: UILabel!
     @IBOutlet weak var activityView: UIView!
     @IBOutlet weak var infoLabel: UILabel!
@@ -31,6 +33,17 @@ class SuccessPaymentViewController: UIViewController{
         tabBarController?.tabBar.items?[1].badgeValue = nil
         ShoppingCartNetwork().removeCart()
         super.viewDidLoad()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if id == 0 {
+            successLabel.text = "Success"
+            numberLabel.text = "\(DataModel.sharedData.orderNumber)"
+            infoLabel.text = "Your order is accepted.\nOrder number is"
+        } else {
+            successLabel.text = "Error"
+            numberLabel.text = ":("
+            infoLabel.text = "Sorry, we cant accept\nyour order."
+        }
     }
 }
