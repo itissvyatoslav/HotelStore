@@ -70,7 +70,7 @@ class UserService {
     
     func getLastOrder(){
         let semaphore = DispatchSemaphore (value: 0)
-        var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/order")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://crm.hotelstore.sg/app/order")!,timeoutInterval: Double.infinity)
         request.httpMethod = "GET"
         request.addValue(model.token, forHTTPHeaderField: "token")
         
@@ -104,7 +104,7 @@ class UserService {
     
     func getUserInfo(){
         let semaphore = DispatchSemaphore (value: 0)
-        var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/logined")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://crm.hotelstore.sg/app/logined")!,timeoutInterval: Double.infinity)
         request.httpMethod = "GET"
         request.addValue(model.token, forHTTPHeaderField: "token")
         
@@ -142,7 +142,7 @@ class UserService {
         }
         
         let semaphore = DispatchSemaphore (value: 0)
-        guard let url = URL(string: "http://176.119.157.195:8080/app/orderdata") else {
+        guard let url = URL(string: "https://crm.hotelstore.sg/app/orderdata") else {
             print("url error")
             return
         }
@@ -182,7 +182,7 @@ class UserService {
     }
     
     func cancelLastOrder(){
-        var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/cancelorder")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://crm.hotelstore.sg/app/cancelorder")!,timeoutInterval: Double.infinity)
         request.httpMethod = "GET"
         request.addValue(model.token, forHTTPHeaderField: "token")
         

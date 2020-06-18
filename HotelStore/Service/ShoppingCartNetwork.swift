@@ -60,7 +60,7 @@ class ShoppingCartNetwork{
     
     func getCart(){
         let semaphore = DispatchSemaphore (value: 0)
-        var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/cart")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://crm.hotelstore.sg/app/cart")!,timeoutInterval: Double.infinity)
         
         request.httpMethod = "GET"
         request.addValue(DataModel.sharedData.token, forHTTPHeaderField: "token")
@@ -99,7 +99,7 @@ class ShoppingCartNetwork{
     
     func removeCart(){
         //let semaphore = DispatchSemaphore (value: 0)
-        guard let url = URL(string: "http://176.119.157.195:8080/app/cart") else {
+        guard let url = URL(string: "https://crm.hotelstore.sg/app/cart") else {
             print("url error")
             return
         }
@@ -129,7 +129,7 @@ class ShoppingCartNetwork{
     
     func addProduct(product_id: Int, hotel_id: Int, indexPath: Int) {
         let semaphore = DispatchSemaphore (value: 0)
-        guard let url = URL(string: "http://176.119.157.195:8080/app/cart") else {
+        guard let url = URL(string: "https://crm.hotelstore.sg/app/cart") else {
             print("url error")
             return
         }
@@ -175,7 +175,7 @@ class ShoppingCartNetwork{
 
     func removeProduct(product_id: Int){
         //let semaphore = DispatchSemaphore (value: 0)
-        guard let url = URL(string: "http://176.119.157.195:8080/app/cart/remove?product_id=\(product_id)") else {
+        guard let url = URL(string: "https://crm.hotelstore.sg/app/cart/remove?product_id=\(product_id)") else {
             print("url error")
             return
         }
@@ -203,7 +203,7 @@ class ShoppingCartNetwork{
     
     func minusPosition(product_id: Int, indexPath: Int){
         let semaphore = DispatchSemaphore (value: 0)
-        guard let url = URL(string: "http://176.119.157.195:8080/app/cart?product_id=\(product_id)") else {
+        guard let url = URL(string: "https://crm.hotelstore.sg/app/cart?product_id=\(product_id)") else {
             print("url error")
             return
         }

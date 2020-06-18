@@ -18,6 +18,7 @@ class SuccessPaymentViewController: UIViewController{
         self.tabBarController?.selectedIndex = 0
         let vc = storyboard?.instantiateViewController(identifier: "ShoppingCartViewController") as! ShoppingCartViewController
         self.navigationController?.pushViewController(vc, animated: true)
+        vc.navigationItem.hidesBackButton = true
     }
     
     var id = 0

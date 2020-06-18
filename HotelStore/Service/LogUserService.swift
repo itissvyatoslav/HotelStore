@@ -27,7 +27,7 @@ class LogUserService {
     
     func registration(id: String){
         let semaphore = DispatchSemaphore (value: 0)
-        guard let url = URL(string: "http://176.119.157.195:8080/app/appleauth") else {
+        guard let url = URL(string: "https://crm.hotelstore.sg/app/appleauth") else {
             print("url error")
             return
         }

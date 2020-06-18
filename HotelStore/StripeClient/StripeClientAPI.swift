@@ -10,7 +10,7 @@ import Foundation
 import Stripe
 
 struct StringValue{
-    static let m_url = "http://176.119.157.195:8080"
+    static let m_url = "https://crm.hotelstore.sg"
     static let ephemeral_key_method = "/app/ephemeralkey"
     static let payment_intent_method = "/app/paymentintent"
     static let sabmit_method = "/app/paymenconfirm"

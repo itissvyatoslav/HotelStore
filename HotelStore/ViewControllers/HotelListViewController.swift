@@ -124,6 +124,7 @@ extension HotelListViewController: UITableViewDelegate, UITableViewDataSource{
             } else {
                 model.user.hotel = model.hotels[indexPath.row + 1]
             }
+            model.user.roomNumber = ""
             do {
                 try Locksmith.updateData(data: ["token" : model.token,
                                                 "firstName": model.user.firstName,
@@ -140,6 +141,7 @@ extension HotelListViewController: UITableViewDelegate, UITableViewDataSource{
         if id == 0 {
             indicatorView.isHidden = false
             DispatchQueue.main.async {
+                self.tabBarController?.tabBar.items?[1].badgeValue = nil
                 self.network.getCategories()
                 ShoppingCartNetwork().removeCart()
                 self.navigationController?.popViewController(animated: true)

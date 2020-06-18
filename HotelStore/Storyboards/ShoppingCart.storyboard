@@ -197,12 +197,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qy4-gu-Tg1">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qy4-gu-Tg1">
                                 <rect key="frame" x="26" y="281" width="362" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="aRf-Aj-9Oc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMMENT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUB-u2-1eS">
@@ -245,9 +245,6 @@
                                     <constraint firstAttribute="height" constant="21" id="nUi-M6-qH7"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="geo-2"/>
-                                <connections>
-                                    <action selector="hotelListAction:" destination="Rra-zu-uyU" eventType="touchUpInside" id="3T0-RA-Tbe"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FA-Wc-HqJ">
                                 <rect key="frame" x="25" y="691" width="364" height="45"/>
@@ -284,9 +281,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="qLF-Pi-Y43"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="hotelNameTapped:" destination="Rra-zu-uyU" eventType="touchUpInside" id="BNb-D8-cBf"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

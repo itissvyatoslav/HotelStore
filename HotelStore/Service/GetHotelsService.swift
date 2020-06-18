@@ -36,7 +36,7 @@ class GetHotelsService{
     }
     
     func getHotels(){
-        var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/hotel?sort=name&page=1&limit=50")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://crm.hotelstore.sg/app/hotel?sort=name&page=1&limit=50")!,timeoutInterval: Double.infinity)
         
         request.httpMethod = "GET"
         request.addValue(model.token, forHTTPHeaderField: "token")
@@ -65,7 +65,7 @@ class GetHotelsService{
     
     func getHotelsSem(){
         let semaphore = DispatchSemaphore (value: 0)
-        var request = URLRequest(url: URL(string: "http://176.119.157.195:8080/app/hotel?sort=name&page=1&limit=50")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://crm.hotelstore.sg/app/hotel?sort=name&page=1&limit=50")!,timeoutInterval: Double.infinity)
         
         request.httpMethod = "GET"
         request.addValue(model.token, forHTTPHeaderField: "token")

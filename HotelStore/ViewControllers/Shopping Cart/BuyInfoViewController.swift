@@ -8,6 +8,7 @@
 
 import Stripe
 import UIKit
+import Locksmith
 
 @available(iOS 13.0, *)
 class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContextDelegate {
@@ -17,46 +18,43 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     private var paymentContext: STPPaymentContext? = nil
     let model = DataModel.sharedData
     
-    @IBAction func hotelNameTapped(_ sender: Any) {
-        if #available(iOS 13.0, *) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(identifier: "HotelListVC") as! HotelListViewController
-            vc.id = 0
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
     @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var hotelLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var roomNumberTextField: UITextField!
     @IBOutlet weak var commentTextView: UITextView!
     @IBAction func payAction(_ sender: Any) {
-        indicatorView.isHidden = false
-        self.paymentContext?.requestPayment()
-        network.payOrder(roomNumber: roomNumberTextField.text ?? "", comment: commentTextView.text ?? "")
-        DispatchQueue.main.async {
-            MyAPIClient().goood()
-            let vc = self.storyboard?.instantiateViewController(identifier: "SuccessPaymentVC") as! SuccessPaymentViewController
-            vc.navigationItem.hidesBackButton = true
-            self.navigationController?.pushViewController(vc, animated: true)
-            if self.model.resultOrder == true {
-                vc.id = 0
-            } else {
-                vc.id = 1
+        if roomNumberTextField.text == "" || roomNumberTextField.text == "Please, write your room number"{
+            roomNumberTextField.textColor = UIColor.red
+            roomNumberTextField.text = "Please, write your room number"
+        } else {
+            model.user.roomNumber = roomNumberTextField.text ?? ""
+            indicatorView.isHidden = false
+            self.paymentContext?.requestPayment()
+            network.payOrder(roomNumber: roomNumberTextField.text ?? "", comment: commentTextView.text ?? "")
+            DispatchQueue.main.async {
+                MyAPIClient().goood()
+                let vc = self.storyboard?.instantiateViewController(identifier: "SuccessPaymentVC") as! SuccessPaymentViewController
+                vc.navigationItem.hidesBackButton = true
+                self.navigationController?.pushViewController(vc, animated: true)
+                self.setRoomNumber()
+                if self.model.resultOrder == true {
+                    vc.id = 0
+                } else {
+                    vc.id = 1
+                }
             }
         }
-        
     }
     
     @IBAction func selectCard(_ sender: Any) {
         self.paymentContext?.presentPaymentOptionsViewController()
     }
-    @IBAction func hotelListAction(_ sender: Any) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(identifier: "HotelListVC") as! HotelListViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-    }
+ //   @IBAction func hotelListAction(_ sender: Any) {
+ //           let storyboard = UIStoryboard(name: "Main", bundle: nil)
+ //           let vc = storyboard.instantiateViewController(identifier: "HotelListVC") as! //HotelListViewController
+ //           self.navigationController?.pushViewController(vc, animated: true)
+ //   }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +62,12 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
         setStripe()
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
+        roomNumberTextField.addTarget(self, action: #selector(myTargetFunction), for: .touchDown)
+    }
+    
+    @objc func myTargetFunction(textField: UITextField) {
+        roomNumberTextField.text = ""
+        roomNumberTextField.textColor = UIColor(named: "ColorTextField")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,6 +96,21 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     private func setGlobalPrice(){
         for number in 0..<model.shopCart.count{
             summ = summ + model.shopCart[number].price * Double(model.shopCart[number].actualCount ?? 0)
+        }
+    }
+    
+    private func setRoomNumber(){
+        do {
+            try Locksmith.updateData(data: ["token" : model.token,
+                   "firstName": model.user.firstName,
+                   "lastName": model.user.lastName,
+                   "roomNumber": model.user.roomNumber,
+                   "email": model.user.email,
+                   "hotelId": model.user.hotel.id,
+                   "hotelName": model.user.hotel.name],
+            forUserAccount: "HotelStoreAccount")
+        } catch {
+            print("Unable to update")
         }
     }
     
