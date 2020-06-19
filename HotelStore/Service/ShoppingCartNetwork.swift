@@ -81,10 +81,8 @@ class ShoppingCartNetwork{
                     self.model.addProduct.count = json.data.cart[number].quantity_stock ?? 0
                     self.model.addProduct.images.removeAll()
                     for subNumber in 0..<json.data.cart[number].product.images.count{
-                        if json.data.cart[number].product.images[subNumber].front{
-                            self.model.addImage.url = json.data.cart[number].product.images[subNumber].url
-                            self.model.addProduct.images.append(self.model.addImage)
-                        }
+                        self.model.addImage.url = json.data.cart[number].product.images[subNumber].url
+                        self.model.addProduct.images.append(self.model.addImage)
                     }
                     self.model.shopCart.append(self.model.addProduct)
                 }
