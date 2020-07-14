@@ -18,6 +18,7 @@ class ProductPageViewController: UIViewController{
     
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var brandLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
@@ -138,8 +139,9 @@ class ProductPageViewController: UIViewController{
     }
     
     private func setLabels(){
-        costLabel.text = "\(model.products[number].price)S$"
         nameLabel.text = model.products[number].name
+        costLabel.text = "\(model.products[number].price)S$"
+        brandLabel.text = model.products[number].brand
         descrTextView.text = model.products[number].description
         if model.products[number].count == 0 {
             zeroInStock()

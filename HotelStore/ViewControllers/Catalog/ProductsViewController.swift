@@ -32,6 +32,7 @@ class ProductsViewController: UIViewController{
     
     override func viewDidLoad() {
         self.registerTableViewCells()
+        print(model.products)
         setView()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +70,7 @@ class ProductsViewController: UIViewController{
         if !self.model.products[number].images.isEmpty{
             self.images.removeAll()
             for subNumber in 0..<self.model.products[number].images.count{
-                if let url = URL(string: "http://176.119.157.195:8080/\(self.model.products[number].images[subNumber].url)"){
+                if let url = URL(string: "https://crm.hotelstore.sg/\(self.model.products[number].images[subNumber].url)"){
                     if let cachedImage = self.model.imageCache.object(forKey: url.absoluteString as NSString){
                         self.images.append(cachedImage)
                     } else {

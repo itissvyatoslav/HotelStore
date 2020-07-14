@@ -60,7 +60,7 @@ class ShoppingCartCell: UITableViewCell {
     
     private func setImage(_ number: Int){
         if !model.shopCart[number].images.isEmpty{
-            if let url = URL(string: "http://176.119.157.195:8080/\(model.shopCart[number].images[0].url)"){
+            if let url = URL(string: "https://crm.hotelstore.sg/\(model.shopCart[number].images[0].url)"){
                 if let cachedImage = model.imageCache.object(forKey: url.absoluteString as NSString){
                     self.imageProduct.image = cachedImage
                 } else {

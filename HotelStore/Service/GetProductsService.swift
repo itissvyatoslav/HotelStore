@@ -14,7 +14,7 @@ class GetProductsService {
     func getCategories(){
         
         struct answerReceive: Codable{
-            var data: [dataReceive]
+            var data: [dataReceive]?
             var message: String?
             var success: Bool
         }
@@ -40,17 +40,22 @@ class GetProductsService {
             do {
                 let json = try JSONDecoder().decode(answerReceive.self, from: data)
                 self.model.categories.removeAll()
-                for number in 0..<json.data.count{
-                    self.model.addCategory.sub_categoryes.removeAll()
-                    for subNumber in 0..<json.data[number].sub_categoryes.count{
-                        self.model.addSubcategory.id = json.data[number].sub_categoryes[subNumber].id
-                        self.model.addSubcategory.name = json.data[number].sub_categoryes[subNumber].name
-                        self.model.addCategory.sub_categoryes.append(self.model.addSubcategory)
+                if json.data == nil {
+                    self.model.tokenMessage = json.message ?? ""
+                } else {
+                    for number in 0..<json.data!.count{
+                        self.model.addCategory.sub_categoryes.removeAll()
+                        for subNumber in 0..<json.data![number].sub_categoryes.count{
+                            self.model.addSubcategory.id = json.data![number].sub_categoryes[subNumber].id
+                            self.model.addSubcategory.name = json.data![number].sub_categoryes[subNumber].name
+                            self.model.addCategory.sub_categoryes.append(self.model.addSubcategory)
+                        }
+                        self.model.addCategory.id = json.data![number].id
+                        self.model.addCategory.name = json.data![number].name
+                        self.model.categories.append(self.model.addCategory)
                     }
-                    self.model.addCategory.id = json.data[number].id
-                    self.model.addCategory.name = json.data[number].name
-                    self.model.categories.append(self.model.addCategory)
                 }
+                print("MESSAGE: //////", json.message)
             } catch {
                 print(error)
             }
@@ -114,6 +119,7 @@ class GetProductsService {
                 for number in 0..<json.data.count{
                     if json.data[number].quantity != 0 {
                         self.model.addProduct.id = json.data[number].product.id
+                        self.model.addProduct.brand = json.data[number].product.brand
                         self.model.addProduct.name = json.data[number].product.title
                         self.model.addProduct.price = json.data[number].product.price
                         self.model.addProduct.count = json.data[number].quantity

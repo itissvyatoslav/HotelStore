@@ -27,6 +27,7 @@ class DataModel {
         var short_description: String
         var description: String
         var actualCount: Int?
+        var brand: String
     }
     
     struct ImagesType{
@@ -49,7 +50,7 @@ class DataModel {
     }
     
     var products = [GoodsType]()
-    var addProduct = GoodsType(id: 0, images: [], name: "", count: 0, price: 0, short_description: "", description: "")
+    var addProduct = GoodsType(id: 0, images: [], name: "", count: 0, price: 0, short_description: "", description: "", brand: "")
     var addImage = ImagesType(front: false, url: "")
     
     var shopCart = [GoodsType]()
@@ -106,6 +107,8 @@ class DataModel {
             DataModel.sharedData.shopCart.append(product)
         }
     }
+    
+    var tokenMessage :String? = ""
     
     var imageCache = NSCache<NSString, UIImage>()
 }

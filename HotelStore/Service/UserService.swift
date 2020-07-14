@@ -55,7 +55,7 @@ class UserService {
     
     struct productType: Codable{
         var brand: String
-        var category_id: Int
+        var category_id: Int?
         var id: Int
         var images: [imagesType]
         var price: Double
@@ -126,7 +126,7 @@ class UserService {
         semaphore.wait()
     }
     
-    func payOrder(roomNumber: String, comment: String){
+    func payOrder(roomNumber: String, comment: String, name: String){
         struct answerReceivePay: Codable{
             var data: dataReceivePay
             var message: String?
@@ -146,7 +146,7 @@ class UserService {
             print("url error")
             return
         }
-        let parametrs = ["room": roomNumber, "comment": comment]
+        let parametrs = ["room": roomNumber, "comment": comment, "name": name]
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

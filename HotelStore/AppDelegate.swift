@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         application.applicationIconBadgeNumber = 0
         
-        Stripe.setDefaultPublishableKey(StripeKeys.publishable_key)
+        Stripe.setDefaultPublishableKey(StripeKeys.secret_key)
         STPTheme.default().accentColor = UIColor(red: 182/255, green: 9/255, blue: 73/255, alpha: 1)
         STPPaymentConfiguration.shared().appleMerchantIdentifier = "merchant.com.HotelStore"
         registerForPushNotifications()

@@ -28,6 +28,7 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var brandLabel: UILabel!
     
     
     @IBAction func minusAction(_ sender: Any) {
@@ -90,6 +91,7 @@ class ProductTableViewCell: UITableViewCell {
     
     func setView(_ number: Int){
         nameLabel.text = model.products[number].name
+        brandLabel.text = model.products[number].brand
         descrLabel.text = model.products[number].short_description
         priceLabel.text = "\(model.products[number].price)S$"
         nameLabel.sizeToFit()
@@ -131,7 +133,7 @@ class ProductTableViewCell: UITableViewCell {
             }
         }
         
-        if let url = URL(string: "http://176.119.157.195:8080/\(model.products[number].images[subNumber].url)"){
+        if let url = URL(string: "https://crm.hotelstore.sg/\(model.products[number].images[subNumber].url)"){
             if let cachedImage = model.imageCache.object(forKey: url.absoluteString as NSString){
                 self.imageProduct.image = cachedImage
             } else {

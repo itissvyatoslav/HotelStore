@@ -29,9 +29,10 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
             roomNumberTextField.text = "Please, write your room number"
         } else {
             model.user.roomNumber = roomNumberTextField.text ?? ""
+            model.user.firstName = nameTextField.text ?? ""
             indicatorView.isHidden = false
             self.paymentContext?.requestPayment()
-            network.payOrder(roomNumber: roomNumberTextField.text ?? "", comment: commentTextView.text ?? "")
+            network.payOrder(roomNumber: roomNumberTextField.text ?? "", comment: commentTextView.text ?? "", name: nameTextField.text ?? "")
             DispatchQueue.main.async {
                 MyAPIClient().goood()
                 let vc = self.storyboard?.instantiateViewController(identifier: "SuccessPaymentVC") as! SuccessPaymentViewController

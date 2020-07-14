@@ -493,10 +493,10 @@
     <resources>
         <image name="Hotel store 1" width="226" height="77"/>
         <namedColor name="ColorSubText">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.60109543800354004" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.60100001096725464" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ColorViewBack">
-            <color red="0.81999999999999995" green="0.81999999999999995" blue="0.81999999999999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.81999999284744263" green="0.81999999284744263" blue="0.81999999284744263" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

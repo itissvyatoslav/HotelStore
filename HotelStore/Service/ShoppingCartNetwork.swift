@@ -156,6 +156,8 @@ class ShoppingCartNetwork{
                 return
             }
             do {
+                let json2 = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json2)
                 let json = try JSONDecoder().decode(answerReceive.self, from: data)
                 for number in 0..<self.model.products.count{
                     if json.data.cart[number].product.id == product_id {

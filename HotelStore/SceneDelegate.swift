@@ -27,7 +27,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                                                                                 "email": "@gmail.com",
                                                                                                 "hotelId": 0,
                                                                                                 "hotelName": "hotelName"]
-        GetProductsService().getCategories()
         DataModel.sharedData.token = loadedData["token"] as! String? ?? "default token"
         let model = DataModel.sharedData
         if model.token != "default token"{
@@ -38,11 +37,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             model.user.hotel.id = loadedData["hotelId"] as! Int? ?? 0
             model.user.hotel.name = loadedData["hotelName"] as! String? ?? "hotelName"
             GetProductsService().getCategories()
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController (withIdentifier: "CustomTabBarController") as! CustomTabBarController
-            window = UIWindow(windowScene: windowScene)
-            window?.rootViewController = vc
-            window?.makeKeyAndVisible()
+            if DataModel.sharedData.tokenMessage != "Invalid token" {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController (withIdentifier: "CustomTabBarController") as! CustomTabBarController
+                window = UIWindow(windowScene: windowScene)
+                window?.rootViewController = vc
+                window?.makeKeyAndVisible()
+            }
         } else {
             
         }

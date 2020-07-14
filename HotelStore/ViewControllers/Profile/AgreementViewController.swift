@@ -24,7 +24,7 @@ class AgreementViewController: UIViewController, WKNavigationDelegate{
     }
     
     private func setPDF(){
-        if let url = URL(string: "http://176.119.157.195:8080/document/policy"){
+        if let url = URL(string: "https://crm.hotelstore.sg/document/policy"){
             let request = URLRequest(url: url)
             webView.load(request)
         }

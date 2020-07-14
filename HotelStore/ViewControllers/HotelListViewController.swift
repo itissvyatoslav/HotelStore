@@ -67,7 +67,7 @@ class HotelListViewController: UIViewController, CLLocationManagerDelegate{
     private func setView(){
         indicatorView.isHidden = true
         indicatorView.layer.cornerRadius = 5
-        self.navigationItem.title = "Point to delivery"
+        self.navigationItem.title = "Point of delivery"
         hotelsTable.tableFooterView = UIView(frame: .zero)
         otherHotelsTable.tableFooterView = UIView(frame: .zero)
         otherHotelsTable.delegate = self
