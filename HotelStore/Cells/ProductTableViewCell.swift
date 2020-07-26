@@ -89,6 +89,11 @@ class ProductTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageProduct.image = nil
+    }
+    
     func setView(_ number: Int){
         nameLabel.text = model.products[number].name
         brandLabel.text = model.products[number].brand
@@ -108,10 +113,10 @@ class ProductTableViewCell: UITableViewCell {
             plusButton.isHidden = true
             addButton.isHidden = false
         }
-        if !model.products[number].images.isEmpty{
-            getImage(number)
+        //if !model.products[number].images.isEmpty{
+            //getImage(number)
             imageProduct.layer.cornerRadius = 15
-        }
+        //}
     }
     
     private func zeroInStock(){
@@ -127,7 +132,6 @@ class ProductTableViewCell: UITableViewCell {
         var subNumber = 0
         for imageNumber in 0..<model.products[number].images.count{
             if model.products[number].images[imageNumber].front {
-                
                 subNumber = imageNumber
                 break
             }

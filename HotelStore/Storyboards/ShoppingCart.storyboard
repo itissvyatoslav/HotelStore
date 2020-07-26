@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8aU-ar-NWh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8aU-ar-NWh">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -253,7 +253,7 @@
                                     <constraint firstAttribute="height" constant="45" id="epn-E1-z6T"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Select card">
+                                <state key="normal" title="Select payment method">
                                     <color key="titleColor" red="0.94500821830000004" green="0.94516295189999999" blue="0.94497519730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -282,6 +282,13 @@
                                     <constraint firstAttribute="height" constant="48" id="qLF-Pi-Y43"/>
                                 </constraints>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="applePay" translatesAutoresizingMaskIntoConstraints="NO" id="P1O-1U-tyL">
+                                <rect key="frame" x="25" y="656.5" width="50" height="26.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Q4T-K5-o4J"/>
+                                    <constraint firstAttribute="width" secondItem="P1O-1U-tyL" secondAttribute="height" multiplier="15:8" id="hm5-AN-M7R"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -291,11 +298,13 @@
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="7Vl-zq-dW9" secondAttribute="trailing" constant="26" id="Afc-Ub-Ijb"/>
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="qdj-17-hAV" secondAttribute="trailing" constant="26" id="Ag0-vd-AJU"/>
                             <constraint firstItem="B0Z-LI-djX" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="26" id="Ajt-a7-TwD"/>
+                            <constraint firstItem="2FA-Wc-HqJ" firstAttribute="top" secondItem="P1O-1U-tyL" secondAttribute="bottom" constant="8" id="BIa-oK-GDk"/>
                             <constraint firstItem="TiR-Vg-nUa" firstAttribute="top" secondItem="lUB-u2-1eS" secondAttribute="bottom" constant="1" id="Bms-vk-dHD"/>
                             <constraint firstItem="7Vl-zq-dW9" firstAttribute="top" secondItem="qdj-17-hAV" secondAttribute="bottom" constant="31" id="DzY-7I-SnK"/>
                             <constraint firstItem="N6a-cF-brd" firstAttribute="bottom" secondItem="tPs-TT-2IM" secondAttribute="bottom" constant="24" id="EZS-NX-Fem"/>
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="grB-uE-9jc" secondAttribute="trailing" constant="111" id="FbS-ps-fQP"/>
                             <constraint firstItem="B0Z-LI-djX" firstAttribute="top" secondItem="rqN-T7-9Hk" secondAttribute="bottom" constant="3" id="Fhb-PU-LCx"/>
+                            <constraint firstItem="P1O-1U-tyL" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="25" id="Gnh-2p-x4K"/>
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="B0Z-LI-djX" secondAttribute="trailing" constant="111" id="LVF-hU-abY"/>
                             <constraint firstItem="tPs-TT-2IM" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="25" id="MLn-Ax-btO"/>
                             <constraint firstItem="mA9-eZ-HCa" firstAttribute="centerY" secondItem="C8f-kf-ItH" secondAttribute="centerY" id="Oiq-FI-qI2"/>
@@ -428,6 +437,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="applePay" width="345" height="220"/>
         <image name="bin" width="24.5" height="30"/>
         <image name="cart30" width="37.5" height="30"/>
         <image name="geo-2" width="22" height="30"/>

@@ -18,6 +18,7 @@
 		EB4D6C27244DD47200AB321C /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4D6C26244DD47200AB321C /* AgreementViewController.swift */; };
 		EB4D6C2B244DED5B00AB321C /* GetHotelsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4D6C2A244DED5B00AB321C /* GetHotelsService.swift */; };
 		EB4D6C2D244DEF2500AB321C /* ShoppingCartNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4D6C2C244DEF2500AB321C /* ShoppingCartNetwork.swift */; };
+		EB5E1EBE24C15FA8008C77C2 /* UserAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5E1EBD24C15FA7008C77C2 /* UserAgreementViewController.swift */; };
 		EB60A13A245BF04200DFE105 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60A139245BF04200DFE105 /* UserService.swift */; };
 		EB60A13C245C274100DFE105 /* HotelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60A13B245C274100DFE105 /* HotelListViewController.swift */; };
 		EB60A13E245C3DAE00DFE105 /* LogUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60A13D245C3DAE00DFE105 /* LogUserService.swift */; };
@@ -66,6 +67,7 @@
 		EB4D6C26244DD47200AB321C /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		EB4D6C2A244DED5B00AB321C /* GetHotelsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHotelsService.swift; sourceTree = "<group>"; };
 		EB4D6C2C244DEF2500AB321C /* ShoppingCartNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartNetwork.swift; sourceTree = "<group>"; };
+		EB5E1EBD24C15FA7008C77C2 /* UserAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementViewController.swift; sourceTree = "<group>"; };
 		EB60A139245BF04200DFE105 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		EB60A13B245C274100DFE105 /* HotelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelListViewController.swift; sourceTree = "<group>"; };
 		EB60A13D245C3DAE00DFE105 /* LogUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogUserService.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				EB60A1482462ABA300DFE105 /* FirstAgreementViewController.swift */,
 				EB60A13F245C46FC00DFE105 /* CustomTabBarController.swift */,
 				EBD45CBF24864568000C7B62 /* FirstHotelListViewController.swift */,
+				EB5E1EBD24C15FA7008C77C2 /* UserAgreementViewController.swift */,
 				EBCDBBDE2441BA3F008129A5 /* Catalog */,
 				EBCDBBDD2441BA37008129A5 /* Shopping Cart */,
 				EBCDBBDC2441BA30008129A5 /* Profile */,
@@ -406,6 +409,7 @@
 				EB60A1492462ABA300DFE105 /* FirstAgreementViewController.swift in Sources */,
 				EB60A142245EAE5E00DFE105 /* ActivityIndicator.swift in Sources */,
 				EB87E8252444B01600D79D26 /* LastViewController.swift in Sources */,
+				EB5E1EBE24C15FA8008C77C2 /* UserAgreementViewController.swift in Sources */,
 				EB87E8282444B91B00D79D26 /* DataModel.swift in Sources */,
 				EB60A13A245BF04200DFE105 /* UserService.swift in Sources */,
 				EB38EE5E246C195200D2CB4E /* StripeClientAPI.swift in Sources */,
@@ -577,7 +581,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HotelStore/HotelStore.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_TEAM = 2UW772375M;
 				INFOPLIST_FILE = HotelStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -585,11 +589,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = HotelStore.SoftWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -600,7 +604,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HotelStore/HotelStore.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_TEAM = 2UW772375M;
 				INFOPLIST_FILE = HotelStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -608,11 +612,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = HotelStore.SoftWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

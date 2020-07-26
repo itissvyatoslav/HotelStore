@@ -13,6 +13,7 @@ import Locksmith
 class CatalogViewController: UIViewController, CLLocationManagerDelegate{
     let network = GetProductsService()
     let getHotels = GetHotelsService()
+    let getCart =  ShoppingCartNetwork()
     let model = DataModel.sharedData
 
     @IBAction func HotelListAction(_ sender: Any) {
@@ -38,6 +39,7 @@ class CatalogViewController: UIViewController, CLLocationManagerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getCart.getCartAssync()
         setViews()
         self.navigationController?.navigationBar.tintColor = UIColor(named: "ColorSubText")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)

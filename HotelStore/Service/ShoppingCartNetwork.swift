@@ -95,6 +95,40 @@ class ShoppingCartNetwork{
         semaphore.wait()
     }
     
+    func getCartAssync(){
+        var request = URLRequest(url: URL(string: "https://crm.hotelstore.sg/app/cart")!,timeoutInterval: Double.infinity)
+        
+        request.httpMethod = "GET"
+        request.addValue(DataModel.sharedData.token, forHTTPHeaderField: "token")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                print(String(describing: error))
+                return
+            }
+            do {
+                let json = try JSONDecoder().decode(answerReceive.self, from: data)
+                self.model.shopCart.removeAll()
+                for number in 0..<json.data.cart.count{
+                    self.model.addProduct.id = json.data.cart[number].product.id
+                    self.model.addProduct.name = json.data.cart[number].product.title
+                    self.model.addProduct.price = json.data.cart[number].product.price
+                    self.model.addProduct.actualCount = json.data.cart[number].quantity_cart
+                    self.model.addProduct.count = json.data.cart[number].quantity_stock ?? 0
+                    self.model.addProduct.images.removeAll()
+                    for subNumber in 0..<json.data.cart[number].product.images.count{
+                        self.model.addImage.url = json.data.cart[number].product.images[subNumber].url
+                        self.model.addProduct.images.append(self.model.addImage)
+                    }
+                    self.model.shopCart.append(self.model.addProduct)
+                }
+            } catch {
+                print(error)
+            }
+        }
+        task.resume()
+    }
+    
     func removeCart(){
         //let semaphore = DispatchSemaphore (value: 0)
         guard let url = URL(string: "https://crm.hotelstore.sg/app/cart") else {

@@ -23,6 +23,7 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var roomNumberTextField: UITextField!
     @IBOutlet weak var commentTextView: UITextView!
+        
     @IBAction func payAction(_ sender: Any) {
         if roomNumberTextField.text == "" || roomNumberTextField.text == "Please, write your room number"{
             roomNumberTextField.textColor = UIColor.red
@@ -32,17 +33,28 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
             model.user.firstName = nameTextField.text ?? ""
             indicatorView.isHidden = false
             self.paymentContext?.requestPayment()
+            //MyAPIClient().goood()
+            //semaphore.signal()
+            //semaphore.wait()
+            
             network.payOrder(roomNumber: roomNumberTextField.text ?? "", comment: commentTextView.text ?? "", name: nameTextField.text ?? "")
-            DispatchQueue.main.async {
-                MyAPIClient().goood()
-                let vc = self.storyboard?.instantiateViewController(identifier: "SuccessPaymentVC") as! SuccessPaymentViewController
-                vc.navigationItem.hidesBackButton = true
-                self.navigationController?.pushViewController(vc, animated: true)
-                self.setRoomNumber()
-                if self.model.resultOrder == true {
-                    vc.id = 0
-                } else {
-                    vc.id = 1
+            //MyAPIClient().createPayment()
+            if model.intentSuccess {
+                DispatchQueue.main.async {
+                    MyAPIClient().makePayment()
+                    if self.model.requires_payment_method == "requires_payment_method" {
+
+                    } else {
+                        let vc = self.storyboard?.instantiateViewController(identifier: "SuccessPaymentVC") as! SuccessPaymentViewController
+                        vc.navigationItem.hidesBackButton = true
+                        self.navigationController?.pushViewController(vc, animated: true)
+                        self.setRoomNumber()
+                        if self.model.resultOrder == true {
+                            vc.id = 0
+                        } else {
+                            vc.id = 1
+                        }
+                    }
                 }
             }
         }
@@ -51,11 +63,6 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     @IBAction func selectCard(_ sender: Any) {
         self.paymentContext?.presentPaymentOptionsViewController()
     }
- //   @IBAction func hotelListAction(_ sender: Any) {
- //           let storyboard = UIStoryboard(name: "Main", bundle: nil)
- //           let vc = storyboard.instantiateViewController(identifier: "HotelListVC") as! //HotelListViewController
- //           self.navigationController?.pushViewController(vc, animated: true)
- //   }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,34 +134,36 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     }
     
     func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPPaymentStatusBlock) {
-        
-        MyAPIClient().createPaymentIntent { (data) in
-            if let clientSecret = data{
-                let paymentIntentParams = STPPaymentIntentParams(clientSecret: clientSecret)
-                paymentIntentParams.paymentMethodId = paymentResult.paymentMethod?.stripeId
-                STPPaymentHandler.shared().confirmPayment(withParams: paymentIntentParams, authenticationContext: paymentContext) { status, paymentIntent, error in
-                    print(status)
-                    switch status {
-                    case .succeeded:
-                        completion(.success, nil)
-                    case .failed:
-                        completion(.error, error)
-                    case .canceled:
-                        print("cancel")
-                        completion(.userCancellation, nil)
-                    @unknown default:
-                        completion(.error, nil)
-                    }
-                }
-            }
-        }
+        MyAPIClient().createPayment()
+       // MyAPIClient().createPaymentIntent { (data) in
+       //     if let clientSecret = data{
+       //         let paymentIntentParams = STPPaymentIntentParams(clientSecret: clientSecret)
+       //         paymentIntentParams.paymentMethodId = paymentResult.paymentMethod?.stripeId
+       //         STPPaymentHandler.shared().confirmPayment(withParams: paymentIntentParams, authenticationContext: paymentContext) { status, paymentIntent, error in
+       //             print(status)
+       //             switch status {
+       //             case .succeeded:
+       //                 completion(.success, nil)
+       //             case .failed:
+       //                 completion(.error, error)
+       //             case .canceled:
+       //                 print("cancel")
+       //                 completion(.userCancellation, nil)
+       //             @unknown default:
+       //                 completion(.error, nil)
+       //             }
+       //         }
+       //     }
+       // }
     }
     
     func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {
         print(status)
+        indicatorView.isHidden = true
     }
     
     func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
+        print("I tried3")
     }
 }
 

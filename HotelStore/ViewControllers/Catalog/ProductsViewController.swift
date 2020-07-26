@@ -18,18 +18,6 @@ class ProductsViewController: UIViewController{
     @IBOutlet weak var productsTable: UITableView!
     @IBOutlet weak var indicatorView: UIView!
     
-    @IBOutlet weak var upButton: UIButton!
-    @IBOutlet weak var downButton: UIButton!
-    
-    @IBAction func upButtonAction(_ sender: Any) {
-        model.products.sort {$0.price > $1.price}
-        productsTable.reloadData()
-    }
-    @IBAction func downButtonAction(_ sender: Any) {
-        model.products.sort {$0.price < $1.price}
-        productsTable.reloadData()
-    }
-    
     override func viewDidLoad() {
         self.registerTableViewCells()
         print(model.products)
@@ -118,6 +106,30 @@ class ProductsViewController: UIViewController{
         }
         return count
     }
+    
+    private func getMainImage(_ number: Int, _ cell: ProductTableViewCell){
+        var subNumber = 0
+        for imageNumber in 0..<model.products[number].images.count{
+            if model.products[number].images[imageNumber].front {
+                subNumber = imageNumber
+                break
+            }
+        }
+        
+        if let url = URL(string: "https://crm.hotelstore.sg/\(model.products[number].images[subNumber].url)"){
+            if let cachedImage = model.imageCache.object(forKey: url.absoluteString as NSString){
+                cell.imageProduct.image = cachedImage
+            } else {
+                do {
+                    let data = try Data(contentsOf: url)
+                    cell.imageProduct.image = UIImage(data: data)
+                } catch let err {
+                    cell.imageProduct.image = nil
+                    print("Error: \(err.localizedDescription)")
+                }
+            }
+        }
+    }
 }
 
 extension ProductsViewController: UITableViewDelegate, UITableViewDataSource{
@@ -127,7 +139,25 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell") as? ProductTableViewCell {
-            cell.setView(indexPath.row)
+            //cell.setView(indexPath.row)
+            if !model.products[indexPath.row].images.isEmpty{
+                getMainImage(indexPath.row, cell)
+                cell.imageProduct.layer.cornerRadius = 15
+            }
+            cell.nameLabel.text = model.products[indexPath.row].name
+            cell.brandLabel.text = model.products[indexPath.row].brand
+            cell.descrLabel.text = model.products[indexPath.row].short_description
+            cell.priceLabel.text = "\(model.products[indexPath.row].price)S$"
+            cell.nameLabel.sizeToFit()
+            cell.descrLabel.sizeToFit()
+            cell.descrLabel.adjustsFontSizeToFitWidth = true
+            cell.priceLabel.sizeToFit()
+            cell.countLabel.textColor = UIColor(named: "ColorSubText")
+            cell.countLabel.text = "\(model.products[indexPath.row].count) in stock"
+            cell.numberLabel.isHidden = true
+            cell.minusButton.isHidden = true
+            cell.plusButton.isHidden = true
+            cell.addButton.isHidden = false
             cell.delegate = self
             return cell
         }

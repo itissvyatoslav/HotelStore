@@ -62,13 +62,38 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2R-qA-P5p">
+                                <rect key="frame" x="20" y="793" width="374" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syY-KI-oNy">
+                                <rect key="frame" x="142" y="815" width="130" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="qIN-v8-8io"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <state key="normal" title="User Agreement">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="LaJ-nV-Hrp" kind="show" id="OIE-fd-Oyu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="MEG-eW-pBW" firstAttribute="trailing" secondItem="54D-wh-hHj" secondAttribute="trailing" constant="93" id="3Lw-wl-0Jv"/>
+                            <constraint firstItem="syY-KI-oNy" firstAttribute="top" secondItem="L2R-qA-P5p" secondAttribute="bottom" constant="5" id="BlM-6u-HHw"/>
+                            <constraint firstItem="MEG-eW-pBW" firstAttribute="trailing" secondItem="L2R-qA-P5p" secondAttribute="trailing" constant="20" id="FLs-yy-DKv"/>
+                            <constraint firstItem="syY-KI-oNy" firstAttribute="centerX" secondItem="dyN-wQ-Bxl" secondAttribute="centerX" id="NYG-Eo-xdl"/>
+                            <constraint firstItem="MEG-eW-pBW" firstAttribute="bottom" secondItem="syY-KI-oNy" secondAttribute="bottom" constant="20" id="O31-2z-Pqd"/>
+                            <constraint firstItem="L2R-qA-P5p" firstAttribute="leading" secondItem="MEG-eW-pBW" secondAttribute="leading" constant="20" id="OUJ-1b-cQx"/>
                             <constraint firstItem="3KA-R8-6hH" firstAttribute="top" secondItem="54D-wh-hHj" secondAttribute="bottom" constant="78" id="RuI-Ou-B9p"/>
                             <constraint firstItem="54D-wh-hHj" firstAttribute="leading" secondItem="MEG-eW-pBW" secondAttribute="leading" constant="93" id="XCm-M0-Kyb"/>
                             <constraint firstItem="54D-wh-hHj" firstAttribute="top" secondItem="MEG-eW-pBW" secondAttribute="top" constant="243" id="beI-pr-Iyf"/>
+                            <constraint firstItem="L2R-qA-P5p" firstAttribute="centerX" secondItem="dyN-wQ-Bxl" secondAttribute="centerX" id="nVN-yG-EHM"/>
                             <constraint firstItem="3KA-R8-6hH" firstAttribute="centerX" secondItem="dyN-wQ-Bxl" secondAttribute="centerX" id="x4x-eH-Hl2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MEG-eW-pBW"/>
@@ -76,12 +101,54 @@
                     <navigationItem key="navigationItem" id="GO3-bg-dlJ"/>
                     <connections>
                         <outlet property="infoLabel" destination="3KA-R8-6hH" id="WPL-sa-yXH"/>
+                        <outlet property="signinLabel" destination="L2R-qA-P5p" id="jiR-XC-zeV"/>
                         <segue destination="Maq-jl-8GQ" kind="show" identifier="segue" id="e04-Kh-9sg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHv-48-OpO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="521.73913043478262" y="-1072.0982142857142"/>
+        </scene>
+        <!--User Agreement-->
+        <scene sceneID="BaC-TL-Loi">
+            <objects>
+                <viewController id="LaJ-nV-Hrp" customClass="UserAgreementViewController" customModule="HotelStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Byp-Ry-ums">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kb6-Pe-u8u">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Xct-Sm-Ul4">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Kb6-Pe-u8u" firstAttribute="trailing" secondItem="I8x-ld-Pxo" secondAttribute="trailing" id="5NL-Nw-khD"/>
+                            <constraint firstItem="Kb6-Pe-u8u" firstAttribute="top" secondItem="I8x-ld-Pxo" secondAttribute="top" id="8Yy-WF-xZL"/>
+                            <constraint firstItem="Xct-Sm-Ul4" firstAttribute="centerX" secondItem="Byp-Ry-ums" secondAttribute="centerX" id="cw3-ED-wYE"/>
+                            <constraint firstItem="Xct-Sm-Ul4" firstAttribute="centerY" secondItem="Byp-Ry-ums" secondAttribute="centerY" id="ncJ-Du-rl6"/>
+                            <constraint firstItem="Kb6-Pe-u8u" firstAttribute="leading" secondItem="I8x-ld-Pxo" secondAttribute="leading" id="pGh-q8-RKp"/>
+                            <constraint firstAttribute="bottom" secondItem="Kb6-Pe-u8u" secondAttribute="bottom" id="u4q-DR-BGI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="I8x-ld-Pxo"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="User Agreement" id="p8X-HN-IVj"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Xct-Sm-Ul4" id="lUL-Qp-gze"/>
+                        <outlet property="webView" destination="Kb6-Pe-u8u" id="lmT-8i-Ih0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2zQ-2H-jYp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1342.0289855072465" y="-1072.0982142857142"/>
         </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="Efo-H5-D1F">

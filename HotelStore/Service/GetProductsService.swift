@@ -137,7 +137,6 @@ class GetProductsService {
             } catch {
                 print(error)
             }
-            self.model.products.sort {$0.price > $1.price}
             semaphore.signal()
         }
         task.resume()

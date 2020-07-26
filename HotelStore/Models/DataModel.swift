@@ -111,4 +111,6 @@ class DataModel {
     var tokenMessage :String? = ""
     
     var imageCache = NSCache<NSString, UIImage>()
+    var intentSuccess = false
+    var requires_payment_method = "not_requires_payment_method"
 }

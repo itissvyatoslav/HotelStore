@@ -16,6 +16,7 @@ class LogInViewController: UIViewController, CLLocationManagerDelegate{
     let network = LogUserService()
     
     @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var signinLabel: UILabel!
     
     override func viewDidLoad() {
         
@@ -23,11 +24,12 @@ class LogInViewController: UIViewController, CLLocationManagerDelegate{
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         super.viewDidLoad()
         infoLabel.text = "Please, sign in with your\nApple ID"
+        signinLabel.text = "Log in to make purchases without leaving your hotel room and receive your items in just several minutes."
         setUpButton()
     }
     
     private func setUpButton(){
-        let appleButton = ASAuthorizationAppleIDButton(type: .default, style: .whiteOutline)
+        let appleButton = ASAuthorizationAppleIDButton(type: .default, style: .black)
         appleButton.translatesAutoresizingMaskIntoConstraints = false
         appleButton.addTarget(self, action: #selector(tapAppleButton), for: .touchUpInside)
         

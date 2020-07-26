@@ -29,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                                                                                 "hotelName": "hotelName"]
         DataModel.sharedData.token = loadedData["token"] as! String? ?? "default token"
         let model = DataModel.sharedData
+        //model.token = "a3671f039d477dae0129baa0688ea67b9ea2087a"
         if model.token != "default token"{
             GetHotelsService().getHotels()
             model.user.firstName = loadedData["firstName"] as! String? ?? "Name"
