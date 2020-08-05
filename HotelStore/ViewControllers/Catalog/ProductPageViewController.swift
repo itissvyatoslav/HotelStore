@@ -133,13 +133,12 @@ class ProductPageViewController: UIViewController{
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         self.collectionView.collectionViewLayout = layout
-        
-        //collectionView.
         pageControl.numberOfPages = images.count
     }
     
     private func setLabels(){
         nameLabel.text = model.products[number].name
+        nameLabel.adjustsFontSizeToFitWidth = true
         costLabel.text = "\(model.products[number].price)S$"
         brandLabel.text = model.products[number].brand
         descrTextView.text = model.products[number].description
@@ -197,9 +196,6 @@ extension ProductPageViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageSliderCell", for: indexPath) as! ImageSliderCell
-        //cell.setUpImage(url: URL(string: "http://176.119.157.195:8080/\(model.products[number].images[indexPath.item].url)")!)
-        //return cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SlideImageCell.reuseId, for: indexPath) as! SlideImageCell
         cell.mainImageView.image = images[indexPath.row]
         return cell

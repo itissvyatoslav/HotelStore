@@ -78,6 +78,7 @@ class ShoppingCartNetwork{
                     self.model.addProduct.name = json.data.cart[number].product.title
                     self.model.addProduct.price = json.data.cart[number].product.price
                     self.model.addProduct.actualCount = json.data.cart[number].quantity_cart
+                    self.model.addProduct.brand = json.data.cart[number].product.brand
                     self.model.addProduct.count = json.data.cart[number].quantity_stock ?? 0
                     self.model.addProduct.images.removeAll()
                     for subNumber in 0..<json.data.cart[number].product.images.count{
@@ -114,6 +115,7 @@ class ShoppingCartNetwork{
                     self.model.addProduct.name = json.data.cart[number].product.title
                     self.model.addProduct.price = json.data.cart[number].product.price
                     self.model.addProduct.actualCount = json.data.cart[number].quantity_cart
+                    self.model.addProduct.brand = json.data.cart[number].product.brand
                     self.model.addProduct.count = json.data.cart[number].quantity_stock ?? 0
                     self.model.addProduct.images.removeAll()
                     for subNumber in 0..<json.data.cart[number].product.images.count{

@@ -12,7 +12,7 @@ import UIKit
 class LogUserService {
     
     struct answerReceive: Codable{
-        var data: dataReceive
+        var data: dataReceive?
         var message: String?
         var success: Bool
     }
@@ -56,8 +56,10 @@ class LogUserService {
                 return
             }
             do {
+                
+                
                 let json = try JSONDecoder().decode(answerReceive.self, from: data)
-                DataModel.sharedData.token = json.data.token
+                DataModel.sharedData.token = json.data?.token ?? "default token"
                 print(json)
             } catch {
                 print(error)

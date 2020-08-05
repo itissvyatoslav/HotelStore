@@ -128,26 +128,26 @@ class ProductTableViewCell: UITableViewCell {
         addButton.isHidden = true
     }
     
-    private func getImage(_ number: Int){
-        var subNumber = 0
-        for imageNumber in 0..<model.products[number].images.count{
-            if model.products[number].images[imageNumber].front {
-                subNumber = imageNumber
-                break
-            }
-        }
-        
-        if let url = URL(string: "https://crm.hotelstore.sg/\(model.products[number].images[subNumber].url)"){
-            if let cachedImage = model.imageCache.object(forKey: url.absoluteString as NSString){
-                self.imageProduct.image = cachedImage
-            } else {
-                do {
-                    let data = try Data(contentsOf: url)
-                    self.imageProduct.image = UIImage(data: data)
-                } catch let err {
-                    print("Error: \(err.localizedDescription)")
-                }
-            }
-        }
-    }
+   // private func getImage(_ number: Int){
+   //     var subNumber = 0
+   //     for imageNumber in 0..<model.products[number].images.count{
+   //         if model.products[number].images[imageNumber].front {
+   //             subNumber = imageNumber
+   //             break
+   //         }
+   //     }
+   //
+   //     if let url = URL(string: "https://crm.hotelstore.sg/\(model.products[number].images[subNumber].url)"){
+   //         if let cachedImage = model.imageCache.object(forKey: url.absoluteString as NSString){
+   //             self.imageProduct.image = cachedImage
+   //         } else {
+   //             do {
+   //                 let data = try Data(contentsOf: url)
+   //                 self.imageProduct.image = UIImage(data: data)
+   //             } catch let err {
+   //                 print("Error: \(err.localizedDescription)")
+   //             }
+   //         }
+   //     }
+   // }
 }

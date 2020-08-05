@@ -20,6 +20,7 @@ class ShoppingCartCell: UITableViewCell {
     var globalNumber = 0
     
     @IBOutlet weak var imageProduct: UIImageView!
+    @IBOutlet weak var bigTitle: UILabel!
     @IBOutlet weak var title: UILabel!
     @IBAction func minusButton(_ sender: Any) {
         let indicator = self.delegate?.minusProduct(cell: self)
@@ -49,7 +50,9 @@ class ShoppingCartCell: UITableViewCell {
     }
     
     func setCell(_ number: Int){
-        title.text = model.shopCart[number].name
+        bigTitle.text = model.shopCart[number].name
+        bigTitle.adjustsFontSizeToFitWidth = true
+        title.text = model.shopCart[number].brand
         countLabel.text = "\(model.shopCart[number].actualCount ?? 0)"
         print(model.shopCart[number].actualCount ?? 0)
         countLabel.sizeToFit()

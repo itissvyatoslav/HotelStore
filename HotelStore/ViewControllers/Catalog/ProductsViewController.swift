@@ -108,24 +108,24 @@ class ProductsViewController: UIViewController{
     }
     
     private func getMainImage(_ number: Int, _ cell: ProductTableViewCell){
+        
         var subNumber = 0
-        for imageNumber in 0..<model.products[number].images.count{
-            if model.products[number].images[imageNumber].front {
+        for imageNumber in 0..<self.model.products[number].images.count{
+            if self.model.products[number].images[imageNumber].front {
                 subNumber = imageNumber
                 break
             }
         }
-        
-        if let url = URL(string: "https://crm.hotelstore.sg/\(model.products[number].images[subNumber].url)"){
-            if let cachedImage = model.imageCache.object(forKey: url.absoluteString as NSString){
+        if let url = URL(string: "https://crm.hotelstore.sg/\(self.model.products[number].images[subNumber].url)"){
+            if let cachedImage = self.model.imageCache.object(forKey: url.absoluteString as NSString){
                 cell.imageProduct.image = cachedImage
             } else {
-                do {
-                    let data = try Data(contentsOf: url)
-                    cell.imageProduct.image = UIImage(data: data)
-                } catch let err {
-                    cell.imageProduct.image = nil
-                    print("Error: \(err.localizedDescription)")
+                DispatchQueue.global(qos: .userInitiated).async {
+                    let imageData = NSData.init(contentsOf: url)
+                    DispatchQueue.main.async {
+                        cell.imageProduct.image = UIImage(data: imageData! as Data)
+                        self.model.imageCache.setObject(UIImage(data: imageData! as Data)!, forKey: url.absoluteString as NSString)
+                    }
                 }
             }
         }
@@ -140,25 +140,29 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell") as? ProductTableViewCell {
             //cell.setView(indexPath.row)
-            if !model.products[indexPath.row].images.isEmpty{
-                getMainImage(indexPath.row, cell)
-                cell.imageProduct.layer.cornerRadius = 15
-            }
-            cell.nameLabel.text = model.products[indexPath.row].name
-            cell.brandLabel.text = model.products[indexPath.row].brand
-            cell.descrLabel.text = model.products[indexPath.row].short_description
-            cell.priceLabel.text = "\(model.products[indexPath.row].price)S$"
+            cell.imageProduct.image = nil
+            DispatchQueue.main.async {
+                if !self.model.products[indexPath.row].images.isEmpty{
+                    self.getMainImage(indexPath.row, cell)
+                    cell.imageProduct.layer.cornerRadius = 15
+                }
+                cell.nameLabel.text = self.model.products[indexPath.row].name
+                cell.brandLabel.text = self.model.products[indexPath.row].brand
+                cell.descrLabel.text = self.model.products[indexPath.row].short_description
+                cell.priceLabel.text = "\(self.model.products[indexPath.row].price)S$"
             cell.nameLabel.sizeToFit()
             cell.descrLabel.sizeToFit()
+            cell.nameLabel.adjustsFontSizeToFitWidth = true
             cell.descrLabel.adjustsFontSizeToFitWidth = true
             cell.priceLabel.sizeToFit()
             cell.countLabel.textColor = UIColor(named: "ColorSubText")
-            cell.countLabel.text = "\(model.products[indexPath.row].count) in stock"
+                cell.countLabel.text = "\(self.model.products[indexPath.row].count) in stock"
             cell.numberLabel.isHidden = true
             cell.minusButton.isHidden = true
             cell.plusButton.isHidden = true
             cell.addButton.isHidden = false
             cell.delegate = self
+            }
             return cell
         }
         return UITableViewCell()

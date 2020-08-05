@@ -67,6 +67,7 @@ class ProfileViewController: UIViewController{
             return
         }
         let composer = MFMailComposeViewController()
+        composer.mailComposeDelegate = self
         composer.setToRecipients(["support@hotelstore.sg"])
         
         present(composer, animated: true)
@@ -113,6 +114,36 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
             }
         }
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension ProfileViewController: MFMailComposeViewControllerDelegate{
+    private func mailComposeController(controller: MFMailComposeViewController,
+                                       didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        if let _ = error {
+            controller.dismiss(animated: true)
+            return
+        }
+        
+        switch result {
+        case .cancelled:
+            print("Cancel")
+        case  .failed:
+            print("Failed")
+        case .saved:
+            print("Saved")
+        case .sent:
+            print("Sent")
+        @unknown default:
+            fatalError()
+        }
+        controller.popViewController(animated: true)
+        controller.dismiss(animated: true)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }
 

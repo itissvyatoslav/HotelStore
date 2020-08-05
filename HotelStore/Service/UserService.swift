@@ -128,7 +128,7 @@ class UserService {
     
     func payOrder(roomNumber: String, comment: String, name: String){
         struct answerReceivePay: Codable{
-            var data: dataReceivePay
+            var data: dataReceivePay?
             var message: String?
             var success: Bool
         }
@@ -172,7 +172,8 @@ class UserService {
             }
             do {
                 let json = try JSONDecoder().decode(answerReceivePay.self, from: data)
-                DataModel.sharedData.orderNumber = json.data.order_number
+                print(json)
+                DataModel.sharedData.orderNumber = json.data?.order_number ?? 0
             } catch {
                 print(error)
             }

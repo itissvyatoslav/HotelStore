@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BcM-7w-zS1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BcM-7w-zS1">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -48,13 +48,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hotel store 1" translatesAutoresizingMaskIntoConstraints="NO" id="54D-wh-hHj">
-                                <rect key="frame" x="93" y="331" width="228" height="76"/>
+                                <rect key="frame" x="93" y="237.5" width="228" height="76"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="76" id="qn5-3h-Tp3"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3KA-R8-6hH">
-                                <rect key="frame" x="182" y="485" width="50" height="80"/>
+                                <rect key="frame" x="182" y="391.5" width="50" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="bRG-bi-UYc"/>
                                 </constraints>
@@ -85,6 +85,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="MEG-eW-pBW" firstAttribute="trailing" secondItem="54D-wh-hHj" secondAttribute="trailing" constant="93" id="3Lw-wl-0Jv"/>
+                            <constraint firstItem="54D-wh-hHj" firstAttribute="top" secondItem="MEG-eW-pBW" secondAttribute="centerY" multiplier="0.5" id="99U-qx-JAV"/>
                             <constraint firstItem="syY-KI-oNy" firstAttribute="top" secondItem="L2R-qA-P5p" secondAttribute="bottom" constant="5" id="BlM-6u-HHw"/>
                             <constraint firstItem="MEG-eW-pBW" firstAttribute="trailing" secondItem="L2R-qA-P5p" secondAttribute="trailing" constant="20" id="FLs-yy-DKv"/>
                             <constraint firstItem="syY-KI-oNy" firstAttribute="centerX" secondItem="dyN-wQ-Bxl" secondAttribute="centerX" id="NYG-Eo-xdl"/>
@@ -92,7 +93,6 @@
                             <constraint firstItem="L2R-qA-P5p" firstAttribute="leading" secondItem="MEG-eW-pBW" secondAttribute="leading" constant="20" id="OUJ-1b-cQx"/>
                             <constraint firstItem="3KA-R8-6hH" firstAttribute="top" secondItem="54D-wh-hHj" secondAttribute="bottom" constant="78" id="RuI-Ou-B9p"/>
                             <constraint firstItem="54D-wh-hHj" firstAttribute="leading" secondItem="MEG-eW-pBW" secondAttribute="leading" constant="93" id="XCm-M0-Kyb"/>
-                            <constraint firstItem="54D-wh-hHj" firstAttribute="top" secondItem="MEG-eW-pBW" secondAttribute="top" constant="243" id="beI-pr-Iyf"/>
                             <constraint firstItem="L2R-qA-P5p" firstAttribute="centerX" secondItem="dyN-wQ-Bxl" secondAttribute="centerX" id="nVN-yG-EHM"/>
                             <constraint firstItem="3KA-R8-6hH" firstAttribute="centerX" secondItem="dyN-wQ-Bxl" secondAttribute="centerX" id="x4x-eH-Hl2"/>
                         </constraints>
