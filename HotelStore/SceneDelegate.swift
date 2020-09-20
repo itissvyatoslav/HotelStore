@@ -38,6 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             model.user.hotel.id = loadedData["hotelId"] as! Int? ?? 0
             model.user.hotel.name = loadedData["hotelName"] as! String? ?? "hotelName"
             GetProductsService().getCategories()
+            LogUserService().getFAQSemophore()
             if DataModel.sharedData.tokenMessage != "Invalid token" {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateViewController (withIdentifier: "CustomTabBarController") as! CustomTabBarController

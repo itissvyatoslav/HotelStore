@@ -558,7 +558,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Hotel store 1" width="226" height="77"/>
+        <image name="Hotel store 1" width="1479" height="500"/>
         <namedColor name="ColorSubText">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.60100001096725464" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

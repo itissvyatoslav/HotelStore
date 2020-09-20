@@ -47,6 +47,7 @@ class DataModel {
         var name: String
         var count: Int
         var price: Double
+        var brand: String
     }
     
     var products = [GoodsType]()
@@ -82,7 +83,7 @@ class DataModel {
     var deviceToken = ""
     
     var lastOrder = [LastOrderGood]()
-    var addToLastOrder = LastOrderGood(name: "", count: 0, price: 0)
+    var addToLastOrder = LastOrderGood(name: "", count: 0, price: 0, brand: "")
     var status = ""
     var hotelLastOrder = ""
     var resultOrder = false
@@ -113,4 +114,25 @@ class DataModel {
     var imageCache = NSCache<NSString, UIImage>()
     var intentSuccess = false
     var requires_payment_method = "not_requires_payment_method"
+    
+    struct faqStruct {
+        var answer: String?
+        var id: Int?
+        var question: String?
+    }
+    
+    var addFaq = faqStruct(answer: "", id: 0, question: "")
+    var faq = [faqStruct]()
+    
+    var backFromSber = false
+    
+    var currency: String {
+        let locale = Locale.current
+        let localesSNG = ["AZ", "RU", "BE", "HY", "KK", "KY", "ru_MD", "TG", "UZ"]
+        if localesSNG.contains(locale.regionCode ?? "nil") {
+            return "₽"
+        } else {
+            return "S$"
+        }
+    }
 }

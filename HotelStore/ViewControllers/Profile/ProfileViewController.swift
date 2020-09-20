@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MessageUI
 
-class ProfileViewController: UIViewController{
+class ProfileViewController: UIViewController, MFMailComposeViewControllerDelegate{
     let model = DataModel.sharedData
     let network = UserService()
     @IBAction func tappedButtonHotel(_ sender: Any) {
@@ -36,7 +36,7 @@ class ProfileViewController: UIViewController{
         }
     }
     
-    let labels = ["User info", "Last order", "User Agreement"]
+    let labels = ["User info", "Last order", "User Agreement", "F.A.Q."]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,21 +63,34 @@ class ProfileViewController: UIViewController{
     }
     
     @IBAction func feedBackAction(_ sender: Any) {
-        guard MFMailComposeViewController.canSendMail() else {
-            return
+        if MFMailComposeViewController.canSendMail(){
+            let composer = MFMailComposeViewController()
+            composer.mailComposeDelegate = self
+            composer.setToRecipients(["support@hotelstore.sg"])
+            present(composer, animated: true)
         }
-        let composer = MFMailComposeViewController()
-        composer.mailComposeDelegate = self
-        composer.setToRecipients(["support@hotelstore.sg"])
-        
-        present(composer, animated: true)
     }
     
+    func mailComposeController(_ controller: MFMailComposeViewController,
+                               didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result {
+        case .cancelled:
+            controller.dismiss(animated: true, completion: nil)
+        case .failed:
+            controller.dismiss(animated: true, completion: nil)
+        case .saved:
+            controller.dismiss(animated: true, completion: nil)
+        case .sent:
+            controller.dismiss(animated: true, completion: nil)
+        @unknown default:
+            print("default")
+        }
+    }
 }
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return labels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,38 +126,12 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
+        if indexPath.item == 3{
+            if #available(iOS 13.0, *) {
+                let vc = storyboard?.instantiateViewController(identifier: "FAQViewController") as! FAQViewController
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-
-extension ProfileViewController: MFMailComposeViewControllerDelegate{
-    private func mailComposeController(controller: MFMailComposeViewController,
-                                       didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        if let _ = error {
-            controller.dismiss(animated: true)
-            return
-        }
-        
-        switch result {
-        case .cancelled:
-            print("Cancel")
-        case  .failed:
-            print("Failed")
-        case .saved:
-            print("Saved")
-        case .sent:
-            print("Sent")
-        @unknown default:
-            fatalError()
-        }
-        controller.popViewController(animated: true)
-        controller.dismiss(animated: true)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-}
-
-

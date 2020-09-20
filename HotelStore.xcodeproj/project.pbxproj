@@ -29,6 +29,11 @@
 		EB60A1492462ABA300DFE105 /* FirstAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60A1482462ABA300DFE105 /* FirstAgreementViewController.swift */; };
 		EB60A14C246AB22D00DFE105 /* ShoppingCartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60A14A246AB22D00DFE105 /* ShoppingCartCell.swift */; };
 		EB60A14D246AB22D00DFE105 /* ShoppingCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB60A14B246AB22D00DFE105 /* ShoppingCartCell.xib */; };
+		EB86E9A124ED062A004B6C72 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB86E9A024ED062A004B6C72 /* FAQViewController.swift */; };
+		EB86E9A424ED17DA004B6C72 /* faq1cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB86E9A224ED17DA004B6C72 /* faq1cell.swift */; };
+		EB86E9A524ED17DA004B6C72 /* faq1cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB86E9A324ED17DA004B6C72 /* faq1cell.xib */; };
+		EB86E9A824ED1B66004B6C72 /* faq2cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB86E9A624ED1B66004B6C72 /* faq2cell.swift */; };
+		EB86E9A924ED1B66004B6C72 /* faq2cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB86E9A724ED1B66004B6C72 /* faq2cell.xib */; };
 		EB87E8102443179C00D79D26 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87E80F2443179C00D79D26 /* UserInfoViewController.swift */; };
 		EB87E8252444B01600D79D26 /* LastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87E8242444B01600D79D26 /* LastViewController.swift */; };
 		EB87E8282444B91B00D79D26 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87E8272444B91B00D79D26 /* DataModel.swift */; };
@@ -51,8 +56,23 @@
 		EBF19C2324582E5400F174CE /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */; };
 		EBF19C2524587ACF00F174CE /* ProductPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF19C2424587ACF00F174CE /* ProductPageViewController.swift */; };
 		EBF19C6D245A978B00F174CE /* SlideImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF19C6C245A978B00F174CE /* SlideImageCell.swift */; };
+		EBFDA460250506710007A0FE /* SberService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFDA45F250506710007A0FE /* SberService.swift */; };
+		EBFDA462250CC5A10007A0FE /* SberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFDA461250CC5A10007A0FE /* SberViewController.swift */; };
 		F7B014CCAB1CEBA2ECA98B03 /* Pods_HotelStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC5583E4007ADD964B90FE2 /* Pods_HotelStore.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EBFDA45E2504FC8C0007A0FE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AAC5583E4007ADD964B90FE2 /* Pods_HotelStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HotelStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +99,11 @@
 		EB60A1482462ABA300DFE105 /* FirstAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAgreementViewController.swift; sourceTree = "<group>"; };
 		EB60A14A246AB22D00DFE105 /* ShoppingCartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartCell.swift; sourceTree = "<group>"; };
 		EB60A14B246AB22D00DFE105 /* ShoppingCartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartCell.xib; sourceTree = "<group>"; };
+		EB86E9A024ED062A004B6C72 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
+		EB86E9A224ED17DA004B6C72 /* faq1cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = faq1cell.swift; sourceTree = "<group>"; };
+		EB86E9A324ED17DA004B6C72 /* faq1cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = faq1cell.xib; sourceTree = "<group>"; };
+		EB86E9A624ED1B66004B6C72 /* faq2cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = faq2cell.swift; sourceTree = "<group>"; };
+		EB86E9A724ED1B66004B6C72 /* faq2cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = faq2cell.xib; sourceTree = "<group>"; };
 		EB87E80F2443179C00D79D26 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		EB87E8242444B01600D79D26 /* LastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastViewController.swift; sourceTree = "<group>"; };
 		EB87E8272444B91B00D79D26 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
@@ -103,6 +128,8 @@
 		EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
 		EBF19C2424587ACF00F174CE /* ProductPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPageViewController.swift; sourceTree = "<group>"; };
 		EBF19C6C245A978B00F174CE /* SlideImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideImageCell.swift; sourceTree = "<group>"; };
+		EBFDA45F250506710007A0FE /* SberService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SberService.swift; sourceTree = "<group>"; };
+		EBFDA461250CC5A10007A0FE /* SberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SberViewController.swift; sourceTree = "<group>"; };
 		EF4769F8FAF2369C97247B54 /* Pods-HotelStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotelStore.debug.xcconfig"; path = "Target Support Files/Pods-HotelStore/Pods-HotelStore.debug.xcconfig"; sourceTree = "<group>"; };
 		FC9B4EC9509C3A974DB55810 /* Pods-HotelStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotelStore.release.xcconfig"; path = "Target Support Files/Pods-HotelStore/Pods-HotelStore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +184,10 @@
 				EBF19C6C245A978B00F174CE /* SlideImageCell.swift */,
 				EB60A14A246AB22D00DFE105 /* ShoppingCartCell.swift */,
 				EB60A14B246AB22D00DFE105 /* ShoppingCartCell.xib */,
+				EB86E9A224ED17DA004B6C72 /* faq1cell.swift */,
+				EB86E9A324ED17DA004B6C72 /* faq1cell.xib */,
+				EB86E9A624ED1B66004B6C72 /* faq2cell.swift */,
+				EB86E9A724ED1B66004B6C72 /* faq2cell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -170,6 +201,7 @@
 				EB60A13D245C3DAE00DFE105 /* LogUserService.swift */,
 				EB60A139245BF04200DFE105 /* UserService.swift */,
 				EB60A141245EAE5E00DFE105 /* ActivityIndicator.swift */,
+				EBFDA45F250506710007A0FE /* SberService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -246,6 +278,7 @@
 				EB87E8242444B01600D79D26 /* LastViewController.swift */,
 				EB87E80F2443179C00D79D26 /* UserInfoViewController.swift */,
 				EB4D6C26244DD47200AB321C /* AgreementViewController.swift */,
+				EB86E9A024ED062A004B6C72 /* FAQViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -256,6 +289,7 @@
 				EBCDBBCB2440B9B9008129A5 /* ShoppingCartViewController.swift */,
 				EBD96D5D245B418200C6BECF /* BuyInfoViewController.swift */,
 				EB437BB9248528C4001F54D2 /* SuccessPaymentViewController.swift */,
+				EBFDA461250CC5A10007A0FE /* SberViewController.swift */,
 			);
 			path = "Shopping Cart";
 			sourceTree = "<group>";
@@ -292,6 +326,7 @@
 				EBCDBBAE2440A76B008129A5 /* Frameworks */,
 				EBCDBBAF2440A76B008129A5 /* Resources */,
 				29F370E1AF9DDB8E6AFDCC9D /* [CP] Embed Pods Frameworks */,
+				EBFDA45E2504FC8C0007A0FE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -342,6 +377,8 @@
 			files = (
 				EBCDBBDB2441B30C008129A5 /* Catalog.storyboard in Resources */,
 				EB87E831244575DD00D79D26 /* ProfileLastOrderCells.xib in Resources */,
+				EB86E9A924ED1B66004B6C72 /* faq2cell.xib in Resources */,
+				EB86E9A524ED17DA004B6C72 /* faq1cell.xib in Resources */,
 				EBCDBBD92441B301008129A5 /* ShoppingCart.storyboard in Resources */,
 				EBCDBBC12440A774008129A5 /* LaunchScreen.storyboard in Resources */,
 				EB60A14D246AB22D00DFE105 /* ShoppingCartCell.xib in Resources */,
@@ -408,17 +445,21 @@
 				EBF19C6D245A978B00F174CE /* SlideImageCell.swift in Sources */,
 				EB60A1492462ABA300DFE105 /* FirstAgreementViewController.swift in Sources */,
 				EB60A142245EAE5E00DFE105 /* ActivityIndicator.swift in Sources */,
+				EBFDA460250506710007A0FE /* SberService.swift in Sources */,
 				EB87E8252444B01600D79D26 /* LastViewController.swift in Sources */,
 				EB5E1EBE24C15FA8008C77C2 /* UserAgreementViewController.swift in Sources */,
 				EB87E8282444B91B00D79D26 /* DataModel.swift in Sources */,
+				EBFDA462250CC5A10007A0FE /* SberViewController.swift in Sources */,
 				EB60A13A245BF04200DFE105 /* UserService.swift in Sources */,
 				EB38EE5E246C195200D2CB4E /* StripeClientAPI.swift in Sources */,
 				EB4D6C27244DD47200AB321C /* AgreementViewController.swift in Sources */,
 				EBD45CC024864568000C7B62 /* FirstHotelListViewController.swift in Sources */,
+				EB86E9A424ED17DA004B6C72 /* faq1cell.swift in Sources */,
 				EB87E8102443179C00D79D26 /* UserInfoViewController.swift in Sources */,
 				EB437BB62484C839001F54D2 /* RequestDelegate.swift in Sources */,
 				EB60A13E245C3DAE00DFE105 /* LogUserService.swift in Sources */,
 				EB4D6C2D244DEF2500AB321C /* ShoppingCartNetwork.swift in Sources */,
+				EB86E9A124ED062A004B6C72 /* FAQViewController.swift in Sources */,
 				EB60A13C245C274100DFE105 /* HotelListViewController.swift in Sources */,
 				EB60A140245C46FC00DFE105 /* CustomTabBarController.swift in Sources */,
 				EBCDBBCA2440B995008129A5 /* CatalogViewController.swift in Sources */,
@@ -430,6 +471,7 @@
 				EB4D6C2B244DED5B00AB321C /* GetHotelsService.swift in Sources */,
 				EB60A1452461786800DFE105 /* LogInViewController.swift in Sources */,
 				EB4D6C23244D604D00AB321C /* GetProductsService.swift in Sources */,
+				EB86E9A824ED1B66004B6C72 /* faq2cell.swift in Sources */,
 				EB12C6BA2455CF4D000C3301 /* SubCatalogViewController.swift in Sources */,
 				EBCDBBB52440A76C008129A5 /* AppDelegate.swift in Sources */,
 				EBCDBBB72440A76C008129A5 /* SceneDelegate.swift in Sources */,
@@ -581,15 +623,23 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HotelStore/HotelStore.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 2UW772375M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = HotelStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SberbankSDK.framework",
+				);
+				MARKETING_VERSION = 1.91;
 				PRODUCT_BUNDLE_IDENTIFIER = HotelStore.SoftWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -604,15 +654,23 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HotelStore/HotelStore.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 2UW772375M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = HotelStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SberbankSDK.framework",
+				);
+				MARKETING_VERSION = 1.91;
 				PRODUCT_BUNDLE_IDENTIFIER = HotelStore.SoftWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

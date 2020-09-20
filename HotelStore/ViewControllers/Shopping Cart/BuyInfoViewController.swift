@@ -18,6 +18,8 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     private var paymentContext: STPPaymentContext? = nil
     let model = DataModel.sharedData
     
+    let localesSNG = ["AZ", "RU", "BE", "HY", "KK", "KY", "ru_MD", "TG", "UZ"]
+    
     @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var hotelLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -65,9 +67,16 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     }
     
     override func viewDidLoad() {
+        paySber.isHidden = true
+        let locale = Locale.current
+        if localesSNG.contains(locale.regionCode ?? "nil") {
+            setSber()
+        } else {
+            setStripe()
+        }
+        setSber()
         super.viewDidLoad()
         setView()
-        setStripe()
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
         roomNumberTextField.addTarget(self, action: #selector(myTargetFunction), for: .touchDown)
@@ -122,7 +131,12 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
         }
     }
     
-    //MARK: - DELEGATE
+    //MARK: - STRIPE DELEGATE
+    
+    @IBOutlet weak var methodButton: UIButton!
+    @IBOutlet weak var payButton: UIButton!
+    
+    
     func error_back(message: String) {
     }
     
@@ -177,6 +191,42 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
         print("I tried3")
     }
+    
+    // MARK:- SBER
+    @IBAction func paySber(_ sender: Any) {
+        if roomNumberTextField.text == "" || roomNumberTextField.text == "Please, write your room number" {
+            roomNumberTextField.textColor = UIColor.red
+            roomNumberTextField.text = "Please, write your room number"
+        } else {
+            model.user.roomNumber = roomNumberTextField.text ?? ""
+            model.user.firstName = nameTextField.text ?? ""
+            let vc = self.storyboard?.instantiateViewController(identifier: "SberViewController") as! SberViewController
+            vc.delegate = self
+            vc.urlString = "https://crm.hotelstore.sg/app/paymentsberbank"
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    @IBOutlet weak var paySber: UIButton!
+    
+    private func setSber(){
+        methodButton.isHidden = true
+        payButton.isHidden = true
+        paySber.isHidden = false
+    }
+}
+
+@available(iOS 13.0, *)
+extension BuyInfoViewController: SberDelegate {
+    func backFromSber() {
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        indicatorView.isHidden = false
+        DispatchQueue.main.async {
+            SberService().checkPayment()
+        }
+    }
+    
+    
 }
 
 

@@ -139,7 +139,7 @@ class ProductPageViewController: UIViewController{
     private func setLabels(){
         nameLabel.text = model.products[number].name
         nameLabel.adjustsFontSizeToFitWidth = true
-        costLabel.text = "\(model.products[number].price)S$"
+        costLabel.text = "\(model.products[number].price)\(self.model.currency)"
         brandLabel.text = model.products[number].brand
         descrTextView.text = model.products[number].description
         if model.products[number].count == 0 {

@@ -50,7 +50,7 @@ class UserService {
         var order: Int
         var product: productType
         var quantity_cart: Int
-        var quantity_stock: Int
+        var quantity_stock: Int?
     }
     
     struct productType: Codable{
@@ -80,13 +80,17 @@ class UserService {
                 return
             }
             do {
+                let json2 = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json2)
+                
                 let json = try JSONDecoder().decode(answerReceive.self, from: data)
                 self.model.lastOrder.removeAll()
                 if json.data.count != 0 {
                     self.model.status = json.data[json.data.count - 1].status
                     self.model.hotelLastOrder = json.data[json.data.count - 1].hotel.name
-                    self.model.orderNumberLast = json.data[json.data.count - 1].cart[0].order
+                    self.model.orderNumberLast = json.data[json.data.count - 1].id
                     for number in 0..<json.data[json.data.count - 1].cart.count{
+                        self.model.addToLastOrder.brand = json.data[json.data.count - 1].cart[number].product.brand
                         self.model.addToLastOrder.name = json.data[json.data.count - 1].cart[number].product.title
                         self.model.addToLastOrder.count = json.data[json.data.count - 1].cart[number].quantity_cart
                         self.model.addToLastOrder.price = json.data[json.data.count - 1].cart[number].product.price

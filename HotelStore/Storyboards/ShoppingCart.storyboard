@@ -289,6 +289,17 @@
                                     <constraint firstAttribute="width" secondItem="P1O-1U-tyL" secondAttribute="height" multiplier="15:8" id="hm5-AN-M7R"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pif-6S-0v9">
+                                <rect key="frame" x="25" y="744" width="364" height="45"/>
+                                <color key="backgroundColor" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Pay">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="paySber:" destination="Rra-zu-uyU" eventType="touchUpInside" id="nvQ-nm-X5T"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -311,6 +322,7 @@
                             <constraint firstItem="7Vl-zq-dW9" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="57" id="PQ4-uT-GyI"/>
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="lUB-u2-1eS" secondAttribute="trailing" constant="111" id="Ps2-OG-VHr"/>
                             <constraint firstItem="tPs-TT-2IM" firstAttribute="top" secondItem="2FA-Wc-HqJ" secondAttribute="bottom" constant="8" id="RQ5-zf-f3b"/>
+                            <constraint firstItem="Pif-6S-0v9" firstAttribute="leading" secondItem="tPs-TT-2IM" secondAttribute="leading" id="SY9-Sb-tr2"/>
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="rqN-T7-9Hk" secondAttribute="trailing" constant="26" id="TEv-Tz-Vz3"/>
                             <constraint firstItem="Qy4-gu-Tg1" firstAttribute="top" secondItem="B0Z-LI-djX" secondAttribute="bottom" constant="1" id="UTX-gs-5FF"/>
                             <constraint firstItem="rqN-T7-9Hk" firstAttribute="top" secondItem="qdj-17-hAV" secondAttribute="bottom" constant="31" id="WgX-Yg-aqX"/>
@@ -321,10 +333,13 @@
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="tPs-TT-2IM" secondAttribute="trailing" constant="25" id="cJ7-ld-KbX"/>
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="TiR-Vg-nUa" secondAttribute="trailing" constant="26" id="d8c-XN-O9X"/>
                             <constraint firstItem="lUB-u2-1eS" firstAttribute="top" secondItem="Qy4-gu-Tg1" secondAttribute="bottom" constant="3" id="fiU-QC-GXg"/>
+                            <constraint firstItem="Pif-6S-0v9" firstAttribute="centerX" secondItem="tPs-TT-2IM" secondAttribute="centerX" id="g9S-KW-9pE"/>
                             <constraint firstItem="grB-uE-9jc" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="26" id="grS-ww-Rgi"/>
+                            <constraint firstItem="Pif-6S-0v9" firstAttribute="top" secondItem="tPs-TT-2IM" secondAttribute="top" id="ih1-0T-iI4"/>
                             <constraint firstItem="lUB-u2-1eS" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="26" id="lc1-O7-GYd"/>
                             <constraint firstItem="N6a-cF-brd" firstAttribute="trailing" secondItem="2FA-Wc-HqJ" secondAttribute="trailing" constant="25" id="ne9-MN-dv3"/>
                             <constraint firstItem="qdj-17-hAV" firstAttribute="top" secondItem="I1m-fV-YTv" secondAttribute="bottom" constant="1" id="pFj-qr-4oM"/>
+                            <constraint firstItem="Pif-6S-0v9" firstAttribute="centerY" secondItem="tPs-TT-2IM" secondAttribute="centerY" id="pFw-3c-ZBb"/>
                             <constraint firstItem="jkW-4Q-rH9" firstAttribute="top" secondItem="grB-uE-9jc" secondAttribute="bottom" constant="11" id="scf-jd-SmA"/>
                             <constraint firstItem="qdj-17-hAV" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="26" id="stB-eh-5XO"/>
                             <constraint firstItem="Qy4-gu-Tg1" firstAttribute="leading" secondItem="N6a-cF-brd" secondAttribute="leading" constant="26" id="vI4-o6-pMj"/>
@@ -338,7 +353,10 @@
                         <outlet property="commentTextView" destination="TiR-Vg-nUa" id="0Pz-mn-4lR"/>
                         <outlet property="hotelLabel" destination="rqN-T7-9Hk" id="07q-tX-QM3"/>
                         <outlet property="indicatorView" destination="mA9-eZ-HCa" id="MSo-ML-9rD"/>
+                        <outlet property="methodButton" destination="2FA-Wc-HqJ" id="EPP-Hd-Ezx"/>
                         <outlet property="nameTextField" destination="qdj-17-hAV" id="XYM-it-PiM"/>
+                        <outlet property="payButton" destination="tPs-TT-2IM" id="4Kj-aH-C40"/>
+                        <outlet property="paySber" destination="Pif-6S-0v9" id="WWg-x0-MnR"/>
                         <outlet property="roomNumberTextField" destination="Qy4-gu-Tg1" id="jK1-N5-uIt"/>
                     </connections>
                 </viewController>
@@ -346,6 +364,57 @@
                 <exit id="nMx-5k-cnX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2111.594202898551" y="-384.375"/>
+        </scene>
+        <!--Sber View Controller-->
+        <scene sceneID="dgf-Pg-ywh">
+            <objects>
+                <viewController restorationIdentifier="SberViewController" storyboardIdentifier="SberViewController" id="6VF-L4-w3j" customClass="SberViewController" customModule="HotelStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8To-KE-F5M">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Pd-I0-eVm">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6V-UI-kZ1">
+                                <rect key="frame" x="314" y="64" width="80" height="34"/>
+                                <color key="backgroundColor" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="6up-Xi-tuw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeAction:" destination="6VF-L4-w3j" eventType="touchUpInside" id="9u4-4j-EZp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Khj-ac-Atw" firstAttribute="trailing" secondItem="A6V-UI-kZ1" secondAttribute="trailing" constant="20" id="3W2-5N-h2f"/>
+                            <constraint firstItem="Khj-ac-Atw" firstAttribute="bottom" secondItem="0Pd-I0-eVm" secondAttribute="bottom" id="5iF-4G-w4B"/>
+                            <constraint firstItem="0Pd-I0-eVm" firstAttribute="top" secondItem="Khj-ac-Atw" secondAttribute="top" id="7Pb-8c-uVa"/>
+                            <constraint firstItem="A6V-UI-kZ1" firstAttribute="top" secondItem="Khj-ac-Atw" secondAttribute="top" constant="20" id="FG0-KY-GcK"/>
+                            <constraint firstItem="Khj-ac-Atw" firstAttribute="trailing" secondItem="0Pd-I0-eVm" secondAttribute="trailing" id="Jcv-i8-SCR"/>
+                            <constraint firstItem="0Pd-I0-eVm" firstAttribute="leading" secondItem="Khj-ac-Atw" secondAttribute="leading" id="bns-V9-QD4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Khj-ac-Atw"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="t7e-rl-rNp"/>
+                    <connections>
+                        <outlet property="webView" destination="0Pd-I0-eVm" id="MLB-7D-WIu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BLM-bs-BdU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2119" y="280"/>
         </scene>
         <!--Success Payment View Controller-->
         <scene sceneID="qrh-zX-rJt">

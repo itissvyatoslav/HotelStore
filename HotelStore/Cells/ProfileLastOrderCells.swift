@@ -25,7 +25,7 @@ class ProfileLastOrderCells: UITableViewCell {
     }
     
     func setView(number: Int){
-        nameLabel.text = model.lastOrder[number].name
+        nameLabel.text = "\(model.lastOrder[number].name), \(model.lastOrder[number].brand)"
         nameLabel.sizeToFit()
         countLabel.text = "\(model.lastOrder[number].count)"
     }

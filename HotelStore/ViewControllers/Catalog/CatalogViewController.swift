@@ -39,6 +39,10 @@ class CatalogViewController: UIViewController, CLLocationManagerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(model.faq.isEmpty, model.faq)
+        if model.faq.isEmpty {
+            LogUserService().getFAQ()
+        }
         getCart.getCartAssync()
         setViews()
         self.navigationController?.navigationBar.tintColor = UIColor(named: "ColorSubText")

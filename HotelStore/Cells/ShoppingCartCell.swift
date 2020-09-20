@@ -56,7 +56,7 @@ class ShoppingCartCell: UITableViewCell {
         countLabel.text = "\(model.shopCart[number].actualCount ?? 0)"
         print(model.shopCart[number].actualCount ?? 0)
         countLabel.sizeToFit()
-        priceLabel.text = "\(model.shopCart[number].price)S$"
+        priceLabel.text = "\(model.shopCart[number].price)\(self.model.currency)"
         imageProduct.layer.cornerRadius = 25
         setImage(number)
     }

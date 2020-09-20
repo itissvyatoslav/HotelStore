@@ -11,6 +11,8 @@ import UIKit
 
 class LogUserService {
     
+    let model = DataModel.sharedData
+    
     struct answerReceive: Codable{
         var data: dataReceive?
         var message: String?
@@ -21,8 +23,83 @@ class LogUserService {
         var token: String
     }
     
-    func logIn(){
+    func getFAQ(){
+        struct answerReceiveFAQ: Codable{
+            var data: [dataReceiveFAQ]
+            var message: String?
+            var success: Bool
+        }
         
+        struct dataReceiveFAQ: Codable{
+            var answer: String?
+            var id: Int?
+            var question: String?
+        }
+        
+        var request = URLRequest(url: URL(string: "https://crm.hotelstore.sg/api/faq")!,timeoutInterval: Double.infinity)
+        
+        request.httpMethod = "GET"
+        request.addValue(DataModel.sharedData.token, forHTTPHeaderField: "token")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                print(String(describing: error))
+                return
+            }
+            do {
+                let json = try JSONDecoder().decode(answerReceiveFAQ.self, from: data)
+                for number in 0..<json.data.count {
+                    self.model.addFaq.answer = json.data[number].answer
+                    self.model.addFaq.id = json.data[number].id
+                    self.model.addFaq.question = json.data[number].question
+                    self.model.faq.append(self.model.addFaq)
+                }
+            } catch {
+                print(error)
+            }
+        }
+        task.resume()
+    }
+    
+    func getFAQSemophore(){
+        
+        struct answerReceiveFAQ: Codable{
+            var data: [dataReceiveFAQ]
+            var message: String?
+            var success: Bool
+        }
+        
+        struct dataReceiveFAQ: Codable{
+            var answer: String?
+            var id: Int?
+            var question: String?
+        }
+        let semaphore = DispatchSemaphore (value: 0)
+        var request = URLRequest(url: URL(string: "https://crm.hotelstore.sg/api/faq")!,timeoutInterval: Double.infinity)
+        
+        request.httpMethod = "GET"
+        request.addValue(DataModel.sharedData.token, forHTTPHeaderField: "token")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                print(String(describing: error))
+                return
+            }
+            do {
+                let json = try JSONDecoder().decode(answerReceiveFAQ.self, from: data)
+                for number in 0..<json.data.count {
+                    self.model.addFaq.answer = json.data[number].answer
+                    self.model.addFaq.id = json.data[number].id
+                    self.model.addFaq.question = json.data[number].question
+                    self.model.faq.append(self.model.addFaq)
+                }
+            } catch {
+                print(error)
+            }
+            semaphore.signal()
+        }
+        task.resume()
+        semaphore.wait()
     }
     
     func registration(id: String){

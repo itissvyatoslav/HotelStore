@@ -22,6 +22,7 @@ class ProductsViewController: UIViewController{
         self.registerTableViewCells()
         print(model.products)
         setView()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         if model.catalogInd == 1 {
@@ -149,7 +150,7 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource{
                 cell.nameLabel.text = self.model.products[indexPath.row].name
                 cell.brandLabel.text = self.model.products[indexPath.row].brand
                 cell.descrLabel.text = self.model.products[indexPath.row].short_description
-                cell.priceLabel.text = "\(self.model.products[indexPath.row].price)S$"
+                cell.priceLabel.text = "\(self.model.products[indexPath.row].price)\(self.model.currency)"
             cell.nameLabel.sizeToFit()
             cell.descrLabel.sizeToFit()
             cell.nameLabel.adjustsFontSizeToFitWidth = true
