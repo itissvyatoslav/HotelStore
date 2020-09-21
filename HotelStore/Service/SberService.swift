@@ -11,6 +11,20 @@ import Foundation
 class SberService {
     let model = DataModel.sharedData
     
+    struct PaymentCheck: Codable {
+        var data: DataReceive
+        var message: String?
+        var success: Bool
+    }
+    
+    struct DataReceive: Codable {
+        var goods_list: [String]
+        var order_number: Int
+        var result: Bool
+        var room_number: String?
+        var status_update: String?
+    }
+    
     func checkPayment(){
         let semaphore = DispatchSemaphore (value: 0)
         var request = URLRequest(url: URL(string: "https://crm.hotelstore.sg/app/paymenconfirmsber")!,timeoutInterval: Double.infinity)
@@ -23,8 +37,9 @@ class SberService {
                 return
             }
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                print(json)
+                let json = try JSONDecoder().decode(PaymentCheck.self, from: data)
+                self.model.resultOrder = json.data.result
+                self.model.orderNumber = json.data.order_number
             } catch {
                 print(error)
             }

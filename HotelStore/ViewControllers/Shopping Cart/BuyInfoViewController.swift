@@ -69,12 +69,14 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     override func viewDidLoad() {
         paySber.isHidden = true
         let locale = Locale.current
+        print(locale.regionCode)
         if localesSNG.contains(locale.regionCode ?? "nil") {
             setSber()
         } else {
             setStripe()
         }
-        setSber()
+        //setStripe()
+        //setSber()
         super.viewDidLoad()
         setView()
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
@@ -222,7 +224,18 @@ extension BuyInfoViewController: SberDelegate {
         UIApplication.shared.beginIgnoringInteractionEvents()
         indicatorView.isHidden = false
         DispatchQueue.main.async {
+            self.network.payOrder(roomNumber: self.roomNumberTextField.text ?? "", comment: self.commentTextView.text ?? "", name: self.nameTextField.text ?? "")
             SberService().checkPayment()
+            UIApplication.shared.endIgnoringInteractionEvents()
+            let vc = self.storyboard?.instantiateViewController(identifier: "SuccessPaymentVC") as! SuccessPaymentViewController
+            vc.navigationItem.hidesBackButton = true
+            self.navigationController?.pushViewController(vc, animated: true)
+            self.setRoomNumber()
+            if self.model.resultOrder == true {
+                vc.id = 0
+            } else {
+                vc.id = 1
+            }
         }
     }
     

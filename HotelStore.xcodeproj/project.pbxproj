@@ -61,19 +61,6 @@
 		F7B014CCAB1CEBA2ECA98B03 /* Pods_HotelStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC5583E4007ADD964B90FE2 /* Pods_HotelStore.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		EBFDA45E2504FC8C0007A0FE /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		AAC5583E4007ADD964B90FE2 /* Pods_HotelStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HotelStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB12C6B92455CF4D000C3301 /* SubCatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCatalogViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +111,7 @@
 		EBCDBBDA2441B30C008129A5 /* Catalog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Catalog.storyboard; sourceTree = "<group>"; };
 		EBD45CBF24864568000C7B62 /* FirstHotelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstHotelListViewController.swift; sourceTree = "<group>"; };
 		EBD96D5D245B418200C6BECF /* BuyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyInfoViewController.swift; sourceTree = "<group>"; };
+		EBDA3C6C251776FB006E20D7 /* Stripe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stripe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF19C2024582E5400F174CE /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
 		EBF19C2424587ACF00F174CE /* ProductPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPageViewController.swift; sourceTree = "<group>"; };
@@ -308,6 +296,7 @@
 		F32EE012E752DEC2F696C21E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EBDA3C6C251776FB006E20D7 /* Stripe.framework */,
 				EB1B798F248F914E00851EB6 /* CoreLocation.framework */,
 				AAC5583E4007ADD964B90FE2 /* Pods_HotelStore.framework */,
 			);
@@ -326,7 +315,6 @@
 				EBCDBBAE2440A76B008129A5 /* Frameworks */,
 				EBCDBBAF2440A76B008129A5 /* Resources */,
 				29F370E1AF9DDB8E6AFDCC9D /* [CP] Embed Pods Frameworks */,
-				EBFDA45E2504FC8C0007A0FE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -623,7 +611,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HotelStore/HotelStore.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 2UW772375M;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -654,7 +642,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HotelStore/HotelStore.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 2UW772375M;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

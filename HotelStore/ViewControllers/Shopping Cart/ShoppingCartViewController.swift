@@ -103,7 +103,7 @@ class ShoppingCartViewController: UIViewController{
             summ = summ + model.shopCart[number].price * Double(model.shopCart[number].actualCount ?? 0)
         }
         model.globalPrice = Double(round(1000*summ)/1000)
-        priceLabel.text = "\(model.globalPrice)S$"
+        priceLabel.text = "\(model.globalPrice)\(model.currency)"
     }
     
     private func removeFromShopCart(cellNumber: Int){
