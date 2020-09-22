@@ -76,7 +76,7 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
             setStripe()
         }
         //setStripe()
-        //setSber()
+        setSber()
         super.viewDidLoad()
         setView()
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))

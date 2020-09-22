@@ -51,7 +51,7 @@ class LastViewController: UIViewController {
         for number in 0..<DataModel.sharedData.lastOrder.count{
             summ = summ + DataModel.sharedData.lastOrder[number].price
         }
-        priceLabel.text = "\(summ)S$"
+        priceLabel.text = "\(summ)\(DataModel.sharedData.currency)"
     }
 }
 
