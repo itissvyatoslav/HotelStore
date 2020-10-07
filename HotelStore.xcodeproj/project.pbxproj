@@ -47,12 +47,13 @@
 		EBCDBBCA2440B995008129A5 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCDBBC92440B995008129A5 /* CatalogViewController.swift */; };
 		EBCDBBCC2440B9B9008129A5 /* ShoppingCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCDBBCB2440B9B9008129A5 /* ShoppingCartViewController.swift */; };
 		EBCDBBCE2440B9CD008129A5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCDBBCD2440B9CD008129A5 /* ProfileViewController.swift */; };
-		EBCDBBD72441B2D0008129A5 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBCDBBD62441B2D0008129A5 /* Profile.storyboard */; };
 		EBCDBBD92441B301008129A5 /* ShoppingCart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBCDBBD82441B301008129A5 /* ShoppingCart.storyboard */; };
 		EBCDBBDB2441B30C008129A5 /* Catalog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBCDBBDA2441B30C008129A5 /* Catalog.storyboard */; };
 		EBD45CC024864568000C7B62 /* FirstHotelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD45CBF24864568000C7B62 /* FirstHotelListViewController.swift */; };
 		EBD96D5E245B418200C6BECF /* BuyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD96D5D245B418200C6BECF /* BuyInfoViewController.swift */; };
 		EBEBF5C7252E2F8000CF6F46 /* YandexAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBF5C6252E2F8000CF6F46 /* YandexAnalytics.swift */; };
+		EBEBF5C9252E3CF500CF6F46 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEBF5C8252E3CF500CF6F46 /* ChatRoom.swift */; };
+		EBEBF5CB252E42EC00CF6F46 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBEBF5CA252E42EB00CF6F46 /* Profile.storyboard */; };
 		EBF19C2224582E5400F174CE /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF19C2024582E5400F174CE /* ProductTableViewCell.swift */; };
 		EBF19C2324582E5400F174CE /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */; };
 		EBF19C2524587ACF00F174CE /* ProductPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF19C2424587ACF00F174CE /* ProductPageViewController.swift */; };
@@ -107,13 +108,14 @@
 		EBCDBBC92440B995008129A5 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		EBCDBBCB2440B9B9008129A5 /* ShoppingCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewController.swift; sourceTree = "<group>"; };
 		EBCDBBCD2440B9CD008129A5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		EBCDBBD62441B2D0008129A5 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		EBCDBBD82441B301008129A5 /* ShoppingCart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShoppingCart.storyboard; sourceTree = "<group>"; };
 		EBCDBBDA2441B30C008129A5 /* Catalog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Catalog.storyboard; sourceTree = "<group>"; };
 		EBD45CBF24864568000C7B62 /* FirstHotelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstHotelListViewController.swift; sourceTree = "<group>"; };
 		EBD96D5D245B418200C6BECF /* BuyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyInfoViewController.swift; sourceTree = "<group>"; };
 		EBDA3C6C251776FB006E20D7 /* Stripe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stripe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBEBF5C6252E2F8000CF6F46 /* YandexAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexAnalytics.swift; sourceTree = "<group>"; };
+		EBEBF5C8252E3CF500CF6F46 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
+		EBEBF5CA252E42EB00CF6F46 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		EBF19C2024582E5400F174CE /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		EBF19C2124582E5400F174CE /* ProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
 		EBF19C2424587ACF00F174CE /* ProductPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPageViewController.swift; sourceTree = "<group>"; };
@@ -257,7 +259,7 @@
 				EBCDBBBA2440A76C008129A5 /* Main.storyboard */,
 				EBCDBBDA2441B30C008129A5 /* Catalog.storyboard */,
 				EBCDBBD82441B301008129A5 /* ShoppingCart.storyboard */,
-				EBCDBBD62441B2D0008129A5 /* Profile.storyboard */,
+				EBEBF5CA252E42EB00CF6F46 /* Profile.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -270,6 +272,7 @@
 				EB87E80F2443179C00D79D26 /* UserInfoViewController.swift */,
 				EB4D6C26244DD47200AB321C /* AgreementViewController.swift */,
 				EB86E9A024ED062A004B6C72 /* FAQViewController.swift */,
+				EBEBF5C8252E3CF500CF6F46 /* ChatRoom.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBCDBBDB2441B30C008129A5 /* Catalog.storyboard in Resources */,
+				EBEBF5CB252E42EC00CF6F46 /* Profile.storyboard in Resources */,
 				EB87E831244575DD00D79D26 /* ProfileLastOrderCells.xib in Resources */,
 				EB86E9A924ED1B66004B6C72 /* faq2cell.xib in Resources */,
 				EB86E9A524ED17DA004B6C72 /* faq1cell.xib in Resources */,
@@ -374,7 +378,6 @@
 				EBCDBBC12440A774008129A5 /* LaunchScreen.storyboard in Resources */,
 				EB60A14D246AB22D00DFE105 /* ShoppingCartCell.xib in Resources */,
 				EBCDBBBE2440A774008129A5 /* Assets.xcassets in Resources */,
-				EBCDBBD72441B2D0008129A5 /* Profile.storyboard in Resources */,
 				EBCDBBBC2440A76C008129A5 /* Main.storyboard in Resources */,
 				EBF19C2324582E5400F174CE /* ProductTableViewCell.xib in Resources */,
 			);
@@ -445,6 +448,7 @@
 				EB60A13A245BF04200DFE105 /* UserService.swift in Sources */,
 				EB38EE5E246C195200D2CB4E /* StripeClientAPI.swift in Sources */,
 				EB4D6C27244DD47200AB321C /* AgreementViewController.swift in Sources */,
+				EBEBF5C9252E3CF500CF6F46 /* ChatRoom.swift in Sources */,
 				EBD45CC024864568000C7B62 /* FirstHotelListViewController.swift in Sources */,
 				EB86E9A424ED17DA004B6C72 /* faq1cell.swift in Sources */,
 				EB87E8102443179C00D79D26 /* UserInfoViewController.swift in Sources */,

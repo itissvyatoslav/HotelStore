@@ -166,7 +166,7 @@
                                 <sections/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83e-eX-F15">
-                                <rect key="frame" x="25.5" y="455" width="363" height="45"/>
+                                <rect key="frame" x="25.5" y="445" width="363" height="45"/>
                                 <color key="backgroundColor" red="0.71372549019999998" green="0.035294117649999998" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="ZvC-u8-hma"/>
@@ -219,7 +219,7 @@
                             <constraint firstItem="XR7-dL-9qx" firstAttribute="leading" secondItem="iOG-MK-kbD" secondAttribute="leading" constant="25.5" id="WuI-ZD-U9h"/>
                             <constraint firstItem="as2-Kt-las" firstAttribute="leading" secondItem="iOG-MK-kbD" secondAttribute="leading" id="aXw-pE-zA6"/>
                             <constraint firstItem="iOG-MK-kbD" firstAttribute="trailing" secondItem="83e-eX-F15" secondAttribute="trailing" constant="25.5" id="iy8-Yv-LGn"/>
-                            <constraint firstItem="83e-eX-F15" firstAttribute="top" secondItem="XR7-dL-9qx" secondAttribute="bottom" constant="20" id="jQV-Au-d3g"/>
+                            <constraint firstItem="83e-eX-F15" firstAttribute="top" secondItem="XR7-dL-9qx" secondAttribute="bottom" constant="10" id="jQV-Au-d3g"/>
                             <constraint firstItem="iOG-MK-kbD" firstAttribute="trailing" secondItem="XR7-dL-9qx" secondAttribute="trailing" constant="25.5" id="kao-ao-1Qe"/>
                             <constraint firstItem="XR7-dL-9qx" firstAttribute="top" secondItem="yad-fi-PPM" secondAttribute="bottom" constant="41" id="oqX-x9-KGj"/>
                             <constraint firstItem="n1d-65-BiS" firstAttribute="centerY" secondItem="U1t-Js-jbY" secondAttribute="centerY" id="rTv-az-vlk"/>

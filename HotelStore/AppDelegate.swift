@@ -11,6 +11,7 @@ import Stripe
 import UserNotifications
 import Locksmith
 import YandexMobileMetrica
+import PyrusServiceDesk
 
 @available(iOS 13.0, *)
 @UIApplicationMain
@@ -32,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let configuration = YMMYandexMetricaConfiguration.init(apiKey: "1f5731d4-b1f0-4b99-9b27-2d70f1cfe36d")
         YMMYandexMetrica.activate(with: configuration!)
+        PyrusServiceDesk.createWith("FMsCcblgy1pDRyIxUEgIzCllz-NCbS0wwgBlCXM9CemtHr50Laa3UlO4TkiH0CKIaJqP4v~bfxz6pDuTTHaMIJwBRxw27w-8W08HnF0kPXPENZiLmxs6oxKLSJE1SJ3MOTzT3g==")
         return true
     }
 

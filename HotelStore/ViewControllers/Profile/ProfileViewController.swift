@@ -9,8 +9,14 @@
 import Foundation
 import UIKit
 import MessageUI
+import PyrusServiceDesk
 
-class ProfileViewController: UIViewController, MFMailComposeViewControllerDelegate{
+class ProfileViewController: UIViewController, MFMailComposeViewControllerDelegate, NewReplySubscriber{
+    
+    func onNewReply() {
+        print("New message")
+    }
+    
     let model = DataModel.sharedData
     let network = UserService()
     
@@ -38,6 +44,7 @@ class ProfileViewController: UIViewController, MFMailComposeViewControllerDelega
     }
     
     @IBAction func liveChatTapped(_ sender: Any) {
+        setChatRoom()
     }
     
     
@@ -49,11 +56,16 @@ class ProfileViewController: UIViewController, MFMailComposeViewControllerDelega
         self.navigationController?.navigationBar.tintColor = UIColor(named: "ColorSubText")
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        PyrusServiceDesk.unsubscribeFromReplies(self)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         indicatorView.isHidden = true
         nameLabel.text = DataModel.sharedData.user.firstName.uppercased()
         buttonHotel.setTitle(model.user.hotel.name, for: .normal)
         self.tabBarController?.tabBar.isHidden = false
+        PyrusServiceDesk.subscribeToReplies(self)
     }
     
     private func setViews(){
