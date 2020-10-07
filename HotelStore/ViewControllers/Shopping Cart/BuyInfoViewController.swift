@@ -9,9 +9,12 @@
 import Stripe
 import UIKit
 import Locksmith
+import PassKit
 
 @available(iOS 13.0, *)
-class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContextDelegate {
+class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContextDelegate, UITextFieldDelegate {
+    
+    var isBackFromSber = false
     let network = UserService()
     var summ: Double = 0
     
@@ -31,6 +34,7 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
             roomNumberTextField.textColor = UIColor.red
             roomNumberTextField.text = "Please, write your room number"
         } else {
+            YandexAnalytics().sendPayStripe()
             model.user.roomNumber = roomNumberTextField.text ?? ""
             model.user.firstName = nameTextField.text ?? ""
             indicatorView.isHidden = false
@@ -66,17 +70,22 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
         self.paymentContext?.presentPaymentOptionsViewController()
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
     override func viewDidLoad() {
         paySber.isHidden = true
         let locale = Locale.current
         print(locale.regionCode)
-        if localesSNG.contains(locale.regionCode ?? "nil") {
+        if localesSNG.contains(locale.regionCode ?? "RU") {
             setSber()
         } else {
             setStripe()
         }
         //setStripe()
-        setSber()
+        //setSber()
         super.viewDidLoad()
         setView()
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
@@ -95,6 +104,8 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     }
     
     private func setView(){
+        self.nameTextField.delegate = self
+        self.roomNumberTextField.delegate = self
         indicatorView.layer.cornerRadius = 5
         nameTextField.text = model.user.firstName
         roomNumberTextField.text = model.user.roomNumber
@@ -200,6 +211,8 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
             roomNumberTextField.textColor = UIColor.red
             roomNumberTextField.text = "Please, write your room number"
         } else {
+            YandexAnalytics().sendPaySber()
+            self.network.payOrder(roomNumber: self.roomNumberTextField.text ?? "", comment: self.commentTextView.text ?? "", name: self.nameTextField.text ?? "")
             model.user.roomNumber = roomNumberTextField.text ?? ""
             model.user.firstName = nameTextField.text ?? ""
             let vc = self.storyboard?.instantiateViewController(identifier: "SberViewController") as! SberViewController
@@ -210,36 +223,68 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
     }
     
     @IBOutlet weak var paySber: UIButton!
+    @IBOutlet weak var heightApplePay: NSLayoutConstraint!
     
     private func setSber(){
         methodButton.isHidden = true
         payButton.isHidden = true
         paySber.isHidden = false
+        heightApplePay.constant = heightApplePay.constant - 53
+        //setApplePayButton()
     }
-}
-
-@available(iOS 13.0, *)
-extension BuyInfoViewController: SberDelegate {
-    func backFromSber() {
-        UIApplication.shared.beginIgnoringInteractionEvents()
-        indicatorView.isHidden = false
-        DispatchQueue.main.async {
-            self.network.payOrder(roomNumber: self.roomNumberTextField.text ?? "", comment: self.commentTextView.text ?? "", name: self.nameTextField.text ?? "")
-            SberService().checkPayment()
-            UIApplication.shared.endIgnoringInteractionEvents()
-            let vc = self.storyboard?.instantiateViewController(identifier: "SuccessPaymentVC") as! SuccessPaymentViewController
-            vc.navigationItem.hidesBackButton = true
-            self.navigationController?.pushViewController(vc, animated: true)
-            self.setRoomNumber()
-            if self.model.resultOrder == true {
-                vc.id = 0
-            } else {
-                vc.id = 1
-            }
+    
+    //MARK:- Apple Pay Sber
+    
+    private func setApplePayButton(){
+        let applePayButton = PKPaymentButton(paymentButtonType: .buy, paymentButtonStyle: .whiteOutline)
+        applePayButton.translatesAutoresizingMaskIntoConstraints = false
+        applePayButton.addTarget(self, action: #selector(tapApplePayButton), for: .touchUpInside)
+        
+        view.addSubview(applePayButton)
+        NSLayoutConstraint.activate([
+            applePayButton.centerXAnchor.constraint(equalTo: methodButton.centerXAnchor),
+            applePayButton.centerYAnchor.constraint(equalTo: methodButton.centerYAnchor),
+            applePayButton.leadingAnchor.constraint(equalTo: methodButton.leadingAnchor),
+            applePayButton.trailingAnchor.constraint(equalTo: methodButton.trailingAnchor)
+        ])
+    }
+    
+    @objc func tapApplePayButton(){
+        if let controller = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest) {
+            controller.delegate = self
+            present(controller, animated: true, completion: nil)
         }
     }
     
+    @IBOutlet weak var applePayImage: UIImageView!
     
+    private var paymentRequest: PKPaymentRequest = {
+        let request = PKPaymentRequest()
+        request.merchantIdentifier = "merchant.com.HotelStore"
+        request.supportedNetworks = [.visa, .masterCard]
+        request.supportedCountries = ["RU"]
+        request.merchantCapabilities = .capability3DS
+        request.countryCode = "RU"
+        request.currencyCode = "RUB"
+        request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Order", amount: NSDecimalNumber(value: Int(DataModel.sharedData.globalPrice)))]
+        return request
+    }()
+}
+
+@available(iOS 13.0, *)
+extension BuyInfoViewController: SberDelegate, PKPaymentAuthorizationViewControllerDelegate{
+    
+    func backFromSber() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
+           completion(PKPaymentAuthorizationResult(status: .success, errors: nil))
+       }
+    
+       func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+           controller.dismiss(animated: true, completion: nil)
+       }
 }
 
 

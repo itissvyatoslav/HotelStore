@@ -20,6 +20,14 @@ class ShoppingCartViewController: UIViewController{
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var emptyButton: UIButton!
     
+    @available(iOS 13.0, *)
+    @IBAction func buyAction(_ sender: Any) {
+        YandexAnalytics().sendBuy()
+        let vc = self.storyboard?.instantiateViewController(identifier: "BuyInfoViewController") as! BuyInfoViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
     @IBAction func removeCartAction(_ sender: Any) {
         network.removeCart()
         model.shopCart.removeAll()
@@ -122,6 +130,29 @@ class ShoppingCartViewController: UIViewController{
             }
         }
     }
+    
+    private func setImage(_ number: Int, _ cell: ShoppingCartCell){
+        var subNumber = 0
+        for imageNumber in 0..<self.model.shopCart[number].images.count{
+            if self.model.shopCart[number].images[imageNumber].front {
+                subNumber = imageNumber
+                break
+            }
+        }
+        if let url = URL(string: "https://crm.hotelstore.sg/\(self.model.shopCart[number].images[subNumber].url)"){
+            if let cachedImage = self.model.imageCache.object(forKey: url.absoluteString as NSString){
+                cell.imageProduct.image = cachedImage
+            } else {
+                DispatchQueue.global(qos: .userInitiated).async {
+                    let imageData = NSData.init(contentsOf: url)
+                    DispatchQueue.main.async {
+                        cell.imageProduct.image = UIImage(data: imageData! as Data)
+                        self.model.imageCache.setObject(UIImage(data: imageData! as Data)!, forKey: url.absoluteString as NSString)
+                    }
+                }
+            }
+        }
+    }
 }
 
 extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource {
@@ -133,6 +164,8 @@ extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingCartCell") as? ShoppingCartCell {
             cell.setCell(indexPath.row)
+            self.setImage(indexPath.row, cell)
+            cell.imageProduct.sizeToFit()
             cell.delegate = self
             return cell
         }

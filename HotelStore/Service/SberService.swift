@@ -38,6 +38,7 @@ class SberService {
             }
             do {
                 let json = try JSONDecoder().decode(PaymentCheck.self, from: data)
+                print(json)
                 self.model.resultOrder = json.data.result
                 self.model.orderNumber = json.data.order_number
             } catch {

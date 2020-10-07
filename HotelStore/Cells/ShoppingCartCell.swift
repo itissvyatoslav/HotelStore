@@ -38,6 +38,11 @@ class ShoppingCartCell: UITableViewCell {
         self.delegate?.deleteProduct(cell: self)
     }
     
+    @IBAction func deleteItem(_ sender: Any) {
+        self.delegate?.deleteProduct(cell: self)
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -58,7 +63,7 @@ class ShoppingCartCell: UITableViewCell {
         countLabel.sizeToFit()
         priceLabel.text = "\(model.shopCart[number].price)\(self.model.currency)"
         imageProduct.layer.cornerRadius = 25
-        setImage(number)
+        //setImage(number)
     }
     
     private func setImage(_ number: Int){

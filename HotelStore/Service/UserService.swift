@@ -32,8 +32,8 @@ class UserService {
         var cart: [cartType]
         var comment: String?
         var date: String
-        var hotel: hotelType
-        var id: Int
+        var hotel: hotelType?
+        var id: Int?
         var room: String?
         var status: String
         var time: String
@@ -87,8 +87,8 @@ class UserService {
                 self.model.lastOrder.removeAll()
                 if json.data.count != 0 {
                     self.model.status = json.data[json.data.count - 1].status
-                    self.model.hotelLastOrder = json.data[json.data.count - 1].hotel.name
-                    self.model.orderNumberLast = json.data[json.data.count - 1].id
+                    self.model.hotelLastOrder = json.data[json.data.count - 1].hotel?.name ?? "undefined"
+                    self.model.orderNumberLast = json.data[json.data.count - 1].id ?? 0
                     for number in 0..<json.data[json.data.count - 1].cart.count{
                         self.model.addToLastOrder.brand = json.data[json.data.count - 1].cart[number].product.brand
                         self.model.addToLastOrder.name = json.data[json.data.count - 1].cart[number].product.title

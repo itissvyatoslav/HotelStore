@@ -10,6 +10,7 @@ import UIKit
 import Stripe
 import UserNotifications
 import Locksmith
+import YandexMobileMetrica
 
 @available(iOS 13.0, *)
 @UIApplicationMain
@@ -20,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UIApplication.shared.applicationIconBadgeNumber = 0
         application.applicationIconBadgeNumber = 0
         
         Stripe.setDefaultPublishableKey(StripeKeys.publishable_key_not_test)
@@ -27,6 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         STPPaymentConfiguration.shared().appleMerchantIdentifier = "merchant.com.HotelStore"
         registerForPushNotifications()
         // Override point for customization after application launch.
+        
+        let configuration = YMMYandexMetricaConfiguration.init(apiKey: "1f5731d4-b1f0-4b99-9b27-2d70f1cfe36d")
+        YMMYandexMetrica.activate(with: configuration!)
         return true
     }
 

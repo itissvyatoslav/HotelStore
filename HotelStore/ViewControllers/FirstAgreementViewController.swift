@@ -55,6 +55,7 @@ class FirstAgreementViewController: UIViewController, WKNavigationDelegate{
         
         print("user.id: ", DataModel.sharedData.user.id)
         
+        YandexAnalytics().sendAgreement()
     }
     
     private func setView(){

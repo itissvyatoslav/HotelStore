@@ -13,6 +13,7 @@ import MessageUI
 class ProfileViewController: UIViewController, MFMailComposeViewControllerDelegate{
     let model = DataModel.sharedData
     let network = UserService()
+    
     @IBAction func tappedButtonHotel(_ sender: Any) {
         if #available(iOS 13.0, *) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -35,6 +36,10 @@ class ProfileViewController: UIViewController, MFMailComposeViewControllerDelega
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    @IBAction func liveChatTapped(_ sender: Any) {
+    }
+    
     
     let labels = ["User info", "Last order", "User Agreement", "F.A.Q."]
     

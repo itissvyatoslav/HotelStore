@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -97,6 +97,15 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4g9-31-IHh">
+                        <rect key="frame" x="390" y="20.5" width="45" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="45" id="6Dh-oW-OQE"/>
+                        </constraints>
+                        <connections>
+                            <action selector="deleteItem:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="097-xx-iNk"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="nCs-Hh-9h1" firstAttribute="top" secondItem="iQc-ER-G7J" secondAttribute="top" constant="-23" id="2gM-jQ-NoH"/>
@@ -109,9 +118,11 @@
                     <constraint firstAttribute="bottomMargin" secondItem="CgH-fp-L7z" secondAttribute="bottom" constant="35" id="KXf-kz-pG4"/>
                     <constraint firstItem="iQc-ER-G7J" firstAttribute="top" secondItem="JZH-8L-eu9" secondAttribute="bottom" constant="7" id="Nbo-s5-ptO"/>
                     <constraint firstItem="nCs-Hh-9h1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="O6c-L5-hOT"/>
+                    <constraint firstItem="4g9-31-IHh" firstAttribute="centerY" secondItem="XIQ-Tb-Kyb" secondAttribute="centerY" id="P98-nV-SSR"/>
                     <constraint firstItem="Nae-mM-cQO" firstAttribute="top" secondItem="iQc-ER-G7J" secondAttribute="bottom" constant="13" id="Wc9-yX-bwG"/>
                     <constraint firstItem="O8O-Yd-wu1" firstAttribute="leading" secondItem="Nae-mM-cQO" secondAttribute="trailing" constant="7" id="bHk-wz-UEh"/>
                     <constraint firstItem="XIQ-Tb-Kyb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="27" id="dbb-hF-aPB"/>
+                    <constraint firstItem="4g9-31-IHh" firstAttribute="centerX" secondItem="XIQ-Tb-Kyb" secondAttribute="centerX" id="dlu-QF-EIH"/>
                     <constraint firstAttribute="trailing" secondItem="XIQ-Tb-Kyb" secondAttribute="trailing" constant="12" id="erf-C1-VQM"/>
                     <constraint firstAttribute="trailing" secondItem="nCs-Hh-9h1" secondAttribute="trailing" constant="296" id="fLe-I1-7eh"/>
                     <constraint firstAttribute="bottom" secondItem="nCs-Hh-9h1" secondAttribute="bottom" constant="25" id="i26-eL-5Ks"/>
