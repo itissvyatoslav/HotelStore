@@ -10,8 +10,10 @@ import WebKit
 import UIKit
 
 class AgreementViewController: UIViewController, WKNavigationDelegate{
+    
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     
     override func viewDidLoad() {
         setView()

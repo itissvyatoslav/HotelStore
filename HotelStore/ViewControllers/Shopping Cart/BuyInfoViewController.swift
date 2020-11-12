@@ -79,7 +79,7 @@ class BuyInfoViewController: UIViewController, RequestDelegate, STPPaymentContex
         paySber.isHidden = true
         let locale = Locale.current
         print(locale.regionCode)
-        if localesSNG.contains(locale.regionCode ?? "RU") {
+        if localesSNG.contains(locale.regionCode ?? "") {
             setSber()
         } else {
             setStripe()

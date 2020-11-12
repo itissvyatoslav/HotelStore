@@ -11,7 +11,7 @@ import UIKit
 import MessageUI
 import PyrusServiceDesk
 
-class ProfileViewController: UIViewController, MFMailComposeViewControllerDelegate, NewReplySubscriber{
+class ProfileViewController: UIViewController, MFMailComposeViewControllerDelegate, NewReplySubscriber, UIActionSheetDelegate{
     
     func onNewReply() {
         print("New message")
@@ -33,6 +33,9 @@ class ProfileViewController: UIViewController, MFMailComposeViewControllerDelega
     @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var chatButton: UIButton!
+    @IBOutlet weak var heightToHide: NSLayoutConstraint!
     
     @IBAction func HotelListAction(_ sender: Any) {
             if #available(iOS 13.0, *) {
@@ -77,15 +80,44 @@ class ProfileViewController: UIViewController, MFMailComposeViewControllerDelega
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView(frame: .zero)
+        
+        //MARK:- HIDE CHAT
+        heightToHide.constant = heightToHide.constant - 55
+        chatButton.isHidden = true
     }
     
     @IBAction func feedBackAction(_ sender: Any) {
-        if MFMailComposeViewController.canSendMail(){
-            let composer = MFMailComposeViewController()
-            composer.mailComposeDelegate = self
-            composer.setToRecipients(["support@hotelstore.sg"])
-            present(composer, animated: true)
+        let actionSheetControllerIOS8: UIAlertController = UIAlertController(title: "Please select messenger", message: nil, preferredStyle: .actionSheet)
+
+        let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            print("Cancel")
         }
+        actionSheetControllerIOS8.addAction(cancelActionButton)
+
+        let waButton = UIAlertAction(title: "WhatsApp", style: .default)
+            { _ in
+                let urlString = "https://wa.me/79260839071"
+
+                let urlStringEncoded = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+
+                let URL = NSURL(string: urlStringEncoded!)
+
+                if UIApplication.shared.canOpenURL(URL! as URL) {
+                    UIApplication.shared.openURL(URL! as URL)
+                }
+        }
+        actionSheetControllerIOS8.addAction(waButton)
+
+        let tButton = UIAlertAction(title: "Telegram", style: .default)
+            { _ in
+                let botURL = URL.init(string: "tg://resolve?domain=A_Smorodina")
+
+                if UIApplication.shared.canOpenURL(botURL!) {
+                    UIApplication.shared.openURL(botURL!)
+                }
+        }
+        actionSheetControllerIOS8.addAction(tButton)
+        self.present(actionSheetControllerIOS8, animated: true, completion: nil)
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController,

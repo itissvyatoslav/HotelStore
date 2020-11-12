@@ -150,11 +150,22 @@ extension HotelListViewController: UITableViewDelegate, UITableViewDataSource{
         }
         if id == 1 {
             if #available(iOS 13.0, *) {
-                let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-                let vc = storyboard.instantiateViewController(identifier: "UserInfoVC") as! UserInfoViewController
-                vc.id = 1
+                do {
+                    try Locksmith.updateData(data: ["token" : model.token,
+                                                    "firstName": model.user.firstName,
+                                                    "lastName": model.user.lastName,
+                                                    "roomNumber": model.user.roomNumber,
+                                                    "email": model.user.email,
+                                                    "hotelId": model.user.hotel.id,
+                                                    "hotelName": model.user.hotel.name],
+                                             forUserAccount: "HotelStoreAccount")
+                    print("saved!")
+                } catch {
+                    print("Unable to save data")
+                }
+                GetProductsService().getCategories()
+                let vc = self.storyboard?.instantiateViewController(identifier: "CustomTabBarController") as! CustomTabBarController
                 vc.navigationItem.hidesBackButton = true
-                vc.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Skip", style: .plain, target: self, action: #selector(goToAgreement))
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }

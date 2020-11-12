@@ -61,8 +61,9 @@ extension FirstHotelListViewController: UITableViewDelegate, UITableViewDataSour
             model.user.hotel = model.hotels[indexPath.row + 1]
         }
         if #available(iOS 13.0, *) {
-            print("fd")
-            let vc = storyboard?.instantiateViewController(identifier: "RoomPickerVC") as! RoomPickerViewController
+            GetProductsService().getCategories()
+            let vc = self.storyboard?.instantiateViewController(identifier: "CustomTabBarController") as! CustomTabBarController
+            vc.navigationItem.hidesBackButton = true
             self.navigationController?.pushViewController(vc, animated: true)
            // let vc = storyboard?.instantiateViewController(identifier: "CustomTabBarController") as! CustomTabBarController
            // vc.navigationItem.hidesBackButton = true

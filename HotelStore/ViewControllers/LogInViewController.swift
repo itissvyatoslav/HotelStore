@@ -63,16 +63,17 @@ class LogInViewController: UIViewController, CLLocationManagerDelegate{
             locationManager.startUpdatingLocation()
         }
         GetHotelsService().getHotelsSem()
-        let vc = storyboard?.instantiateViewController(identifier: "HotelListVC") as! HotelListViewController
+        let vc = storyboard?.instantiateViewController(identifier: "HelloViewController") as! HelloViewController
         vc.navigationItem.hidesBackButton = true
-        vc.id = 1
-        vc.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Skip", style: .plain, target: self, action: #selector(goToRoomPicker))
+        //vc.id = 1
+        //vc.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Skip", style: .plain, target: self, action: #selector(skip))
         self.navigationController?.pushViewController(vc, animated: true)
         print("buy buy")
     }
     
-    @objc func goToRoomPicker(){
-        let vc = storyboard?.instantiateViewController(identifier: "RoomPickerVC") as! RoomPickerViewController
+    @objc func skip(){
+        let vc = self.storyboard?.instantiateViewController(identifier: "CustomTabBarController") as! CustomTabBarController
+        vc.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

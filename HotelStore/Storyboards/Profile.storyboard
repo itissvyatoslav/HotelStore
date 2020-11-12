@@ -137,7 +137,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="L3P-qg-Pku" kind="show" id="Kul-l5-wgQ"/>
+                                            <segue destination="L3P-qg-Pku" kind="show" trigger="accessoryAction" id="uKG-xX-fhy"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="54" id="pDq-mY-IgL" customClass="tableCell" customModule="HotelStore" customModuleProvider="target">
@@ -172,7 +172,7 @@
                                     <constraint firstAttribute="height" constant="45" id="ZvC-u8-hma"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Feedback">
+                                <state key="normal" title="Поддержка / Support">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -254,6 +254,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="buttonHotel" destination="DGK-NT-m5r" id="bqf-dm-RBB"/>
+                        <outlet property="chatButton" destination="XR7-dL-9qx" id="cEb-a0-6Yf"/>
+                        <outlet property="heightToHide" destination="jQV-Au-d3g" id="6OC-6H-9r6"/>
                         <outlet property="indicatorView" destination="n1d-65-BiS" id="5Z0-zx-ENU"/>
                         <outlet property="nameLabel" destination="GIl-AI-GEd" id="pmX-R1-1vS"/>
                         <outlet property="tableView" destination="yad-fi-PPM" id="rcn-CU-1Pn"/>

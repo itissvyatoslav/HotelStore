@@ -47,8 +47,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 window?.makeKeyAndVisible()
             }
         } else {
-            
+        
         }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController (withIdentifier: "CustomTabBarController") as! CustomTabBarController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
